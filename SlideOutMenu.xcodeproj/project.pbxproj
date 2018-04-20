@@ -12,6 +12,10 @@
 		A531B7422089B72F00AE5670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7402089B72F00AE5670 /* Main.storyboard */; };
 		A531B7442089B73000AE5670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A531B7432089B73000AE5670 /* Assets.xcassets */; };
 		A531B7472089B73000AE5670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7452089B73000AE5670 /* LaunchScreen.storyboard */; };
+		A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A531B7512089B8A500AE5670 /* SWRevealViewController.m */; };
+		A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7532089BC6200AE5670 /* BackTableVC.swift */; };
+		A531B7562089D09A00AE5670 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7552089D09A00AE5670 /* Hello.swift */; };
+		A531B7582089E0FF00AE5670 /* MyShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,12 @@
 		A531B7432089B73000AE5670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A531B7462089B73000AE5670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A531B7482089B73000AE5670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A531B74F2089B8A400AE5670 /* SlideOutMenu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SlideOutMenu-Bridging-Header.h"; sourceTree = "<group>"; };
+		A531B7502089B8A500AE5670 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A531B7512089B8A500AE5670 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A531B7532089BC6200AE5670 /* BackTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
+		A531B7552089D09A00AE5670 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
+		A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShiftViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,28 @@
 		A531B73B2089B72F00AE5670 /* SlideOutMenu */ = {
 			isa = PBXGroup;
 			children = (
+				A531B74E2089B86500AE5670 /* Supporting File */,
 				A531B73C2089B72F00AE5670 /* AppDelegate.swift */,
 				A531B73E2089B72F00AE5670 /* ViewController.swift */,
 				A531B7402089B72F00AE5670 /* Main.storyboard */,
+				A531B7532089BC6200AE5670 /* BackTableVC.swift */,
+				A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */,
+				A531B7552089D09A00AE5670 /* Hello.swift */,
 				A531B7432089B73000AE5670 /* Assets.xcassets */,
 				A531B7452089B73000AE5670 /* LaunchScreen.storyboard */,
 				A531B7482089B73000AE5670 /* Info.plist */,
 			);
 			path = SlideOutMenu;
+			sourceTree = "<group>";
+		};
+		A531B74E2089B86500AE5670 /* Supporting File */ = {
+			isa = PBXGroup;
+			children = (
+				A531B7502089B8A500AE5670 /* SWRevealViewController.h */,
+				A531B7512089B8A500AE5670 /* SWRevealViewController.m */,
+				A531B74F2089B8A400AE5670 /* SlideOutMenu-Bridging-Header.h */,
+			);
+			path = "Supporting File";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +120,7 @@
 				TargetAttributes = {
 					A531B7382089B72F00AE5670 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -137,6 +162,10 @@
 			files = (
 				A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */,
 				A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */,
+				A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */,
+				A531B7562089D09A00AE5670 /* Hello.swift in Sources */,
+				A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */,
+				A531B7582089E0FF00AE5670 /* MyShiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +309,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
@@ -289,6 +319,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -298,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
@@ -307,6 +340,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
