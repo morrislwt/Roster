@@ -9,8 +9,20 @@
 import Foundation
 class BackTableVC:UITableViewController{
     var sideMenuOptions = [String]()
+    var sideMenuIcons = [String]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateTable()
+    }
     override func viewDidLoad() {
-        sideMenuOptions = ["Home","Setting","Log Out"]
+        sideMenuOptions = ["Home",
+                           "Work Spaces",
+                           "Employees",
+                           "Positions",
+                           "Setting",
+                           "Log Out"]
+        
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
     }
@@ -27,6 +39,7 @@ class BackTableVC:UITableViewController{
         
         
         
+        
         return cell
     }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,5 +50,23 @@ class BackTableVC:UITableViewController{
 //        destVC.varView = indexPath.row
 //    }
     
+    func animateTable(){
+        tableView.reloadData()
+        let cells = tableView.visibleCells
+        
+        
+        let tableViewWidth = tableView.bounds.size.width
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: -tableViewWidth, y: 0)
+        }
+        var delayCounter = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 1
+        }
+    }
 }
 
