@@ -9,28 +9,32 @@
 import UIKit
 extension WorkSpacesVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return workSpaces.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! WorkSpaceCollectionViewCell
-        cell.backgroundColor = .black
-        cell.layer.cornerRadius = 20/(375) * view.frame.width
-        cell.clipsToBounds = true
+        
+        let workspaceItem = workSpaces[indexPath.item]
+        
+        if let workspaceImage = UIImage(data: workspaceItem.image as! Data){
+            cell.backgoundImage.image = workspaceImage
+        }
+        cell.workSpaceNameLabel.text = workspaceItem.placename
+        
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 4, height: view.frame.height/5)
+        return CGSize(width: view.frame.width, height: view.frame.height/5)
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return 1
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-
-    
     
 }

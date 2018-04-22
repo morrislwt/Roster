@@ -21,7 +21,7 @@
 		A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29142089F0DC00506E74 /* PositionsVC.swift */; };
 		A5EC2919208B2A2000506E74 /* WorkSpace+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2918208B2A2000506E74 /* WorkSpace+Extension.swift */; };
 		A5EC2964208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2963208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift */; };
-		A5EC2967208C4B8700506E74 /* MyshiftModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2965208C4B8700506E74 /* MyshiftModel.xcdatamodeld */; };
+		A5EC2967208C4B8700506E74 /* MyshiftDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2965208C4B8700506E74 /* MyshiftDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +87,7 @@
 				A531B7432089B73000AE5670 /* Assets.xcassets */,
 				A531B7452089B73000AE5670 /* LaunchScreen.storyboard */,
 				A531B7482089B73000AE5670 /* Info.plist */,
-				A5EC2965208C4B8700506E74 /* MyshiftModel.xcdatamodeld */,
+				A5EC2965208C4B8700506E74 /* MyshiftDataModel.xcdatamodeld */,
 			);
 			path = SlideOutMenu;
 			sourceTree = "<group>";
@@ -212,7 +212,7 @@
 				A531B7562089D09A00AE5670 /* Hello.swift in Sources */,
 				A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */,
 				A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */,
-				A5EC2967208C4B8700506E74 /* MyshiftModel.xcdatamodeld in Sources */,
+				A5EC2967208C4B8700506E74 /* MyshiftDataModel.xcdatamodeld in Sources */,
 				A531B7582089E0FF00AE5670 /* MyShiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,13 +418,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A5EC2965208C4B8700506E74 /* MyshiftModel.xcdatamodeld */ = {
+		A5EC2965208C4B8700506E74 /* MyshiftDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				A5EC2966208C4B8700506E74 /* MyshiftModel.xcdatamodel */,
 			);
 			currentVersion = A5EC2966208C4B8700506E74 /* MyshiftModel.xcdatamodel */;
-			path = MyshiftModel.xcdatamodeld;
+			path = MyshiftDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -10,5 +10,7 @@ import UIKit
 
 class WorkSpaceCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var backgoundImage: UIImageView!
     
+    @IBOutlet weak var workSpaceNameLabel: UILabel!
 }

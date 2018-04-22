@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -365,7 +367,54 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_1942" translatesAutoresizingMaskIntoConstraints="NO" id="5jv-nC-IX6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wrE-cI-wur">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wVu-TK-9MK">
+                                                    <rect key="frame" x="140" y="96" width="94" height="2"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="2" id="Dyd-BX-JtS"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRi-M9-GDF">
+                                                    <rect key="frame" x="8" y="65.5" width="359" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="wVu-TK-9MK" firstAttribute="width" secondItem="sOh-Ie-Kwf" secondAttribute="width" multiplier="1:4" id="3W6-HE-Rve"/>
+                                            <constraint firstItem="wrE-cI-wur" firstAttribute="leading" secondItem="sOh-Ie-Kwf" secondAttribute="leading" id="6Gj-0X-iOG"/>
+                                            <constraint firstItem="wrE-cI-wur" firstAttribute="centerY" secondItem="sOh-Ie-Kwf" secondAttribute="centerY" id="7Ws-Vp-16W"/>
+                                            <constraint firstItem="5jv-nC-IX6" firstAttribute="centerX" secondItem="sOh-Ie-Kwf" secondAttribute="centerX" id="DDC-88-MNJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="wrE-cI-wur" secondAttribute="bottom" id="Exh-jj-hI9"/>
+                                            <constraint firstItem="wVu-TK-9MK" firstAttribute="centerX" secondItem="sOh-Ie-Kwf" secondAttribute="centerX" id="NNc-eU-HB0"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="uRi-M9-GDF" secondAttribute="trailing" id="SpQ-v6-ltH"/>
+                                            <constraint firstAttribute="trailing" secondItem="wrE-cI-wur" secondAttribute="trailing" id="UZ9-ZW-9De"/>
+                                            <constraint firstItem="uRi-M9-GDF" firstAttribute="leading" secondItem="sOh-Ie-Kwf" secondAttribute="leadingMargin" id="Vaj-SE-QA2"/>
+                                            <constraint firstItem="5jv-nC-IX6" firstAttribute="top" secondItem="sOh-Ie-Kwf" secondAttribute="top" id="a4W-nO-WSC"/>
+                                            <constraint firstItem="uRi-M9-GDF" firstAttribute="centerY" secondItem="sOh-Ie-Kwf" secondAttribute="centerY" id="clN-4j-1WY"/>
+                                            <constraint firstItem="5jv-nC-IX6" firstAttribute="leading" secondItem="sOh-Ie-Kwf" secondAttribute="leading" id="eZj-4i-KGu"/>
+                                            <constraint firstItem="uRi-M9-GDF" firstAttribute="centerX" secondItem="sOh-Ie-Kwf" secondAttribute="centerX" id="h2Y-cC-VZZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="5jv-nC-IX6" secondAttribute="bottom" id="jBl-qC-9io"/>
+                                            <constraint firstItem="uRi-M9-GDF" firstAttribute="bottom" secondItem="wVu-TK-9MK" secondAttribute="bottom" multiplier="1:1.1" id="jZQ-w4-fEc"/>
+                                            <constraint firstItem="wrE-cI-wur" firstAttribute="top" secondItem="sOh-Ie-Kwf" secondAttribute="top" id="kW0-8C-TMd"/>
+                                            <constraint firstItem="wrE-cI-wur" firstAttribute="centerX" secondItem="sOh-Ie-Kwf" secondAttribute="centerX" id="pdL-jd-O2L"/>
+                                            <constraint firstAttribute="trailing" secondItem="5jv-nC-IX6" secondAttribute="trailing" id="shy-6J-dwN"/>
+                                            <constraint firstItem="5jv-nC-IX6" firstAttribute="centerY" secondItem="sOh-Ie-Kwf" secondAttribute="centerY" id="yBX-Ck-CKB"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="backgoundImage" destination="5jv-nC-IX6" id="Q7k-xg-0a5"/>
+                                            <outlet property="workSpaceNameLabel" destination="uRi-M9-GDF" id="QQz-XP-6X0"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -387,7 +436,7 @@
                         <viewLayoutGuide key="safeArea" id="jug-EK-wE2"/>
                     </view>
                     <connections>
-                        <outlet property="workSpaceCollectionView" destination="CIH-lU-rmK" id="Szw-2B-KXv"/>
+                        <outlet property="workspaceCollectionView" destination="CIH-lU-rmK" id="Boe-Ak-qQG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhj-EY-ZCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -396,6 +445,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="IMG_1942" width="960" height="720"/>
         <image name="ic_menu" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
