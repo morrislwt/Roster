@@ -6,6 +6,7 @@
 //  Copyright © 2018年 Morris. All rights reserved.
 //
 
+
 import UIKit
 import CoreData
 
@@ -70,9 +71,9 @@ class WorkSpacesVC:UIViewController,UIImagePickerControllerDelegate,UINavigation
         
         inputAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: {(
             action:UIAlertAction) in
-            ////last 是只有一個input的時候
+            
     
-            let spaceTextField = inputAlert.textFields?.last
+            let spaceTextField = inputAlert.textFields?.first
             
             if spaceTextField?.text != "" {
                 workspaceItem.placename = spaceTextField?.text
@@ -90,3 +91,4 @@ class WorkSpacesVC:UIViewController,UIImagePickerControllerDelegate,UINavigation
     }
     
 }
+

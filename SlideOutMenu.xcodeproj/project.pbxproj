@@ -22,9 +22,13 @@
 		A5EC2919208B2A2000506E74 /* WorkSpace+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2918208B2A2000506E74 /* WorkSpace+Extension.swift */; };
 		A5EC2964208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2963208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift */; };
 		A5EC2967208C4B8700506E74 /* MyshiftDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2965208C4B8700506E74 /* MyshiftDataModel.xcdatamodeld */; };
+		D9D78548C1AE2103F84F45D8 /* Pods_SlideOutMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42AC71E5A6A54CB2A85BCF75 /* Pods-SlideOutMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.release.xcconfig"; sourceTree = "<group>"; };
+		67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideOutMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		A531B7392089B72F00AE5670 /* SlideOutMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideOutMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A531B73C2089B72F00AE5670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A531B73E2089B72F00AE5670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,17 +55,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9D78548C1AE2103F84F45D8 /* Pods_SlideOutMenu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B32A0294CEAD267A28E6A0C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */,
+				42AC71E5A6A54CB2A85BCF75 /* Pods-SlideOutMenu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A531B7302089B72F00AE5670 = {
 			isa = PBXGroup;
 			children = (
 				A531B73B2089B72F00AE5670 /* SlideOutMenu */,
 				A531B73A2089B72F00AE5670 /* Products */,
+				0B32A0294CEAD267A28E6A0C /* Pods */,
+				C5F2167A031017CA8EA4812B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +146,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C5F2167A031017CA8EA4812B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +161,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "SlideOutMenu" */;
 			buildPhases = (
+				DDA257502CAFB157500040C7 /* [CP] Check Pods Manifest.lock */,
 				A531B7352089B72F00AE5670 /* Sources */,
 				A531B7362089B72F00AE5670 /* Frameworks */,
 				A531B7372089B72F00AE5670 /* Resources */,
+				26C61457330E21E6610EBDED /* [CP] Embed Pods Frameworks */,
+				2019809018D5E5CE9C83A624 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,6 +223,64 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2019809018D5E5CE9C83A624 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		26C61457330E21E6610EBDED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDA257502CAFB157500040C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SlideOutMenu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A531B7352089B72F00AE5670 /* Sources */ = {
@@ -355,16 +440,14 @@
 		};
 		A531B74C2089B73000AE5670 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
@@ -376,16 +459,14 @@
 		};
 		A531B74D2089B73000AE5670 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42AC71E5A6A54CB2A85BCF75 /* Pods-SlideOutMenu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";

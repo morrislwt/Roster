@@ -341,9 +341,14 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyp-V8-07f">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Work Spaces" id="HAb-cv-AaM">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="68L-eb-qep">
+                                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="addWorkSpace:" destination="G85-cG-nqj" id="XK6-NN-T7S"/>
                                             </connections>
@@ -351,9 +356,12 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background3" translatesAutoresizingMaskIntoConstraints="NO" id="KGx-Ih-mka">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CIH-lU-rmK">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O3z-2C-z3t">
                                     <size key="itemSize" width="375" height="155"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -423,15 +431,19 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="CIH-lU-rmK" secondAttribute="bottom" id="2if-DZ-157"/>
+                            <constraint firstItem="KGx-Ih-mka" firstAttribute="top" secondItem="EEq-fO-DQ4" secondAttribute="top" id="6Lt-td-NfO"/>
                             <constraint firstItem="qyp-V8-07f" firstAttribute="leading" secondItem="jug-EK-wE2" secondAttribute="leading" id="7up-NT-FcF"/>
                             <constraint firstItem="qyp-V8-07f" firstAttribute="trailing" secondItem="jug-EK-wE2" secondAttribute="trailing" id="ErZ-x0-Jqi"/>
-                            <constraint firstItem="qyp-V8-07f" firstAttribute="top" secondItem="jug-EK-wE2" secondAttribute="top" id="Tpw-OL-JQQ"/>
+                            <constraint firstItem="qyp-V8-07f" firstAttribute="top" secondItem="EEq-fO-DQ4" secondAttribute="top" constant="20" id="Tpw-OL-JQQ"/>
+                            <constraint firstAttribute="trailing" secondItem="KGx-Ih-mka" secondAttribute="trailing" id="XaK-K9-RHc"/>
                             <constraint firstItem="CIH-lU-rmK" firstAttribute="leading" secondItem="EEq-fO-DQ4" secondAttribute="leading" id="a78-WY-IEv"/>
                             <constraint firstItem="CIH-lU-rmK" firstAttribute="top" secondItem="qyp-V8-07f" secondAttribute="bottom" id="h19-Ta-miv"/>
+                            <constraint firstItem="KGx-Ih-mka" firstAttribute="leading" secondItem="EEq-fO-DQ4" secondAttribute="leading" id="h95-hv-vfy"/>
                             <constraint firstAttribute="trailing" secondItem="CIH-lU-rmK" secondAttribute="trailing" id="nfU-J4-qEC"/>
+                            <constraint firstItem="jug-EK-wE2" firstAttribute="bottom" secondItem="KGx-Ih-mka" secondAttribute="bottom" id="qxZ-NG-AWt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jug-EK-wE2"/>
                     </view>
@@ -446,6 +458,7 @@
     </scenes>
     <resources>
         <image name="IMG_1942" width="960" height="720"/>
+        <image name="background3" width="5472" height="3648"/>
         <image name="ic_menu" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>

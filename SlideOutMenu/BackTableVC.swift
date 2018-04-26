@@ -50,6 +50,8 @@ class BackTableVC:UITableViewController{
 //        destVC.varView = indexPath.row
 //    }
     
+}
+extension UITableViewController{
     func animateTable(){
         tableView.reloadData()
         let cells = tableView.visibleCells
@@ -68,5 +70,6 @@ class BackTableVC:UITableViewController{
             delayCounter += 1
         }
     }
+
 }
 
