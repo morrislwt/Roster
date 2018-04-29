@@ -9,8 +9,7 @@
 import RealmSwift
 
 class WorkSpaceData : Object{
-    
-    @objc dynamic var image: String = ""
+
     @objc dynamic var placename: String = ""
     
 }

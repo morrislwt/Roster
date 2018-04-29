@@ -22,6 +22,7 @@ class WorkSpacesVC:UIViewController,UIImagePickerControllerDelegate,UINavigation
         super.viewDidLoad()
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         loadData()
+        
     }
     
     func loadData(){

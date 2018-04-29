@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */; };
+		A509DC982095C27500AA3B4D /* PositionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC972095C27500AA3B4D /* PositionData.swift */; };
 		A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73C2089B72F00AE5670 /* AppDelegate.swift */; };
 		A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73E2089B72F00AE5670 /* ViewController.swift */; };
 		A531B7422089B72F00AE5670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7402089B72F00AE5670 /* Main.storyboard */; };
@@ -21,7 +23,6 @@
 		A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */; };
 		A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29142089F0DC00506E74 /* PositionsVC.swift */; };
 		A5EC2919208B2A2000506E74 /* WorkSpace+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2918208B2A2000506E74 /* WorkSpace+Extension.swift */; };
-		A5EC2964208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC2963208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift */; };
 		D9D78548C1AE2103F84F45D8 /* Pods_SlideOutMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,8 @@
 		42AC71E5A6A54CB2A85BCF75 /* Pods-SlideOutMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.release.xcconfig"; sourceTree = "<group>"; };
 		67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideOutMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.debug.xcconfig"; sourceTree = "<group>"; };
+		A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
+		A509DC972095C27500AA3B4D /* PositionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionData.swift; sourceTree = "<group>"; };
 		A531B7392089B72F00AE5670 /* SlideOutMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideOutMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A531B73C2089B72F00AE5670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A531B73E2089B72F00AE5670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,7 +50,6 @@
 		A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceVC.swift; sourceTree = "<group>"; };
 		A5EC29142089F0DC00506E74 /* PositionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionsVC.swift; sourceTree = "<group>"; };
 		A5EC2918208B2A2000506E74 /* WorkSpace+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkSpace+Extension.swift"; sourceTree = "<group>"; };
-		A5EC2963208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */,
+				A509DC972095C27500AA3B4D /* PositionData.swift */,
 			);
 			path = "Data  Model";
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */,
+				A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */,
 				A5EC29102089ED3100506E74 /* EmployeesVC.swift */,
 				A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */,
 				A5EC29142089F0DC00506E74 /* PositionsVC.swift */,
@@ -149,7 +153,6 @@
 		A5EC2960208C49BE00506E74 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A5EC2963208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,16 +298,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5EC2964208C4A3F00506E74 /* WorkSpaceCollectionViewCell.swift in Sources */,
 				A5EC29112089ED3100506E74 /* EmployeesVC.swift in Sources */,
 				A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */,
 				A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */,
 				A5EC2919208B2A2000506E74 /* WorkSpace+Extension.swift in Sources */,
 				A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */,
+				A509DC982095C27500AA3B4D /* PositionData.swift in Sources */,
 				A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */,
 				A531B7562089D09A00AE5670 /* Hello.swift in Sources */,
 				A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */,
 				A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */,
+				A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */,
 				A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */,
 				A531B7582089E0FF00AE5670 /* MyShiftViewController.swift in Sources */,
 			);

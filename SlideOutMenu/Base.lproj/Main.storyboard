@@ -312,19 +312,48 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Positions" id="1bX-cl-agz">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="veS-32-uj8"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="veS-32-uj8">
+                                            <connections>
+                                                <action selector="addButtonPressed:" destination="Sc6-R5-lZ9" id="RqY-eg-npc"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T0Q-ms-cJC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="YTX-pU-PtQ" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YTX-pU-PtQ" id="d8L-px-rcj">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Sc6-R5-lZ9" id="STX-am-P8f"/>
+                                    <outlet property="delegate" destination="Sc6-R5-lZ9" id="Z5j-FZ-dci"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="T0Q-ms-cJC" firstAttribute="top" secondItem="XiY-5w-0Ki" secondAttribute="bottom" id="HsC-cK-6ff"/>
+                            <constraint firstItem="T0Q-ms-cJC" firstAttribute="bottom" secondItem="FPZ-e7-iW1" secondAttribute="bottom" id="P6f-RG-jaE"/>
+                            <constraint firstItem="FPZ-e7-iW1" firstAttribute="trailing" secondItem="T0Q-ms-cJC" secondAttribute="trailing" id="eHL-Fg-Aon"/>
+                            <constraint firstItem="T0Q-ms-cJC" firstAttribute="leading" secondItem="FPZ-e7-iW1" secondAttribute="leading" id="h9B-s5-DSG"/>
                             <constraint firstItem="XiY-5w-0Ki" firstAttribute="top" secondItem="FPZ-e7-iW1" secondAttribute="top" id="pft-zi-FLb"/>
                             <constraint firstItem="XiY-5w-0Ki" firstAttribute="trailing" secondItem="FPZ-e7-iW1" secondAttribute="trailing" id="yCR-xe-6sf"/>
                             <constraint firstItem="XiY-5w-0Ki" firstAttribute="leading" secondItem="FPZ-e7-iW1" secondAttribute="leading" id="zgt-QT-e6o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FPZ-e7-iW1"/>
                     </view>
+                    <connections>
+                        <outlet property="positionTableView" destination="T0Q-ms-cJC" id="old-Ne-cZ2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXf-BL-iUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
