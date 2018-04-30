@@ -9,11 +9,13 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
-class WorkSpacesVC:UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class WorkSpacesVC:UIViewController,UITableViewDelegate,UITableViewDataSource,SwipeTableViewCellDelegate{
     
-    @IBOutlet weak var workspaceCollectionView: UICollectionView!
     
+    
+    @IBOutlet weak var workSpaceTableView: UITableView!
     let realm = try! Realm()
     var workSpaces:Results<WorkSpaceData>?
     
@@ -24,10 +26,14 @@ class WorkSpacesVC:UIViewController,UIImagePickerControllerDelegate,UINavigation
         loadData()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateTable()
+    }
     
     func loadData(){
         workSpaces = realm.objects(WorkSpaceData.self)
-        workspaceCollectionView.reloadData()
+        workSpaceTableView.reloadData()
     }
     
     func saveData(dataFromWS: WorkSpaceData){
@@ -38,7 +44,7 @@ class WorkSpacesVC:UIViewController,UIImagePickerControllerDelegate,UINavigation
         }catch{
             print("Error saving WorkSpace \(error)")
         }
-        workspaceCollectionView.reloadData()
+        workSpaceTableView.reloadData()
     }
     
     
@@ -65,17 +71,95 @@ class WorkSpacesVC:UIViewController,UIImagePickerControllerDelegate,UINavigation
         }))
         
         present(alert,animated: true, completion: nil)
-        
-        
-        
-        
-        
-        
-        
     }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipeTableViewCell
+        
+        cell.delegate = self
+        
+        cell.textLabel?.text = workSpaces?[indexPath.row].placename ?? "No place add yet"
+        cell.textLabel?.font = UIFont(name: "Courier", size: 20)
+        
+        
+        return cell
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return workSpaces?.count ?? 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
+            // handle action by updating model with deletion
+            self.updateModel(at: indexPath)
+        }
+        let editAction = SwipeAction(style: .default, title: "edit") { action, indexPath in
+            self.editModel(at: indexPath)
+        }
+        
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "delete")
+        editAction.image = UIImage(named: "edit")
+        
+        return [deleteAction,editAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        
+        options.expansionStyle = .destructive
+        return options
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0
+    }
+    
+    func updateModel(at indexPath: IndexPath){
+        if let workSpaceForDeletion = self.workSpaces?[indexPath.row] {
+            deleteModel(itemForDelete: workSpaceForDeletion)
+        }
+        //update our data model
+    }
+    func editModel(at indexPath: IndexPath){
+        if let workSpaceForEdit = workSpaces?[indexPath.row].placename{
+            var editText = UITextField()
+            
+            let alert = UIAlertController(title: "Edit", message: "Change the name of this Place", preferredStyle: .alert)
+            alert.addTextField { (textField) in
+                textField.text = workSpaceForEdit
+                editText = textField
+            }
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            let saveAction = UIAlertAction(title: "Save", style: .default) { (saveAction) in
+                
+                do{
+                    try self.realm.write {
+                        self.workSpaces?[indexPath.row].placename = editText.text!
+                    }
+                }catch{
+                    print("Error editing Category \(error)")
+                }
+                self.workSpaceTableView.reloadData()
+            }
+            alert.addAction(saveAction)
+            present(alert,animated: true, completion: nil)
+        }
+    }
+    
+    func deleteModel(itemForDelete:Object){
+        do{
+            try realm.write {
+                realm.delete(itemForDelete)
+            }
+        }catch{
+            print("Error deleting item, \(error)")
+        }
+    }
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        picker.dismiss(animated: true, completion: nil)
+//    }
     
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 //
@@ -117,6 +201,26 @@ class WorkSpacesVC:UIViewController,UIImagePickerControllerDelegate,UINavigation
 //
 //        self.present(inputAlert, animated: true, completion: nil)
 //    }
+    
+    func animateTable(){
+        workSpaceTableView.reloadData()
+        let cells = workSpaceTableView.visibleCells
+        
+        
+        
+        let tableViewHeight = workSpaceTableView.bounds.size.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        var delayCounter = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1.5, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 1
+        }
+    }
 
 }
 

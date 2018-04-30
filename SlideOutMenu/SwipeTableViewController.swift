@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import SwipeCellKit
 
-class SwipeTableViewController: UITableViewController,SwipeTableViewCellDelegate {
+class SwipeTableViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTableViewCellDelegate{
     let realm = try! Realm()
     
     var cell:UITableViewCell?

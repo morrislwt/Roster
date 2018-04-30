@@ -49,6 +49,7 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
         cell.delegate = self
         
         cell.textLabel?.text = position?[indexPath.row].positionName ?? "No positions add yet"
+        cell.textLabel?.font = UIFont(name: "Courier", size: 20)
         
         return cell
     }
@@ -93,7 +94,7 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
         if let positionForEdit = position?[indexPath.row].positionName{
             var editText = UITextField()
             
-            let alert = UIAlertController(title: "Edit", message: "Change the name of this Category", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Edit", message: "Change the name of this Position", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.text = positionForEdit
                 editText = textField
@@ -144,7 +145,7 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
         present(alert,animated: true, completion: nil)
         
     }
-    func animateTable(){
+    public func animateTable(){
         positionTableView.reloadData()
         let cells = positionTableView.visibleCells
         
