@@ -46,7 +46,7 @@ class SwipeTableViewController: UITableViewController,SwipeTableViewCellDelegate
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
-        let deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
+        let deleteAction = SwipeAction(style: .default, title: "delete") { action, indexPath in
             // handle action by updating model with deletion
             self.updateModel(at: indexPath)
         }
@@ -56,7 +56,14 @@ class SwipeTableViewController: UITableViewController,SwipeTableViewCellDelegate
         
         // customize the action appearance
         deleteAction.image = UIImage(named: "delete")
+        deleteAction.backgroundColor = .clear
+        deleteAction.transitionDelegate = ScaleTransition.default
+        deleteAction.textColor = .gray
+        
+        editAction.transitionDelegate = ScaleTransition.default
+        editAction.textColor = .gray
         editAction.image = UIImage(named: "edit")
+        editAction.backgroundColor = .clear
         
         return [deleteAction,editAction]
     }
@@ -65,6 +72,7 @@ class SwipeTableViewController: UITableViewController,SwipeTableViewCellDelegate
         var options = SwipeTableOptions()
         
         options.expansionStyle = .destructive
+        options.expansionDelegate = ScaleAndAlphaExpansion.default
         return options
     }
     

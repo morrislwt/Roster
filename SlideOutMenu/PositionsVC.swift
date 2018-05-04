@@ -68,8 +68,16 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
         }
         
         // customize the action appearance
+
         deleteAction.image = UIImage(named: "delete")
+        deleteAction.backgroundColor = .clear
+        deleteAction.transitionDelegate = ScaleTransition.default
+        deleteAction.textColor = .gray
+        
+        editAction.transitionDelegate = ScaleTransition.default
+        editAction.textColor = .gray
         editAction.image = UIImage(named: "edit")
+        editAction.backgroundColor = .clear
         
         return [deleteAction,editAction]
     }
@@ -78,6 +86,7 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
         var options = SwipeTableOptions()
         
         options.expansionStyle = .destructive
+        options.expansionDelegate = ScaleAndAlphaExpansion.default
         return options
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -299,27 +300,48 @@
             </objects>
             <point key="canvasLocation" x="-2542" y="1281"/>
         </scene>
-        <!--View Controller-->
+        <!--CalendarVC-->
         <scene sceneID="OTe-fC-NIB">
             <objects>
-                <viewController id="EPa-vP-vVc" sceneMemberID="viewController">
+                <viewController id="EPa-vP-vVc" customClass="CalendarVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7N-RW-3TZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="T8W-DC-fat"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9Oc-hT-zld"/>
+                    <navigationItem key="navigationItem" id="9Oc-hT-zld">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Today" id="q3d-Cr-npc">
+                                <connections>
+                                    <action selector="todayButtonTapped:" destination="EPa-vP-vVc" id="Ux7-Qh-2Dq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="to Month" id="iKY-gP-4hk">
+                                <connections>
+                                    <action selector="toMonth:" destination="EPa-vP-vVc" id="7A2-TZ-XUR"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B5r-lp-Hxq">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="EPa-vP-vVc" id="7Iv-Y4-iqT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="chooseModeLabel" destination="iKY-gP-4hk" id="tKR-et-THh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljZ-uf-xKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4202" y="1315"/>
         </scene>
-        <!--Item-->
+        <!--Calendar-->
         <scene sceneID="Auc-KT-B1G">
             <objects>
                 <navigationController id="xcB-p6-2kJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LWP-3o-6oy"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" id="LWP-3o-6oy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ybv-eD-EFW">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -370,15 +392,15 @@
         <scene sceneID="oIn-nX-aib">
             <objects>
                 <tabBarController id="4If-ds-4YI" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S9J-8d-s2G">
+                    <tabBar key="tabBar" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="S9J-8d-s2G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="uY6-uX-EGd" kind="relationship" relationship="viewControllers" id="IXE-f8-hmh"/>
-                        <segue destination="g0d-s4-Rc0" kind="relationship" relationship="viewControllers" id="lKd-IQ-RZ2"/>
                         <segue destination="xcB-p6-2kJ" kind="relationship" relationship="viewControllers" id="hUk-xv-nqh"/>
+                        <segue destination="g0d-s4-Rc0" kind="relationship" relationship="viewControllers" id="lKd-IQ-RZ2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JS0-AU-sAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -568,6 +590,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" width="24" height="24"/>
         <image name="ic_menu" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
