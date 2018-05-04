@@ -39,7 +39,7 @@
 		A509DC9B2096C05500AA3B4D /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		A51862EE209C466D00B8FF29 /* ShiftModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftModel.swift; sourceTree = "<group>"; };
 		A51862F2209C483300B8FF29 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
-		A531B7392089B72F00AE5670 /* SlideOutMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideOutMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A531B7392089B72F00AE5670 /* Roster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A531B73C2089B72F00AE5670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A531B73E2089B72F00AE5670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A531B7412089B72F00AE5670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		A531B73A2089B72F00AE5670 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A531B7392089B72F00AE5670 /* SlideOutMenu.app */,
+				A531B7392089B72F00AE5670 /* Roster.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,9 +177,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A531B7382089B72F00AE5670 /* SlideOutMenu */ = {
+		A531B7382089B72F00AE5670 /* Roster */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "SlideOutMenu" */;
+			buildConfigurationList = A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "Roster" */;
 			buildPhases = (
 				DDA257502CAFB157500040C7 /* [CP] Check Pods Manifest.lock */,
 				A531B7352089B72F00AE5670 /* Sources */,
@@ -192,9 +192,9 @@
 			);
 			dependencies = (
 			);
-			name = SlideOutMenu;
+			name = Roster;
 			productName = SlideOutMenu;
-			productReference = A531B7392089B72F00AE5670 /* SlideOutMenu.app */;
+			productReference = A531B7392089B72F00AE5670 /* Roster.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -226,7 +226,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A531B7382089B72F00AE5670 /* SlideOutMenu */,
+				A531B7382089B72F00AE5670 /* Roster */,
 			);
 		};
 /* End PBXProject section */
@@ -519,7 +519,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "SlideOutMenu" */ = {
+		A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "Roster" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A531B74C2089B73000AE5670 /* Debug */,

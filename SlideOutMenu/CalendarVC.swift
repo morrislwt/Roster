@@ -50,15 +50,15 @@ class CalendarVC: UIViewController {
             chooseModeLabel.title = "to Week"
             calendarView.changeMode(.monthView)
             UIView.animate(withDuration: 0.3){
-                self.tableView.frame = CGRect(x: 0, y: 450, width: width, height: height)
-                self.calendarView.frame = CGRect(x: 0, y: 150, width: width, height: 350)
+                self.tableView.frame = CGRect(x: 0, y: 430, width: width, height: height)
+                self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 350)
             }
         }else if swithToMonth == false {
             chooseModeLabel.title = "to Month"
             calendarView.changeMode(.weekView)
             UIView.animate(withDuration: 0.3) {
-                self.tableView.frame = CGRect(x: 0, y: 200, width: width, height: height)
-                self.calendarView.frame = CGRect(x: 0, y: 150, width: width, height: 50)
+                self.tableView.frame = CGRect(x: 0, y: 180, width: width, height: height)
+                self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 50)
                 
             }
             
@@ -138,9 +138,9 @@ class CalendarVC: UIViewController {
         
         self.title = CVDate(date: Date(),calendar: currentCalendar).globalDescription
         
-        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 130, width: width, height: 15))
-        self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 150, width: width, height: 50))
-        tableView = UITableView(frame: CGRect(x: 0, y: 200, width: width, height: height - 190))
+        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 120, width: width, height: 15))
+        self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 135, width: width, height: 50))
+        tableView = UITableView(frame: CGRect(x: 0, y: 180, width: width, height: height - 190))
         
         //星期菜单栏代理
         self.menuView.menuViewDelegate = self
