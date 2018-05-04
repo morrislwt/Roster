@@ -11,7 +11,7 @@ import RealmSwift
 import SwipeCellKit
 
 
-class EmployeesVC: SwipeTableViewController{
+class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTableViewCellDelegate{
     @IBOutlet weak var employeeTableView: UITableView!
     
     var employee:Results<EmployeeData>?
@@ -138,15 +138,14 @@ class EmployeesVC: SwipeTableViewController{
             addNewTextField.placeholder = "a employee name"
             textField = addNewTextField
         }
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (UIAlertAction) in
-            
+        let action = UIAlertAction(title: "Add", style: .default) { action in
             let newEmployee = EmployeeData()
             newEmployee.employeeName = textField.text!
             self.saveData(dataFromWS: newEmployee)
-        }))
+        }
+        alert.addAction(action)
         
         present(alert,animated: true, completion: nil)
-        
     }
     func animateTable(){
         employeeTableView.reloadData()
