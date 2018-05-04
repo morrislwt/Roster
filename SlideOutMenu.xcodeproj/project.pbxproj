@@ -11,7 +11,6 @@
 		A509DC982095C27500AA3B4D /* PositionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC972095C27500AA3B4D /* PositionData.swift */; };
 		A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC992095D72200AA3B4D /* EmployeeData.swift */; };
 		A509DC9C2096C05500AA3B4D /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC9B2096C05500AA3B4D /* SettingVC.swift */; };
-		A509DC9E2096DE6600AA3B4D /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC9D2096DE6600AA3B4D /* ScheduleVC.swift */; };
 		A51862EF209C466D00B8FF29 /* ShiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862EE209C466D00B8FF29 /* ShiftModel.swift */; };
 		A51862F3209C483300B8FF29 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F2209C483300B8FF29 /* CalendarVC.swift */; };
 		A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73C2089B72F00AE5670 /* AppDelegate.swift */; };
@@ -38,7 +37,6 @@
 		A509DC972095C27500AA3B4D /* PositionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionData.swift; sourceTree = "<group>"; };
 		A509DC992095D72200AA3B4D /* EmployeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeData.swift; sourceTree = "<group>"; };
 		A509DC9B2096C05500AA3B4D /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
-		A509DC9D2096DE6600AA3B4D /* ScheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVC.swift; sourceTree = "<group>"; };
 		A51862EE209C466D00B8FF29 /* ShiftModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftModel.swift; sourceTree = "<group>"; };
 		A51862F2209C483300B8FF29 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		A531B7392089B72F00AE5670 /* SlideOutMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideOutMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,7 +143,6 @@
 				A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */,
 				A51862F2209C483300B8FF29 /* CalendarVC.swift */,
 				A509DC9B2096C05500AA3B4D /* SettingVC.swift */,
-				A509DC9D2096DE6600AA3B4D /* ScheduleVC.swift */,
 				A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */,
 				A5EC29102089ED3100506E74 /* EmployeesVC.swift */,
 				A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */,
@@ -318,7 +315,6 @@
 				A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */,
 				A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */,
 				A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */,
-				A509DC9E2096DE6600AA3B4D /* ScheduleVC.swift in Sources */,
 				A509DC982095C27500AA3B4D /* PositionData.swift in Sources */,
 				A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */,
 				A531B7562089D09A00AE5670 /* Hello.swift in Sources */,
@@ -477,7 +473,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
@@ -496,7 +495,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
