@@ -13,6 +13,8 @@ import SwipeCellKit
 
 
 class CalendarVC: UIViewController {
+    @IBAction func segmentSwitch(_ sender: Any) {
+    }
     
     var swithToMonth = false
     ///----------------------* Realm Methods *-----------------///
