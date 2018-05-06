@@ -38,32 +38,30 @@ class CalendarVC: UIViewController {
     
     
     
+    @IBAction func todayButton(_ sender: Any) {
+        let today = Date()
+        self.calendarView.toggleViewWithDate(today)
+    }
+    
     @IBAction func segmentSwitch(_ sender: UISegmentedControl) {
         let width = view.frame.width
         let height = view.frame.height
         
         if sender.selectedSegmentIndex == 0 {
-            let today = Date()
-            self.calendarView.toggleViewWithDate(today)
-
-        }
-        if sender.selectedSegmentIndex == 1 {
-            
+        
             calendarView.changeMode(.weekView)
             UIView.animate(withDuration: 0.3) {
                 self.tableView.frame = CGRect(x: 0, y: 180, width: width, height: height)
                 self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 50)
-                
             }
         }
-        if sender.selectedSegmentIndex == 2 {
-
+        if sender.selectedSegmentIndex == 1 {
+            
             calendarView.changeMode(.monthView)
             UIView.animate(withDuration: 0.3){
                 self.tableView.frame = CGRect(x: 0, y: 430, width: width, height: height)
                 self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 350)
             }
-
         }
     }
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -155,7 +153,6 @@ class CalendarVC: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
         loadShift(selectDate: currentDate)
-        
     }
     
 
@@ -387,5 +384,7 @@ extension CalendarVC{
         }
     }
 }
+
+
 
 
