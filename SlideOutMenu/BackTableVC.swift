@@ -20,6 +20,7 @@ class BackTableVC:UITableViewController{
                            "Work Spaces",
                            "Employees",
                            "Positions",
+                           "Shift Template",
                            "Setting",
                            "Log Out"]
         

@@ -13,10 +13,9 @@ import SwipeCellKit
 
 
 class CalendarVC: UIViewController {
-    @IBAction func segmentSwitch(_ sender: Any) {
-    }
     
-    var swithToMonth = false
+    @IBOutlet weak var segmentOutlet: UIBarButtonItem!
+    
     ///----------------------* Realm Methods *-----------------///
     let realm = try! Realm()
     func saveShift(object:ShiftModel){
@@ -32,46 +31,43 @@ class CalendarVC: UIViewController {
     func loadShift(selectDate date:Date){
         //        selectStaff = realm.objects(ShiftModel.self).filter("date = '5/3'")
         selectStaff = realm.objects(ShiftModel.self).filter("date = %@", date)
-        //        print(selectStaff)
         tableView.reloadData()
     }
     
     ///----------------------* Realm Methods *-----------------///
     
     
-    @IBOutlet weak var chooseModeLabel: UIBarButtonItem!
-    @IBAction func toMonth(_ sender: Any) {
+    
+    @IBAction func segmentSwitch(_ sender: UISegmentedControl) {
         let width = view.frame.width
         let height = view.frame.height
-        swithToMonth = !swithToMonth
-        tableView.reloadData()
         
-        
-        
-        if swithToMonth == true {
-            chooseModeLabel.title = "to Week"
-            calendarView.changeMode(.monthView)
-            UIView.animate(withDuration: 0.3){
-                self.tableView.frame = CGRect(x: 0, y: 430, width: width, height: height)
-                self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 350)
-            }
-        }else if swithToMonth == false {
-            chooseModeLabel.title = "to Month"
+        if sender.selectedSegmentIndex == 0 {
+            let today = Date()
+            self.calendarView.toggleViewWithDate(today)
+
+        }
+        if sender.selectedSegmentIndex == 1 {
+            
             calendarView.changeMode(.weekView)
             UIView.animate(withDuration: 0.3) {
                 self.tableView.frame = CGRect(x: 0, y: 180, width: width, height: height)
                 self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 50)
                 
             }
-            
         }
-        
+        if sender.selectedSegmentIndex == 2 {
+
+            calendarView.changeMode(.monthView)
+            UIView.animate(withDuration: 0.3){
+                self.tableView.frame = CGRect(x: 0, y: 430, width: width, height: height)
+                self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 350)
+            }
+
+        }
     }
     @IBAction func addButtonPressed(_ sender: Any) {
-        
-        
-        //        let currentDate = Date()
-        //        let dateString = dateformatter.string(from: currentDate)
+
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = " eee dd MMM YYYY"
         let dateToString = dateformatter.string(from: currentDate)
@@ -159,13 +155,10 @@ class CalendarVC: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
         loadShift(selectDate: currentDate)
-    }
-    
-    @IBAction func todayButtonTapped(_ sender: Any) {
-        let today = Date()
-        self.calendarView.toggleViewWithDate(today)
         
     }
+    
+
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
