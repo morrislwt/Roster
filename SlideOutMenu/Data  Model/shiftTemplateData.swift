@@ -12,6 +12,7 @@ import RealmSwift
 class shiftTemplateData : Object{
     
     @objc dynamic var shiftTemplateName: String = ""
-    @objc dynamic var shiftTemplateTime: String = ""
+    @objc dynamic var shiftTimeStart: String = ""
+    @objc dynamic var shiftTimeEnd: String = ""
     
 }

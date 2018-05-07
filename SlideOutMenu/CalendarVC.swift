@@ -13,6 +13,8 @@ import SwipeCellKit
 
 
 class CalendarVC: UIViewController {
+
+
     
     @IBOutlet weak var segmentOutlet: UIBarButtonItem!
     
@@ -51,16 +53,17 @@ class CalendarVC: UIViewController {
         
             calendarView.changeMode(.weekView)
             UIView.animate(withDuration: 0.3) {
-                self.tableView.frame = CGRect(x: 0, y: 180, width: width, height: height)
-                self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 50)
+                self.calendarView.frame = CGRect(x: 0, y: 59, width: width, height: 50)
+                self.tableView.frame = CGRect(x: 0, y: 120, width: width, height: height)
             }
         }
         if sender.selectedSegmentIndex == 1 {
             
             calendarView.changeMode(.monthView)
             UIView.animate(withDuration: 0.3){
-                self.tableView.frame = CGRect(x: 0, y: 430, width: width, height: height)
-                self.calendarView.frame = CGRect(x: 0, y: 135, width: width, height: 350)
+                self.calendarView.frame = CGRect(x: 0, y: 59, width: width, height: 350)
+                self.tableView.frame = CGRect(x: 0, y: 360, width: width, height: height)
+                
             }
         }
     }
@@ -134,9 +137,9 @@ class CalendarVC: UIViewController {
         
         self.title = CVDate(date: Date(),calendar: currentCalendar).globalDescription
         
-        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 120, width: width, height: 15))
-        self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 135, width: width, height: 50))
-        tableView = UITableView(frame: CGRect(x: 0, y: 180, width: width, height: height - 190))
+        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 44, width: width, height: 15))
+        self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 59, width: width, height: 50))
+        tableView = UITableView(frame: CGRect(x: 0, y: 120, width: width, height: height ))
         
         //星期菜单栏代理
         self.menuView.menuViewDelegate = self
@@ -168,6 +171,15 @@ class CalendarVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func addVCbutton(_ sender: Any) {
+         
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dateToAddShiftVC = segue.destination as! addShiftDetailVC
+        dateToAddShiftVC.selectDateFromCalendar = selectDateInString 
+        
     }
 }
 extension CalendarVC: CVCalendarViewDelegate,CVCalendarMenuViewDelegate {

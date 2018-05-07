@@ -15,6 +15,7 @@
 		A51862F3209C483300B8FF29 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F2209C483300B8FF29 /* CalendarVC.swift */; };
 		A51862F5209ECD7300B8FF29 /* ShiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F4209ECD7300B8FF29 /* ShiftVC.swift */; };
 		A51862F7209ECD9500B8FF29 /* shiftTemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */; };
+		A51862F9209F44F400B8FF29 /* addShiftDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */; };
 		A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73C2089B72F00AE5670 /* AppDelegate.swift */; };
 		A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73E2089B72F00AE5670 /* ViewController.swift */; };
 		A531B7422089B72F00AE5670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7402089B72F00AE5670 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		A531B7562089D09A00AE5670 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7552089D09A00AE5670 /* Hello.swift */; };
 		A531B7582089E0FF00AE5670 /* MyShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */; };
 		A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */; };
+		A5E7FA3A20A0484F00307B12 /* AddShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */; };
 		A5EC29112089ED3100506E74 /* EmployeesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29102089ED3100506E74 /* EmployeesVC.swift */; };
 		A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */; };
 		A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29142089F0DC00506E74 /* PositionsVC.swift */; };
@@ -43,6 +45,7 @@
 		A51862F2209C483300B8FF29 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		A51862F4209ECD7300B8FF29 /* ShiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC.swift; sourceTree = "<group>"; };
 		A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shiftTemplateData.swift; sourceTree = "<group>"; };
+		A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addShiftDetailVC.swift; sourceTree = "<group>"; };
 		A531B7392089B72F00AE5670 /* Roster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A531B73C2089B72F00AE5670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A531B73E2089B72F00AE5670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		A531B7552089D09A00AE5670 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
 		A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShiftViewController.swift; sourceTree = "<group>"; };
 		A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceData.swift; sourceTree = "<group>"; };
+		A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShiftCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EC29102089ED3100506E74 /* EmployeesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesVC.swift; sourceTree = "<group>"; };
 		A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceVC.swift; sourceTree = "<group>"; };
 		A5EC29142089F0DC00506E74 /* PositionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionsVC.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */,
 				A51862F2209C483300B8FF29 /* CalendarVC.swift */,
 				A509DC9B2096C05500AA3B4D /* SettingVC.swift */,
+				A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */,
 				A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */,
 				A5EC29102089ED3100506E74 /* EmployeesVC.swift */,
 				A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */,
@@ -168,6 +173,7 @@
 		A5EC2960208C49BE00506E74 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */,
 				A51862F7209ECD9500B8FF29 /* shiftTemplateData.swift in Sources */,
 				A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */,
+				A51862F9209F44F400B8FF29 /* addShiftDetailVC.swift in Sources */,
 				A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */,
 				A509DC982095C27500AA3B4D /* PositionData.swift in Sources */,
 				A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */,
@@ -328,6 +335,7 @@
 				A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */,
 				A51862EF209C466D00B8FF29 /* ShiftModel.swift in Sources */,
 				A51862F5209ECD7300B8FF29 /* ShiftVC.swift in Sources */,
+				A5E7FA3A20A0484F00307B12 /* AddShiftCollectionViewCell.swift in Sources */,
 				A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */,
 				A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */,
 				A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */,

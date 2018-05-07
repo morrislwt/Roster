@@ -14,7 +14,8 @@ import SwipeCellKit
 class ShiftVC:UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTableViewCellDelegate{
     
     @IBAction func addButtonPressed(_ sender: Any) {
-        var shiftTimeTextField = UITextField()
+        var shiftTimeStart = UITextField()
+        var shiftTimeEnd = UITextField()
         var shiftNameTextField = UITextField()
         
         let alert = UIAlertController(title: "New Shift Template", message: "Enter a new name and time for this Shift ", preferredStyle: .alert)
@@ -24,13 +25,18 @@ class ShiftVC:UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTa
             nameOfShift.placeholder = "name of this shift"
             shiftNameTextField = nameOfShift
         }
-        alert.addTextField { (timeOfShift) in
-            timeOfShift.placeholder = "time of this shift"
-            shiftTimeTextField = timeOfShift
+        alert.addTextField { (startTime) in
+            startTime.placeholder = "start time"
+            shiftTimeStart = startTime
+        }
+        alert.addTextField { (endTime) in
+            endTime.placeholder = "end time"
+            shiftTimeEnd = endTime
         }
         let action = UIAlertAction(title: "Add", style: .default) { action in
             let newShiftTemplate = shiftTemplateData()
-            newShiftTemplate.shiftTemplateTime = shiftTimeTextField.text!
+            newShiftTemplate.shiftTimeStart = shiftTimeStart.text!
+            newShiftTemplate.shiftTimeEnd = shiftTimeEnd.text!
             newShiftTemplate.shiftTemplateName = shiftNameTextField.text!
             self.saveData(dataFromWS: newShiftTemplate)
         }
@@ -113,20 +119,26 @@ class ShiftVC:UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTa
         //update our data model
     }
     func editModel(at indexPath: IndexPath){
-        if let shiftForEdit = shiftTemplate?[indexPath.row].shiftTemplateTime{
-            var editText = UITextField()
+        if let shiftForEdit = shiftTemplate?[indexPath.row]{
+            var editStart = UITextField()
+            var editEnd = UITextField()
             
-            let alert = UIAlertController(title: "Edit", message: "Change the name of this Employee", preferredStyle: .alert)
-            alert.addTextField { (textField) in
-                textField.text = shiftForEdit
-                editText = textField
+            let alert = UIAlertController(title: "Edit", message: "Change the time of this shift", preferredStyle: .alert)
+            alert.addTextField { (startTime) in
+                startTime.text = shiftForEdit.shiftTimeStart
+                editStart = startTime
+            }
+            alert.addTextField { (endTime) in
+                endTime.text = shiftForEdit.shiftTimeEnd
+                editEnd = endTime
             }
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             let saveAction = UIAlertAction(title: "Save", style: .default) { (saveAction) in
                 
                 do{
                     try self.realm.write {
-                        self.shiftTemplate?[indexPath.row].shiftTemplateTime = editText.text!
+                        self.shiftTemplate?[indexPath.row].shiftTimeStart = editStart.text!
+                        self.shiftTemplate?[indexPath.row].shiftTimeEnd = editStart.text!
                     }
                 }catch{
                     print("Error editing Category \(error)")
@@ -158,8 +170,10 @@ extension ShiftVC{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = SwipeTableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.delegate = self
-        cell.textLabel?.text = shiftTemplate?[indexPath.row].shiftTemplateName
-        cell.detailTextLabel?.text = shiftTemplate?[indexPath.row].shiftTemplateTime 
+        guard let shiftData = shiftTemplate?[indexPath.row] else { return cell }
+        
+        cell.textLabel?.text = shiftData.shiftTemplateName
+        cell.detailTextLabel?.text = "\(shiftData.shiftTimeStart) - \(shiftData.shiftTimeEnd)"
         cell.textLabel?.font = UIFont(name: "Courier", size: 20)
         
         return cell
@@ -168,7 +182,6 @@ extension ShiftVC{
     func animateTable(){
         shiftTemplateTableView.reloadData()
         let cells = shiftTemplateTableView.visibleCells
-        
         
         
         let tableViewHeight = shiftTemplateTableView.bounds.size.height
