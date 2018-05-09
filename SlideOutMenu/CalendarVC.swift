@@ -177,8 +177,11 @@ class CalendarVC: UIViewController {
          
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dateToAddShiftVC = segue.destination as! addShiftDetailVC
-        dateToAddShiftVC.selectDateFromCalendar = selectDateInString 
+        if let dateToAddShiftVC = segue.destination as? addShiftDetailVC{
+        
+            dateToAddShiftVC.selectDateFromCalendar = selectDateInString 
+        }
+        
         
     }
 }

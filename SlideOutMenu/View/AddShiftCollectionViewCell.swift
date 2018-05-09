@@ -10,7 +10,11 @@ import UIKit
 
 class AddShiftCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var addButtonOutlet: UIButton!
     
     @IBOutlet weak var titleLabel: UILabel!
+
+    @IBOutlet weak var infoLabel: UILabel!
+
+    
 }

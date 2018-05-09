@@ -16,6 +16,7 @@
 		A51862F5209ECD7300B8FF29 /* ShiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F4209ECD7300B8FF29 /* ShiftVC.swift */; };
 		A51862F7209ECD9500B8FF29 /* shiftTemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */; };
 		A51862F9209F44F400B8FF29 /* addShiftDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */; };
+		A51C2AE720A13BF700F638D2 /* pickerInTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C2AE620A13BF700F638D2 /* pickerInTextfield.swift */; };
 		A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73C2089B72F00AE5670 /* AppDelegate.swift */; };
 		A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73E2089B72F00AE5670 /* ViewController.swift */; };
 		A531B7422089B72F00AE5670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7402089B72F00AE5670 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		A51862F4209ECD7300B8FF29 /* ShiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC.swift; sourceTree = "<group>"; };
 		A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shiftTemplateData.swift; sourceTree = "<group>"; };
 		A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addShiftDetailVC.swift; sourceTree = "<group>"; };
+		A51C2AE620A13BF700F638D2 /* pickerInTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerInTextfield.swift; sourceTree = "<group>"; };
 		A531B7392089B72F00AE5670 /* Roster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A531B73C2089B72F00AE5670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A531B73E2089B72F00AE5670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */,
 				A51862F2209C483300B8FF29 /* CalendarVC.swift */,
+				A51C2AE620A13BF700F638D2 /* pickerInTextfield.swift */,
 				A509DC9B2096C05500AA3B4D /* SettingVC.swift */,
 				A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */,
 				A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */,
@@ -280,6 +283,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
@@ -287,6 +291,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
@@ -340,6 +345,7 @@
 				A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */,
 				A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */,
 				A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */,
+				A51C2AE720A13BF700F638D2 /* pickerInTextfield.swift in Sources */,
 				A531B7582089E0FF00AE5670 /* MyShiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
