@@ -20,6 +20,8 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     var selectedWorkPlace:String = ""
     var selectedPosition:String = ""
     var selectedShiftName:String = ""
+    var selectedStartTime:String = ""
+    var selectedEndTime:String = ""
     
     var staffArray:Results<EmployeeData>?
     var workPlaceArray:Results<WorkSpaceData>?
@@ -66,19 +68,12 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         }
         
     }
-    @IBAction func saveButton(_ sender: Any) {
-
-    }
-    
-    @IBOutlet weak var saveButtonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.title = "Add New Shift"
-        saveButtonOutlet.layer.cornerRadius = 20
-        saveButtonOutlet.clipsToBounds = true
         loadRealmData()
+        
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -161,7 +156,11 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
             selectedPosition = (positionArray?[row].positionName)!
         }else if selectedIndex == 4 {
             selectedShiftName = (shiftTemplateArray?[row].shiftTemplateName)!
+            selectedStartTime = (shiftTemplateArray?[row].shiftTimeStart)!
+            selectedEndTime = (shiftTemplateArray?[row].shiftTimeEnd)!
         }
+        print(selectedStartTime,selectedEndTime)
+        addShiftCollectionView.reloadData()
     }
 }
 
@@ -207,10 +206,14 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
         }
         if indexPath.item == 5 {
             cell.addButtonOutlet.isHidden = true
+            cell.infoLabel.isHidden = false
+            cell.infoLabel.text = selectedStartTime
 
         }
         if indexPath.item == 6 {
             cell.addButtonOutlet.isHidden = true
+            cell.infoLabel.isHidden = false
+            cell.infoLabel.text = selectedEndTime
         }
         
         return cell

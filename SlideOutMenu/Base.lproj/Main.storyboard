@@ -294,20 +294,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Q-CQ-HUq">
-                                <rect key="frame" x="187" y="576.33333333333337" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.75294117647058822" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="8Wh-7N-k1K"/>
-                                    <constraint firstAttribute="height" constant="40" id="JVo-ge-JbR"/>
-                                </constraints>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButton:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="duv-Jg-7Pl"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ook-OA-kuk">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="571.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -384,7 +370,6 @@
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="top" secondItem="RNN-rS-aPb" secondAttribute="top" id="0Gb-tB-Td1"/>
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="height" secondItem="SAl-VP-8yP" secondAttribute="height" multiplier="0.85" id="1DL-jt-fpS"/>
                             <constraint firstItem="RNN-rS-aPb" firstAttribute="trailing" secondItem="Ook-OA-kuk" secondAttribute="trailing" id="RBB-Bh-x01"/>
-                            <constraint firstItem="Z7Q-CQ-HUq" firstAttribute="centerX" secondItem="SAl-VP-8yP" secondAttribute="centerX" id="Ufl-ow-mnK"/>
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="leading" secondItem="RNN-rS-aPb" secondAttribute="leading" id="z5R-RN-1fX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RNN-rS-aPb"/>
@@ -395,7 +380,6 @@
                     <connections>
                         <outlet property="addShiftCollectionView" destination="Ook-OA-kuk" id="8ge-qf-lvJ"/>
                         <outlet property="myPickerView" destination="VH7-gz-63H" id="ZEy-U2-myV"/>
-                        <outlet property="saveButtonOutlet" destination="Z7Q-CQ-HUq" id="tOV-ny-owF"/>
                         <outlet property="selectView" destination="8hE-SD-u4F" id="8LM-U8-JWy"/>
                     </connections>
                 </viewController>
