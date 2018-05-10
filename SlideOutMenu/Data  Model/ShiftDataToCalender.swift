@@ -10,7 +10,7 @@ import RealmSwift
 
 
 class ShiftDataToCalender:Object {
-    @objc dynamic var shiftDate: String = ""
+    @objc dynamic var shiftDate: Date?
     @objc dynamic var staff: String = ""
     @objc dynamic var workPlace: String = ""
     @objc dynamic var position: String = ""
@@ -18,6 +18,7 @@ class ShiftDataToCalender:Object {
     @objc dynamic var shiftStart: String = ""
     @objc dynamic var shiftEnd: String = ""
     @objc dynamic var breakTime: String = ""
-    
+    @objc dynamic var totalTime: String = ""
+    @objc dynamic var duty: String = ""
     
 }
