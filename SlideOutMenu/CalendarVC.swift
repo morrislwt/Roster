@@ -20,7 +20,7 @@ class CalendarVC: UIViewController {
     
     ///----------------------* Realm Methods *-----------------///
     let realm = try! Realm()
-    func saveShift(object:ShiftModel){
+    func saveShift(object:ShiftDataToCalender){
         do{
             try realm.write {
                 realm.add(object)
@@ -32,7 +32,7 @@ class CalendarVC: UIViewController {
     }
     func loadShift(selectDate date:Date){
         //        selectStaff = realm.objects(ShiftModel.self).filter("date = '5/3'")
-        selectStaff = realm.objects(ShiftModel.self).filter("date = %@", date)
+        selectStaff = realm.objects(ShiftDataToCalender.self).filter("shiftDate = %@", date)
         tableView.reloadData()
     }
     
@@ -76,25 +76,29 @@ class CalendarVC: UIViewController {
         
         
         var nameTextfield = UITextField()
-        var workPlaceTexifield = UITextField()
+        var workPlaceTextfield = UITextField()
         var positionTextfield = UITextField()
-        var shiftNameTextfield = UITextField()
         var shiftStartTextfield = UITextField()
         var shiftEndTextfield = UITextField()
+        var dutyTextfield = UITextField()
         
         let alert = UIAlertController(title: "Quick Add Shift", message: "Add Shift on \(dateToString)", preferredStyle: .alert)
         let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) in
-            if nameTextfield.text != "" && workPlaceTexifield.text != "" && positionTextfield.text != "" && shiftStartTextfield.text != "" && shiftEndTextfield.text != ""{
-                let newStaff = ShiftModel()
-                //                name: nameTextField.text!, date: self.currentDate, shift: shiftTextField.text!
+            if nameTextfield.text != "" && workPlaceTextfield.text != "" && positionTextfield.text != "" && shiftStartTextfield.text != "" && shiftEndTextfield.text != ""{
+                let newShiftModel = ShiftDataToCalender()
+
+                newShiftModel.shiftDate = self.currentDate
+                newShiftModel.staff = nameTextfield.text!
+                newShiftModel.workPlace = workPlaceTextfield.text!
+                newShiftModel.position = positionTextfield.text!
+                newShiftModel.shiftStart = shiftStartTextfield.text!
+                newShiftModel.shiftEnd = shiftEndTextfield.text!
+                newShiftModel.duty = dutyTextfield.text!
                 
-                newStaff.date = self.currentDate
-                newStaff.name = nameTextField.text!
-                newStaff.shift = shiftTextField.text!
-                self.saveShift(object: newStaff)
+                self.saveShift(object: newShiftModel)
                 
             }else{
-                let blankAlert = UIAlertController(title: "Name and Shift can't be blank", message: "", preferredStyle: .actionSheet)
+                let blankAlert = UIAlertController(title: "⚠️", message: "Please complete all questions😎", preferredStyle: .actionSheet)
                 let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: { (gotItAction) in
                     self.present(alert,animated: true,completion: nil)
                 })
@@ -107,13 +111,30 @@ class CalendarVC: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(addAction)
         alert.addAction(cancelAction)
-        alert.addTextField { (inputName) in
-            inputName.placeholder = "Name of Staff"
-            nameTextField = inputName
+        
+        alert.addTextField { (inputStaff) in
+            inputStaff.placeholder = "Name of Staff"
+            nameTextfield = inputStaff
         }
-        alert.addTextField { (inputShift) in
-            inputShift.placeholder = "ex: 0800 - 1500"
-            shiftTextField = inputShift
+        alert.addTextField { (inputWorkplace) in
+            inputWorkplace.placeholder = "Workplace Name"
+            workPlaceTextfield = inputWorkplace
+        }
+        alert.addTextField { (inputPosition) in
+            inputPosition.placeholder = "Position Name, such as Barista"
+            positionTextfield = inputPosition
+        }
+        alert.addTextField { (inputShiftStart) in
+            inputShiftStart.placeholder = "Ex: 1000"
+            shiftStartTextfield = inputShiftStart
+        }
+        alert.addTextField { (inputShiftEnd) in
+            inputShiftEnd.placeholder = "Ex: 2000"
+            shiftEndTextfield = inputShiftEnd
+        }
+        alert.addTextField { (inputDuty) in
+            inputDuty.placeholder = "Trainning First Day. (Optional)"
+            dutyTextfield = inputDuty
         }
         
         present(alert,animated: true,completion: nil)
@@ -129,7 +150,7 @@ class CalendarVC: UIViewController {
     
     var currentDate:Date = Date()
     
-    var selectStaff:Results<ShiftModel>?
+    var selectStaff:Results<ShiftDataToCalender>?
     
     var selectDateInString:String = ""
     
@@ -276,14 +297,14 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         
         
         ////not reUse cell
-        //        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell") as! SwipeTableViewCell
+        
         cell.delegate = self
         
         guard let staff = selectStaff?[indexPath.row] else{ return cell }
         
-        if currentDate == staff.date! {
-            cell.textLabel?.text = staff.name
-            cell.detailTextLabel?.text = staff.shift
+        if currentDate == staff.shiftDate! {
+            cell.textLabel?.text = "\(staff.staff), as a \(staff.position)"
+            cell.detailTextLabel?.text = "\(staff.shiftStart) - \(staff.shiftEnd) @ \(staff.workPlace)"
         }else{
             cell.textLabel?.text = "No shift available today"
         }
@@ -330,26 +351,52 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         }
         let editAction = SwipeAction(style: .default, title: "edit") { action, indexPath in
             
-            if let categoryForEdit = self.selectStaff?[indexPath.row]{
-                var editName = UITextField()
-                var editShift = UITextField()
+            if let shiftForEdit = self.selectStaff?[indexPath.row]{
                 
-                let alert = UIAlertController(title: "Edit staff and Shift", message: "", preferredStyle: .alert)
-                alert.addTextField { (inputName) in
-                    inputName.text = categoryForEdit.name
-                    editName = inputName
+                var editStaffName = UITextField()
+                var editWorkPlace = UITextField()
+                var editPosition = UITextField()
+                var editShiftStart = UITextField()
+                var editShiftEnd = UITextField()
+                var editDuty = UITextField()
+                
+                
+                let alert = UIAlertController(title: "Edit shift info.", message: "", preferredStyle: .alert)
+                alert.addTextField { (inputStaffName) in
+                    inputStaffName.text = shiftForEdit.staff
+                    editStaffName = inputStaffName
                 }
-                alert.addTextField { (inputShift) in
-                    inputShift.text = categoryForEdit.shift
-                    editShift = inputShift
+                alert.addTextField { (inputWorkPlace) in
+                    inputWorkPlace.text = shiftForEdit.workPlace
+                    editWorkPlace = inputWorkPlace
+                }
+                alert.addTextField { (inputPosition) in
+                    inputPosition.text = shiftForEdit.position
+                    editPosition = inputPosition
+                }
+                alert.addTextField { (inputShiftStart) in
+                    inputShiftStart.text = shiftForEdit.shiftStart
+                    editShiftStart = inputShiftStart
+                }
+                alert.addTextField { (inputShiftEnd) in
+                    inputShiftEnd.text = shiftForEdit.shiftEnd
+                    editShiftEnd = inputShiftEnd
+                }
+                alert.addTextField { (inputDuty) in
+                    inputDuty.text = shiftForEdit.duty
+                    editDuty = inputDuty
                 }
                 alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 let saveAction = UIAlertAction(title: "Save", style: .default) { (saveAction) in
                     
                     do{
                         try self.realm.write {
-                            self.selectStaff?[indexPath.row].name = editName.text!
-                            self.selectStaff?[indexPath.row].shift = editShift.text!
+                            self.selectStaff?[indexPath.row].staff = editStaffName.text!
+                            self.selectStaff?[indexPath.row].workPlace = editWorkPlace.text!
+                            self.selectStaff?[indexPath.row].position = editPosition.text!
+                            self.selectStaff?[indexPath.row].shiftStart = editShiftStart.text!
+                            self.selectStaff?[indexPath.row].shiftEnd = editShiftEnd.text!
+                            self.selectStaff?[indexPath.row].duty = editDuty.text!
                         }
                     }catch{
                         print("Error editing Category \(error)")
