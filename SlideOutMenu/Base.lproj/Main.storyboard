@@ -272,7 +272,7 @@
                                     <segue destination="Hf1-Sw-8CJ" kind="show" id="yph-PB-5ga"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="add" id="B5r-lp-Hxq">
+                            <barButtonItem title="Quick add" id="B5r-lp-Hxq">
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="addButtonPressed:" destination="EPa-vP-vVc" id="6OG-v0-Aun"/>
@@ -398,7 +398,7 @@
                             </connections>
                         </pickerView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssS-6q-GFi">
-                            <rect key="frame" x="200" y="5" width="37" height="30"/>
+                            <rect key="frame" x="190" y="5" width="37" height="30"/>
                             <state key="normal" title="Done">
                                 <color key="titleColor" red="0.050980392159999999" green="0.2784313725" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -406,15 +406,26 @@
                                 <action selector="donePressed:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="g3C-QM-Zw3"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a44-hr-uI3">
+                            <rect key="frame" x="20" y="5" width="54" height="30"/>
+                            <state key="normal" title="Custom">
+                                <color key="titleColor" red="0.0" green="0.3921568627" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="addTextfieldBtn:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="5mL-Eu-eWn"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="a44-hr-uI3" firstAttribute="top" secondItem="rIh-CQ-Y5e" secondAttribute="top" constant="5" id="4Ah-SU-Mmq"/>
                         <constraint firstItem="VH7-gz-63H" firstAttribute="leading" secondItem="8hE-SD-u4F" secondAttribute="leading" id="DOP-To-mfF"/>
                         <constraint firstAttribute="bottom" secondItem="VH7-gz-63H" secondAttribute="bottom" constant="15" id="E0e-69-jdN"/>
                         <constraint firstItem="ssS-6q-GFi" firstAttribute="top" secondItem="rIh-CQ-Y5e" secondAttribute="top" constant="5" id="NGW-6F-CUg"/>
                         <constraint firstAttribute="trailing" secondItem="VH7-gz-63H" secondAttribute="trailing" id="NSy-xz-5aN"/>
+                        <constraint firstItem="a44-hr-uI3" firstAttribute="leading" secondItem="rIh-CQ-Y5e" secondAttribute="leading" constant="20" id="a3b-ev-wKp"/>
                         <constraint firstItem="VH7-gz-63H" firstAttribute="top" secondItem="8hE-SD-u4F" secondAttribute="top" constant="30" id="bBA-eR-lyC"/>
-                        <constraint firstAttribute="trailing" secondItem="ssS-6q-GFi" secondAttribute="trailing" constant="10" id="doC-jb-6qr"/>
+                        <constraint firstAttribute="trailing" secondItem="ssS-6q-GFi" secondAttribute="trailing" constant="20" id="doC-jb-6qr"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="rIh-CQ-Y5e"/>
                 </view>

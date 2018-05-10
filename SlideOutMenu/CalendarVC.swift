@@ -75,11 +75,16 @@ class CalendarVC: UIViewController {
         let stringToDate = dateformatter.date(from: dateToString)
         
         
-        var nameTextField = UITextField(),shiftTextField = UITextField()
+        var nameTextfield = UITextField()
+        var workPlaceTexifield = UITextField()
+        var positionTextfield = UITextField()
+        var shiftNameTextfield = UITextField()
+        var shiftStartTextfield = UITextField()
+        var shiftEndTextfield = UITextField()
         
-        let alert = UIAlertController(title: "New Shift", message: "Add Shift on \(dateToString)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Quick Add Shift", message: "Add Shift on \(dateToString)", preferredStyle: .alert)
         let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) in
-            if nameTextField.text != "" && shiftTextField.text != "" {
+            if nameTextfield.text != "" && workPlaceTexifield.text != "" && positionTextfield.text != "" && shiftStartTextfield.text != "" && shiftEndTextfield.text != ""{
                 let newStaff = ShiftModel()
                 //                name: nameTextField.text!, date: self.currentDate, shift: shiftTextField.text!
                 
@@ -156,6 +161,7 @@ class CalendarVC: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
         loadShift(selectDate: currentDate)
+        
     }
     
 
@@ -179,7 +185,7 @@ class CalendarVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dateToAddShiftVC = segue.destination as? addShiftDetailVC{
         
-            dateToAddShiftVC.selectDateFromCalendar = selectDateInString 
+            dateToAddShiftVC.selectDateFromCalendar = selectDateInString
         }
         
         
@@ -224,7 +230,7 @@ extension CalendarVC: CVCalendarViewDelegate,CVCalendarMenuViewDelegate {
         let date = dayView.date.convertedDate()!
         // 创建一个日期格式器
         let dformatter = DateFormatter()
-        dformatter.dateFormat = "dd MMM YYYY"
+        dformatter.dateFormat = "eee dd MMM YYYY"
         currentDate = date
         selectDateInString = "\(dformatter.string(from: date))"
         
@@ -294,8 +300,11 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
+        
+        
         return selectDateInString
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80/667 * view.frame.height
     }

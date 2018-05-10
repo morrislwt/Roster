@@ -12,9 +12,6 @@ import Popover
 
 class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
-    
-    
-    
     @IBOutlet weak var myPickerView: UIPickerView!
     
     var selectedIndex:Int = 0
@@ -83,6 +80,36 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
 //            self.view.layoutIfNeeded()
 //        }
 //    }
+    @IBAction func addTextfieldBtn(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Add Custom info.", message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        let doneAction = UIAlertAction(title: "Done", style: .default) { (doneAction) in
+            
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(doneAction)
+        alert.addTextField { (inputStaff) in
+            inputStaff.placeholder = "Staff Name"
+            self.selectedStaff = inputStaff.text!
+        }
+        alert.addTextField { (inputPlace) in
+            inputPlace.placeholder = "Work Place Name"
+        }
+        alert.addTextField { (inputPosition) in
+            inputPosition.placeholder = "Position Name (Optional)"
+        }
+        alert.addTextField { (inputShiftName) in
+            inputShiftName.placeholder = "Shift Name (Optional)"
+        }
+        alert.addTextField { (inputShiftStart) in
+            inputShiftStart.placeholder = "Shift Start"
+        }
+        alert.addTextField { (inputShiftEnd) in
+            inputShiftEnd.placeholder = "Shift End"
+        }
+        present(alert,animated: true, completion: nil)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -268,10 +295,7 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
         selectedIndex = indexPath.item
         
         myPickerView.selectRow(0, inComponent: 0, animated: true)
-        if indexPath.item == 0 {
-            displayPickerView(true)
-            
-        }
+
         if indexPath.item == 1 {
             displayPickerView(true)
         }
