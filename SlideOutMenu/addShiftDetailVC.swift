@@ -12,6 +12,9 @@ import Popover
 
 class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
+    
+    
+    
     @IBOutlet weak var myPickerView: UIPickerView!
     
     var selectedIndex:Int = 0
@@ -52,7 +55,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         displayPickerView(false)
     }
     @IBAction func addButton(_ sender: Any) {
-//        displayPickerView(true)
+
         
     }
     func displayPickerView(_ show:Bool){
@@ -67,14 +70,26 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
             self.view.layoutIfNeeded()
         }
         
+        
     }
+//    @objc func tapToDismiss(){
+//        for bottomContraints in view.constraints {
+//            if bottomContraints.identifier == "bottom" {
+//                bottomContraints.constant = view.frame.height / 3
+//                break
+//            }
+//        }
+//        UIView.animate(withDuration: 0.2) {
+//            self.view.layoutIfNeeded()
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Add New Shift"
         loadRealmData()
-        
-
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapToDismiss))
+//        view.addGestureRecognizer(tapGesture)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -148,6 +163,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
 //        guard let pickstaff = staffArray?[row].employeeName {
 //
 //        }
+        
         if selectedIndex == 1 {
             selectedStaff = (staffArray?[row].employeeName)!
         }else if selectedIndex == 2 {
@@ -159,8 +175,8 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
             selectedStartTime = (shiftTemplateArray?[row].shiftTimeStart)!
             selectedEndTime = (shiftTemplateArray?[row].shiftTimeEnd)!
         }
-        print(selectedStartTime,selectedEndTime)
         addShiftCollectionView.reloadData()
+        
     }
 }
 
@@ -251,8 +267,10 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
         
         selectedIndex = indexPath.item
         
+        myPickerView.selectRow(0, inComponent: 0, animated: true)
         if indexPath.item == 0 {
             displayPickerView(true)
+            
         }
         if indexPath.item == 1 {
             displayPickerView(true)
