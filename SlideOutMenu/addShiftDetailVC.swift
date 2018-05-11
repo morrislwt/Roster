@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import Popover
 
 class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
@@ -51,10 +50,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     @IBAction func donePressed(_ sender: Any) {
         displayPickerView(false)
     }
-    @IBAction func addButton(_ sender: Any) {
 
-        
-    }
     func displayPickerView(_ show:Bool){
         
         for bottomContraints in view.constraints {
@@ -80,6 +76,8 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
 //            self.view.layoutIfNeeded()
 //        }
 //    }
+    @IBAction func saveBtnPressed(_ sender: UIBarButtonItem) {
+    }
     @IBAction func addTextfieldBtn(_ sender: UIButton) {
         let alert = UIAlertController(title: "Add Custom info.", message: "", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)

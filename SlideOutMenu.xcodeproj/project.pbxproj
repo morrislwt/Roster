@@ -26,6 +26,7 @@
 		A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7532089BC6200AE5670 /* BackTableVC.swift */; };
 		A531B7562089D09A00AE5670 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7552089D09A00AE5670 /* Hello.swift */; };
 		A531B7582089E0FF00AE5670 /* MyShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */; };
+		A579D89620A541E500FB5027 /* ShiftVC_second.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579D89520A541E500FB5027 /* ShiftVC_second.swift */; };
 		A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */; };
 		A5E7FA3A20A0484F00307B12 /* AddShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */; };
 		A5EC29112089ED3100506E74 /* EmployeesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29102089ED3100506E74 /* EmployeesVC.swift */; };
@@ -61,6 +62,7 @@
 		A531B7532089BC6200AE5670 /* BackTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
 		A531B7552089D09A00AE5670 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
 		A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShiftViewController.swift; sourceTree = "<group>"; };
+		A579D89520A541E500FB5027 /* ShiftVC_second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC_second.swift; sourceTree = "<group>"; };
 		A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceData.swift; sourceTree = "<group>"; };
 		A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShiftCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EC29102089ED3100506E74 /* EmployeesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesVC.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */,
 				A51862F4209ECD7300B8FF29 /* ShiftVC.swift */,
 				A5EC29142089F0DC00506E74 /* PositionsVC.swift */,
+				A579D89520A541E500FB5027 /* ShiftVC_second.swift */,
 			);
 			name = DefaultData;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				A51C2AEA20A3EE8A00F638D2 /* ShiftDataToCalender.swift in Sources */,
 				A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */,
 				A51862EF209C466D00B8FF29 /* ShiftModel.swift in Sources */,
+				A579D89620A541E500FB5027 /* ShiftVC_second.swift in Sources */,
 				A51862F5209ECD7300B8FF29 /* ShiftVC.swift in Sources */,
 				A5E7FA3A20A0484F00307B12 /* AddShiftCollectionViewCell.swift in Sources */,
 				A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */,

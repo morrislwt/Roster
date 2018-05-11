@@ -109,35 +109,44 @@ class CalendarVC: UIViewController {
             
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         alert.addAction(addAction)
         alert.addAction(cancelAction)
-        
+        alert.view.tintColor = .gray
         alert.addTextField { (inputStaff) in
             inputStaff.placeholder = "Name of Staff"
+            inputStaff.autocorrectionType = .yes
             nameTextfield = inputStaff
         }
         alert.addTextField { (inputWorkplace) in
             inputWorkplace.placeholder = "Workplace Name"
+            inputWorkplace.autocorrectionType = .yes
             workPlaceTextfield = inputWorkplace
         }
         alert.addTextField { (inputPosition) in
             inputPosition.placeholder = "Position Name, such as Barista"
+            inputPosition.autocorrectionType = .yes
             positionTextfield = inputPosition
         }
         alert.addTextField { (inputShiftStart) in
             inputShiftStart.placeholder = "Ex: 1000"
+            inputShiftStart.keyboardType = .numberPad
             shiftStartTextfield = inputShiftStart
         }
         alert.addTextField { (inputShiftEnd) in
             inputShiftEnd.placeholder = "Ex: 2000"
+            inputShiftEnd.keyboardType = .numberPad
             shiftEndTextfield = inputShiftEnd
         }
         alert.addTextField { (inputDuty) in
             inputDuty.placeholder = "Trainning First Day. (Optional)"
+            inputDuty.autocorrectionType = .yes
             dutyTextfield = inputDuty
         }
         
         present(alert,animated: true,completion: nil)
+        
+        
         
     }
     private var menuView: CVCalendarMenuView!
@@ -303,7 +312,7 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         guard let staff = selectStaff?[indexPath.row] else{ return cell }
         
         if currentDate == staff.shiftDate! {
-            cell.textLabel?.text = "\(staff.staff), as a \(staff.position)"
+            cell.textLabel?.text = "\(staff.staff), \(staff.position)"
             cell.detailTextLabel?.text = "\(staff.shiftStart) - \(staff.shiftEnd) @ \(staff.workPlace)"
         }else{
             cell.textLabel?.text = "No shift available today"
