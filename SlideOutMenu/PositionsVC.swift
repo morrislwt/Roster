@@ -142,6 +142,8 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addTextField { (addNewTextField) in
             addNewTextField.placeholder = "a position name"
+            addNewTextField.autocorrectionType = .yes
+            addNewTextField.autocapitalizationType = .words
             textField = addNewTextField
         }
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (UIAlertAction) in

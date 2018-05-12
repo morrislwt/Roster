@@ -35,8 +35,6 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
         }
         
         displayPickerView(false)
-        
-        
     }
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var continueBtnOutlet: UIButton!
@@ -67,12 +65,17 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     
     @IBAction func addStartTime(_ sender: UITextField) {
         textFieldSenderIndex = sender.tag
+//        shiftStartTextfield.resignFirstResponder()
         displayPickerView(true)
+        
     }
     
     
     @IBAction func addEndTime(_ sender: UITextField) {
+//        shiftEndTextfield.resignFirstResponder()
         textFieldSenderIndex = sender.tag
+        
+    
 //        shiftTimeValueChange(sender: datePicker,textField: shiftEndTextfield)
         displayPickerView(true)
     }
@@ -106,6 +109,12 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
             self.view.layoutIfNeeded()
         }
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        shiftNameTextfield.resignFirstResponder()
+        return true
+    }
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +128,8 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
         continueBtnOutlet.layer.borderWidth = 0.2
         self.shiftStartTextfield.tag = 0
         self.shiftEndTextfield.tag = 1
-
+        
+        self.hideKeyboardWhenTappedAround()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -136,12 +146,15 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
         
         additionalView.layer.cornerRadius = 10
         self.shiftNameTextfield.delegate = self
+        self.shiftStartTextfield.delegate = self
+        self.shiftEndTextfield.delegate = self
+        
+        shiftNameTextfield.becomeFirstResponder()
+        
         
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+    
+    
     func saveData(to realmData:shiftTemplateData){
         do{
             try realm.write {
@@ -151,5 +164,15 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
             print("error saving shiftTemplateData \(error)")
         }
     }
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
 }
 

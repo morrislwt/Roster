@@ -61,6 +61,8 @@ class WorkSpacesVC:UIViewController,UITableViewDelegate,UITableViewDataSource,Sw
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addTextField { (addNewTextField) in
             addNewTextField.placeholder = "a place name"
+            addNewTextField.autocapitalizationType = .words
+            addNewTextField.autocorrectionType = .yes
             textField = addNewTextField
         }
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (UIAlertAction) in
