@@ -14,6 +14,9 @@ import SwipeCellKit
 
 class CalendarVC: UIViewController {
 
+    @IBAction func backToCalSegue(_ segue:UIStoryboardSegue){
+        
+    }
 
     
     @IBOutlet weak var segmentOutlet: UIBarButtonItem!
@@ -54,7 +57,7 @@ class CalendarVC: UIViewController {
             calendarView.changeMode(.weekView)
             UIView.animate(withDuration: 0.3) {
                 self.calendarView.frame = CGRect(x: 0, y: 59, width: width, height: 50)
-                self.tableView.frame = CGRect(x: 0, y: 120, width: width, height: height)
+                self.tableView.frame = CGRect(x: 0, y: 120, width: width, height: height * 0.7)
             }
         }
         if sender.selectedSegmentIndex == 1 {
@@ -62,7 +65,7 @@ class CalendarVC: UIViewController {
             calendarView.changeMode(.monthView)
             UIView.animate(withDuration: 0.3){
                 self.calendarView.frame = CGRect(x: 0, y: 59, width: width, height: 350)
-                self.tableView.frame = CGRect(x: 0, y: 360, width: width, height: height)
+                self.tableView.frame = CGRect(x: 0, y: 360, width: width, height: height * 0.4)
                 
             }
         }
@@ -71,8 +74,9 @@ class CalendarVC: UIViewController {
 
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = " eee dd MMM YYYY"
+        
         let dateToString = dateformatter.string(from: currentDate)
-        let stringToDate = dateformatter.date(from: dateToString)
+//        let stringToDate = formatter.date(from: dateToString)
         
         
         var nameTextfield = UITextField()
@@ -124,17 +128,17 @@ class CalendarVC: UIViewController {
             workPlaceTextfield = inputWorkplace
         }
         alert.addTextField { (inputPosition) in
-            inputPosition.placeholder = "Position Name, such as Barista"
+            inputPosition.placeholder = "EX: Barista"
             inputPosition.autocorrectionType = .yes
             positionTextfield = inputPosition
         }
         alert.addTextField { (inputShiftStart) in
-            inputShiftStart.placeholder = "Ex: 1000"
+            inputShiftStart.placeholder = "Ex: 10:00"
             inputShiftStart.keyboardType = .numberPad
             shiftStartTextfield = inputShiftStart
         }
         alert.addTextField { (inputShiftEnd) in
-            inputShiftEnd.placeholder = "Ex: 2000"
+            inputShiftEnd.placeholder = "Ex: 20:00"
             inputShiftEnd.keyboardType = .numberPad
             shiftEndTextfield = inputShiftEnd
         }
@@ -174,7 +178,7 @@ class CalendarVC: UIViewController {
         
         self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 44, width: width, height: 15))
         self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 59, width: width, height: 50))
-        tableView = UITableView(frame: CGRect(x: 0, y: 120, width: width, height: height ))
+        tableView = UITableView(frame: CGRect(x: 0, y: 120, width: width, height: height * 0.7 ))
         
         //星期菜单栏代理
         self.menuView.menuViewDelegate = self
@@ -192,6 +196,10 @@ class CalendarVC: UIViewController {
         tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
         loadShift(selectDate: currentDate)
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
 
@@ -216,6 +224,7 @@ class CalendarVC: UIViewController {
         if let dateToAddShiftVC = segue.destination as? addShiftDetailVC{
         
             dateToAddShiftVC.selectDateFromCalendar = selectDateInString
+            dateToAddShiftVC.selectDateInDateType = currentDate
         }
         
         

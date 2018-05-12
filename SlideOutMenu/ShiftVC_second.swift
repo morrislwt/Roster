@@ -11,8 +11,8 @@ import RealmSwift
 
 
 
-class ShiftVC_second:UIViewController{
-    
+class ShiftVC_second:UIViewController,UITextFieldDelegate{
+    var infoFromEdit:String?
     
     let realm = try! Realm()
     
@@ -50,14 +50,19 @@ class ShiftVC_second:UIViewController{
     @IBOutlet weak var backgroundFrame: UIView!
     
     @IBAction func saveButton(_ sender: UIButton) {
-        let newShiftTemplate = shiftTemplateData()
-        newShiftTemplate.shiftTemplateName = shiftNameTextfield.text!
-        newShiftTemplate.shiftTimeStart = shiftStartTextfield.text!
-        newShiftTemplate.shiftTimeEnd = shiftEndTextfield.text!
-        self.saveData(to: newShiftTemplate)
+        saveShiftDetail(true)
     }
     
     @IBAction func continueBotton(_ sender: UIButton) {
+        saveShiftDetail(false)
+        let alert = UIAlertController(title: "✅", message: "Save Successful", preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: "Got it", style: .default) { (action) in
+            self.shiftNameTextfield.text = ""
+            self.shiftStartTextfield.text = ""
+            self.shiftEndTextfield.text = ""
+        }
+        alert.addAction(action)
+        present(alert,animated: true, completion: nil)
     }
     
     @IBAction func addStartTime(_ sender: UITextField) {
@@ -70,6 +75,23 @@ class ShiftVC_second:UIViewController{
         textFieldSenderIndex = sender.tag
 //        shiftTimeValueChange(sender: datePicker,textField: shiftEndTextfield)
         displayPickerView(true)
+    }
+    
+    func saveShiftDetail(_ goBack:Bool){
+        if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != "" {
+            let newShiftTemplate = shiftTemplateData()
+            newShiftTemplate.shiftTemplateName = shiftNameTextfield.text!
+            newShiftTemplate.shiftTimeStart = shiftStartTextfield.text!
+            newShiftTemplate.shiftTimeEnd = shiftEndTextfield.text!
+            self.saveData(to: newShiftTemplate)
+            goBack == true ? performSegue(withIdentifier: "goBack", sender: self) : nil
+            
+        }else{
+            let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
+            let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
+            alert.addAction(gotItAction)
+            present(alert,animated: true, completion: nil)
+        }
     }
     
     func displayPickerView(_ show:Bool){
@@ -97,7 +119,6 @@ class ShiftVC_second:UIViewController{
         continueBtnOutlet.layer.borderWidth = 0.2
         self.shiftStartTextfield.tag = 0
         self.shiftEndTextfield.tag = 1
-        
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -114,7 +135,12 @@ class ShiftVC_second:UIViewController{
         bottomContraints.identifier = "bottom"
         
         additionalView.layer.cornerRadius = 10
+        self.shiftNameTextfield.delegate = self
         
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     func saveData(to realmData:shiftTemplateData){
         do{

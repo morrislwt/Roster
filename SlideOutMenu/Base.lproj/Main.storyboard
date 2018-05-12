@@ -247,6 +247,7 @@
                                     <segment title="Week" width="80"/>
                                     <segment title="Month" width="80"/>
                                 </segments>
+                                <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="segmentSwitch:" destination="EPa-vP-vVc" eventType="valueChanged" id="cmt-Gm-Q3L"/>
                                 </connections>
@@ -361,12 +362,26 @@
                                     <outlet property="delegate" destination="Hf1-Sw-8CJ" id="7Rn-lB-2f7"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEA-Eo-gxR">
+                                <rect key="frame" x="124.33333333333333" y="622" width="165.33333333333337" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.3411764706" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZgM-Yf-H20"/>
+                                </constraints>
+                                <state key="normal" title="Continue Add"/>
+                                <connections>
+                                    <action selector="continueAdd:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="Q5k-Wz-KhR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="top" secondItem="RNN-rS-aPb" secondAttribute="top" id="0Gb-tB-Td1"/>
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="height" secondItem="SAl-VP-8yP" secondAttribute="height" multiplier="0.85" id="1DL-jt-fpS"/>
+                            <constraint firstItem="UEA-Eo-gxR" firstAttribute="centerX" secondItem="SAl-VP-8yP" secondAttribute="centerX" id="MMz-LL-aiS"/>
+                            <constraint firstItem="RNN-rS-aPb" firstAttribute="bottom" secondItem="UEA-Eo-gxR" secondAttribute="bottom" constant="20" id="OWJ-MM-XR3"/>
                             <constraint firstItem="RNN-rS-aPb" firstAttribute="trailing" secondItem="Ook-OA-kuk" secondAttribute="trailing" id="RBB-Bh-x01"/>
+                            <constraint firstItem="UEA-Eo-gxR" firstAttribute="width" secondItem="SAl-VP-8yP" secondAttribute="width" multiplier="0.4" id="lde-Xb-J3e"/>
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="leading" secondItem="RNN-rS-aPb" secondAttribute="leading" id="z5R-RN-1fX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RNN-rS-aPb"/>
@@ -380,11 +395,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addShiftCollectionView" destination="Ook-OA-kuk" id="8ge-qf-lvJ"/>
+                        <outlet property="continueAddOutlet" destination="UEA-Eo-gxR" id="RsP-LQ-B1f"/>
                         <outlet property="myPickerView" destination="VH7-gz-63H" id="ZEy-U2-myV"/>
                         <outlet property="selectView" destination="8hE-SD-u4F" id="8LM-U8-JWy"/>
+                        <segue destination="Pw6-XC-rFd" kind="unwind" identifier="backToCal" unwindAction="backToCalSegue:" id="xSi-jO-ROA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsN-Mo-9se" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Pw6-XC-rFd" userLabel="Exit" sceneMemberID="exit"/>
                 <view contentMode="scaleToFill" id="8hE-SD-u4F">
                     <rect key="frame" x="0.0" y="0.0" width="247" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -407,24 +425,13 @@
                                 <action selector="donePressed:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="g3C-QM-Zw3"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a44-hr-uI3">
-                            <rect key="frame" x="20" y="5" width="54" height="30"/>
-                            <state key="normal" title="Custom">
-                                <color key="titleColor" red="0.0" green="0.3921568627" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="addTextfieldBtn:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="5mL-Eu-eWn"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="a44-hr-uI3" firstAttribute="top" secondItem="rIh-CQ-Y5e" secondAttribute="top" constant="5" id="4Ah-SU-Mmq"/>
                         <constraint firstItem="VH7-gz-63H" firstAttribute="leading" secondItem="8hE-SD-u4F" secondAttribute="leading" id="DOP-To-mfF"/>
                         <constraint firstAttribute="bottom" secondItem="VH7-gz-63H" secondAttribute="bottom" constant="15" id="E0e-69-jdN"/>
                         <constraint firstItem="ssS-6q-GFi" firstAttribute="top" secondItem="rIh-CQ-Y5e" secondAttribute="top" constant="5" id="NGW-6F-CUg"/>
                         <constraint firstAttribute="trailing" secondItem="VH7-gz-63H" secondAttribute="trailing" id="NSy-xz-5aN"/>
-                        <constraint firstItem="a44-hr-uI3" firstAttribute="leading" secondItem="rIh-CQ-Y5e" secondAttribute="leading" constant="20" id="a3b-ev-wKp"/>
                         <constraint firstItem="VH7-gz-63H" firstAttribute="top" secondItem="8hE-SD-u4F" secondAttribute="top" constant="30" id="bBA-eR-lyC"/>
                         <constraint firstAttribute="trailing" secondItem="ssS-6q-GFi" secondAttribute="trailing" constant="20" id="doC-jb-6qr"/>
                     </constraints>
@@ -462,6 +469,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ybv-eD-EFW">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.93725490196078431" green="0.75294117647058822" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -745,9 +753,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oat-Ob-7Xk">
-                                <rect key="frame" x="20.666666666666657" y="186" width="372.66666666666674" height="248"/>
+                                <rect key="frame" x="20.666666666666657" y="81" width="372.66666666666674" height="248"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dFm-LO-pcz">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="EX: Morning" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dFm-LO-pcz">
                                         <rect key="frame" x="70" y="20" width="293.33333333333331" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Igj-LK-rbF"/>
@@ -756,7 +764,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdI-ch-arz">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Click to Edit" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdI-ch-arz">
                                         <rect key="frame" x="70" y="70" width="292.66666666666669" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="PfI-OP-9j9"/>
@@ -768,7 +776,7 @@
                                             <action selector="addStartTime:" destination="6Nv-1H-F0H" eventType="editingDidBegin" id="Iih-hR-LpS"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBt-Bm-P0U">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Click to Edit" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBt-Bm-P0U">
                                         <rect key="frame" x="70" y="120" width="292.66666666666669" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="0RR-qM-Q7Z"/>
@@ -790,7 +798,6 @@
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="saveButton:" destination="6Nv-1H-F0H" eventType="touchUpInside" id="wzP-X5-5mF"/>
-                                            <segue destination="Y1g-KN-gi6" kind="unwind" unwindAction="backSegue:" id="wYr-sZ-hTU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Kg-mY-y7u">
@@ -867,7 +874,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.3411764705882353" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oat-Ob-7Xk" firstAttribute="centerY" secondItem="q2I-Rt-0U8" secondAttribute="centerY" id="3ql-dT-Eqm"/>
+                            <constraint firstItem="oat-Ob-7Xk" firstAttribute="centerY" secondItem="q2I-Rt-0U8" secondAttribute="centerY" multiplier="410:620" id="3ql-dT-Eqm"/>
                             <constraint firstItem="oat-Ob-7Xk" firstAttribute="width" secondItem="q2I-Rt-0U8" secondAttribute="width" multiplier="0.9" id="RNs-Gz-Oz0"/>
                             <constraint firstItem="oat-Ob-7Xk" firstAttribute="centerX" secondItem="q2I-Rt-0U8" secondAttribute="centerX" id="c4D-PK-XLY"/>
                             <constraint firstItem="oat-Ob-7Xk" firstAttribute="height" secondItem="q2I-Rt-0U8" secondAttribute="height" multiplier="0.4" id="vBp-l9-z8a"/>
@@ -884,6 +891,7 @@
                         <outlet property="shiftEndTextfield" destination="lBt-Bm-P0U" id="EjQ-Re-leg"/>
                         <outlet property="shiftNameTextfield" destination="dFm-LO-pcz" id="KNQ-1m-fB1"/>
                         <outlet property="shiftStartTextfield" destination="mdI-ch-arz" id="fwF-xs-7iX"/>
+                        <segue destination="Y1g-KN-gi6" kind="unwind" identifier="goBack" unwindAction="backSegue:" id="X4p-jK-oC1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vrf-4a-akA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1098,7 +1106,7 @@
         <image name="todayButton" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="T7q-fh-eot"/>
+        <segue reference="nS3-Aa-dgC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.86213032857648375" green="0.85796544776210459" blue="0.86629520939086291" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

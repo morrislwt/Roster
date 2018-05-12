@@ -11,6 +11,7 @@ import RealmSwift
 
 class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
+    @IBOutlet weak var continueAddOutlet: UIButton!
     @IBOutlet weak var myPickerView: UIPickerView!
     
     var selectedIndex:Int = 0
@@ -42,6 +43,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     @IBOutlet weak var addShiftCollectionView: UICollectionView!
     
     var selectDateFromCalendar:String?
+    var selectDateInDateType:Date?
     
     let addShiftOptions = ["Date","Staff","Work Place","Position","Shift Name","Shift Start","Shift End","Break Time","Total time","Duty"]
     
@@ -62,8 +64,14 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
-        
-        
+    }
+    
+    func displaySuccess(){
+        for topContraints in view.constraints {
+            if topContraints.identifier == "top" {
+                topContraints.constant = 10
+            }
+        }
     }
 //    @objc func tapToDismiss(){
 //        for bottomContraints in view.constraints {
@@ -77,35 +85,55 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
 //        }
 //    }
     @IBAction func saveBtnPressed(_ sender: UIBarButtonItem) {
+        saveDataToCal(goBack: true)
     }
-    @IBAction func addTextfieldBtn(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Add Custom info.", message: "", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        let doneAction = UIAlertAction(title: "Done", style: .default) { (doneAction) in
-            
+    func saveDataToCal(goBack:Bool){
+        let newShiftToCal = ShiftDataToCalender()
+        
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "eee dd MMM YYYY"
+        if  selectedStaff != "" && selectedWorkPlace != "" && selectedPosition != "" && selectedShiftName != "" && selectedStartTime != "" && selectedEndTime != "" {
+
+        newShiftToCal.shiftDate = selectDateInDateType
+        newShiftToCal.staff = selectedStaff
+        newShiftToCal.workPlace = selectedWorkPlace
+        newShiftToCal.position = selectedPosition
+        newShiftToCal.shiftName = selectedShiftName
+        newShiftToCal.shiftStart = selectedStartTime
+        newShiftToCal.shiftEnd = selectedEndTime
+        do{
+            try realm_Data.write {
+                realm_Data.add(newShiftToCal)
+            }
+        }catch{
+            print("saving shift data error \(error)")
         }
-        alert.addAction(cancelAction)
-        alert.addAction(doneAction)
-        alert.addTextField { (inputStaff) in
-            inputStaff.placeholder = "Staff Name"
-            self.selectedStaff = inputStaff.text!
+        goBack == true ? performSegue(withIdentifier: "backToCal", sender: self) : nil
+        }else{
+            let emptyAlert = UIAlertController(title: "Fill all the detail please", message: "👮🏻‍♂️", preferredStyle: .actionSheet)
+            let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
+            emptyAlert.addAction(gotItAction)
+            present(emptyAlert,animated: true, completion: nil)
         }
-        alert.addTextField { (inputPlace) in
-            inputPlace.placeholder = "Work Place Name"
+        
+    }
+    @IBAction func continueAdd(_ sender: UIButton) {
+        saveDataToCal(goBack: false)
+        if  selectedStaff != "" && selectedWorkPlace != "" && selectedPosition != "" && selectedShiftName != "" && selectedStartTime != "" && selectedEndTime != "" {
+            let alert = UIAlertController(title: "Save Success", message: "", preferredStyle: .actionSheet)
+            let action = UIAlertAction(title: "OK", style: .default) { (action) in
+//                self.selectedStaff = ""
+//                self.selectedWorkPlace = ""
+//                self.selectedPosition = ""
+//                self.selectedShiftName = ""
+//                self.selectedStartTime = ""
+//                self.selectedEndTime = ""
+                
+            }
+            alert.addAction(action)
+            present(alert,animated: true, completion: nil)
         }
-        alert.addTextField { (inputPosition) in
-            inputPosition.placeholder = "Position Name (Optional)"
-        }
-        alert.addTextField { (inputShiftName) in
-            inputShiftName.placeholder = "Shift Name (Optional)"
-        }
-        alert.addTextField { (inputShiftStart) in
-            inputShiftStart.placeholder = "Shift Start"
-        }
-        alert.addTextField { (inputShiftEnd) in
-            inputShiftEnd.placeholder = "Shift End"
-        }
-        present(alert,animated: true, completion: nil)
+        
         
     }
     
@@ -113,22 +141,22 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         super.viewDidLoad()
         navigationItem.title = "Add New Shift"
         loadRealmData()
+        continueAddOutlet.layer.cornerRadius = 15
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapToDismiss))
 //        view.addGestureRecognizer(tapGesture)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.addSubview(selectView)
+
         let selectViewHeight = view.frame.height / 3
         selectView.translatesAutoresizingMaskIntoConstraints = false
-        
         selectView.heightAnchor.constraint(equalToConstant: selectViewHeight).isActive = true
         selectView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         selectView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         let bottomContraints = selectView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: selectViewHeight)
         bottomContraints.isActive = true
         bottomContraints.identifier = "bottom"
-        
         selectView.layer.cornerRadius = 10
         
     }
