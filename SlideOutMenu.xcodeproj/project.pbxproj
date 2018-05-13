@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50290F220A80D7500E95F63 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50290F120A80D7500E95F63 /* PopViewController.swift */; };
 		A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */; };
 		A509DC982095C27500AA3B4D /* PositionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC972095C27500AA3B4D /* PositionData.swift */; };
 		A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC992095D72200AA3B4D /* EmployeeData.swift */; };
@@ -39,6 +40,7 @@
 		42AC71E5A6A54CB2A85BCF75 /* Pods-SlideOutMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.release.xcconfig"; sourceTree = "<group>"; };
 		67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideOutMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.debug.xcconfig"; sourceTree = "<group>"; };
+		A50290F120A80D7500E95F63 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
 		A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		A509DC972095C27500AA3B4D /* PositionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionData.swift; sourceTree = "<group>"; };
 		A509DC992095D72200AA3B4D /* EmployeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeData.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */,
 				A51862F2209C483300B8FF29 /* CalendarVC.swift */,
 				A509DC9B2096C05500AA3B4D /* SettingVC.swift */,
+				A50290F120A80D7500E95F63 /* PopViewController.swift */,
 				A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */,
 				A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */,
 				A531B7532089BC6200AE5670 /* BackTableVC.swift */,
@@ -359,6 +362,7 @@
 				A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */,
 				A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */,
 				A531B7582089E0FF00AE5670 /* MyShiftViewController.swift in Sources */,
+				A50290F220A80D7500E95F63 /* PopViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

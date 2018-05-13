@@ -11,47 +11,12 @@ import RealmSwift
 import SwipeCellKit
 
 
-class ShiftVC:UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTableViewCellDelegate{
+class ShiftVC:UIViewController,UITableViewDataSource,UITableViewDelegate{
 
     @IBAction func backSegue(_ segue:UIStoryboardSegue){
         
     }
 
-    @IBAction func addButtonPressed(_ sender: Any) {
-//        var shiftTimeStart = UITextField()
-//        var shiftTimeEnd = UITextField()
-//        var shiftNameTextField = UITextField()
-//        var shiftTotalTimeTextField = UITextField()
-//
-//        let alert = UIAlertController(title: "New Shift Template", message: "Enter a new name and time for this Shift ", preferredStyle: .alert)
-//
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        alert.addTextField { (nameOfShift) in
-//            nameOfShift.placeholder = "name of this shift. Ex: Open"
-//            shiftNameTextField = nameOfShift
-//        }
-//        alert.addTextField { (startTime) in
-//            startTime.placeholder = "start time"
-//            startTime.keyboardType = .numberPad
-//            shiftTimeStart = startTime
-//        }
-//        alert.addTextField { (endTime) in
-//            endTime.placeholder = "end time"
-//            endTime.keyboardType = .numberPad
-//            shiftTimeEnd = endTime
-//        }
-//        let action = UIAlertAction(title: "Add", style: .default) { action in
-//            let newShiftTemplate = shiftTemplateData()
-//            newShiftTemplate.shiftTimeStart = shiftTimeStart.text!
-//            newShiftTemplate.shiftTimeEnd = shiftTimeEnd.text!
-//            newShiftTemplate.shiftTemplateName = shiftNameTextField.text!
-//            self.saveData(dataFromWS: newShiftTemplate)
-//        }
-//        alert.addAction(action)
-//
-//        present(alert,animated: true, completion: nil)
-    }
-    
     @IBOutlet weak var shiftTemplateTableView: UITableView!
     var shiftTemplate:Results<shiftTemplateData>?
     let realm = try! Realm()
@@ -73,86 +38,12 @@ class ShiftVC:UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTa
         shiftTemplateTableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
 
-        let deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
-            // handle action by updating model with deletion
-            self.updateModel(at: indexPath)
-        }
-
-
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "delete")
-        deleteAction.backgroundColor = .clear
-        deleteAction.transitionDelegate = ScaleTransition.default
-        deleteAction.textColor = .gray
-
-        return [deleteAction]
-    }
-
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
-        var options = SwipeTableOptions()
-
-        options.expansionStyle = .destructive
-        options.expansionDelegate = ScaleAndAlphaExpansion.default
-        return options
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
     
-    func updateModel(at indexPath: IndexPath){
-        if let shiftForDeletion = self.shiftTemplate?[indexPath.row] {
-            deleteModel(itemForDelete: shiftForDeletion)
-        }
-        //update our data model
-    }
-    func editModel(at indexPath: IndexPath){
-        if let shiftForEdit = shiftTemplate?[indexPath.row]{
-            var editStart = UITextField()
-            var editEnd = UITextField()
 
-            let alert = UIAlertController(title: "Edit", message: "Change the time of this shift", preferredStyle: .alert)
-            alert.addTextField { (startTime) in
-                startTime.text = shiftForEdit.shiftTimeStart
-                startTime.keyboardType = .numberPad
-                editStart = startTime
-            }
-            alert.addTextField { (endTime) in
-                endTime.text = shiftForEdit.shiftTimeEnd
-                endTime.keyboardType = .numberPad
-                editEnd = endTime
-            }
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            let saveAction = UIAlertAction(title: "Save", style: .default) { (saveAction) in
-
-                do{
-                    try self.realm.write {
-                        self.shiftTemplate?[indexPath.row].shiftTimeStart = editStart.text!
-                        self.shiftTemplate?[indexPath.row].shiftTimeEnd = editStart.text!
-                    }
-                }catch{
-                    print("Error editing Category \(error)")
-                }
-
-                self.shiftTemplateTableView.reloadData()
-            }
-            alert.addAction(saveAction)
-            present(alert,animated: true, completion: nil)
-        }
-    }
-    
-    func deleteModel(itemForDelete:Object){
-        do{
-            try realm.write {
-                realm.delete(itemForDelete)
-            }
-        }catch{
-            print("Error deleting item, \(error)")
-        }
-    }
-    
 
 }
 extension ShiftVC{
@@ -161,8 +52,8 @@ extension ShiftVC{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = SwipeTableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        cell.delegate = self
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        
 
         if let shiftData = shiftTemplate{
             cell.textLabel?.text = shiftData[indexPath.row].shiftTemplateName
@@ -173,16 +64,46 @@ extension ShiftVC{
         return cell
         
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "showShiftDetail", sender: self)
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            self.updateModel(indexPath: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .right)
+        }
+        
+//        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+//            // share item at indexPath
+//            print("edit")
+//        }
+//        edit.backgroundColor = UIColor.lightGray
+//        delete.backgroundColor = UIColor(patternImage: UIImage(named: "delete")!)
+        
+        
+        return [delete]
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let editDetailVC = segue.identifier as? ShiftVC_second {
-            
+    
+    func updateModel(indexPath:IndexPath){
+        if let shiftForDeletion = shiftTemplate?[indexPath.row]{
+            deleteModel(itemForDelete: shiftForDeletion)
         }
     }
+    func deleteModel(itemForDelete:Object){
+            do{
+                try realm.write {
+                    realm.delete(itemForDelete)
+                }
+            }catch{
+                print("Error deleting shift, \(error)")
+        }
+    }
+
     func animateTable(){
         shiftTemplateTableView.reloadData()
         let cells = shiftTemplateTableView.visibleCells

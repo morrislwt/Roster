@@ -12,13 +12,20 @@ import RealmSwift
 import SwipeCellKit
 
 
-class CalendarVC: UIViewController {
+class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
 
     @IBAction func backToCalSegue(_ segue:UIStoryboardSegue){
         
     }
 
+    @IBOutlet weak var moreBtnOutlet: UIBarButtonItem!
+    @IBAction func moreBtnTap(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "popOver", sender: nil)
+    }
     
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
     @IBOutlet weak var segmentOutlet: UIBarButtonItem!
     
     ///----------------------* Realm Methods *-----------------///
@@ -226,8 +233,20 @@ class CalendarVC: UIViewController {
             dateToAddShiftVC.selectDateFromCalendar = selectDateInString
             dateToAddShiftVC.selectDateInDateType = currentDate
         }
+        if segue.identifier == "popOver" {
+            if let vc = segue.destination as? UIViewController{
+                vc.preferredContentSize = CGSize(width: 200, height: 100)
+                let controller = vc.popoverPresentationController
+                if controller != nil {
+                    controller?.delegate = self
+                }
+            }
+            
+        }
         
-        
+    }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
 extension CalendarVC: CVCalendarViewDelegate,CVCalendarMenuViewDelegate {
@@ -451,6 +470,8 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         
         return options
     }
+    
+    
     
 }
 extension CalendarVC{

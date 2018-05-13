@@ -65,14 +65,14 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     
     @IBAction func addStartTime(_ sender: UITextField) {
         textFieldSenderIndex = sender.tag
-//        shiftStartTextfield.resignFirstResponder()
+        shiftStartTextfield.resignFirstResponder()
         displayPickerView(true)
         
     }
     
     
     @IBAction func addEndTime(_ sender: UITextField) {
-//        shiftEndTextfield.resignFirstResponder()
+        shiftEndTextfield.resignFirstResponder()
         textFieldSenderIndex = sender.tag
         
     

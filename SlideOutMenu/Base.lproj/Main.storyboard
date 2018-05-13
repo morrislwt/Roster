@@ -262,11 +262,18 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Schedule" id="9Oc-hT-zld">
-                        <barButtonItem key="leftBarButtonItem" title="today" largeContentSizeImage="todayButton" id="o50-8T-pKL">
-                            <connections>
-                                <action selector="todayButton:" destination="EPa-vP-vVc" id="P9e-Tb-qMb"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="today" largeContentSizeImage="todayButton" id="o50-8T-pKL">
+                                <connections>
+                                    <action selector="todayButton:" destination="EPa-vP-vVc" id="P9e-Tb-qMb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="compose" id="alj-7W-aCW">
+                                <connections>
+                                    <action selector="moreBtnTap:" destination="EPa-vP-vVc" id="mxe-Ab-Xlc"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="add" id="5OF-95-VNi">
                                 <connections>
@@ -282,10 +289,16 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="moreBtnOutlet" destination="alj-7W-aCW" id="ui9-4V-iDj"/>
+                        <segue destination="sYC-qa-dKt" kind="popoverPresentation" identifier="popOver" popoverAnchorBarButtonItem="alj-7W-aCW" id="Afc-QI-mE9">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljZ-uf-xKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4204.347826086957" y="1329.6195652173915"/>
+            <point key="canvasLocation" x="-4465" y="1315"/>
         </scene>
         <!--Title-->
         <scene sceneID="1U4-Ot-161">
@@ -527,7 +540,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R59-KC-bpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3497.1014492753625" y="1329.6195652173915"/>
+            <point key="canvasLocation" x="-2728" y="1330"/>
+        </scene>
+        <!--Pop View Controller-->
+        <scene sceneID="bn8-46-qmD">
+            <objects>
+                <viewController id="sYC-qa-dKt" customClass="PopViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mpx-sF-fyn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i1S-UF-U1u">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="G3A-XQ-L4k">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G3A-XQ-L4k" id="WyG-sn-eWe">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sYC-qa-dKt" id="cls-gf-1A4"/>
+                                    <outlet property="delegate" destination="sYC-qa-dKt" id="KHJ-g3-XOB"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="i1S-UF-U1u" firstAttribute="leading" secondItem="gB6-Io-vS8" secondAttribute="leading" id="7ud-CU-BR8"/>
+                            <constraint firstItem="i1S-UF-U1u" firstAttribute="top" secondItem="gB6-Io-vS8" secondAttribute="top" id="P2b-lz-NCf"/>
+                            <constraint firstItem="gB6-Io-vS8" firstAttribute="bottom" secondItem="i1S-UF-U1u" secondAttribute="bottom" id="dxm-da-2qV"/>
+                            <constraint firstItem="gB6-Io-vS8" firstAttribute="trailing" secondItem="i1S-UF-U1u" secondAttribute="trailing" id="pDF-bv-bCK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gB6-Io-vS8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8L-kP-V5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3449" y="1330"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="Qlu-Dj-fea">
@@ -731,7 +785,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Nh3-4S-ufz">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="0rY-kr-Pjg" id="gpt-1o-PkS"/>
                                 <segue destination="6Nv-1H-F0H" kind="show" identifier="showShiftDetail" id="6rN-mJ-aPn"/>
                             </connections>
                         </barButtonItem>

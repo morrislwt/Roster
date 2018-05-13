@@ -8,18 +8,14 @@
 
 import UIKit
 import RealmSwift
-import SwipeCellKit
 
 
-class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTableViewCellDelegate{
+class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
     @IBOutlet weak var employeeTableView: UITableView!
     
     var employee:Results<EmployeeData>?
     let realm = try! Realm()
     
-
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -47,9 +43,7 @@ class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Sw
         employeeTableView.reloadData()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipeTableViewCell
-        
-        cell.delegate = self
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         
         cell.textLabel?.text = employee?[indexPath.row].employeeName ?? "No staff add yet"
         cell.textLabel?.font = UIFont(name: "Courier", size: 20)
@@ -59,38 +53,24 @@ class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Sw
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employee?.count ?? 1
     }
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
-            // handle action by updating model with deletion
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
             self.updateModel(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .right)
         }
-        let editAction = SwipeAction(style: .default, title: "edit") { action, indexPath in
+        
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
             self.editModel(at: indexPath)
         }
         
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "delete")
-        deleteAction.backgroundColor = .clear
-        deleteAction.transitionDelegate = ScaleTransition.default
-        deleteAction.textColor = .gray
+        edit.backgroundColor = UIColor.lightGray
         
-        editAction.transitionDelegate = ScaleTransition.default
-        editAction.textColor = .gray
-        editAction.image = UIImage(named: "edit")
-        editAction.backgroundColor = .clear
+        return [delete, edit]
         
-        return [deleteAction,editAction]
     }
     
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
-        var options = SwipeTableOptions()
-        
-        options.expansionStyle = .destructive
-        options.expansionDelegate = ScaleAndAlphaExpansion.default
-        return options
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
@@ -104,7 +84,7 @@ class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Sw
     func editModel(at indexPath: IndexPath){
         if let employeeForEdit = employee?[indexPath.row].employeeName{
             var editText = UITextField()
-            
+
             let alert = UIAlertController(title: "Edit", message: "Change the name of this Employee", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.text = employeeForEdit
@@ -112,7 +92,7 @@ class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Sw
             }
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             let saveAction = UIAlertAction(title: "Save", style: .default) { (saveAction) in
-                
+
                 do{
                     try self.realm.write {
                         self.employee?[indexPath.row].employeeName = editText.text!
@@ -158,9 +138,6 @@ class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Sw
     func animateTable(){
         employeeTableView.reloadData()
         let cells = employeeTableView.visibleCells
-        
-        
-        
         let tableViewHeight = employeeTableView.bounds.size.height
         
         for cell in cells {
@@ -168,7 +145,7 @@ class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate,Sw
         }
         var delayCounter = 0
         for cell in cells {
-            UIView.animate(withDuration: 1.5, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.8, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 cell.transform = CGAffineTransform.identity
             }, completion: nil)
             delayCounter += 1

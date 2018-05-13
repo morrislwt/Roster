@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import SwipeCellKit
 import RealmSwift
 
-class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,SwipeTableViewCellDelegate{
+class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     @IBOutlet weak var positionTableView: UITableView!
     
@@ -44,9 +43,7 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
         positionTableView.reloadData()
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipeTableViewCell
-        
-        cell.delegate = self
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         
         cell.textLabel?.text = position?[indexPath.row].positionName ?? "No positions add yet"
         cell.textLabel?.font = UIFont(name: "Courier", size: 20)
@@ -56,39 +53,24 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return position?.count ?? 1
     }
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
-            // handle action by updating model with deletion
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
             self.updateModel(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .right)
         }
-        let editAction = SwipeAction(style: .default, title: "edit") { action, indexPath in
+        
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
             self.editModel(at: indexPath)
         }
         
-        // customize the action appearance
-
-        deleteAction.image = UIImage(named: "delete")
-        deleteAction.backgroundColor = .clear
-        deleteAction.transitionDelegate = ScaleTransition.default
-        deleteAction.textColor = .gray
+        edit.backgroundColor = UIColor.lightGray
         
-        editAction.transitionDelegate = ScaleTransition.default
-        editAction.textColor = .gray
-        editAction.image = UIImage(named: "edit")
-        editAction.backgroundColor = .clear
+        return [delete, edit]
         
-        return [deleteAction,editAction]
     }
     
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
-        var options = SwipeTableOptions()
-        
-        options.expansionStyle = .destructive
-        options.expansionDelegate = ScaleAndAlphaExpansion.default
-        return options
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
@@ -169,7 +151,7 @@ class PositionsVC:UIViewController,UITableViewDataSource,UITableViewDelegate,Swi
         }
         var delayCounter = 0
         for cell in cells {
-            UIView.animate(withDuration: 1.5, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.8, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 cell.transform = CGAffineTransform.identity
             }, completion: nil)
             delayCounter += 1
