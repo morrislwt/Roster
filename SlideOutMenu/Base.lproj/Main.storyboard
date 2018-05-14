@@ -8,7 +8,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -236,7 +235,7 @@
         <!--Schedule-->
         <scene sceneID="OTe-fC-NIB">
             <objects>
-                <viewController id="EPa-vP-vVc" customClass="CalendarVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Calender" id="EPa-vP-vVc" customClass="CalendarVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A7N-RW-3TZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -262,38 +261,24 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Schedule" id="9Oc-hT-zld">
-                        <leftBarButtonItems>
-                            <barButtonItem title="today" largeContentSizeImage="todayButton" id="o50-8T-pKL">
-                                <connections>
-                                    <action selector="todayButton:" destination="EPa-vP-vVc" id="P9e-Tb-qMb"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="compose" id="alj-7W-aCW">
-                                <connections>
-                                    <action selector="moreBtnTap:" destination="EPa-vP-vVc" id="mxe-Ab-Xlc"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <rightBarButtonItems>
-                            <barButtonItem title="add" id="5OF-95-VNi">
-                                <connections>
-                                    <segue destination="Hf1-Sw-8CJ" kind="show" id="yph-PB-5ga"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Quick add" id="B5r-lp-Hxq">
-                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="addButtonPressed:" destination="EPa-vP-vVc" id="6OG-v0-Aun"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" title="today" largeContentSizeImage="todayButton" id="o50-8T-pKL">
+                            <connections>
+                                <action selector="todayButton:" destination="EPa-vP-vVc" id="P9e-Tb-qMb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="more" id="alj-7W-aCW">
+                            <connections>
+                                <action selector="moreBtnTap:" destination="EPa-vP-vVc" id="mxe-Ab-Xlc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="moreBtnOutlet" destination="alj-7W-aCW" id="ui9-4V-iDj"/>
-                        <segue destination="sYC-qa-dKt" kind="popoverPresentation" identifier="popOver" popoverAnchorBarButtonItem="alj-7W-aCW" id="Afc-QI-mE9">
+                        <segue destination="sYC-qa-dKt" kind="popoverPresentation" identifier="popOver" popoverAnchorBarButtonItem="alj-7W-aCW" id="jWf-vw-3oA">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="Hf1-Sw-8CJ" kind="show" identifier="addFullShift" id="zhh-tn-YwT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ljZ-uf-xKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -451,7 +436,7 @@
                     <viewLayoutGuide key="safeArea" id="rIh-CQ-Y5e"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-4204" y="2048"/>
+            <point key="canvasLocation" x="-4465" y="2189"/>
         </scene>
         <!--News Feed-->
         <scene sceneID="yiu-8A-IvK">
@@ -540,7 +525,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R59-KC-bpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2728" y="1330"/>
+            <point key="canvasLocation" x="-1821.7391304347827" y="1329.6195652173915"/>
         </scene>
         <!--Pop View Controller-->
         <scene sceneID="bn8-46-qmD">
@@ -561,6 +546,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="5uc-a0-LRZ" kind="unwind" identifier="popOverDismiss" unwindAction="backToCalSegue:" id="Hfx-sZ-n8X"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -578,10 +566,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gB6-Io-vS8"/>
                     </view>
+                    <navigationItem key="navigationItem" id="RAt-pj-FEa"/>
+                    <connections>
+                        <outlet property="popOverTableView" destination="i1S-UF-U1u" id="G9H-c1-qhv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t8L-kP-V5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5uc-a0-LRZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3449" y="1330"/>
+            <point key="canvasLocation" x="-3607" y="1670"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="Qlu-Dj-fea">
@@ -1154,7 +1147,7 @@
         <image name="cal_tabbar" width="25" height="25"/>
         <image name="home_tabbar" width="25" height="25"/>
         <image name="ic_menu" width="24" height="24"/>
-        <image name="more" width="50" height="50"/>
+        <image name="more" width="25" height="25"/>
         <image name="speaker" width="25" height="25"/>
         <image name="todayButton" width="24" height="24"/>
     </resources>

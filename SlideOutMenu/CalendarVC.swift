@@ -14,6 +14,8 @@ import SwipeCellKit
 
 class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
 
+    
+    var selectedIndexFromPopOver = 2
     @IBAction func backToCalSegue(_ segue:UIStoryboardSegue){
         
     }
@@ -23,9 +25,29 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         performSegue(withIdentifier: "popOver", sender: nil)
     }
     
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dateToAddShiftVC = segue.destination as? addShiftDetailVC{
+            
+            dateToAddShiftVC.selectDateFromCalendar = selectDateInString
+            dateToAddShiftVC.selectDateInDateType = currentDate
+        }
+        if segue.identifier == "popOver" {
+            if let vc = segue.destination as? UIViewController{
+                vc.preferredContentSize = CGSize(width: 200, height: 100)
+                let controller = vc.popoverPresentationController
+                if controller != nil {
+                    controller?.delegate = self
+                }
+            }
+            
+        }
+        
+    }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
+    
+
     @IBOutlet weak var segmentOutlet: UIBarButtonItem!
     
     ///----------------------* Realm Methods *-----------------///
@@ -77,89 +99,6 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
             }
         }
     }
-    @IBAction func addButtonPressed(_ sender: Any) {
-
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = " eee dd MMM YYYY"
-        
-        let dateToString = dateformatter.string(from: currentDate)
-//        let stringToDate = formatter.date(from: dateToString)
-        
-        
-        var nameTextfield = UITextField()
-        var workPlaceTextfield = UITextField()
-        var positionTextfield = UITextField()
-        var shiftStartTextfield = UITextField()
-        var shiftEndTextfield = UITextField()
-        var dutyTextfield = UITextField()
-        
-        let alert = UIAlertController(title: "Quick Add Shift", message: "Add Shift on \(dateToString)", preferredStyle: .alert)
-        let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) in
-            if nameTextfield.text != "" && workPlaceTextfield.text != "" && positionTextfield.text != "" && shiftStartTextfield.text != "" && shiftEndTextfield.text != ""{
-                let newShiftModel = ShiftDataToCalender()
-
-                newShiftModel.shiftDate = self.currentDate
-                newShiftModel.staff = nameTextfield.text!
-                newShiftModel.workPlace = workPlaceTextfield.text!
-                newShiftModel.position = positionTextfield.text!
-                newShiftModel.shiftStart = shiftStartTextfield.text!
-                newShiftModel.shiftEnd = shiftEndTextfield.text!
-                newShiftModel.duty = dutyTextfield.text!
-                
-                self.saveShift(object: newShiftModel)
-                
-            }else{
-                let blankAlert = UIAlertController(title: "⚠️", message: "Please complete all questions😎", preferredStyle: .actionSheet)
-                let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: { (gotItAction) in
-                    self.present(alert,animated: true,completion: nil)
-                })
-                blankAlert.addAction(gotItAction)
-                self.present(blankAlert,animated: true,completion: nil)
-                
-            }
-            
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alert.addAction(addAction)
-        alert.addAction(cancelAction)
-        alert.view.tintColor = .gray
-        alert.addTextField { (inputStaff) in
-            inputStaff.placeholder = "Name of Staff"
-            inputStaff.autocorrectionType = .yes
-            nameTextfield = inputStaff
-        }
-        alert.addTextField { (inputWorkplace) in
-            inputWorkplace.placeholder = "Workplace Name"
-            inputWorkplace.autocorrectionType = .yes
-            workPlaceTextfield = inputWorkplace
-        }
-        alert.addTextField { (inputPosition) in
-            inputPosition.placeholder = "EX: Barista"
-            inputPosition.autocorrectionType = .yes
-            positionTextfield = inputPosition
-        }
-        alert.addTextField { (inputShiftStart) in
-            inputShiftStart.placeholder = "Ex: 10:00"
-            inputShiftStart.keyboardType = .numberPad
-            shiftStartTextfield = inputShiftStart
-        }
-        alert.addTextField { (inputShiftEnd) in
-            inputShiftEnd.placeholder = "Ex: 20:00"
-            inputShiftEnd.keyboardType = .numberPad
-            shiftEndTextfield = inputShiftEnd
-        }
-        alert.addTextField { (inputDuty) in
-            inputDuty.placeholder = "Trainning First Day. (Optional)"
-            inputDuty.autocorrectionType = .yes
-            dutyTextfield = inputDuty
-        }
-        
-        present(alert,animated: true,completion: nil)
-        
-        
-        
-    }
     private var menuView: CVCalendarMenuView!
     
     private var calendarView: CVCalendarView!
@@ -203,14 +142,104 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
         loadShift(selectDate: currentDate)
         
+
+        
+        NotificationCenter.default.addObserver(forName: .selectedIndex, object: nil, queue: OperationQueue.main) { (notification) in
+            let popVC = notification.object as! PopViewController
+            self.selectedIndexFromPopOver = popVC.selectedIndex
+            if self.selectedIndexFromPopOver == 0 {
+                let dateformatter = DateFormatter()
+                dateformatter.dateFormat = " eee dd MMM YYYY"
+                
+                let dateToString = dateformatter.string(from: self.currentDate)
+                //        let stringToDate = formatter.date(from: dateToString)
+                
+                
+                var nameTextfield = UITextField()
+                var workPlaceTextfield = UITextField()
+                var positionTextfield = UITextField()
+                var shiftStartTextfield = UITextField()
+                var shiftEndTextfield = UITextField()
+                var dutyTextfield = UITextField()
+                
+                let alert = UIAlertController(title: "Quick Add Shift", message: "Add Shift on \(dateToString)", preferredStyle: .alert)
+                let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) in
+                    if nameTextfield.text != "" && workPlaceTextfield.text != "" && positionTextfield.text != "" && shiftStartTextfield.text != "" && shiftEndTextfield.text != ""{
+                        let newShiftModel = ShiftDataToCalender()
+                        
+                        newShiftModel.shiftDate = self.currentDate
+                        newShiftModel.staff = nameTextfield.text!
+                        newShiftModel.workPlace = workPlaceTextfield.text!
+                        newShiftModel.position = positionTextfield.text!
+                        newShiftModel.shiftStart = shiftStartTextfield.text!
+                        newShiftModel.shiftEnd = shiftEndTextfield.text!
+                        newShiftModel.duty = dutyTextfield.text!
+                        
+                        self.saveShift(object: newShiftModel)
+                        
+                    }else{
+                        let blankAlert = UIAlertController(title: "⚠️", message: "Please complete all questions😎", preferredStyle: .actionSheet)
+                        let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: { (gotItAction) in
+                            self.present(alert,animated: true,completion: nil)
+                        })
+                        blankAlert.addAction(gotItAction)
+                        self.present(blankAlert,animated: true,completion: nil)
+                        
+                    }
+                    
+                }
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                
+                alert.addAction(addAction)
+                alert.addAction(cancelAction)
+                alert.view.tintColor = .gray
+                alert.addTextField { (inputStaff) in
+                    inputStaff.placeholder = "Name of Staff"
+                    inputStaff.autocorrectionType = .yes
+                    nameTextfield = inputStaff
+                }
+                alert.addTextField { (inputWorkplace) in
+                    inputWorkplace.placeholder = "Workplace Name"
+                    inputWorkplace.autocorrectionType = .yes
+                    workPlaceTextfield = inputWorkplace
+                }
+                alert.addTextField { (inputPosition) in
+                    inputPosition.placeholder = "EX: Barista"
+                    inputPosition.autocorrectionType = .yes
+                    positionTextfield = inputPosition
+                }
+                alert.addTextField { (inputShiftStart) in
+                    inputShiftStart.placeholder = "Ex: 10:00"
+                    inputShiftStart.keyboardType = .numberPad
+                    shiftStartTextfield = inputShiftStart
+                }
+                alert.addTextField { (inputShiftEnd) in
+                    inputShiftEnd.placeholder = "Ex: 20:00"
+                    inputShiftEnd.keyboardType = .numberPad
+                    shiftEndTextfield = inputShiftEnd
+                }
+                alert.addTextField { (inputDuty) in
+                    inputDuty.placeholder = "Trainning First Day. (Optional)"
+                    inputDuty.autocorrectionType = .yes
+                    dutyTextfield = inputDuty
+                }
+                
+                self.present(alert,animated: true,completion: nil)
+                
+                
+                
+            }
+            if self.selectedIndexFromPopOver == 1 {
+                self.performSegue(withIdentifier: "addFullShift", sender: nil)
+            }
+        }
     }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        
     }
-    
-
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -227,27 +256,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
     @IBAction func addVCbutton(_ sender: Any) {
          
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dateToAddShiftVC = segue.destination as? addShiftDetailVC{
-        
-            dateToAddShiftVC.selectDateFromCalendar = selectDateInString
-            dateToAddShiftVC.selectDateInDateType = currentDate
-        }
-        if segue.identifier == "popOver" {
-            if let vc = segue.destination as? UIViewController{
-                vc.preferredContentSize = CGSize(width: 200, height: 100)
-                let controller = vc.popoverPresentationController
-                if controller != nil {
-                    controller?.delegate = self
-                }
-            }
-            
-        }
-        
-    }
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
+    
 }
 extension CalendarVC: CVCalendarViewDelegate,CVCalendarMenuViewDelegate {
     //    shouldScrollOnOutDayViewSelection

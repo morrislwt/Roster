@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A50290F220A80D7500E95F63 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50290F120A80D7500E95F63 /* PopViewController.swift */; };
+		A50290F420A8642700E95F63 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50290F320A8642700E95F63 /* NotificationNameExtension.swift */; };
 		A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */; };
 		A509DC982095C27500AA3B4D /* PositionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC972095C27500AA3B4D /* PositionData.swift */; };
 		A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC992095D72200AA3B4D /* EmployeeData.swift */; };
@@ -41,6 +42,7 @@
 		67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideOutMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		A50290F120A80D7500E95F63 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
+		A50290F320A8642700E95F63 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		A509DC972095C27500AA3B4D /* PositionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionData.swift; sourceTree = "<group>"; };
 		A509DC992095D72200AA3B4D /* EmployeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeData.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				A531B7502089B8A500AE5670 /* SWRevealViewController.h */,
 				A531B7512089B8A500AE5670 /* SWRevealViewController.m */,
 				A531B74F2089B8A400AE5670 /* SlideOutMenu-Bridging-Header.h */,
+				A50290F320A8642700E95F63 /* NotificationNameExtension.swift */,
 			);
 			path = "Supporting File";
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */,
 				A51862EF209C466D00B8FF29 /* ShiftModel.swift in Sources */,
 				A579D89620A541E500FB5027 /* ShiftVC_second.swift in Sources */,
+				A50290F420A8642700E95F63 /* NotificationNameExtension.swift in Sources */,
 				A51862F5209ECD7300B8FF29 /* ShiftVC.swift in Sources */,
 				A5E7FA3A20A0484F00307B12 /* AddShiftCollectionViewCell.swift in Sources */,
 				A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */,
