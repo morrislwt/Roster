@@ -33,7 +33,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         }
         if segue.identifier == "popOver" {
             if let vc = segue.destination as? UIViewController{
-                vc.preferredContentSize = CGSize(width: 200, height: 100)
+                vc.preferredContentSize = CGSize(width: (view.frame.width) * 200/view.frame.width, height: (view.frame.height) * 100/view.frame.height)
                 let controller = vc.popoverPresentationController
                 if controller != nil {
                     controller?.delegate = self

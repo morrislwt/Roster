@@ -22,7 +22,7 @@ class PopViewController: UIViewController, UITableViewDataSource,UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = options[indexPath.row]
-        
+        cell.textLabel?.textColor = .white
         return cell
     }
     

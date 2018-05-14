@@ -266,7 +266,7 @@
                                 <action selector="todayButton:" destination="EPa-vP-vVc" id="P9e-Tb-qMb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="more" id="alj-7W-aCW">
+                        <barButtonItem key="rightBarButtonItem" image="add" id="alj-7W-aCW">
                             <connections>
                                 <action selector="moreBtnTap:" destination="EPa-vP-vVc" id="mxe-Ab-Xlc"/>
                             </connections>
@@ -537,7 +537,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i1S-UF-U1u">
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="G3A-XQ-L4k">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -546,6 +546,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.95686274510000002" green="0.81960784310000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="5uc-a0-LRZ" kind="unwind" identifier="popOverDismiss" unwindAction="backToCalSegue:" id="Hfx-sZ-n8X"/>
                                         </connections>
@@ -557,7 +559,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.3921568627" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="i1S-UF-U1u" firstAttribute="leading" secondItem="gB6-Io-vS8" secondAttribute="leading" id="7ud-CU-BR8"/>
                             <constraint firstItem="i1S-UF-U1u" firstAttribute="top" secondItem="gB6-Io-vS8" secondAttribute="top" id="P2b-lz-NCf"/>
@@ -1143,6 +1145,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="25" height="25"/>
         <image name="bubbleTalk" width="25" height="25"/>
         <image name="cal_tabbar" width="25" height="25"/>
         <image name="home_tabbar" width="25" height="25"/>
