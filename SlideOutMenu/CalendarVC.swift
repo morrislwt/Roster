@@ -16,6 +16,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
 
     
     var selectedIndexFromPopOver = 2
+    var selectedIndexPath:Int?
     @IBAction func backToCalSegue(_ segue:UIStoryboardSegue){
         
     }
@@ -32,7 +33,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
             dateToAddShiftVC.selectDateInDateType = currentDate
         }
         if segue.identifier == "popOver" {
-            if let vc = segue.destination as? UIViewController{
+            if let vc = segue.destination as? UIViewController {
                 vc.preferredContentSize = CGSize(width: (view.frame.width) * 200/view.frame.width, height: (view.frame.height) * 100/view.frame.height)
                 let controller = vc.popoverPresentationController
                 if controller != nil {
@@ -40,6 +41,12 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
                 }
             }
             
+        }
+        if segue.identifier == "showShiftDetail" {
+            if let vc = segue.destination as? ShowShiftDetailVC {
+                vc.selectIndexFromCal = selectedIndexPath
+                vc.selectDateInString = selectDateInString
+            }
         }
         
     }
@@ -387,7 +394,8 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        performSegue(withIdentifier: "addEvent", sender: self)
+        selectedIndexPath = indexPath.row
+        performSegue(withIdentifier: "showShiftDetail", sender: self)
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
