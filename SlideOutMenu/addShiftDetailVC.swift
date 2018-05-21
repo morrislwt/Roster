@@ -30,6 +30,9 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         get {
             return selectedShiftMinutes - breakHour * 60 - breakMin
         }
+        set {
+            
+        }
     }
     
     
@@ -138,7 +141,17 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         if  selectedStaff != "" && selectedWorkPlace != "" && selectedPosition != "" && selectedShiftName != "" && selectedStartTime != "" && selectedEndTime != "" {
             let alert = UIAlertController(title: "Save Success", message: "", preferredStyle: .actionSheet)
             let action = UIAlertAction(title: "OK", style: .default) { (action) in
-
+                self.selectedStaff = ""
+                self.selectedWorkPlace = ""
+                self.selectedPosition = ""
+                self.selectedShiftName = ""
+                self.breakMin = 0
+                self.breakHour = 0
+                self.selectedDuty = ""
+                self.selectedStartTime = ""
+                self.selectedEndTime = ""
+                self.totalWorkMinutes = 0
+                self.addShiftCollectionView.reloadData()
                 
             }
             alert.addAction(action)

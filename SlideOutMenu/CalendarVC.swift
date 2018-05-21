@@ -49,6 +49,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
             if let vc = segue.destination as? ShowShiftDetailVC {
                 vc.selectIndexFromCal = selectedIndexPath
                 vc.selectDateInString = selectDateInString
+                vc.currentDate = currentDate
             }
         }
         
@@ -371,7 +372,7 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         guard let staff = selectStaff?[indexPath.row] else{ return cell }
         
         if currentDate == staff.shiftDate! {
-            cell.textLabel?.text = "\(staff.staff), \(staff.position)"
+            cell.textLabel?.text = "\(staff.staff)"
             cell.detailTextLabel?.text = "\(staff.shiftStart) - \(staff.shiftEnd) @ \(staff.workPlace)"
         }else{
             cell.textLabel?.text = "No shift available today"

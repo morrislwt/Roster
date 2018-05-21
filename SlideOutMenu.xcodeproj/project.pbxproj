@@ -31,6 +31,9 @@
 		A579D89620A541E500FB5027 /* ShiftVC_second.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579D89520A541E500FB5027 /* ShiftVC_second.swift */; };
 		A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */; };
 		A5CD610120B28F8200112945 /* ShowShiftDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD610020B28F8200112945 /* ShowShiftDetailVC.swift */; };
+		A5CD610320B2C0A800112945 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD610220B2C0A800112945 /* TodoListViewController.swift */; };
+		A5CD610520B2C13000112945 /* TodoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD610420B2C13000112945 /* TodoData.swift */; };
+		A5CD610720B2CA8700112945 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD610620B2CA8700112945 /* AddTodoViewController.swift */; };
 		A5E7FA3A20A0484F00307B12 /* AddShiftCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */; };
 		A5EC29112089ED3100506E74 /* EmployeesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29102089ED3100506E74 /* EmployeesVC.swift */; };
 		A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */; };
@@ -70,6 +73,9 @@
 		A579D89520A541E500FB5027 /* ShiftVC_second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC_second.swift; sourceTree = "<group>"; };
 		A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceData.swift; sourceTree = "<group>"; };
 		A5CD610020B28F8200112945 /* ShowShiftDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowShiftDetailVC.swift; sourceTree = "<group>"; };
+		A5CD610220B2C0A800112945 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
+		A5CD610420B2C13000112945 /* TodoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoData.swift; sourceTree = "<group>"; };
+		A5CD610620B2CA8700112945 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShiftCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EC29102089ED3100506E74 /* EmployeesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesVC.swift; sourceTree = "<group>"; };
 		A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceVC.swift; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A51862EE209C466D00B8FF29 /* ShiftModel.swift */,
+				A5CD610420B2C13000112945 /* TodoData.swift */,
 				A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */,
 				A509DC972095C27500AA3B4D /* PositionData.swift */,
 				A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */,
@@ -175,6 +182,8 @@
 			children = (
 				A51C2AEB20A43C4D00F638D2 /* DefaultData */,
 				A531B7572089E0FF00AE5670 /* MyShiftViewController.swift */,
+				A5CD610220B2C0A800112945 /* TodoListViewController.swift */,
+				A5CD610620B2CA8700112945 /* AddTodoViewController.swift */,
 				A51862F2209C483300B8FF29 /* CalendarVC.swift */,
 				A5CD610020B28F8200112945 /* ShowShiftDetailVC.swift */,
 				A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */,
@@ -348,11 +357,13 @@
 			files = (
 				A5EC29112089ED3100506E74 /* EmployeesVC.swift in Sources */,
 				A509DC9C2096C05500AA3B4D /* SettingVC.swift in Sources */,
+				A5CD610320B2C0A800112945 /* TodoListViewController.swift in Sources */,
 				A51862F3209C483300B8FF29 /* CalendarVC.swift in Sources */,
 				A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */,
 				A51862F7209ECD9500B8FF29 /* shiftTemplateData.swift in Sources */,
 				A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */,
 				A51862F9209F44F400B8FF29 /* addShiftDetailVC.swift in Sources */,
+				A5CD610720B2CA8700112945 /* AddTodoViewController.swift in Sources */,
 				A5CD610120B28F8200112945 /* ShowShiftDetailVC.swift in Sources */,
 				A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */,
 				A509DC982095C27500AA3B4D /* PositionData.swift in Sources */,
@@ -365,6 +376,7 @@
 				A50290F420A8642700E95F63 /* NotificationNameExtension.swift in Sources */,
 				A51862F5209ECD7300B8FF29 /* ShiftVC.swift in Sources */,
 				A5E7FA3A20A0484F00307B12 /* AddShiftCollectionViewCell.swift in Sources */,
+				A5CD610520B2C13000112945 /* TodoData.swift in Sources */,
 				A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */,
 				A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */,
 				A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */,

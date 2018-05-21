@@ -17,7 +17,7 @@ class BackTableVC:UITableViewController{
     }
     override func viewDidLoad() {
         sideMenuOptions = ["Home",
-                           "Work Spaces",
+                           "Work Place",
                            "Employees",
                            "Positions",
                            "Shift Template",

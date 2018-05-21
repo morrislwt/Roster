@@ -19,15 +19,16 @@ class ShowShiftDetailVC:UIViewController{
     let addShiftOptions = ["Date","Staff","Work Place","Position","Shift Name","Shift Start","Shift End","Break Time","Total time","Duty"]
     
     var shiftData:Results<ShiftDataToCalender>?
+    var currentDate:Date = Date()
     
-    func loadData(){
-        shiftData = realm.objects(ShiftDataToCalender.self)
+    func loadData(date:Date){
+        shiftData = realm.objects(ShiftDataToCalender.self).filter("shiftDate = %@", date)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        loadData(date: currentDate)
         title = "Shift Detail"
         shiftDetailTableView.tableFooterView = UIView()
         
