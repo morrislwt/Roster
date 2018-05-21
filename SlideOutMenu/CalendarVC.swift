@@ -365,13 +365,22 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         //        }).count
         return selectStaff?.count ?? 1
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//
+//
+//        return selectDateInString
+//    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let title: UILabel = UILabel()
+        title.text = selectDateInString
+        title.backgroundColor = .clear
+        title.textAlignment = .center
+        title.textColor = UIColor(red: 0/255, green: 100/255, blue: 159/255, alpha: 1)
+        title.font = UIFont.boldSystemFont(ofSize: 18)
         
-        
-        
-        return selectDateInString
+        return title
     }
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80/667 * view.frame.height
     }
@@ -476,11 +485,8 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         options.expansionStyle = .destructive
         options.expansionDelegate = ScaleAndAlphaExpansion.default
         
-        
         return options
     }
-    
-    
     
 }
 extension CalendarVC{

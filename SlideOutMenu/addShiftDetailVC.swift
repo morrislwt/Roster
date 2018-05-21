@@ -22,9 +22,17 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     var selectedShiftName:String = ""
     var selectedStartTime:String = ""
     var selectedEndTime:String = ""
+    var selectedShiftMinutes:Int = 0
     var selectedDuty:String = ""
     var breakHour:Int = 0
     var breakMin:Int = 0
+    var totalWorkMinutes:Int{
+        get {
+            return selectedShiftMinutes - breakHour * 60 - breakMin
+        }
+    }
+    
+    
     
     var staffArray:Results<EmployeeData>?
     var workPlaceArray:Results<WorkSpaceData>?
@@ -48,7 +56,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     var selectDateFromCalendar:String?
     var selectDateInDateType:Date?
     
-    let addShiftOptions = ["Date","Staff","Work Place","Position","Shift Name","Shift Start","Shift End","Break Time","Total time","Duty"]
+    let addShiftOptions = ["Date","Staff","Work Place","Position","Shift Name","Shift Start","Shift End","Break Time (optional)","Total time","Duty (optional)"]
     
     
     @IBOutlet var selectView: UIView!
@@ -105,6 +113,8 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
             newShiftToCal.shiftName = selectedShiftName
             newShiftToCal.shiftStart = selectedStartTime
             newShiftToCal.shiftEnd = selectedEndTime
+            newShiftToCal.breakMinutes = (breakHour * 60) + breakMin
+            newShiftToCal.totalWorkMinutes = totalWorkMinutes
             newShiftToCal.duty = selectedDuty
 
         do{
@@ -150,7 +160,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         super.viewWillAppear(animated)
         view.addSubview(selectView)
 
-        let selectViewHeight = view.frame.height / 3
+        let selectViewHeight = view.frame.height / 4
         selectView.translatesAutoresizingMaskIntoConstraints = false
         selectView.heightAnchor.constraint(equalToConstant: selectViewHeight).isActive = true
         selectView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
@@ -212,21 +222,8 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         return nil
 //        return [staffArray, workPlaceArray, positionArray, shiftTemplateArray]
 //        guard let pickStaff = staffArray?[row].employeeName else { return "No staff available now"}
-//        guard let pickWorkplace = workPlaceArray?[row].placename else { return "No workplace available now"}
-//        guard let pickPosition = positionArray?[row].positionName else { return "No position available now"}
-//        guard let pickShift = shiftTemplateArray?[row].shiftTemplateName else { return "No shift available now"}
-//        if selectedIndex == 1 {
-////            return pickStaff
-//        }else if selectedIndex == 2 {
-////            return pickWorkplace
-//        }else if selectedIndex == 3 {
-////            return pickPosition
-//        }else if selectedIndex == 4 {
-//            return pickShift
-//        }else{
-//            return "No data available now"
-//        }
-//return "test"
+
+
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
@@ -235,6 +232,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
 //
 //        }
         if component == 0 {
+
             if selectedIndex == 1 {
                 selectedStaff = (staffArray?[row].employeeName)!
             }else if selectedIndex == 2 {
@@ -245,6 +243,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
                 selectedShiftName = (shiftTemplateArray?[row].shiftTemplateName)!
                 selectedStartTime = (shiftTemplateArray?[row].shiftTimeStart)!
                 selectedEndTime = (shiftTemplateArray?[row].shiftTimeEnd)!
+                selectedShiftMinutes = (shiftTemplateArray?[row].TotalMinutes)!
             }else if selectedIndex == 7 {
                 breakHour = row
                 
@@ -256,6 +255,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
                 
             }
         }
+        
         addShiftCollectionView.reloadData()
         
     }
@@ -276,50 +276,48 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
         cell.layer.borderWidth = 0.2
         cell.infoLabel.isHidden = true
         cell.addButtonOutlet.isHidden = true
+        
+        switch indexPath.item {
+        case 1...4,7,9:
+            cell.infoLabel.isHidden = false
+            cell.addButtonOutlet.isHidden = false
+        case 5...6,8:
+            cell.infoLabel.isHidden = false
+            cell.addButtonOutlet.isHidden = true
+        default:
+            break
+        }
         if indexPath.item == 0 {
             cell.infoLabel.isHidden = false
             cell.infoLabel.text = selectDateFromCalendar
         }
         
         if indexPath.item == 1 {
-            cell.infoLabel.isHidden = false
             cell.infoLabel.text = selectedStaff
-            cell.addButtonOutlet.isHidden = false
+            
         }
         if indexPath.item == 2 {
-            cell.addButtonOutlet.isHidden = false
-            cell.infoLabel.isHidden = false
             cell.infoLabel.text = selectedWorkPlace
         }
         if indexPath.item == 3 {
-            cell.addButtonOutlet.isHidden = false
-            cell.infoLabel.isHidden = false
             cell.infoLabel.text = selectedPosition
         }
         if indexPath.item == 4 {
-            cell.addButtonOutlet.isHidden = false
-            cell.infoLabel.isHidden = false
             cell.infoLabel.text = selectedShiftName
         }
         if indexPath.item == 5 {
-            cell.addButtonOutlet.isHidden = true
-            cell.infoLabel.isHidden = false
             cell.infoLabel.text = selectedStartTime
-
         }
         if indexPath.item == 6 {
-            cell.addButtonOutlet.isHidden = true
-            cell.infoLabel.isHidden = false
             cell.infoLabel.text = selectedEndTime
         }
         if indexPath.item == 7 {
-            cell.addButtonOutlet.isHidden = false
-            cell.infoLabel.isHidden = false
             cell.infoLabel.text = "\(breakHour) Hour \(breakMin) mins."
         }
+        if indexPath.item == 8 {
+            cell.infoLabel.text = "\(totalWorkMinutes / 60) Hours \(totalWorkMinutes % 60) Minutes"
+        }
         if indexPath.item == 9 {
-            cell.addButtonOutlet.isHidden = false
-            cell.infoLabel.isHidden = false
             cell.infoLabel.text = selectedDuty
         }
         

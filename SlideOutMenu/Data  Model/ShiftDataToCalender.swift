@@ -17,8 +17,8 @@ class ShiftDataToCalender:Object {
     @objc dynamic var shiftName: String = ""
     @objc dynamic var shiftStart: String = ""
     @objc dynamic var shiftEnd: String = ""
-    @objc dynamic var breakTime: String = ""
-    @objc dynamic var totalTime: String = ""
+    @objc dynamic var breakMinutes:Int = 0
+    @objc dynamic var totalWorkMinutes:Int = 0
     @objc dynamic var duty: String = ""
     
 }

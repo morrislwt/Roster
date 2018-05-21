@@ -9,8 +9,6 @@
 import Foundation
 import RealmSwift
 
-
-
 class ShiftVC_second:UIViewController,UITextFieldDelegate{
     var infoFromEdit:String?
     
@@ -19,6 +17,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     var textFieldSenderIndex:Int = 0
     var timeStart:Date?
     var timeEnd:Date?
+    var totalMinutes:String = ""
     
     @IBOutlet var additionalView: UIView!
     
@@ -33,7 +32,6 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
             timeEnd = datePicker.date
             shiftEndTextfield.text = formatter.string(from: datePicker.date)
         }
-        
         displayPickerView(false)
     }
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -75,8 +73,8 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
         shiftEndTextfield.resignFirstResponder()
         textFieldSenderIndex = sender.tag
         
-    
-//        shiftTimeValueChange(sender: datePicker,textField: shiftEndTextfield)
+        
+        //        shiftTimeValueChange(sender: datePicker,textField: shiftEndTextfield)
         displayPickerView(true)
     }
     
@@ -86,8 +84,22 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
             newShiftTemplate.shiftTemplateName = shiftNameTextfield.text!
             newShiftTemplate.shiftTimeStart = shiftStartTextfield.text!
             newShiftTemplate.shiftTimeEnd = shiftEndTextfield.text!
+            
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            let calendar = Calendar.current
+            let unit:Set<Calendar.Component> = [.hour,.minute]
+            //        let startTime = dateFormatter.date(from: selectedStartTime)
+            //        let endTime = dateFormatter.date(from: selectedEndTime)
+            let commponent:DateComponents = calendar.dateComponents(unit, from: timeEnd!, to: timeStart!)
+            newShiftTemplate.TotalMinutes = abs(commponent.hour!*60) + abs(commponent.minute!)
+            
             self.saveData(to: newShiftTemplate)
             goBack == true ? performSegue(withIdentifier: "goBack", sender: self) : nil
+            
+            
+
             
         }else{
             let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
@@ -113,7 +125,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
         shiftNameTextfield.resignFirstResponder()
         return true
     }
-
+    
     
     
     override func viewDidLoad() {
@@ -137,7 +149,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
         view.addSubview(additionalView)
         let additionalViewHeight = view.frame.height / 3
         additionalView.translatesAutoresizingMaskIntoConstraints = false
-         additionalView.heightAnchor.constraint(equalToConstant: additionalViewHeight).isActive = true
+        additionalView.heightAnchor.constraint(equalToConstant: additionalViewHeight).isActive = true
         additionalView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         additionalView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         let bottomContraints = additionalView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: additionalViewHeight)
@@ -173,6 +185,6 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
+    
 }
 

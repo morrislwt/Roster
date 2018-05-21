@@ -26,6 +26,7 @@ class ShiftVC:UIViewController,UITableViewDataSource,UITableViewDelegate{
 
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         loadData()
+        
         shiftTemplateTableView.tableFooterView = UIView()
         
     }

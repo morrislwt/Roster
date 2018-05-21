@@ -14,4 +14,7 @@ class shiftTemplateData : Object{
     @objc dynamic var shiftTemplateName: String = ""
     @objc dynamic var shiftTimeStart: String = ""
     @objc dynamic var shiftTimeEnd: String = ""
+    @objc dynamic var TotalMinutes: Int = 0
+    
 }
+
