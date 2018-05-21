@@ -15,8 +15,11 @@ import SwipeCellKit
 class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
 
     
+    
     var selectedIndexFromPopOver = 2
     var selectedIndexPath:Int?
+    
+
     @IBAction func backToCalSegue(_ segue:UIStoryboardSegue){
         
     }
@@ -168,9 +171,13 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
                 var shiftStartTextfield = UITextField()
                 var shiftEndTextfield = UITextField()
                 var dutyTextfield = UITextField()
+
+                
+                
                 
                 let alert = UIAlertController(title: "Quick Add Shift", message: "Add Shift on \(dateToString)", preferredStyle: .alert)
                 let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) in
+                    
                     if nameTextfield.text != "" && workPlaceTextfield.text != "" && positionTextfield.text != "" && shiftStartTextfield.text != "" && shiftEndTextfield.text != ""{
                         let newShiftModel = ShiftDataToCalender()
                         
@@ -181,6 +188,14 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
                         newShiftModel.shiftStart = shiftStartTextfield.text!
                         newShiftModel.shiftEnd = shiftEndTextfield.text!
                         newShiftModel.duty = dutyTextfield.text!
+                        let timeFormatter = DateFormatter()
+                        timeFormatter.dateFormat = "HH:mm"
+                        let calendar = Calendar.current
+                        let unit:Set<Calendar.Component> = [.hour,.minute]
+                        let startTime = timeFormatter.date(from: shiftStartTextfield.text!)
+                        let endTime = timeFormatter.date(from: shiftEndTextfield.text!)
+                        let commponent:DateComponents = calendar.dateComponents(unit, from: endTime!, to: startTime!)
+                        newShiftModel.totalWorkMinutes = abs(commponent.hour!*60) + abs(commponent.minute!)
                         
                         self.saveShift(object: newShiftModel)
                         

@@ -64,7 +64,7 @@ extension ShowShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
             case 3:
                 cell.detailTextLabel?.text = "\(list?.position ?? "No Data")"
             case 4:
-                cell.detailTextLabel?.text = "\(list?.shiftName ?? "No Data")"
+                cell.detailTextLabel?.text = "\(list?.shiftName == "" ? "None" : list?.shiftName ?? "No Data")"
             case 5:
                 cell.detailTextLabel?.text = "\(list?.shiftStart ?? "No Data")"
             case 6:
@@ -80,10 +80,9 @@ extension ShowShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
             }
             
         }
-        
-//        if let index = selectIndexFromCal {
-//            cell.detailTextLabel?.text = "\(shiftData?[index].shiftDate)"
-//        }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
