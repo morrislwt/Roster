@@ -211,6 +211,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cv4-zA-jxo">
                                 <rect key="frame" x="0.0" y="116" width="414" height="571"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="vnQ-Ay-Ixr">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -244,7 +245,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="agendaTableView" destination="Cv4-zA-jxo" id="CWg-jy-0o3"/>
+                        <outlet property="agendaTableView" destination="Cv4-zA-jxo" id="ih5-V4-voQ"/>
                         <segue destination="xOM-Er-k2C" kind="show" identifier="addTodo" id="t3G-q8-8cc"/>
                     </connections>
                 </viewController>
@@ -354,7 +355,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOy-yL-Rhp">
                                 <rect key="frame" x="240.66666666666663" y="346" width="100" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.3921568627" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="mBQ-yR-vup"/>
                                     <constraint firstAttribute="height" constant="44" id="z8X-OX-8gO"/>
@@ -366,7 +367,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nom-6u-tmw">
                                 <rect key="frame" x="74.333333333333329" y="346" width="99.999999999999986" height="44"/>
-                                <color key="backgroundColor" red="0.0" green="0.3921568627" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Cv1-xj-rSg"/>
                                     <constraint firstAttribute="width" constant="100" id="hYb-wb-SVb"/>
@@ -393,7 +394,7 @@
                     <navigationItem key="navigationItem" title="Add" id="yLG-Gw-U5u"/>
                     <connections>
                         <outlet property="addOutlet" destination="Nom-6u-tmw" id="kBt-aa-Hlt"/>
-                        <outlet property="continueOutlet" destination="LOy-yL-Rhp" id="XCf-f0-PIm"/>
+                        <outlet property="continueOutlet" destination="LOy-yL-Rhp" id="UOU-D3-FRm"/>
                         <outlet property="subtitleTextfield" destination="RIX-PG-EDW" id="lHF-nV-Dly"/>
                         <outlet property="titleTextfield" destination="rkn-U7-J0k" id="U4I-dn-8Kd"/>
                         <segue destination="CPr-Xi-vfH" kind="unwind" identifier="backToAgenda" unwindAction="backToAgenda:" id="r5o-nz-r5s"/>
@@ -1295,7 +1296,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="HDP-nr-SdD">
                         <rect key="frame" x="0.0" y="20" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0078431372550000003" green="0.46666666670000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.3411764706" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
@@ -1323,5 +1324,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="T7q-fh-eot"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.86213032857648375" green="0.85796544776210459" blue="0.86629520939086291" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+    <color key="tintColor" red="0.95686274510000002" green="0.81960784310000001" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

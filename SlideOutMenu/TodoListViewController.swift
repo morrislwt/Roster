@@ -29,6 +29,7 @@ class TodoListViewController:UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        agendaTableView.tableFooterView = UIView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,6 +44,7 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        
         if let item = todoArray?[indexPath.row]{
             cell.textLabel?.text = item.title
             cell.detailTextLabel?.text = item.subtitle
@@ -64,6 +66,10 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
         }
         tableView.reloadData()
         
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = view.frame.height
+        return height * 80 / height
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
@@ -94,7 +100,7 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
             var editSubtitle = UITextField()
             
             
-            let alert = UIAlertController(title: "Edit", message: "Change the name of this Place", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.text = agendaForEdit.title
                 editTitle = textField
