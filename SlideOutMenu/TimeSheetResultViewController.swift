@@ -19,9 +19,15 @@ class TimeSheetResultViewController:UIViewController{
     var person:String = ""
     var number = 0
     var filterPerson:Results<ShiftDataToCalender>?
+    
     func loadFilterStaff(name:String){
-        filterPerson = realm.objects(ShiftDataToCalender.self).filter("staff = %@", name)
+        
+//        filterPerson = realm.objects(ShiftDataToCalender.self).filter("staff = %@", name).filter("shiftDate BETWEEN {%@, %@}", dateFrom, dateTo)
+        filterPerson = realm.objects(ShiftDataToCalender.self).filter("staff = %@", name).filter("shiftDate >= %@ && shiftDate <= %@",dateFrom,dateTo).sorted(byKeyPath: "shiftDate", ascending: true)
+        
+        print(dateFrom,filterPerson?[0].shiftDate,dateTo)
         number = filterPerson?.count ?? 0
+        
     }
     
     override func viewDidLoad() {
