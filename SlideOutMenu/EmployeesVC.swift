@@ -88,6 +88,7 @@ class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
             let alert = UIAlertController(title: "Edit", message: "Change the name of this Employee", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.text = employeeForEdit
+                textField.autocapitalizationType = .words
                 editText = textField
             }
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -124,6 +125,7 @@ class EmployeesVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addTextField { (addNewTextField) in
             addNewTextField.placeholder = "a employee name"
+            addNewTextField.autocapitalizationType = .words
             textField = addNewTextField
         }
         let action = UIAlertAction(title: "Add", style: .default) { action in
