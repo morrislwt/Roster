@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class ShowShiftDetailVC:UIViewController{
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var shiftDetailTableView: UITableView!
     
@@ -33,7 +34,8 @@ class ShowShiftDetailVC:UIViewController{
         shiftDetailTableView.tableFooterView = UIView()
         shiftDetailTableView.layer.cornerRadius = 30
         shiftDetailTableView.separatorStyle = .none
-        shiftDetailTableView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 241/255, alpha: 1)
+        shiftDetailTableView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 241/255, alpha: 0.5)
+        backButton.layer.cornerRadius = 22
     }
 }
 
