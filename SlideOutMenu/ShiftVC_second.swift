@@ -21,6 +21,9 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     
     @IBOutlet var additionalView: UIView!
     
+    @IBAction func backButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "goBack", sender: self)
+    }
     @IBAction func doneBtnPressed(_ sender: UIButton) {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
@@ -38,13 +41,8 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     @IBOutlet weak var continueBtnOutlet: UIButton!
     @IBOutlet weak var saveBtnOutlet: UIButton!
     @IBOutlet weak var shiftNameTextfield: UITextField!
-    
     @IBOutlet weak var shiftStartTextfield: UITextField!
-    
     @IBOutlet weak var shiftEndTextfield: UITextField!
-    
-    @IBOutlet weak var backgroundFrame: UIView!
-    
     @IBAction func saveButton(_ sender: UIButton) {
         saveShiftDetail(true)
     }
@@ -131,15 +129,16 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundFrame.layer.cornerRadius = 15
-        saveBtnOutlet.layer.cornerRadius = 10
-        saveBtnOutlet.layer.borderColor = UIColor.black.cgColor
-        saveBtnOutlet.layer.borderWidth = 0.2
+//        saveBtnOutlet.layer.cornerRadius = 22
+//        saveBtnOutlet.layer.borderColor = UIColor.black.cgColor
+//        saveBtnOutlet.layer.borderWidth = 0.2
         continueBtnOutlet.layer.cornerRadius = 10
         continueBtnOutlet.layer.borderColor = UIColor.black.cgColor
         continueBtnOutlet.layer.borderWidth = 0.2
         self.shiftStartTextfield.tag = 0
         self.shiftEndTextfield.tag = 1
+        self.datePicker.setValue(UIColor.white, forKey: "textColor")
+        
         
         self.hideKeyboardWhenTappedAround()
     }
