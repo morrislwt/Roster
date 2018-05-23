@@ -48,6 +48,7 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
         if let item = todoArray?[indexPath.row]{
             cell.textLabel?.text = item.title
             cell.detailTextLabel?.text = item.subtitle
+            cell.tintColor = .gray
             cell.accessoryType = item.isChecked ? .checkmark : .none
         }
 

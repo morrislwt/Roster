@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-class AddTodoViewController:UIViewController {
+class AddTodoViewController:UIViewController,UITextFieldDelegate {
     let realm = try! Realm()
     
     @IBOutlet weak var continueOutlet: UIButton!
@@ -18,10 +18,11 @@ class AddTodoViewController:UIViewController {
     
     @IBOutlet weak var subtitleTextfield: UITextField!
     
-    @IBAction func addButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "backToAgenda", sender: self)
+    @IBAction func saveButton(_ sender: UIBarButtonItem) {
         addAgenda()
+        performSegue(withIdentifier: "backToAgenda", sender: self)
     }
+    
     @IBAction func continueAdd(_ sender: UIButton) {
         addAgenda()
         titleTextfield.text = ""
@@ -30,23 +31,46 @@ class AddTodoViewController:UIViewController {
     func addAgenda(){
         let date = Date()
         let newAgenda = TodoData()
-        newAgenda.title = titleTextfield.text!
-        newAgenda.subtitle = subtitleTextfield.text!
-        newAgenda.isChecked = false
-        newAgenda.createDate = date
-        do{
-            try realm.write {
-                realm.add(newAgenda)
+        if titleTextfield.text != "" {
+            newAgenda.title = titleTextfield.text!
+            newAgenda.subtitle = subtitleTextfield.text!
+            newAgenda.isChecked = false
+            newAgenda.createDate = date
+            do{
+                try realm.write {
+                    realm.add(newAgenda)
+                }
+            }catch{
+                print("Error saving agenda \(error)")
             }
-        }catch{
-            print("Error saving agenda \(error)")
+        }else{
+            let alert = UIAlertController(title: "Please add something in title", message: "", preferredStyle: .actionSheet)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert,animated: true, completion: nil)
         }
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        addOutlet.layer.cornerRadius = 10
         continueOutlet.layer.cornerRadius = 10
-        
+        titleTextfield.becomeFirstResponder()
+        self.hideKeyboardWhenTappedAround()
+        titleTextfield.delegate = self
+        subtitleTextfield.delegate = self
+    }
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        titleTextfield.resignFirstResponder()
+        subtitleTextfield.resignFirstResponder()
+        return true
     }
 }

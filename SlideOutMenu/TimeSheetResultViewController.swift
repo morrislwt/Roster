@@ -57,6 +57,7 @@ extension TimeSheetResultViewController:UITableViewDataSource,UITabBarDelegate{
             }
         }else{
             cell.backgroundColor = .clear
+            cell.textLabel?.textColor = .lightGray
             cell.textLabel?.text = "Oops! Seems no data for this range 😎"
         }
         
@@ -73,12 +74,10 @@ extension TimeSheetResultViewController:UITableViewDataSource,UITabBarDelegate{
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         var sumOfHours:Int = 0
         let numberOfData:Int = filterPerson?.count ?? 0
-        if numberOfData > 0 {
+        guard numberOfData > 0 else {return ""}
             for i in 0...(numberOfData - 1){
-                sumOfHours += (filterPerson?[i].totalWorkMinutes)!
-            }
-        }else{
-            return ""
+                guard let totalTime = filterPerson?[i].totalWorkMinutes else { return ""}
+                sumOfHours += totalTime
         }
         return "Total Work : \((sumOfHours) / 60) Hours, \((sumOfHours % 60 )) Mins."
     }

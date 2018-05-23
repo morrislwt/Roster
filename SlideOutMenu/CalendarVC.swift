@@ -126,7 +126,6 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        print(Realm.Configuration.defaultConfiguration.fileURL)
         let width = view.frame.width
         let height = view.frame.height
         currentCalendar = Calendar.init(identifier: .gregorian)
@@ -135,8 +134,10 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         
         self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 44, width: width, height: 15))
         self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 59, width: width, height: 50))
-        tableView = UITableView(frame: CGRect(x: 0, y: 120, width: width, height: height * 0.7 ))
-        
+//        tableView = UITableView(frame: CGRect(x: 0, y: 120, width: width, height: height * 0.7 ))
+        let frame = CGRect(x: 0, y: 120, width: width, height: height * 0.7 )
+        tableView = UITableView.init(frame: frame, style: .grouped)
+        tableView.layer.cornerRadius = 30
         //星期菜单栏代理
         self.menuView.menuViewDelegate = self
         
@@ -144,11 +145,10 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         self.calendarView.calendarDelegate = self
         self.view.addSubview(menuView)
         self.view.addSubview(calendarView)
-        
         self.view.addSubview(tableView)
-        
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        
         tableView.tableFooterView = UIView()
         tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
         loadShift(selectDate: currentDate)
@@ -368,15 +368,23 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         ////not reUse cell
         
         cell.delegate = self
-        
+        if selectStaff?.count == 0 {
+            tableView.separatorStyle = .none
+            cell.textLabel?.text = "No shift available today"
+            cell.textLabel?.textColor = .lightGray
+            cell.backgroundColor = .clear
+        }
+        if (selectStaff?.count)! > 0 {
         guard let staff = selectStaff?[indexPath.row] else{ return cell }
         
         if currentDate == staff.shiftDate! {
             cell.textLabel?.text = "\(staff.staff)"
+            cell.backgroundColor = .clear
             cell.detailTextLabel?.text = "\(staff.shiftStart) - \(staff.shiftEnd) @ \(staff.workPlace)"
-        }else{
-            cell.textLabel?.text = "No shift available today"
+            }
         }
+
+        
         
         return cell
     }
@@ -386,23 +394,25 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         //
         //            return shift.date == self.currentDate
         //        }).count
+        if selectStaff?.count == 0 {
+            return 1
+        }
         return selectStaff?.count ?? 1
     }
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//
-//        return selectDateInString
-//    }
+
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let title: UILabel = UILabel()
-        title.text = selectDateInString
-        title.backgroundColor = .clear
-        title.textAlignment = .center
-        title.textColor = UIColor(red: 0/255, green: 100/255, blue: 159/255, alpha: 1)
-        title.font = UIFont.boldSystemFont(ofSize: 18)
-        
-        return title
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let title: UILabel = UILabel()
+//        title.text = selectDateInString
+//        title.backgroundColor = .clear
+//        title.textAlignment = .center
+//        title.textColor = UIColor(red: 0/255, green: 100/255, blue: 159/255, alpha: 1)
+//        title.font = UIFont.boldSystemFont(ofSize: 18)
+//
+//        return title
+//    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return selectDateInString
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80/667 * view.frame.height
@@ -411,6 +421,8 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         selectedIndexPath = indexPath.row
+        guard let numbersOfStaff = selectStaff?.count else { return }
+        guard numbersOfStaff > 0 else { return }
         performSegue(withIdentifier: "showShiftDetail", sender: self)
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {

@@ -31,14 +31,16 @@ class ShowShiftDetailVC:UIViewController{
         loadData(date: currentDate)
         title = "Shift Detail"
         shiftDetailTableView.tableFooterView = UIView()
-        
+        shiftDetailTableView.layer.cornerRadius = 30
+        shiftDetailTableView.separatorStyle = .none
+        shiftDetailTableView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 241/255, alpha: 1)
     }
 }
 
 extension ShowShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = view.frame.height
-        return height * 80 / height
+        return 50
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,24 +60,34 @@ extension ShowShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
                 
             case 0:
                 cell.detailTextLabel?.text = selectDateInString
+                cell.backgroundColor = .clear
             case 1:
                 cell.detailTextLabel?.text = "\(list?.staff ?? "No Data")"
+                cell.backgroundColor = .clear
             case 2:
                 cell.detailTextLabel?.text = "\(list?.workPlace ?? "No Data")"
+                cell.backgroundColor = .clear
             case 3:
                 cell.detailTextLabel?.text = "\(list?.position ?? "No Data")"
+                cell.backgroundColor = .clear
             case 4:
                 cell.detailTextLabel?.text = "\(list?.shiftName == "" ? "None" : list?.shiftName ?? "No Data")"
+                cell.backgroundColor = .clear
             case 5:
                 cell.detailTextLabel?.text = "\(list?.shiftStart ?? "No Data")"
+                cell.backgroundColor = .clear
             case 6:
                 cell.detailTextLabel?.text = "\(list?.shiftEnd ?? "No Data")"
+                cell.backgroundColor = .clear
             case 7:
                 cell.detailTextLabel?.text = "\(hour) Hours, \(min) Mins."
+                cell.backgroundColor = .clear
             case 8:
                 cell.detailTextLabel?.text = "\((list?.totalWorkMinutes)! / 60) Hours, \((list?.totalWorkMinutes)! % 60) Mins."
+                cell.backgroundColor = .clear
             case 9:
                 cell.detailTextLabel?.text = "\(list?.duty == "" ? "None" : list?.duty ?? "No Data")"
+                cell.backgroundColor = .clear
             default:
                 break
             }
