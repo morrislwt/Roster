@@ -16,54 +16,70 @@ class TimeSheetResultViewController:UIViewController{
     
     var dateFrom:Date = Date()
     var dateTo:Date = Date()
-    var person:String = ""
-    var number = 0
+    var choosePerson:String = ""
     var filterPerson:Results<ShiftDataToCalender>?
     
     func loadFilterStaff(name:String){
         
-//        filterPerson = realm.objects(ShiftDataToCalender.self).filter("staff = %@", name).filter("shiftDate BETWEEN {%@, %@}", dateFrom, dateTo)
         filterPerson = realm.objects(ShiftDataToCalender.self).filter("staff = %@", name).filter("shiftDate >= %@ && shiftDate <= %@",dateFrom,dateTo).sorted(byKeyPath: "shiftDate", ascending: true)
-        
-        print(dateFrom,filterPerson?[0].shiftDate,dateTo)
-        number = filterPerson?.count ?? 0
-        
+        print(dateFrom,dateTo)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadFilterStaff(name: person)
+        loadFilterStaff(name: choosePerson)
+        if filterPerson?.count == 0 {
+            resultTableView.separatorStyle = .none
+        }
     }
 }
 
 
 extension TimeSheetResultViewController:UITableViewDataSource,UITabBarDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if filterPerson?.count == 0 {
+            return 1
+        }
         return filterPerson?.count ?? 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        if let personInfo = filterPerson?[indexPath.row]{
-            cell.textLabel?.text = "\((personInfo.totalWorkMinutes / 60)) Hours, \((personInfo.totalWorkMinutes) % 60) Minutes"
-            if let date = personInfo.shiftDate{
-                let formatter = DateFormatter()
-                formatter.dateStyle = .medium
-                let shortDate = formatter.string(from: date)
-                cell.detailTextLabel?.text = shortDate
+        if (filterPerson?.count)! > 0 {
+            if let personInfo = filterPerson?[indexPath.row]{
+                cell.textLabel?.text = "\((personInfo.totalWorkMinutes / 60)) Hours, \((personInfo.totalWorkMinutes) % 60) Minutes"
+                if let date = personInfo.shiftDate{
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "dd MMM YYYY"
+                    let shortDate = formatter.string(from: date)
+                    cell.detailTextLabel?.text = shortDate
+                }
+                
             }
-            
+        }else{
+            cell.backgroundColor = .clear
+            cell.textLabel?.text = "Oops! Seems no data for this range 😎"
         }
         
         return cell
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM YYYY"
+        let from = formatter.string(from: dateFrom)
+        let to = formatter.string(from: dateTo)
+        
+        return "\(from) - \(to)"
+    }
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         var sumOfHours:Int = 0
-        for i in 0...(number - 1){
-            if number >= 0 {
+        let numberOfData:Int = filterPerson?.count ?? 0
+        if numberOfData > 0 {
+            for i in 0...(numberOfData - 1){
                 sumOfHours += (filterPerson?[i].totalWorkMinutes)!
             }
+        }else{
+            return ""
         }
-
         return "Total Work : \((sumOfHours) / 60) Hours, \((sumOfHours % 60 )) Mins."
     }
 }

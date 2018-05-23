@@ -53,7 +53,7 @@ class TimeSheetViewController: UIViewController {
         if let vc = segue.destination as? TimeSheetResultViewController {
             vc.dateFrom = dateFrom
             vc.dateTo = dateTo
-            vc.person = chooseStaff
+            vc.choosePerson = chooseStaff
         }
     }
     func loadStaff(){
@@ -64,6 +64,7 @@ class TimeSheetViewController: UIViewController {
         super.viewDidLoad()
         goFilterOutlet.layer.cornerRadius = 22
         loadStaff()
+        
     }
     
     func setupConstraints(popUpView:UIView!,identifier:String){
