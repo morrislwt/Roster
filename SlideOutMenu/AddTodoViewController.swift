@@ -12,16 +12,20 @@ import RealmSwift
 class AddTodoViewController:UIViewController,UITextFieldDelegate {
     let realm = try! Realm()
     
+    @IBAction func backButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "backToAgenda", sender: self)
+    }
     @IBOutlet weak var continueOutlet: UIButton!
     @IBOutlet weak var addOutlet: UIButton!
     @IBOutlet weak var titleTextfield: UITextField!
-    
     @IBOutlet weak var subtitleTextfield: UITextField!
     
-    @IBAction func saveButton(_ sender: UIBarButtonItem) {
+    @IBAction func saveButton(_ sender: UIButton) {
         addAgenda()
+        guard titleTextfield.text != "" else { return }
         performSegue(withIdentifier: "backToAgenda", sender: self)
     }
+    
     
     @IBAction func continueAdd(_ sender: UIButton) {
         addAgenda()
@@ -53,7 +57,8 @@ class AddTodoViewController:UIViewController,UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        continueOutlet.layer.cornerRadius = 10
+        continueOutlet.layer.cornerRadius = 22
+        addOutlet.layer.cornerRadius = 22
         titleTextfield.becomeFirstResponder()
         self.hideKeyboardWhenTappedAround()
         titleTextfield.delegate = self

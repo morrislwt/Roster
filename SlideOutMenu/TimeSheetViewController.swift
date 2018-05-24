@@ -11,6 +11,10 @@ import RealmSwift
 
 class TimeSheetViewController: UIViewController {
     
+    @IBAction func backTimeSheet(_ segue:UIStoryboardSegue){
+        
+    }
+    
     let realm = try! Realm()
     var staff:Results<EmployeeData>?
     
@@ -19,6 +23,8 @@ class TimeSheetViewController: UIViewController {
     var chooseStaff = ""
     
     var buttonPressedIndex = 0
+    
+    @IBOutlet weak var viewOutlet: UIView!
     @IBAction func dateStartBtn(_ sender: UIButton) {
         buttonPressedIndex = sender.tag
         displayPickerView(true,identifier: "date")
@@ -64,6 +70,7 @@ class TimeSheetViewController: UIViewController {
         super.viewDidLoad()
         goFilterOutlet.layer.cornerRadius = 22
         loadStaff()
+        viewOutlet.layer.cornerRadius = 20
         
     }
     

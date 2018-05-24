@@ -16,9 +16,10 @@ class TodoListViewController:UIViewController{
     }
     @IBOutlet weak var agendaTableView: UITableView!
     
-    @IBAction func addBurronPressed(_ sender: UIBarButtonItem) {
+    @IBAction func addBtnPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "addTodo", sender: self)
     }
+
     let realm = try! Realm()
     var todoArray:Results<TodoData>?
     
@@ -30,6 +31,8 @@ class TodoListViewController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         agendaTableView.tableFooterView = UIView()
+        agendaTableView.layer.cornerRadius = 30
+        agendaTableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,6 +53,7 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
             cell.detailTextLabel?.text = item.subtitle
             cell.tintColor = .gray
             cell.accessoryType = item.isChecked ? .checkmark : .none
+            cell.backgroundColor = .clear
         }
 
         return cell

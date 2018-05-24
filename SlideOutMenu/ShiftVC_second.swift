@@ -132,7 +132,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
 //        saveBtnOutlet.layer.cornerRadius = 22
 //        saveBtnOutlet.layer.borderColor = UIColor.black.cgColor
 //        saveBtnOutlet.layer.borderWidth = 0.2
-        continueBtnOutlet.layer.cornerRadius = 10
+        continueBtnOutlet.layer.cornerRadius = 22
         continueBtnOutlet.layer.borderColor = UIColor.black.cgColor
         continueBtnOutlet.layer.borderWidth = 0.2
         self.shiftStartTextfield.tag = 0

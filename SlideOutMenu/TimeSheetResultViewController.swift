@@ -11,6 +11,13 @@ import RealmSwift
 
 
 class TimeSheetResultViewController:UIViewController{
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "backTimeSheet", sender: self)
+        
+    }
+    @IBOutlet weak var backOutlet: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var resultTableView: UITableView!
     let realm = try! Realm()
     
@@ -31,6 +38,10 @@ class TimeSheetResultViewController:UIViewController{
         if filterPerson?.count == 0 {
             resultTableView.separatorStyle = .none
         }
+        resultTableView.layer.cornerRadius = 30
+        resultTableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        backOutlet.layer.cornerRadius = 22
+        nameLabel.text = choosePerson
     }
 }
 
@@ -47,6 +58,7 @@ extension TimeSheetResultViewController:UITableViewDataSource,UITabBarDelegate{
         if (filterPerson?.count)! > 0 {
             if let personInfo = filterPerson?[indexPath.row]{
                 cell.textLabel?.text = "\((personInfo.totalWorkMinutes / 60)) Hours, \((personInfo.totalWorkMinutes) % 60) Minutes"
+                cell.backgroundColor = .clear
                 if let date = personInfo.shiftDate{
                     let formatter = DateFormatter()
                     formatter.dateFormat = "dd MMM YYYY"
