@@ -69,7 +69,7 @@ extension TimeSheetResultViewController:UITableViewDataSource,UITabBarDelegate{
             }
         }else{
             cell.backgroundColor = .clear
-            cell.textLabel?.textColor = .lightGray
+            cell.textLabel?.textColor = .gray
             cell.textLabel?.text = "Oops! Seems no data for this range 😎"
         }
         

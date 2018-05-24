@@ -297,7 +297,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="texture" translatesAutoresizingMaskIntoConstraints="NO" id="411-Oz-i1b">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                             </imageView>
-                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gt-Ps-NIH">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gt-Ps-NIH">
                                 <rect key="frame" x="9.6666666666666572" y="124.99999999999997" width="393.33333333333337" height="412.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -413,7 +413,7 @@
                                     <action selector="personBtn:" destination="NIj-VL-BNE" eventType="touchUpInside" id="8am-WL-G9w"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Sheet " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-38-Zk2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Time Sheet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-38-Zk2">
                                 <rect key="frame" x="20" y="54.333333333333343" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="pCG-F8-8cn"/>
@@ -482,7 +482,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4m-Fz-a4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="ibp-d0-pHh">
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" id="ibp-d0-pHh">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -507,7 +507,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="lPP-pl-JVh" secondAttribute="trailing" id="1On-NF-Vyy"/>
                         <constraint firstItem="lPP-pl-JVh" firstAttribute="top" secondItem="12g-lt-1uR" secondAttribute="top" constant="30" id="4WE-Yv-Eoe"/>
@@ -518,7 +518,7 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="12g-lt-1uR"/>
                 </view>
-                <view contentMode="scaleToFill" id="HH7-pO-Cz8">
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" id="HH7-pO-Cz8">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -545,7 +545,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="XK2-th-l9w" secondAttribute="trailing" id="2Pg-Pa-RC3"/>
                         <constraint firstAttribute="bottom" secondItem="XK2-th-l9w" secondAttribute="bottom" constant="10" id="BDx-6J-0YY"/>
@@ -1034,29 +1034,6 @@
                     <view key="view" contentMode="scaleToFill" id="74u-0L-crz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="etL-kM-0Fv">
-                                <rect key="frame" x="0.0" y="116" width="414" height="273"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xhd-5X-FWh">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gcq-8s-4wB">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="B4j-7W-vaz"/>
                     </view>
@@ -1132,9 +1109,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ocean" translatesAutoresizingMaskIntoConstraints="NO" id="MoR-fn-yKG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow" translatesAutoresizingMaskIntoConstraints="NO" id="MoR-fn-yKG">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOj-Id-8uY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dwQ-q3-Q2g">
                                 <rect key="frame" x="20.666666666666657" y="73.666666666666686" width="372.66666666666674" height="588.66666666666652"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1174,12 +1155,16 @@
                         <constraints>
                             <constraint firstItem="kCv-Xn-zmY" firstAttribute="bottom" secondItem="MoR-fn-yKG" secondAttribute="bottom" id="15u-Fh-fEp"/>
                             <constraint firstItem="dwQ-q3-Q2g" firstAttribute="centerX" secondItem="oxX-4X-FkO" secondAttribute="centerX" id="4Pu-ZZ-dbe"/>
+                            <constraint firstItem="GOj-Id-8uY" firstAttribute="leading" secondItem="kCv-Xn-zmY" secondAttribute="leading" id="7C5-Mu-wWR"/>
                             <constraint firstItem="dwQ-q3-Q2g" firstAttribute="width" secondItem="MoR-fn-yKG" secondAttribute="width" multiplier="0.9" id="H80-UZ-cQC"/>
                             <constraint firstItem="oxc-yx-rdM" firstAttribute="centerX" secondItem="oxX-4X-FkO" secondAttribute="centerX" id="PNm-LL-PrR"/>
                             <constraint firstItem="dwQ-q3-Q2g" firstAttribute="centerY" secondItem="oxX-4X-FkO" secondAttribute="centerY" id="TOh-eL-0nd"/>
                             <constraint firstItem="oxc-yx-rdM" firstAttribute="centerY" secondItem="oxX-4X-FkO" secondAttribute="centerY" multiplier="1.9" id="UNb-3q-Pjl"/>
                             <constraint firstItem="MoR-fn-yKG" firstAttribute="leading" secondItem="oxX-4X-FkO" secondAttribute="leading" id="aty-FY-y2W"/>
+                            <constraint firstItem="kCv-Xn-zmY" firstAttribute="bottom" secondItem="GOj-Id-8uY" secondAttribute="bottom" id="coO-gX-ime"/>
+                            <constraint firstItem="kCv-Xn-zmY" firstAttribute="trailing" secondItem="GOj-Id-8uY" secondAttribute="trailing" id="e4I-55-tkN"/>
                             <constraint firstItem="kCv-Xn-zmY" firstAttribute="trailing" secondItem="MoR-fn-yKG" secondAttribute="trailing" id="hzS-4z-rSv"/>
+                            <constraint firstItem="GOj-Id-8uY" firstAttribute="top" secondItem="oxX-4X-FkO" secondAttribute="top" id="txa-yj-U85"/>
                             <constraint firstItem="dwQ-q3-Q2g" firstAttribute="height" secondItem="MoR-fn-yKG" secondAttribute="height" multiplier="0.8" id="w3v-2T-vJY"/>
                             <constraint firstItem="MoR-fn-yKG" firstAttribute="top" secondItem="oxX-4X-FkO" secondAttribute="top" id="xR9-WC-Dwh"/>
                         </constraints>
@@ -1193,7 +1178,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3AL-OG-2Ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="e04-Oj-725" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-3736" y="2349"/>
+            <point key="canvasLocation" x="-3736.2318840579715" y="2348.6413043478265"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="Qlu-Dj-fea">
@@ -1759,10 +1744,10 @@
         <image name="ic_menu" width="24" height="24"/>
         <image name="more" width="25" height="25"/>
         <image name="notebook" width="2196" height="3294"/>
-        <image name="ocean" width="3648" height="5472"/>
         <image name="sheet" width="25" height="25"/>
         <image name="texture" width="3000" height="2000"/>
         <image name="todayButton" width="24" height="24"/>
+        <image name="yellow" width="2500" height="1668"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nS3-Aa-dgC"/>
