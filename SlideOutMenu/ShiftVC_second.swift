@@ -22,7 +22,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     @IBOutlet var additionalView: UIView!
     
     @IBAction func backButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "goBack", sender: self)
+        performSegue(withIdentifier: "backDashboard", sender: self)
     }
     @IBAction func doneBtnPressed(_ sender: UIButton) {
         let formatter = DateFormatter()

@@ -9,6 +9,18 @@
 import Foundation
 import RealmSwift
 class DashboardViewController:UIViewController{
+    
+    @IBAction func backDashboard(_ segue:UIStoryboardSegue){
+        
+    }
+    @IBAction func addButton(_ sender: UIButton) {
+        switch dataIndex {
+        case 3:
+            performSegue(withIdentifier: "goShift", sender: self)
+        default:
+            break
+        }
+    }
     @IBOutlet weak var dashboardTableView: UITableView!
     @IBOutlet weak var dashboardCollectionView: UICollectionView!
     @IBOutlet weak var menuButton: UIButton!
@@ -24,7 +36,7 @@ class DashboardViewController:UIViewController{
         staff = realm.objects(EmployeeData.self)
         workPlace = realm.objects(WorkSpaceData.self)
         position = realm.objects(PositionData.self)
-        shiftTemplate = realm.objects(shiftTemplateData.self)
+        shiftTemplate = realm.objects(shiftTemplateData.self).sorted(byKeyPath: "shiftTimeStart", ascending: true)
     }
     
     let dashboardTitle = ["Staff","Work Place","Position","Shift"]
@@ -39,6 +51,10 @@ class DashboardViewController:UIViewController{
         dashboardCollectionView.layer.cornerRadius = 10
         dashboardTableView.tableFooterView = UIView()
         menuButton.layer.cornerRadius = 22
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateTable()
     }
 }
 extension DashboardViewController:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
