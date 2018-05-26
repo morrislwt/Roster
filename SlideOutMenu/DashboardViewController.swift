@@ -23,13 +23,13 @@ class DashboardViewController:UIViewController{
     }
     @IBAction func addButton(_ sender: UIButton) {
         switch dataIndex {
-        case 0:
+        case SelectedCollectionItem.staff.rawValue:
             showStaffAlert()
-        case 1:
+        case SelectedCollectionItem.place.rawValue:
             showWorkPlaceAlert()
-        case 2:
+        case SelectedCollectionItem.position.rawValue:
             showPositionAlert()
-        case 3:
+        case SelectedCollectionItem.shift.rawValue:
             performSegue(withIdentifier: "goShift", sender: self)
         default:
             break
@@ -82,13 +82,13 @@ extension DashboardViewController:UICollectionViewDataSource,UICollectionViewDel
         cell.dashboardLabel.text = dashboardTitle[indexPath.item]
 
         switch dataIndex {
-        case 0:
+        case SelectedCollectionItem.staff.rawValue:
             cell.backgroundColor = indexPath.item == 0 ? .white : .clear
-        case 1:
+        case SelectedCollectionItem.place.rawValue:
             cell.backgroundColor = indexPath.item == 1 ? .white : .clear
-        case 2:
+        case SelectedCollectionItem.position.rawValue:
             cell.backgroundColor = indexPath.item == 2 ? .white : .clear
-        case 3:
+        case SelectedCollectionItem.shift.rawValue:
             cell.backgroundColor = indexPath.item == 3 ? .white : .clear
         default:
             break
@@ -160,16 +160,16 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.textColor = .white
         switch dataIndex {
-        case 0:
+        case SelectedCollectionItem.staff.rawValue:
             cell.textLabel?.text = staff?[indexPath.row].employeeName
             cell.backgroundColor = .clear
-        case 1:
+        case SelectedCollectionItem.place.rawValue:
             cell.textLabel?.text = workPlace?[indexPath.row].placename
             cell.backgroundColor = .clear
-        case 2:
+        case SelectedCollectionItem.position.rawValue:
             cell.textLabel?.text = position?[indexPath.row].positionName
             cell.backgroundColor = .clear
-        case 3:
+        case SelectedCollectionItem.shift.rawValue:
             guard let shift = shiftTemplate?[indexPath.row] else { return cell}
             cell.textLabel?.text = shift.shiftTemplateName
             cell.backgroundColor = .clear
@@ -196,6 +196,45 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         }
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.updateModel(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .right)
+        }
+        
+        return [delete]
+    }
+    func updateModel(at indexPath:IndexPath){
+        switch dataIndex {
+        case SelectedCollectionItem.staff.rawValue:
+            guard let staffForDelete = staff?[indexPath.row] else { return }
+            deleteModel(modelForDelete: staffForDelete)
+        case SelectedCollectionItem.place.rawValue:
+            guard let placeForDelete = workPlace?[indexPath.row] else { return }
+            deleteModel(modelForDelete: placeForDelete)
+        case SelectedCollectionItem.position.rawValue:
+            guard let positionForDelete = position?[indexPath.row] else { return }
+            deleteModel(modelForDelete: positionForDelete)
+        case SelectedCollectionItem.shift.rawValue:
+            guard let shiftForDelete = shiftTemplate?[indexPath.row] else { return }
+            deleteModel(modelForDelete: shiftForDelete)
+        default:
+            break
+        }
+        
+    }
+    func deleteModel(modelForDelete:Object){
+        do{
+            try realm.write {
+                realm.delete(modelForDelete)
+            }
+        }catch{
+            print("Error deleting model, \(error)")
+        }
+    }
+    func editModel(){
+        
+    }
     func animateTable(){
         dashboardTableView.reloadData()
         let cells = dashboardTableView.visibleCells
