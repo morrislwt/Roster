@@ -50,7 +50,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         staffArray = realm_Data.objects(EmployeeData.self)
         workPlaceArray = realm_Data.objects(WorkSpaceData.self)
         positionArray = realm_Data.objects(PositionData.self)
-        shiftTemplateArray = realm_Data.objects(shiftTemplateData.self)
+        shiftTemplateArray = realm_Data.objects(shiftTemplateData.self).sorted(byKeyPath: "shiftTimeStart", ascending: true)
         addShiftCollectionView.reloadData()
     }
     

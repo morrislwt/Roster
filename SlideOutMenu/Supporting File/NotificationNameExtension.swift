@@ -11,4 +11,5 @@ import Foundation
 extension Notification.Name {
     
     static let selectedIndex = Notification.Name(rawValue: "selectedIndex")
+    static let indexForEdit = Notification.Name(rawValue: "indexForEdit")
 }

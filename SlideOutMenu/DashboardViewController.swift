@@ -45,12 +45,12 @@ class DashboardViewController:UIViewController{
     var position:Results<PositionData>?
     var shiftTemplate:Results<shiftTemplateData>?
     var dataIndex:Int = 0
-    
+    var indexForEdit:Int = 0
     func loadData(){
         staff = realm.objects(EmployeeData.self)
         workPlace = realm.objects(WorkSpaceData.self)
         position = realm.objects(PositionData.self)
-        shiftTemplate = realm.objects(shiftTemplateData.self).sorted(byKeyPath: "shiftTimeStart", ascending: true)
+        shiftTemplate = realm.objects(shiftTemplateData.self)
     }
     
     let dashboardTitle = ["Staff","Work Place","Position","Shift"]
@@ -185,39 +185,38 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle  == .delete {
-            if dataIndex == SelectedCollectionItem.staff.rawValue{
-               print("staffTable,delete\(indexPath.row)")
-            }else{
-               print("otherTable,delete\(indexPath.row)")
-            }
-            
-        }
-    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            self.updateModel(at: indexPath)
+            self.updateModel(at: indexPath, editPressed: false)
             tableView.deleteRows(at: [indexPath], with: .right)
         }
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            self.updateModel(at: indexPath, editPressed: true)
+            self.indexForEdit = indexPath.row
+            NotificationCenter.default.post(name: .indexForEdit, object: self)
+        }
+        edit.backgroundColor = .lightGray
         
-        return [delete]
+        
+        return [delete,edit]
     }
-    func updateModel(at indexPath:IndexPath){
+    
+    func updateModel(at indexPath:IndexPath, editPressed:Bool){
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
             guard let staffForDelete = staff?[indexPath.row] else { return }
-            deleteModel(modelForDelete: staffForDelete)
+            editPressed == true ? editModel(modelForEdit: staffForDelete, indexPath: indexPath) : deleteModel(modelForDelete: staffForDelete)
         case SelectedCollectionItem.place.rawValue:
             guard let placeForDelete = workPlace?[indexPath.row] else { return }
-            deleteModel(modelForDelete: placeForDelete)
+            editPressed == true ? editModel(modelForEdit: placeForDelete, indexPath: indexPath) : deleteModel(modelForDelete: placeForDelete)
         case SelectedCollectionItem.position.rawValue:
             guard let positionForDelete = position?[indexPath.row] else { return }
-            deleteModel(modelForDelete: positionForDelete)
+            editPressed == true ? editModel(modelForEdit: positionForDelete, indexPath: indexPath) : deleteModel(modelForDelete: positionForDelete)
         case SelectedCollectionItem.shift.rawValue:
             guard let shiftForDelete = shiftTemplate?[indexPath.row] else { return }
-            deleteModel(modelForDelete: shiftForDelete)
+            editPressed == true ? editModel(modelForEdit: shiftForDelete, indexPath: indexPath) : deleteModel(modelForDelete: shiftForDelete)
+
         default:
             break
         }
@@ -232,8 +231,118 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
             print("Error deleting model, \(error)")
         }
     }
-    func editModel(){
-        
+    func editModel(modelForEdit:Object,indexPath:IndexPath){
+        let editTitle = UITextField()
+        let alert = UIAlertController(style: .alert, title:"Edit")
+        switch dataIndex {
+        case SelectedCollectionItem.staff.rawValue:
+            let image = UIImage(named: "Employees")
+            let config: TextField.Config = { textField in
+                textField.becomeFirstResponder()
+                textField.textColor = .black
+                textField.text = self.staff?[indexPath.row].employeeName
+                textField.autocapitalizationType = .words
+                textField.left(image: image,color: .gray)
+                textField.leftViewPadding = 12
+                textField.borderWidth = 1
+                textField.cornerRadius = 8
+                textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+                textField.backgroundColor = nil
+                textField.returnKeyType = .done
+                textField.action { textField in
+                    editTitle.text = textField.text!
+                }
+            }
+            let action = UIAlertAction(title: "Save", style: .default) { (action) in
+                guard editTitle.text != "" else { return }
+                do{
+                    try self.realm.write {
+                        self.staff?[indexPath.row].employeeName = editTitle.text!
+                    }
+                }catch{
+                    print("Error editing staff \(error)")
+                }
+                self.dashboardTableView.reloadData()
+            }
+            
+            alert.addOneTextField(configuration: config)
+            alert.addAction(title: "Cancel", style: .cancel)
+            alert.addAction(action)
+            alert.show()
+            
+        case SelectedCollectionItem.place.rawValue:
+            let image = UIImage(named: "place")
+            let config: TextField.Config = { textField in
+                textField.becomeFirstResponder()
+                textField.textColor = .black
+                textField.text = self.workPlace?[indexPath.row].placename
+                textField.autocapitalizationType = .words
+                textField.left(image: image,color: .gray)
+                textField.leftViewPadding = 12
+                textField.borderWidth = 1
+                textField.cornerRadius = 8
+                textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+                textField.backgroundColor = nil
+                textField.returnKeyType = .done
+                textField.action { textField in
+                    editTitle.text = textField.text!
+                }
+            }
+            let action = UIAlertAction(title: "Save", style: .default) { (action) in
+                guard editTitle.text != "" else { return }
+                do{
+                    try self.realm.write {
+                        self.workPlace?[indexPath.row].placename = editTitle.text!
+                    }
+                }catch{
+                    print("Error editing staff \(error)")
+                }
+                self.dashboardTableView.reloadData()
+            }
+            
+            alert.addOneTextField(configuration: config)
+            alert.addAction(title: "Cancel", style: .cancel)
+            alert.addAction(action)
+            alert.show()
+        case SelectedCollectionItem.position.rawValue:
+            let image = UIImage(named: "position")
+            let config: TextField.Config = { textField in
+                textField.becomeFirstResponder()
+                textField.textColor = .black
+                textField.text = self.position?[indexPath.row].positionName
+                textField.autocapitalizationType = .words
+                textField.left(image: image,color: .gray)
+                textField.leftViewPadding = 12
+                textField.borderWidth = 1
+                textField.cornerRadius = 8
+                textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+                textField.backgroundColor = nil
+                textField.returnKeyType = .done
+                textField.action { textField in
+                    editTitle.text = textField.text!
+                }
+            }
+            let action = UIAlertAction(title: "Save", style: .default) { (action) in
+                guard editTitle.text != "" else { return }
+                do{
+                    try self.realm.write {
+                        self.position?[indexPath.row].positionName = editTitle.text!
+                    }
+                }catch{
+                    print("Error editing staff \(error)")
+                }
+                self.dashboardTableView.reloadData()
+            }
+            
+            alert.addOneTextField(configuration: config)
+            alert.addAction(title: "Cancel", style: .cancel)
+            alert.addAction(action)
+            alert.show()
+        case SelectedCollectionItem.shift.rawValue:
+            performSegue(withIdentifier: "shiftForEdit", sender: self)
+        default:
+            break
+        }
     }
     func animateTable(){
         dashboardTableView.reloadData()
