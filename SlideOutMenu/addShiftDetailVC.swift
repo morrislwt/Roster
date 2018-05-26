@@ -13,7 +13,14 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     
     @IBOutlet weak var continueAddOutlet: UIButton!
     @IBOutlet weak var myPickerView: UIPickerView!
+    @IBAction func saveBtnPressed(_ sender: UIButton) {
+        saveDataToCal(goBack: true)
+    }
     
+    @IBAction func backBtnPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "backToCal", sender: self)
+        
+    }
     var selectedIndex:Int = 0
     
     var selectedStaff:String = ""
@@ -99,9 +106,6 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
 //            self.view.layoutIfNeeded()
 //        }
 //    }
-    @IBAction func saveBtnPressed(_ sender: UIBarButtonItem) {
-        saveDataToCal(goBack: true)
-    }
     func saveDataToCal(goBack:Bool){
         let newShiftToCal = ShiftDataToCalender()
         

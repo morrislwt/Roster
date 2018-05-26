@@ -14,18 +14,49 @@ import SwipeCellKit
 
 class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
 
+    @IBOutlet weak var scheduleOutlet: UILabel!
+    @IBOutlet weak var weekOutlet: UIButton!
+    @IBOutlet weak var monthOutlet: UIButton!
+    @IBAction func toWeek(_ sender: UIButton) {
+        let width = view.frame.width
+        let height = view.frame.height
+        let weekTableViewFrame = CGRect(x: width/2 - width*0.9/2, y: 150, width: width * 0.9, height: height - 135)
+        calendarView.changeMode(.weekView)
+        UIView.animate(withDuration: 0.3) {
+            self.calendarView.frame = CGRect(x: 0, y: 85, width: width, height: 50)
+            self.tableView.frame = weekTableViewFrame
+            self.tableView.layer.cornerRadius = 20
+        }
+        
+    }
+    @IBAction func toMonth(_ sender: UIButton) {
+        let width = view.frame.width
+        let height = view.frame.height
+        let monthTableViewFrame = CGRect(x: width/2 - width*0.9/2, y: 380, width: width * 0.9, height: height - 400)
+        calendarView.changeMode(.monthView)
+        UIView.animate(withDuration: 0.3){
+            self.calendarView.frame = CGRect(x: 0, y: 85, width: width, height: 350)
+            self.tableView.frame = monthTableViewFrame
+            self.tableView.layer.cornerRadius = 50
+            
+        }
+    }
     
+    @IBOutlet weak var todayOutlet: UIButton!
     
+    @IBAction func todayBtnTap(_ sender: UIButton) {
+        let today = Date()
+        self.calendarView.toggleViewWithDate(today)
+    }
     var selectedIndexFromPopOver = 2
     var selectedIndexPath:Int?
-    
 
     @IBAction func backToCalSegue(_ segue:UIStoryboardSegue){
         
     }
-
-    @IBOutlet weak var moreBtnOutlet: UIBarButtonItem!
-    @IBAction func moreBtnTap(_ sender: UIBarButtonItem) {
+    @IBOutlet weak var moreBtnOutlet: UIButton!
+    
+    @IBAction func moreBtnTap(_ sender: UIButton) {
         performSegue(withIdentifier: "popOver", sender: nil)
     }
     
@@ -58,8 +89,6 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         return .none
     }
     
-
-    @IBOutlet weak var segmentOutlet: UIBarButtonItem!
     
     ///----------------------* Realm Methods *-----------------///
     let realm = try! Realm()
@@ -79,37 +108,9 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         tableView.reloadData()
     }
     
-    ///----------------------* Realm Methods *-----------------///
+    //MARK: Realm method
     
-    
-    
-    @IBAction func todayButton(_ sender: Any) {
-        let today = Date()
-        self.calendarView.toggleViewWithDate(today)
-    }
-    
-    @IBAction func segmentSwitch(_ sender: UISegmentedControl) {
-        let width = view.frame.width
-        let height = view.frame.height
-        
-        if sender.selectedSegmentIndex == 0 {
-        
-            calendarView.changeMode(.weekView)
-            UIView.animate(withDuration: 0.3) {
-                self.calendarView.frame = CGRect(x: 0, y: 59, width: width, height: 50)
-                self.tableView.frame = CGRect(x: 0, y: 120, width: width, height: height * 0.7)
-            }
-        }
-        if sender.selectedSegmentIndex == 1 {
-            
-            calendarView.changeMode(.monthView)
-            UIView.animate(withDuration: 0.3){
-                self.calendarView.frame = CGRect(x: 0, y: 59, width: width, height: 350)
-                self.tableView.frame = CGRect(x: 0, y: 360, width: width, height: height * 0.4)
-                
-            }
-        }
-    }
+
     private var menuView: CVCalendarMenuView!
     
     private var calendarView: CVCalendarView!
@@ -131,13 +132,14 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         currentCalendar = Calendar.init(identifier: .gregorian)
         
         self.title = CVDate(date: Date(),calendar: currentCalendar).globalDescription
-        
-        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 44, width: width, height: 15))
-        self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 59, width: width, height: 50))
-//        tableView = UITableView(frame: CGRect(x: 0, y: 120, width: width, height: height * 0.7 ))
-        let frame = CGRect(x: 0, y: 120, width: width, height: height * 0.7 )
+
+        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 65, width: width, height: 15))
+        self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 85, width: width, height: 50))
+
+        let frame = CGRect(x: width/2 - width*0.9/2, y: 150, width: width * 0.9, height: height - 135)
         tableView = UITableView.init(frame: frame, style: .grouped)
-        tableView.layer.cornerRadius = 30
+        tableView.layer.cornerRadius = 20
+        tableView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 241/255, alpha: 0.9)
         //星期菜单栏代理
         self.menuView.menuViewDelegate = self
         
@@ -248,9 +250,6 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
                 }
                 
                 self.present(alert,animated: true,completion: nil)
-                
-                
-                
             }
             if self.selectedIndexFromPopOver == 1 {
                 self.performSegue(withIdentifier: "addFullShift", sender: nil)
@@ -268,7 +267,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         
         self.menuView.commitMenuViewUpdate()
         self.calendarView.commitCalendarViewUpdate()
-        
+//
     }
     
     override func didReceiveMemoryWarning() {
@@ -545,7 +544,3 @@ extension CalendarVC{
         }
     }
 }
-
-
-
-
