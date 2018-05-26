@@ -45,7 +45,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     @IBOutlet weak var shiftEndTextfield: UITextField!
     @IBAction func saveButton(_ sender: UIButton) {
         saveShiftDetail(true)
-        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "" else {
+        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "", timeEnd > timeStart else {
             return
         }
         performSegue(withIdentifier: "backDashboard", sender: self)
@@ -81,29 +81,29 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     }
     
     func saveShiftDetail(_ goBack:Bool){
-        if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != "" {
-            let newShiftTemplate = shiftTemplateData()
-            newShiftTemplate.shiftTemplateName = shiftNameTextfield.text!
-            newShiftTemplate.shiftTimeStart = shiftStartTextfield.text!
-            newShiftTemplate.shiftTimeEnd = shiftEndTextfield.text!
-            
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH:mm"
-            let calendar = Calendar.current
-            let unit:Set<Calendar.Component> = [.hour,.minute]
-            //        let startTime = dateFormatter.date(from: selectedStartTime)
-            //        let endTime = dateFormatter.date(from: selectedEndTime)
-            let commponent:DateComponents = calendar.dateComponents(unit, from: timeEnd!, to: timeStart!)
-            newShiftTemplate.TotalMinutes = abs(commponent.hour!*60) + abs(commponent.minute!)
-            
-            self.saveData(to: newShiftTemplate)
-            goBack == true ? performSegue(withIdentifier: "goBack", sender: self) : nil
-        }else{
-            let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
-            let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
-            alert.addAction(gotItAction)
-            present(alert,animated: true, completion: nil)
+            if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != "" && timeEnd > timeStart{
+                let newShiftTemplate = shiftTemplateData()
+                newShiftTemplate.shiftTemplateName = shiftNameTextfield.text!
+                newShiftTemplate.shiftTimeStart = shiftStartTextfield.text!
+                newShiftTemplate.shiftTimeEnd = shiftEndTextfield.text!
+                
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "HH:mm"
+                let calendar = Calendar.current
+                let unit:Set<Calendar.Component> = [.hour,.minute]
+                //        let startTime = dateFormatter.date(from: selectedStartTime)
+                //        let endTime = dateFormatter.date(from: selectedEndTime)
+                let commponent:DateComponents = calendar.dateComponents(unit, from: timeEnd!, to: timeStart!)
+                newShiftTemplate.TotalMinutes = abs(commponent.hour!*60) + abs(commponent.minute!)
+                
+                self.saveData(to: newShiftTemplate)
+                goBack == true ? performSegue(withIdentifier: "goBack", sender: self) : nil
+            }else{
+                let alert = UIAlertController(title: "Please fill all detail😎", message: "shift end time must greater than start time", preferredStyle: .actionSheet)
+                let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
+                alert.addAction(gotItAction)
+                present(alert,animated: true, completion: nil)
         }
     }
     
@@ -137,7 +137,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
         continueBtnOutlet.layer.borderWidth = 0.2
         self.shiftStartTextfield.tag = 0
         self.shiftEndTextfield.tag = 1
-        self.datePicker.setValue(UIColor.white, forKey: "textColor")
+        self.datePicker.setValue(UIColor.darkGray, forKey: "textColor")
         
         
         self.hideKeyboardWhenTappedAround()

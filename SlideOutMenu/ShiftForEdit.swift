@@ -45,7 +45,7 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
     @IBOutlet weak var shiftEndTextfield: UITextField!
     @IBAction func saveButton(_ sender: UIButton) {
         saveShiftDetail()
-        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "" else {
+        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "", timeEnd > timeStart else {
             return
         }
         performSegue(withIdentifier: "backDashboard", sender: self)
@@ -74,7 +74,7 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
 
     
     func saveShiftDetail(){
-        if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != "" {
+        if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != "" && timeEnd > timeStart {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm"
@@ -94,7 +94,7 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
                 print("error saving shiftTemplateData \(error)")
             }
         }else{
-            let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "Please fill all detail😎", message: "shift end time must greater than start time", preferredStyle: .actionSheet)
             let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
             alert.addAction(gotItAction)
             present(alert,animated: true, completion: nil)
@@ -123,7 +123,7 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
 
         self.shiftStartTextfield.tag = 0
         self.shiftEndTextfield.tag = 1
-        self.datePicker.setValue(UIColor.black, forKey: "textColor")
+        self.datePicker.setValue(UIColor.darkGray, forKey: "textColor")
         loadData()
         self.hideKeyboardWhenTappedAround()
         
