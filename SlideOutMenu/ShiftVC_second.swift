@@ -45,6 +45,10 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     @IBOutlet weak var shiftEndTextfield: UITextField!
     @IBAction func saveButton(_ sender: UIButton) {
         saveShiftDetail(true)
+        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "" else {
+            return
+        }
+        performSegue(withIdentifier: "backDashboard", sender: self)
     }
     
     @IBAction func continueBotton(_ sender: UIButton) {
@@ -95,10 +99,6 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
             
             self.saveData(to: newShiftTemplate)
             goBack == true ? performSegue(withIdentifier: "goBack", sender: self) : nil
-            
-            
-
-            
         }else{
             let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
             let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)

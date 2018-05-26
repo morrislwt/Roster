@@ -8,6 +8,14 @@
 
 import Foundation
 import RealmSwift
+
+enum SelectedCollectionItem:Int{
+    case staff = 0
+    case place
+    case position
+    case shift
+}
+
 class DashboardViewController:UIViewController{
     
     @IBAction func backDashboard(_ segue:UIStoryboardSegue){
@@ -15,6 +23,12 @@ class DashboardViewController:UIViewController{
     }
     @IBAction func addButton(_ sender: UIButton) {
         switch dataIndex {
+        case 0:
+            showStaffAlert()
+        case 1:
+            showWorkPlaceAlert()
+        case 2:
+            showPositionAlert()
         case 3:
             performSegue(withIdentifier: "goShift", sender: self)
         default:
@@ -116,18 +130,31 @@ extension DashboardViewController:UICollectionViewDataSource,UICollectionViewDel
 extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch dataIndex {
-        case 0:
+        case SelectedCollectionItem.staff.rawValue:
             return staff?.count ?? 1
-        case 1:
+        case SelectedCollectionItem.place.rawValue:
             return workPlace?.count ?? 1
-        case 2:
+        case SelectedCollectionItem.position.rawValue:
             return position?.count ?? 1
-        case 3:
+        case SelectedCollectionItem.shift.rawValue:
             return shiftTemplate?.count ?? 1
         default:
             break
         }
         return 1
+//        switch dataIndex {
+//        case 0:
+//            return staff?.count ?? 1
+//        case 1:
+//            return workPlace?.count ?? 1
+//        case 2:
+//            return position?.count ?? 1
+//        case 3:
+//            return shiftTemplate?.count ?? 1
+//        default:
+//            break
+//        }
+//        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
@@ -157,6 +184,18 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle  == .delete {
+            if dataIndex == SelectedCollectionItem.staff.rawValue{
+               print("staffTable,delete\(indexPath.row)")
+            }else{
+               print("otherTable,delete\(indexPath.row)")
+            }
+            
+        }
+    }
+    
     func animateTable(){
         dashboardTableView.reloadData()
         let cells = dashboardTableView.visibleCells
@@ -175,4 +214,109 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
             delayCounter += 1
         }
     }
+    
+    func showStaffAlert(){
+        let staffName = UITextField()
+        let alert = UIAlertController(style: .alert, title: "Add New Staff")
+        let image = UIImage(named: "Employees")
+        let config: TextField.Config = { textField in
+            textField.becomeFirstResponder()
+            textField.textColor = .black
+            textField.placeholder = "Staff name"
+            textField.autocapitalizationType = .words
+            textField.left(image: image,color: .gray)
+            textField.leftViewPadding = 12
+            textField.borderWidth = 1
+            textField.cornerRadius = 8
+            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+            textField.backgroundColor = nil
+            textField.returnKeyType = .done
+            textField.action { textField in
+                staffName.text = textField.text
+            }
+        }
+        let action = UIAlertAction(title: "Save", style: .default) { (action) in
+            guard staffName.text != "" else { return }
+            let newStaff = EmployeeData()
+            newStaff.employeeName = staffName.text!
+            self.saveObject(to: newStaff)
+        }
+        alert.addOneTextField(configuration: config)
+        alert.addAction(title: "Cancel", style: .cancel)
+        alert.addAction(action)
+        alert.show()
+    }
+    func showWorkPlaceAlert(){
+        let placeName = UITextField()
+        let alert = UIAlertController(style: .alert, title: "Add New Place")
+        let image = UIImage(named: "place")
+        let config: TextField.Config = { textField in
+            textField.becomeFirstResponder()
+            textField.textColor = .black
+            textField.placeholder = "Place name"
+            textField.autocapitalizationType = .words
+            textField.left(image: image,color: .gray)
+            textField.leftViewPadding = 12
+            textField.borderWidth = 1
+            textField.cornerRadius = 8
+            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+            textField.backgroundColor = nil
+            textField.returnKeyType = .done
+            textField.action { textField in
+                placeName.text = textField.text
+            }
+        }
+        let action = UIAlertAction(title: "Save", style: .default) { (action) in
+            guard placeName.text != "" else { return }
+            let newPlace = WorkSpaceData()
+            newPlace.placename = placeName.text!
+            self.saveObject(to: newPlace)
+        }
+        alert.addOneTextField(configuration: config)
+        alert.addAction(title: "Cancel", style: .cancel)
+        alert.addAction(action)
+        alert.show()
+    }
+    func showPositionAlert(){
+        let positionName = UITextField()
+        let alert = UIAlertController(style: .alert, title: "Add New Position")
+        let image = UIImage(named: "position")
+        let config: TextField.Config = { textField in
+            textField.becomeFirstResponder()
+            textField.textColor = .black
+            textField.placeholder = "Position name"
+            textField.autocapitalizationType = .words
+            textField.left(image: image,color: .gray)
+            textField.leftViewPadding = 12
+            textField.borderWidth = 1
+            textField.cornerRadius = 8
+            textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+            textField.backgroundColor = nil
+            textField.returnKeyType = .done
+            textField.action { textField in
+                positionName.text = textField.text
+            }
+        }
+        let action = UIAlertAction(title: "Save", style: .default) { (action) in
+            guard positionName.text != "" else { return }
+            let newPosition = PositionData()
+            newPosition.positionName = positionName.text!
+            self.saveObject(to: newPosition)
+        }
+        alert.addOneTextField(configuration: config)
+        alert.addAction(title: "Cancel", style: .cancel)
+        alert.addAction(action)
+        alert.show()
+    }
+    func saveObject(to dataModel: Object){
+        do{
+            try realm.write {
+                realm.add(dataModel)
+            }
+        }catch{
+            print("Error saving dataModel \(error)")
+        }
+        dashboardTableView.reloadData()
+    }
 }
+
