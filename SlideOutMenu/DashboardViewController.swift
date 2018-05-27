@@ -37,7 +37,6 @@ class DashboardViewController:UIViewController{
     }
     @IBOutlet weak var dashboardTableView: UITableView!
     @IBOutlet weak var dashboardCollectionView: UICollectionView!
-    @IBOutlet weak var menuButton: UIButton!
     
     let realm = try! Realm()
     var staff:Results<EmployeeData>?
@@ -57,14 +56,11 @@ class DashboardViewController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
-        view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 //        dashboardTableView.layer.cornerRadius = 20
         dashboardTableView.backgroundColor = .clear
         dashboardCollectionView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         dashboardCollectionView.layer.cornerRadius = 10
         dashboardTableView.tableFooterView = UIView()
-        menuButton.layer.cornerRadius = 22
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
