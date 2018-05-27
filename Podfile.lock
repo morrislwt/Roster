@@ -6,12 +6,14 @@ PODS:
   - Realm/Headers (3.3.0)
   - RealmSwift (3.3.0):
     - Realm (= 3.3.0)
+  - SwiftyPickerPopover (6.1.0)
   - SwipeCellKit (2.1.0)
 
 DEPENDENCIES:
   - CVCalendar
   - Popover
   - RealmSwift
+  - SwiftyPickerPopover
   - SwipeCellKit
 
 SPEC CHECKSUMS:
@@ -19,8 +21,9 @@ SPEC CHECKSUMS:
   Popover: 28c1ac8e937ab2b3965bd2da7dd18324357abc41
   Realm: 7d74ad6c5020432f58fe5e1df90bb6d97b2c7fef
   RealmSwift: b2fa31a09c22e246026766557405505eeaad2b01
+  SwiftyPickerPopover: f1bb928efd60e4c754aa957c1bb67372465e9ccb
   SwipeCellKit: 80bdb188166484d8a0d813d9fd7748ad33181815
 
-PODFILE CHECKSUM: 742663ab81d03349b600edb2ea641b2700343ed2
+PODFILE CHECKSUM: d5a3461ab7885b2511f3e13960cf1348c6bd0561
 
 COCOAPODS: 1.4.0

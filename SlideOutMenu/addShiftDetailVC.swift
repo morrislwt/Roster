@@ -9,11 +9,17 @@
 import Foundation
 import RealmSwift
 
-class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+class addShiftDetailVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
+    @IBAction func timePickerDoneBtn(_ sender: UIButton) {
+        displayPickerView(false, identifier: "pickerView",fromTop: true)
+    }
+    @IBOutlet var timeView: UIView!
+    @IBOutlet weak var timePickerView: UIPickerView!
+    @IBOutlet weak var popTableView: UITableView!
     @IBOutlet weak var saveBtnOutlet: UIButton!
     @IBOutlet weak var continueAddOutlet: UIButton!
-    @IBOutlet weak var myPickerView: UIPickerView!
+    
     @IBOutlet weak var backBtnOutlet: UIButton!
     
     @IBAction func saveBtnPressed(_ sender: UIButton) {
@@ -25,7 +31,6 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         
     }
     var selectedIndex:Int = 0
-    
     var selectedStaff:String = ""
     var selectedWorkPlace:String = ""
     var selectedPosition:String = ""
@@ -44,22 +49,18 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
             
         }
     }
-    
     var staffArray:Results<EmployeeData>?
     var workPlaceArray:Results<WorkSpaceData>?
     var positionArray:Results<PositionData>?
     var shiftTemplateArray:Results<shiftTemplateData>?
     
-    
     let realm_Data = try! Realm()
-    
     
     func loadRealmData(){
         staffArray = realm_Data.objects(EmployeeData.self)
         workPlaceArray = realm_Data.objects(WorkSpaceData.self)
         positionArray = realm_Data.objects(PositionData.self)
         shiftTemplateArray = realm_Data.objects(shiftTemplateData.self).sorted(byKeyPath: "shiftTimeStart", ascending: true)
-        addShiftCollectionView.reloadData()
     }
     
     @IBOutlet weak var addShiftCollectionView: UICollectionView!
@@ -72,15 +73,17 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     
     @IBOutlet var selectView: UIView!
     
-    @IBAction func donePressed(_ sender: Any) {
-        displayPickerView(false)
-    }
 
-    func displayPickerView(_ show:Bool){
+    func displayPickerView(_ show:Bool,identifier:String,fromTop:Bool){
         
         for bottomContraints in view.constraints {
-            if bottomContraints.identifier == "bottom" {
-                bottomContraints.constant = (show) ? -10 : view.frame.height / 3
+            if bottomContraints.identifier == identifier {
+                if fromTop == false{
+                    bottomContraints.constant = (show) ? -100 : view.frame.height / 3
+                }else if fromTop == true {
+                    bottomContraints.constant = (show) ? -400 : view.frame.height / 3
+                }
+                
                 break
             }
         }
@@ -89,14 +92,8 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         }
     }
     
-    func displaySuccess(){
-        for topContraints in view.constraints {
-            if topContraints.identifier == "top" {
-                topContraints.constant = 10
-            }
-        }
-    }
-//    @objc func tapToDismiss(){
+    
+    //    @objc func tapToDismiss(){
 //        for bottomContraints in view.constraints {
 //            if bottomContraints.identifier == "bottom" {
 //                bottomContraints.constant = view.frame.height / 3
@@ -162,12 +159,12 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
             alert.addAction(action)
             alert.show()
         }
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showAlertView(chooseView: selectView, identifier: "tableView")
+        showAlertView(chooseView: timeView, identifier: "pickerView")
         navigationItem.title = "Add New Shift"
         loadRealmData()
         continueAddOutlet.layer.cornerRadius = continueAddOutlet.frame.width / 2
@@ -179,106 +176,68 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.addSubview(selectView)
 
-        let selectViewHeight = view.frame.height / 4
-        selectView.translatesAutoresizingMaskIntoConstraints = false
-        selectView.heightAnchor.constraint(equalToConstant: selectViewHeight).isActive = true
-        selectView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        selectView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        let bottomContraints = selectView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: selectViewHeight)
-        bottomContraints.isActive = true
-        bottomContraints.identifier = "bottom"
-        selectView.layer.cornerRadius = 10
-        
     }
+    func showAlertView(chooseView:UIView!,identifier:String){
+        view.addSubview(chooseView)
+        let selectViewHeight = view.frame.height / 4
+        chooseView.translatesAutoresizingMaskIntoConstraints = false
+        chooseView.heightAnchor.constraint(equalToConstant: selectViewHeight).isActive = true
+        chooseView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        chooseView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        let bottomContraints = chooseView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: selectViewHeight)
+        bottomContraints.isActive = true
+        bottomContraints.identifier = identifier
+        chooseView.layer.cornerRadius = 20
+        chooseView.clipsToBounds = true
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        if selectedIndex == 7 {
-            return 2
-        }else{
-            return 1
-        }
-        
+        return 2
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
-            
-            if selectedIndex == 1 {
-                return staffArray?.count ?? 1
-            }else if selectedIndex == 2 {
-                return workPlaceArray?.count ?? 1
-            }else if selectedIndex == 3 {
-                return positionArray?.count ?? 1
-            }else if selectedIndex == 4 {
-                return shiftTemplateArray?.count ?? 1
-            }else if selectedIndex == 7 {
-                return 24
-            }
-            
-        }
-        if component == 1 {
+        switch component {
+        case 0:
+            return 24
+        case 1:
             return 12
+        default:
+            break
         }
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        if component == 0 {
-            if selectedIndex == 1 {
-                return staffArray?[row].employeeName
-            }else if selectedIndex == 2 {
-                return workPlaceArray?[row].placename
-            }else if selectedIndex == 3 {
-                return positionArray?[row].positionName
-            }else if selectedIndex == 4 {
-                return shiftTemplateArray?[row].shiftTemplateName
-            }else if selectedIndex == 7 {
-                /////   need some code  /////
-                return "\(row) Hour"
-            }
-        }
-        if component == 1 {
+
+        switch component {
+        case 0:
+            return "\(row) Hour"
+        case 1:
             return "\(row * 5) Mins"
+        default:
+            break
         }
-        return nil
+        
+        return ""
 //        return [staffArray, workPlaceArray, positionArray, shiftTemplateArray]
 //        guard let pickStaff = staffArray?[row].employeeName else { return "No staff available now"}
 
 
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        ///don't use 因為當 row 有超過 array count 時，就會crash
-//        guard let pickstaff = staffArray?[row].employeeName {
-//
-//        }
-        if component == 0 {
 
-            if selectedIndex == 1 {
-                selectedStaff = (staffArray?[row].employeeName)!
-            }else if selectedIndex == 2 {
-                selectedWorkPlace = (workPlaceArray?[row].placename)!
-            }else if selectedIndex == 3 {
-                selectedPosition = (positionArray?[row].positionName)!
-            }else if selectedIndex == 4 {
-                selectedShiftName = (shiftTemplateArray?[row].shiftTemplateName)!
-                selectedStartTime = (shiftTemplateArray?[row].shiftTimeStart)!
-                selectedEndTime = (shiftTemplateArray?[row].shiftTimeEnd)!
-                selectedShiftMinutes = (shiftTemplateArray?[row].TotalMinutes)!
-            }else if selectedIndex == 7 {
-                breakHour = row
-                
-            }
+        ///don't use 因為當 row 有超過 array count 時，就會crash
+//        guard let pickstaff = staffArray?[row].employeeName else {
+//            return
+//        }
+        switch component {
+        case 0:
+            breakHour = row
+        case 1:
+            breakMin = row * 5
+        default:
+            break
         }
-        if component == 1 {
-            if selectedIndex == 7 {
-                breakMin = row * 5
-                
-            }
-        }
-        
         addShiftCollectionView.reloadData()
-        
     }
 }
 
@@ -315,7 +274,6 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
         
         if indexPath.item == 1 {
             cell.infoLabel.text = selectedStaff
-            
         }
         if indexPath.item == 2 {
             cell.infoLabel.text = selectedWorkPlace
@@ -341,7 +299,6 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
         if indexPath.item == 9 {
             cell.infoLabel.text = selectedDuty
         }
-        
         
         return cell
     }
@@ -371,45 +328,117 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         selectedIndex = indexPath.item
-        
-        myPickerView.selectRow(0, inComponent: 0, animated: true)
+        popTableView.reloadData()
+//        myPickerView.selectRow(0, inComponent: 0, animated: true)
 
         switch indexPath.item{
         case 1...4:
-            displayPickerView(true)
+            
+            displayPickerView(true, identifier: "tableView",fromTop: false)
+        case 0,5...6,9:
+            displayPickerView(false, identifier: "tableView", fromTop: false)
+            displayPickerView(false, identifier: "pickerView", fromTop: true)
+
         default:
             break
         }
         if indexPath.item == 7 {
-            displayPickerView(true)
+            displayPickerView(true, identifier: "pickerView",fromTop: true)
         }
         
         if indexPath.item == 9 {
             
-            var dutyTextfield = UITextField()
             
-            let alert = UIAlertController(title: "Duty Message", message: "", preferredStyle: .alert)
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alert.addTextField { (inputDuty) in
-                
-                inputDuty.placeholder = "Input some task"
-                inputDuty.autocorrectionType = .yes
-                dutyTextfield = inputDuty
-                
+            
+            let dutyTextfield = UITextField()
+            let alert = UIAlertController(style: .alert, title:"Duty Message")
+            let image = UIImage(named: "speaker")
+            let config: TextField.Config = { textField in
+                textField.becomeFirstResponder()
+                textField.textColor = .black
+                textField.placeholder = "Write some message"
+                textField.autocapitalizationType = .words
+                textField.left(image: image,color: .gray)
+                textField.leftViewPadding = 12
+                textField.borderWidth = 1
+                textField.cornerRadius = 8
+                textField.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
+                textField.backgroundColor = nil
+                textField.returnKeyType = .done
+                textField.action { textField in
+                    dutyTextfield.text = textField.text
+                }
             }
-
             let add = UIAlertAction(title: "Add", style: .default) { (add) in
                 if let text = dutyTextfield.text {
                     self.selectedDuty = text
                     self.addShiftCollectionView.reloadData()
                 }
             }
-            alert.addAction(cancel)
             alert.addAction(add)
-            
+            alert.addOneTextField(configuration: config)
+            alert.addAction(title: "Cancel", style: .cancel)
             present(alert,animated: true, completion: nil)
         }
         
     }
-    
+}
+extension addShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch selectedIndex {
+        case 1:
+            return staffArray?.count ?? 1
+        case 2:
+            return workPlaceArray?.count ?? 1
+        case 3:
+            return positionArray?.count ?? 1
+        case 4:
+            return shiftTemplateArray?.count ?? 1
+        default:
+            break
+        }
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        switch selectedIndex {
+        case 1:
+            cell.textLabel?.text = staffArray?[indexPath.row].employeeName ?? "No Data"
+        case 2:
+            cell.textLabel?.text = workPlaceArray?[indexPath.row].placename ?? "No Data"
+        case 3:
+            cell.textLabel?.text = positionArray?[indexPath.row].positionName ?? "No Data"
+        case 4:
+            cell.textLabel?.text = shiftTemplateArray?[indexPath.row].shiftTemplateName ?? "No Data"
+            if let text = shiftTemplateArray?[indexPath.row]{
+                cell.detailTextLabel?.text = "\(text.shiftTimeStart) - \(text.shiftTimeEnd)"
+            }
+        default:
+            break
+        }
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        displayPickerView(false, identifier: "tableView",fromTop: false)
+        switch selectedIndex {
+        case 1:
+            selectedStaff = staffArray?[indexPath.row].employeeName ?? "No Data"
+        case 2:
+            selectedWorkPlace = workPlaceArray?[indexPath.row].placename ?? "No Data"
+        case 3:
+            selectedPosition = positionArray?[indexPath.row].positionName ?? "No Data"
+        case 4:
+            selectedShiftName = shiftTemplateArray?[indexPath.row].shiftTemplateName ?? "No Data"
+            selectedStartTime = shiftTemplateArray?[indexPath.row].shiftTimeStart ?? "No Data"
+            selectedEndTime = shiftTemplateArray?[indexPath.row].shiftTimeEnd ?? "No Data"
+            
+            selectedShiftMinutes = shiftTemplateArray?[indexPath.row].TotalMinutes ?? 0
+
+        default:
+            break
+        }
+        addShiftCollectionView.reloadData()
+        
+    }
 }
