@@ -11,8 +11,11 @@ import RealmSwift
 
 class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
+    @IBOutlet weak var saveBtnOutlet: UIButton!
     @IBOutlet weak var continueAddOutlet: UIButton!
     @IBOutlet weak var myPickerView: UIPickerView!
+    @IBOutlet weak var backBtnOutlet: UIButton!
+    
     @IBAction func saveBtnPressed(_ sender: UIButton) {
         saveDataToCal(goBack: true)
     }
@@ -41,8 +44,6 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
             
         }
     }
-    
-    
     
     var staffArray:Results<EmployeeData>?
     var workPlaceArray:Results<WorkSpaceData>?
@@ -143,7 +144,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
     @IBAction func continueAdd(_ sender: UIButton) {
         saveDataToCal(goBack: false)
         if  selectedStaff != "" && selectedWorkPlace != "" && selectedPosition != "" && selectedShiftName != "" && selectedStartTime != "" && selectedEndTime != "" {
-            let alert = UIAlertController(title: "Save Success", message: "", preferredStyle: .actionSheet)
+            let alert = UIAlertController(style: .actionSheet, title: "Save Success")
             let action = UIAlertAction(title: "OK", style: .default) { (action) in
                 self.selectedStaff = ""
                 self.selectedWorkPlace = ""
@@ -159,7 +160,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
                 
             }
             alert.addAction(action)
-            present(alert,animated: true, completion: nil)
+            alert.show()
         }
         
         
@@ -169,9 +170,12 @@ class addShiftDetailVC: UIViewController,UIPickerViewDataSource,UIPickerViewDele
         super.viewDidLoad()
         navigationItem.title = "Add New Shift"
         loadRealmData()
-        continueAddOutlet.layer.cornerRadius = 15
+        continueAddOutlet.layer.cornerRadius = continueAddOutlet.frame.width / 2
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapToDismiss))
 //        view.addGestureRecognizer(tapGesture)
+        saveBtnOutlet.layer.cornerRadius = saveBtnOutlet.frame.width / 2
+        backBtnOutlet.layer.cornerRadius = backBtnOutlet.frame.width / 2
+        addShiftCollectionView.backgroundColor = .clear
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -350,7 +354,7 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width
-        let height = (view.frame.height - 44) / 8
+        let height = (view.frame.height - 140) / 8
         let smallWidth = view.frame.width / 3
         let halfWidth = view.frame.width / 2
         

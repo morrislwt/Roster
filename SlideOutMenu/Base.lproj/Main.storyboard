@@ -34,7 +34,7 @@
         <!--Back TableVC-->
         <scene sceneID="hK8-R6-PC1">
             <objects>
-                <tableViewController id="cUJ-CM-bgx" customClass="BackTableVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="cUJ-CM-bgx" customClass="BackTableVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cCL-As-2aE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,7 +128,7 @@
         <!--SettingVC-->
         <scene sceneID="RsJ-CJ-q3C">
             <objects>
-                <viewController id="r45-OO-vuh" customClass="SettingVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="r45-OO-vuh" customClass="SettingVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UpK-aT-UxH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,7 +171,7 @@
         <!--Hello-->
         <scene sceneID="FLv-EY-KiI">
             <objects>
-                <viewController id="GaZ-ZQ-p8j" customClass="Hello" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GaZ-ZQ-p8j" customClass="Hello" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lO2-u2-kiG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,7 +200,7 @@
         <!--Agenda-->
         <scene sceneID="LKW-yg-ZeK">
             <objects>
-                <viewController id="FoT-sL-q1b" customClass="TodoListViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FoT-sL-q1b" customClass="TodoListViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cBS-pv-H2a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,7 +286,7 @@
         <!--Time Sheet-->
         <scene sceneID="4X8-Rg-sVD">
             <objects>
-                <viewController id="NIj-VL-BNE" customClass="TimeSheetViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NIj-VL-BNE" customClass="TimeSheetViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xaH-5q-iXH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -673,7 +673,7 @@
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                         <segue destination="NFl-W3-Dd2" kind="show" identifier="showShiftDetail" id="jpA-L5-mn7"/>
-                        <segue destination="Hf1-Sw-8CJ" kind="show" identifier="addFullShift" id="Wov-mB-sxs"/>
+                        <segue destination="Hf1-Sw-8CJ" kind="presentation" identifier="addFullShift" id="7yz-Ru-CxV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPW-ug-CHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -683,7 +683,7 @@
         <!--Add-->
         <scene sceneID="fUI-tu-CLa">
             <objects>
-                <viewController id="xOM-Er-k2C" customClass="AddTodoViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xOM-Er-k2C" customClass="AddTodoViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ifH-Xb-KE5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -828,7 +828,7 @@
         <!--Time Sheet Result View Controller-->
         <scene sceneID="ZtM-DB-10O">
             <objects>
-                <viewController id="EfU-3r-TIk" customClass="TimeSheetResultViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EfU-3r-TIk" customClass="TimeSheetResultViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YSc-Wk-k47">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -919,13 +919,16 @@
         <!--Title-->
         <scene sceneID="1U4-Ot-161">
             <objects>
-                <viewController id="Hf1-Sw-8CJ" customClass="addShiftDetailVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hf1-Sw-8CJ" customClass="addShiftDetailVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SAl-VP-8yP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenGradient" translatesAutoresizingMaskIntoConstraints="NO" id="0Ao-5B-RMH">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ook-OA-kuk">
-                                <rect key="frame" x="0.0" y="92" width="414" height="552"/>
+                                <rect key="frame" x="0.0" y="73.666666666666515" width="414" height="588.66666666666652"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5mL-lb-FTB">
                                     <size key="itemSize" width="414" height="90"/>
@@ -934,7 +937,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="UNq-Tb-lWK" customClass="AddShiftCollectionViewCell" customModule="SlideOutMenu" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="UNq-Tb-lWK" customClass="AddShiftCollectionViewCell" customModule="Roster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -991,57 +994,59 @@
                                     <outlet property="delegate" destination="Hf1-Sw-8CJ" id="7Rn-lB-2f7"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEA-Eo-gxR">
-                                <rect key="frame" x="124.33333333333333" y="686" width="165.33333333333337" height="30"/>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhZ-Vd-jXZ">
+                                <rect key="frame" x="226.33333333333334" y="672" width="44.000000000000028" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.3411764706" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ZgM-Yf-H20"/>
-                                </constraints>
-                                <state key="normal" title="Continue Add"/>
-                                <connections>
-                                    <action selector="continueAdd:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="Q5k-Wz-KhR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhZ-Vd-jXZ">
-                                <rect key="frame" x="350" y="30" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="F9P-zi-50X"/>
                                     <constraint firstAttribute="width" constant="44" id="NKY-7W-dq0"/>
                                 </constraints>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.050980392159999999" green="0.2784313725" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveBtnPressed:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="Yt3-Vg-IOH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxK-b9-xKY">
-                                <rect key="frame" x="20" y="30" width="44" height="44"/>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxK-b9-xKY">
+                                <rect key="frame" x="20" y="28" width="44" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.3411764706" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="aJC-Ms-2Jg"/>
                                     <constraint firstAttribute="height" constant="44" id="b5d-St-0WC"/>
                                 </constraints>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.050980392159999999" green="0.2784313725" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="backBtnPressed:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="fUZ-PZ-3aK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEA-Eo-gxR">
+                                <rect key="frame" x="143.66666666666666" y="672" width="44" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.3411764706" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ZgM-Yf-H20"/>
+                                    <constraint firstAttribute="width" constant="44" id="lbm-yQ-4PW"/>
+                                </constraints>
+                                <state key="normal" title="Add + "/>
+                                <connections>
+                                    <action selector="continueAdd:" destination="Hf1-Sw-8CJ" eventType="touchUpInside" id="Q5k-Wz-KhR"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ook-OA-kuk" firstAttribute="height" secondItem="SAl-VP-8yP" secondAttribute="height" multiplier="0.75" id="1DL-jt-fpS"/>
+                            <constraint firstItem="Ook-OA-kuk" firstAttribute="height" secondItem="SAl-VP-8yP" secondAttribute="height" multiplier="0.8" id="1DL-jt-fpS"/>
+                            <constraint firstItem="RNN-rS-aPb" firstAttribute="bottom" secondItem="BhZ-Vd-jXZ" secondAttribute="bottom" constant="20" id="42E-hS-sBC"/>
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="centerY" secondItem="SAl-VP-8yP" secondAttribute="centerY" id="45e-vv-QMc"/>
-                            <constraint firstItem="RNN-rS-aPb" firstAttribute="trailing" secondItem="BhZ-Vd-jXZ" secondAttribute="trailing" constant="20" id="5Nf-c1-8en"/>
-                            <constraint firstItem="YxK-b9-xKY" firstAttribute="top" secondItem="RNN-rS-aPb" secondAttribute="top" constant="10" id="5u7-9o-HWp"/>
+                            <constraint firstItem="YxK-b9-xKY" firstAttribute="top" secondItem="RNN-rS-aPb" secondAttribute="top" constant="8" id="5u7-9o-HWp"/>
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="centerX" secondItem="SAl-VP-8yP" secondAttribute="centerX" id="CPx-Rf-4uk"/>
+                            <constraint firstItem="0Ao-5B-RMH" firstAttribute="leading" secondItem="RNN-rS-aPb" secondAttribute="leading" id="H1g-in-ty1"/>
+                            <constraint firstItem="RNN-rS-aPb" firstAttribute="trailing" secondItem="0Ao-5B-RMH" secondAttribute="trailing" id="HFF-PD-wjQ"/>
+                            <constraint firstItem="UEA-Eo-gxR" firstAttribute="centerX" secondItem="SAl-VP-8yP" secondAttribute="centerX" multiplier="0.8" id="JNS-a4-bed"/>
                             <constraint firstItem="YxK-b9-xKY" firstAttribute="leading" secondItem="RNN-rS-aPb" secondAttribute="leading" constant="20" id="M0C-on-Nl9"/>
-                            <constraint firstItem="UEA-Eo-gxR" firstAttribute="centerX" secondItem="SAl-VP-8yP" secondAttribute="centerX" id="MMz-LL-aiS"/>
-                            <constraint firstItem="RNN-rS-aPb" firstAttribute="bottom" secondItem="UEA-Eo-gxR" secondAttribute="bottom" constant="20" id="OWJ-MM-XR3"/>
-                            <constraint firstItem="UEA-Eo-gxR" firstAttribute="width" secondItem="SAl-VP-8yP" secondAttribute="width" multiplier="0.4" id="lde-Xb-J3e"/>
+                            <constraint firstItem="0Ao-5B-RMH" firstAttribute="top" secondItem="SAl-VP-8yP" secondAttribute="top" id="ZBC-Pm-vED"/>
+                            <constraint firstItem="RNN-rS-aPb" firstAttribute="bottom" secondItem="UEA-Eo-gxR" secondAttribute="bottom" constant="20" id="c29-Vu-rai"/>
                             <constraint firstItem="Ook-OA-kuk" firstAttribute="width" secondItem="SAl-VP-8yP" secondAttribute="width" id="nv0-Am-ZGX"/>
-                            <constraint firstItem="BhZ-Vd-jXZ" firstAttribute="top" secondItem="RNN-rS-aPb" secondAttribute="top" constant="10" id="o2g-Pf-EVf"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ao-5B-RMH" secondAttribute="bottom" id="rlc-b4-4ai"/>
+                            <constraint firstItem="BhZ-Vd-jXZ" firstAttribute="centerX" secondItem="SAl-VP-8yP" secondAttribute="centerX" multiplier="1.2" id="wXv-li-zlH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RNN-rS-aPb"/>
                     </view>
@@ -1054,8 +1059,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addShiftCollectionView" destination="Ook-OA-kuk" id="8ge-qf-lvJ"/>
+                        <outlet property="backBtnOutlet" destination="YxK-b9-xKY" id="6tQ-8C-JOB"/>
                         <outlet property="continueAddOutlet" destination="UEA-Eo-gxR" id="RsP-LQ-B1f"/>
                         <outlet property="myPickerView" destination="VH7-gz-63H" id="ZEy-U2-myV"/>
+                        <outlet property="saveBtnOutlet" destination="BhZ-Vd-jXZ" id="Gh4-Pk-lgu"/>
                         <outlet property="selectView" destination="8hE-SD-u4F" id="8LM-U8-JWy"/>
                         <segue destination="Pw6-XC-rFd" kind="unwind" identifier="backToCal" unwindAction="backToCalSegue:" id="xSi-jO-ROA"/>
                     </connections>
@@ -1097,12 +1104,12 @@
                     <viewLayoutGuide key="safeArea" id="rIh-CQ-Y5e"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-6894" y="1333"/>
+            <point key="canvasLocation" x="-6894.202898550725" y="1332.8804347826087"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="I4s-Uk-wo3">
             <objects>
-                <viewController id="tdy-HB-8Qy" customClass="DashboardViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tdy-HB-8Qy" customClass="DashboardViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L0V-Hc-jfa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1132,7 +1139,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="pow-gw-S1m" customClass="DashboardCollectionViewCell" customModule="SlideOutMenu" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="pow-gw-S1m" customClass="DashboardCollectionViewCell" customModule="Roster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-10.333333333333334" width="416" height="50.666666666666657"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1236,7 +1243,7 @@
         <!--Pop View Controller-->
         <scene sceneID="bn8-46-qmD">
             <objects>
-                <viewController id="sYC-qa-dKt" customClass="PopViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sYC-qa-dKt" customClass="PopViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mpx-sF-fyn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1287,7 +1294,7 @@
         <!--Show Shift DetailVC-->
         <scene sceneID="csZ-YM-wKG">
             <objects>
-                <viewController id="NFl-W3-Dd2" customClass="ShowShiftDetailVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NFl-W3-Dd2" customClass="ShowShiftDetailVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oxX-4X-FkO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1295,9 +1302,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ocean" translatesAutoresizingMaskIntoConstraints="NO" id="MoR-fn-yKG">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOj-Id-8uY">
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOj-Id-8uY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dwQ-q3-Q2g">
                                 <rect key="frame" x="20.666666666666657" y="73.666666666666686" width="372.66666666666674" height="588.66666666666652"/>
@@ -1366,7 +1373,7 @@
         <!--Home Tab Bar Controller-->
         <scene sceneID="oIn-nX-aib">
             <objects>
-                <tabBarController id="4If-ds-4YI" customClass="HomeTabBarController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="4If-ds-4YI" customClass="HomeTabBarController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" itemPositioning="fill" id="S9J-8d-s2G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1387,7 +1394,7 @@
         <!--Employees-->
         <scene sceneID="rlO-1G-BJe">
             <objects>
-                <viewController id="pso-dd-dNc" customClass="EmployeesVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pso-dd-dNc" customClass="EmployeesVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3IZ-03-yfA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1445,7 +1452,7 @@
         <!--Positions-->
         <scene sceneID="k2J-U6-weO">
             <objects>
-                <viewController id="Sc6-R5-lZ9" customClass="PositionsVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Sc6-R5-lZ9" customClass="PositionsVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jhY-lx-qj8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1504,7 +1511,7 @@
         <!--Shift For Edit-->
         <scene sceneID="iUb-QS-1sa">
             <objects>
-                <viewController id="eal-MU-SjD" customClass="ShiftForEdit" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eal-MU-SjD" customClass="ShiftForEdit" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UEO-pw-aGl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1705,7 +1712,7 @@
         <!--Add shift-->
         <scene sceneID="4jb-Xe-gcJ">
             <objects>
-                <viewController id="6Nv-1H-F0H" customClass="ShiftVC_second" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6Nv-1H-F0H" customClass="ShiftVC_second" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q2I-Rt-0U8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1930,7 +1937,7 @@
         <!--Work Places-->
         <scene sceneID="C55-mf-R6W">
             <objects>
-                <viewController id="G85-cG-nqj" customClass="WorkSpacesVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="G85-cG-nqj" customClass="WorkSpacesVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EEq-fO-DQ4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2052,6 +2059,7 @@
         <image name="cal_tabbar" width="25" height="25"/>
         <image name="check" width="25" height="25"/>
         <image name="desk" width="1904" height="3081"/>
+        <image name="greenGradient" width="2048" height="2048"/>
         <image name="home_tabbar" width="25" height="25"/>
         <image name="ic_menu" width="24" height="24"/>
         <image name="more" width="25" height="25"/>

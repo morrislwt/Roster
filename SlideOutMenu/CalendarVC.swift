@@ -175,9 +175,6 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
                 var shiftEndTextfield = UITextField()
                 var dutyTextfield = UITextField()
 
-                
-                
-                
                 let alert = UIAlertController(title: "Quick Add Shift", message: "Add Shift on \(dateToString)", preferredStyle: .alert)
                 let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) in
                     

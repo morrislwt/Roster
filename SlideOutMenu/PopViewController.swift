@@ -32,7 +32,6 @@ class PopViewController: UIViewController, UITableViewDataSource,UITableViewDele
         
         if indexPath.row == 0 {
             selectedIndex = 0
-            
         }
         if indexPath.row == 1 {
             selectedIndex = 1
