@@ -46,7 +46,6 @@ class addShiftDetailVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
             return selectedShiftMinutes - breakHour * 60 - breakMin
         }
         set {
-            
         }
     }
     var staffArray:Results<EmployeeData>?
@@ -157,7 +156,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
                 
             }
             alert.addAction(action)
-            alert.show()
+            present(alert,animated: true, completion: nil)
         }
     }
     

@@ -116,7 +116,7 @@
 		A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shiftTemplateData.swift; sourceTree = "<group>"; };
 		A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addShiftDetailVC.swift; sourceTree = "<group>"; };
 		A51C2AE920A3EE8A00F638D2 /* ShiftDataToCalender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDataToCalender.swift; sourceTree = "<group>"; };
-		A531B7392089B72F00AE5670 /* Roster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roster.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A531B7392089B72F00AE5670 /* SlideOutMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideOutMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A531B73C2089B72F00AE5670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A531B73E2089B72F00AE5670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A531B7412089B72F00AE5670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 		A531B73A2089B72F00AE5670 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A531B7392089B72F00AE5670 /* Roster.app */,
+				A531B7392089B72F00AE5670 /* SlideOutMenu.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -654,9 +654,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A531B7382089B72F00AE5670 /* Roster */ = {
+		A531B7382089B72F00AE5670 /* SlideOutMenu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "Roster" */;
+			buildConfigurationList = A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "SlideOutMenu" */;
 			buildPhases = (
 				DDA257502CAFB157500040C7 /* [CP] Check Pods Manifest.lock */,
 				A531B7352089B72F00AE5670 /* Sources */,
@@ -669,9 +669,9 @@
 			);
 			dependencies = (
 			);
-			name = Roster;
+			name = SlideOutMenu;
 			productName = SlideOutMenu;
-			productReference = A531B7392089B72F00AE5670 /* Roster.app */;
+			productReference = A531B7392089B72F00AE5670 /* SlideOutMenu.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -703,7 +703,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A531B7382089B72F00AE5670 /* Roster */,
+				A531B7382089B72F00AE5670 /* SlideOutMenu */,
 			);
 		};
 /* End PBXProject section */
@@ -749,8 +749,8 @@
 				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyPickerPopover/SwiftyPickerPopover.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionableTab/TransitionableTab.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -758,8 +758,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyPickerPopover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionableTab.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1025,10 +1025,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
@@ -1047,10 +1044,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
@@ -1071,7 +1065,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "Roster" */ = {
+		A531B74B2089B73000AE5670 /* Build configuration list for PBXNativeTarget "SlideOutMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A531B74C2089B73000AE5670 /* Debug */,
