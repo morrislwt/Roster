@@ -40,12 +40,14 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
     }
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var saveBtnOutlet: UIButton!
+    
+    @IBOutlet weak var backOutlet: UIButton!
     @IBOutlet weak var shiftNameTextfield: UITextField!
     @IBOutlet weak var shiftStartTextfield: UITextField!
     @IBOutlet weak var shiftEndTextfield: UITextField!
     @IBAction func saveButton(_ sender: UIButton) {
         saveShiftDetail()
-        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "", timeEnd > timeStart else {
+        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "" else {
             return
         }
         performSegue(withIdentifier: "backDashboard", sender: self)
@@ -74,7 +76,7 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
 
     
     func saveShiftDetail(){
-        if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != "" && timeEnd > timeStart {
+        if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != "" {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm"
@@ -94,7 +96,7 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
                 print("error saving shiftTemplateData \(error)")
             }
         }else{
-            let alert = UIAlertController(title: "Please fill all detail😎", message: "shift end time must greater than start time", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
             let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
             alert.addAction(gotItAction)
             present(alert,animated: true, completion: nil)
@@ -134,6 +136,9 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
             self.shiftStartTextfield.text = self.shiftModel?[self.indexForEdit].shiftTimeStart
             self.shiftEndTextfield.text = self.shiftModel?[self.indexForEdit].shiftTimeEnd
         }
+        saveBtnOutlet.layer.cornerRadius = saveBtnOutlet.frame.width / 2
+        backOutlet.layer.cornerRadius = backOutlet.frame.width / 2
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {

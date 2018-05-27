@@ -11,9 +11,12 @@ import RealmSwift
 
 
 class TodoListViewController:UIViewController{
+    @IBOutlet weak var backgroundOutlet: UIView!
     @IBAction func backToAgenda(_ segue:UIStoryboardSegue){
         
     }
+    
+    @IBOutlet weak var leadingBackground: NSLayoutConstraint!
     @IBOutlet weak var agendaTableView: UITableView!
     
     @IBAction func addBtnPressed(_ sender: UIButton) {
@@ -33,10 +36,23 @@ class TodoListViewController:UIViewController{
         agendaTableView.tableFooterView = UIView()
         agendaTableView.layer.cornerRadius = 30
         agendaTableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+        backgroundOutlet.layer.cornerRadius = 20
+        backgroundOutlet.clipsToBounds = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadAgenda()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.5) {
+            self.leadingBackground.constant = -20
+            self.view.layoutIfNeeded()
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.leadingBackground.constant = -400
     }
 }
 

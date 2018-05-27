@@ -13,7 +13,10 @@ import SwipeCellKit
 
 
 class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
-
+    @IBOutlet weak var yellowOutlet: UIView!
+    
+    @IBOutlet weak var yellowLeading: NSLayoutConstraint!
+    
     @IBOutlet weak var scheduleOutlet: UILabel!
     @IBOutlet weak var weekOutlet: UIButton!
     @IBOutlet weak var monthOutlet: UIButton!
@@ -127,6 +130,8 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        yellowOutlet.layer.cornerRadius = 20
+        yellowOutlet.clipsToBounds = true
         let width = view.frame.width
         let height = view.frame.height
         currentCalendar = Calendar.init(identifier: .gregorian)
@@ -258,6 +263,18 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         super.viewWillAppear(animated)
         tableView.reloadData()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 1) {
+            self.yellowLeading.constant = -20
+            self.view.layoutIfNeeded()
+        }
+
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.yellowLeading.constant = -400
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

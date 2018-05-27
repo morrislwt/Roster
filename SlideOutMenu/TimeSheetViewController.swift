@@ -15,6 +15,9 @@ class TimeSheetViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var backgroundLeading: NSLayoutConstraint!
+    @IBOutlet weak var backgroundOutlet: UIView!
+    
     let realm = try! Realm()
     var staff:Results<EmployeeData>?
     
@@ -24,7 +27,6 @@ class TimeSheetViewController: UIViewController {
     
     var buttonPressedIndex = 0
     
-    @IBOutlet weak var viewOutlet: UIView!
     @IBAction func dateStartBtn(_ sender: UIButton) {
         buttonPressedIndex = sender.tag
         displayPickerView(true,identifier: "date")
@@ -70,8 +72,20 @@ class TimeSheetViewController: UIViewController {
         super.viewDidLoad()
         goFilterOutlet.layer.cornerRadius = 22
         loadStaff()
-        viewOutlet.layer.cornerRadius = 20
+        backgroundOutlet.layer.cornerRadius = 20
+        backgroundOutlet.clipsToBounds = true
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.5) {
+            self.backgroundLeading.constant = -20
+            self.view.layoutIfNeeded()
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.backgroundLeading.constant = -400
     }
     
     func setupConstraints(popUpView:UIView!,identifier:String){

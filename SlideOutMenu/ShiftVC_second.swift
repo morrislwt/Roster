@@ -40,12 +40,14 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var continueBtnOutlet: UIButton!
     @IBOutlet weak var saveBtnOutlet: UIButton!
+    
+    @IBOutlet weak var backOutlet: UIButton!
     @IBOutlet weak var shiftNameTextfield: UITextField!
     @IBOutlet weak var shiftStartTextfield: UITextField!
     @IBOutlet weak var shiftEndTextfield: UITextField!
     @IBAction func saveButton(_ sender: UIButton) {
         saveShiftDetail(true)
-        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "", timeEnd > timeStart else {
+        guard shiftNameTextfield.text != "",shiftStartTextfield.text != "", shiftEndTextfield.text != "" else {
             return
         }
         performSegue(withIdentifier: "backDashboard", sender: self)
@@ -81,7 +83,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     }
     
     func saveShiftDetail(_ goBack:Bool){
-            if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != "" && timeEnd > timeStart{
+            if shiftNameTextfield.text != "" &&  shiftStartTextfield.text != "" &&  shiftEndTextfield.text != ""{
                 let newShiftTemplate = shiftTemplateData()
                 newShiftTemplate.shiftTemplateName = shiftNameTextfield.text!
                 newShiftTemplate.shiftTimeStart = shiftStartTextfield.text!
@@ -100,7 +102,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
                 self.saveData(to: newShiftTemplate)
                 goBack == true ? performSegue(withIdentifier: "goBack", sender: self) : nil
             }else{
-                let alert = UIAlertController(title: "Please fill all detail😎", message: "shift end time must greater than start time", preferredStyle: .actionSheet)
+                let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
                 let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
                 alert.addAction(gotItAction)
                 present(alert,animated: true, completion: nil)
@@ -132,7 +134,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
 //        saveBtnOutlet.layer.cornerRadius = 22
 //        saveBtnOutlet.layer.borderColor = UIColor.black.cgColor
 //        saveBtnOutlet.layer.borderWidth = 0.2
-        continueBtnOutlet.layer.cornerRadius = 22
+        continueBtnOutlet.layer.cornerRadius = continueBtnOutlet.frame.width / 2
         continueBtnOutlet.layer.borderColor = UIColor.black.cgColor
         continueBtnOutlet.layer.borderWidth = 0.2
         self.shiftStartTextfield.tag = 0
@@ -141,6 +143,8 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
         
         
         self.hideKeyboardWhenTappedAround()
+        saveBtnOutlet.layer.cornerRadius = saveBtnOutlet.frame.width / 2
+        backOutlet.layer.cornerRadius = backOutlet.frame.width / 2
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
