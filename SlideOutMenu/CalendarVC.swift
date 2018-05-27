@@ -366,8 +366,8 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         cell.delegate = self
         if selectStaff?.count == 0 {
             tableView.separatorStyle = .none
-            cell.textLabel?.text = "No shift available today"
-            cell.textLabel?.textColor = .lightGray
+            cell.textLabel?.text = "Looks like no shift today 🤔"
+            cell.textLabel?.textColor = .darkGray
             cell.backgroundColor = .clear
         }
         if (selectStaff?.count)! > 0 {

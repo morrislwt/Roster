@@ -97,7 +97,6 @@
 		A5EC29112089ED3100506E74 /* EmployeesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29102089ED3100506E74 /* EmployeesVC.swift */; };
 		A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */; };
 		A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC29142089F0DC00506E74 /* PositionsVC.swift */; };
-		D9D78548C1AE2103F84F45D8 /* Pods_SlideOutMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,7 +204,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9D78548C1AE2103F84F45D8 /* Pods_SlideOutMenu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,7 +1023,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
@@ -1044,7 +1045,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = SlideOutMenu/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";

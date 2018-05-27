@@ -43,7 +43,12 @@ class DashboardViewController:UIViewController{
     var workPlace:Results<WorkSpaceData>?
     var position:Results<PositionData>?
     var shiftTemplate:Results<shiftTemplateData>?
-    var dataIndex:Int = 0
+    var oldIndex:Int = 0
+    var dataIndex:Int = 0{
+        didSet{
+            oldIndex = oldValue
+        }
+    }
     var indexForEdit:Int = 0
     func loadData(){
         staff = realm.objects(EmployeeData.self)
@@ -344,9 +349,15 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         dashboardTableView.reloadData()
         let cells = dashboardTableView.visibleCells
         
-        let tableviewWidth = dashboardTableView.bounds.size.width
-//        let tableViewHeight = dashboardTableView.bounds.size.height
+        var tableviewWidth:CGFloat {
+            if dataIndex >= oldIndex{
+                return dashboardTableView.bounds.size.width
+            }else{
+                return -dashboardTableView.bounds.size.width
+            }
+        }
         
+//        let tableViewHeight = dashboardTableView.bounds.size.height
         for cell in cells {
             cell.transform = CGAffineTransform(translationX: tableviewWidth, y: 0)
         }

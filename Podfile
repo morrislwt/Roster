@@ -9,7 +9,6 @@ pod 'RealmSwift'
 pod 'SwipeCellKit'
 pod 'CVCalendar'
 pod 'Popover'
-pod 'TransitionableTab'
 
 
 end
