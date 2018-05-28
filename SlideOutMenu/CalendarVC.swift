@@ -9,14 +9,10 @@
 import UIKit
 import CVCalendar
 import RealmSwift
-import SwipeCellKit
-
 
 class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
     @IBOutlet weak var yellowOutlet: UIView!
-    
     @IBOutlet weak var yellowLeading: NSLayoutConstraint!
-    
     @IBOutlet weak var scheduleOutlet: UILabel!
     @IBOutlet weak var weekOutlet: UIButton!
     @IBOutlet weak var monthOutlet: UIButton!
@@ -53,7 +49,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
     }
     var selectedIndexFromPopOver = 2
     var selectedIndexPath:Int?
-
+    
     @IBAction func backToCalSegue(_ segue:UIStoryboardSegue){
         
     }
@@ -77,7 +73,6 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
                     controller?.delegate = self
                 }
             }
-            
         }
         if segue.identifier == "showShiftDetail" {
             if let vc = segue.destination as? ShowShiftDetailVC {
@@ -113,7 +108,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
     
     //MARK: Realm method
     
-
+    
     private var menuView: CVCalendarMenuView!
     
     private var calendarView: CVCalendarView!
@@ -137,10 +132,10 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         currentCalendar = Calendar.init(identifier: .gregorian)
         
         self.title = CVDate(date: Date(),calendar: currentCalendar).globalDescription
-
+        
         self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 65, width: width, height: 15))
         self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 85, width: width, height: 50))
-
+        
         let frame = CGRect(x: width/2 - width*0.9/2, y: 150, width: width * 0.9, height: height - 135)
         tableView = UITableView.init(frame: frame, style: .grouped)
         tableView.layer.cornerRadius = 20
@@ -157,10 +152,9 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         self.tableView.delegate = self
         
         tableView.tableFooterView = UIView()
-        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
+        //        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         loadShift(selectDate: currentDate)
-        
-
         
         NotificationCenter.default.addObserver(forName: .selectedIndex, object: nil, queue: OperationQueue.main) { (notification) in
             let popVC = notification.object as! PopViewController
@@ -179,7 +173,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
                 var shiftStartTextfield = UITextField()
                 var shiftEndTextfield = UITextField()
                 var dutyTextfield = UITextField()
-
+                
                 let alert = UIAlertController(title: "Quick Add Shift", message: "Add Shift on \(dateToString)", preferredStyle: .alert)
                 let addAction = UIAlertAction(title: "Add", style: .default) { (addAction) in
                     
@@ -211,9 +205,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
                         })
                         blankAlert.addAction(gotItAction)
                         self.present(blankAlert,animated: true,completion: nil)
-                        
                     }
-                    
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 
@@ -258,7 +250,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
             }
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -270,7 +262,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
             self.yellowLeading.constant = -20
             self.view.layoutIfNeeded()
         }
-
+        
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -281,7 +273,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         
         self.menuView.commitMenuViewUpdate()
         self.calendarView.commitCalendarViewUpdate()
-//
+        //
     }
     
     override func didReceiveMemoryWarning() {
@@ -290,7 +282,7 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
     }
     
     @IBAction func addVCbutton(_ sender: Any) {
-         
+        
     }
     
 }
@@ -343,23 +335,14 @@ extension CalendarVC: CVCalendarViewDelegate,CVCalendarMenuViewDelegate {
         let okAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(okAction)
         let addAction = UIAlertAction(title: "Add Shift", style:.default) { addAction in
-//            self.performSegue(withIdentifier: "addEvent", sender: self)
         }
         alertController.addAction(addAction)
-        //        self.present(alertController, animated: true, completion: nil)
-        //        print("currentDate \(currentDate)")
-        //        print("date \(date)")
+        
         
         animateTable()
         loadShift(selectDate: currentDate)
     }
-    //    func saveStaff(indexPath:Int,sortOf:String){
-    //        if currentDate == staffDetail[indexPath][sortOf]{
-    //            selectStaff.append(["name" : staffDetail[indexPath]["name"]!,
-    //                                "shift": staffDetail[indexPath]["shift"]!,
-    //                                "date":selectStaff[indexPath]["date"]!])
-    //        }
-    //    }
+    
     func shouldShowWeekdaysOut() -> Bool {
         return false
     }
@@ -371,16 +354,13 @@ extension CalendarVC: CVCalendarViewDelegate,CVCalendarMenuViewDelegate {
 }
 
 ///--------------------* TableView Methods *----------------------///
-extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCellDelegate{
+extension CalendarVC:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = SwipeTableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        ////not reuse cell
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         
-        
-        ////not reUse cell
-        
-        cell.delegate = self
         if selectStaff?.count == 0 {
             tableView.separatorStyle = .none
             cell.textLabel?.text = "Looks like no shift today 🤔"
@@ -388,16 +368,14 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
             cell.backgroundColor = .clear
         }
         if (selectStaff?.count)! > 0 {
-        guard let staff = selectStaff?[indexPath.row] else{ return cell }
-        
-        if currentDate == staff.shiftDate! {
-            cell.textLabel?.text = "\(staff.staff)"
-            cell.backgroundColor = .clear
-            cell.detailTextLabel?.text = "\(staff.shiftStart) - \(staff.shiftEnd) @ \(staff.workPlace)"
+            guard let staff = selectStaff?[indexPath.row] else{ return cell }
+            
+            if currentDate == staff.shiftDate! {
+                cell.textLabel?.text = "\(staff.staff)"
+                cell.backgroundColor = .clear
+                cell.detailTextLabel?.text = "\(staff.shiftStart) - \(staff.shiftEnd) @ \(staff.workPlace)"
             }
         }
-
-        
         
         return cell
     }
@@ -412,18 +390,17 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         }
         return selectStaff?.count ?? 1
     }
-
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let title: UILabel = UILabel()
-//        title.text = selectDateInString
-//        title.backgroundColor = .clear
-//        title.textAlignment = .center
-//        title.textColor = UIColor(red: 0/255, green: 100/255, blue: 159/255, alpha: 1)
-//        title.font = UIFont.boldSystemFont(ofSize: 18)
-//
-//        return title
-//    }
+    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    //        let title: UILabel = UILabel()
+    //        title.text = selectDateInString
+    //        title.backgroundColor = .clear
+    //        title.textAlignment = .center
+    //        title.textColor = UIColor(red: 0/255, green: 100/255, blue: 159/255, alpha: 1)
+    //        title.font = UIFont.boldSystemFont(ofSize: 18)
+    //
+    //        return title
+    //    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return selectDateInString
     }
@@ -438,104 +415,100 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource,SwipeTableViewCel
         guard numbersOfStaff > 0 else { return }
         performSegue(withIdentifier: "showShiftDetail", sender: self)
     }
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if selectStaff?.count == 0{
+            return false
+        }else{
+            return true
+        }
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = SwipeAction(style: .destructive, title: "delete") { action, indexPath in
-            // handle action by updating model with deletion
-            if let staffForDeletion = self.selectStaff?[indexPath.row] {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.updateModel(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .right)
+        }
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            self.editModel(at: indexPath)
+        }
+        edit.backgroundColor = .lightGray
+        return [delete,edit]
+     
+    }
+    func updateModel(at indexPath: IndexPath){
+        if let calendarData = self.selectStaff?[indexPath.row] {
+            deleteModel(itemForDelete: calendarData)
+        }
+    }
+    func deleteModel(itemForDelete:Object){
+        do{
+            try realm.write {
+                realm.delete(itemForDelete)
+            }
+        }catch{
+            print("Error deleting item, \(error)")
+        }
+    }
+    func editModel(at indexPath: IndexPath){
+        if let shiftForEdit = self.selectStaff?[indexPath.row]{
+            
+            var editStaffName = UITextField()
+            var editWorkPlace = UITextField()
+            var editPosition = UITextField()
+            var editShiftStart = UITextField()
+            var editShiftEnd = UITextField()
+            var editDuty = UITextField()
+            
+            
+            let alert = UIAlertController(title: "Edit shift info.", message: "", preferredStyle: .alert)
+            alert.addTextField { (inputStaffName) in
+                inputStaffName.text = shiftForEdit.staff
+                editStaffName = inputStaffName
+            }
+            alert.addTextField { (inputWorkPlace) in
+                inputWorkPlace.text = shiftForEdit.workPlace
+                editWorkPlace = inputWorkPlace
+            }
+            alert.addTextField { (inputPosition) in
+                inputPosition.text = shiftForEdit.position
+                editPosition = inputPosition
+            }
+            alert.addTextField { (inputShiftStart) in
+                inputShiftStart.text = shiftForEdit.shiftStart
+                editShiftStart = inputShiftStart
+            }
+            alert.addTextField { (inputShiftEnd) in
+                inputShiftEnd.text = shiftForEdit.shiftEnd
+                editShiftEnd = inputShiftEnd
+            }
+            alert.addTextField { (inputDuty) in
+                inputDuty.text = shiftForEdit.duty
+                editDuty = inputDuty
+            }
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            let saveAction = UIAlertAction(title: "Save", style: .default) { (saveAction) in
+                
                 do{
                     try self.realm.write {
-                        self.realm.delete(staffForDeletion)
+                        self.selectStaff?[indexPath.row].staff = editStaffName.text!
+                        self.selectStaff?[indexPath.row].workPlace = editWorkPlace.text!
+                        self.selectStaff?[indexPath.row].position = editPosition.text!
+                        self.selectStaff?[indexPath.row].shiftStart = editShiftStart.text!
+                        self.selectStaff?[indexPath.row].shiftEnd = editShiftEnd.text!
+                        self.selectStaff?[indexPath.row].duty = editDuty.text!
                     }
                 }catch{
-                    print("Error deleting staff \(error)")
+                    print("Error editing Category \(error)")
                 }
+                self.tableView.reloadData()
             }
+            alert.addAction(saveAction)
+            self.present(alert,animated: true, completion: nil)
         }
-        let editAction = SwipeAction(style: .default, title: "edit") { action, indexPath in
-            
-            if let shiftForEdit = self.selectStaff?[indexPath.row]{
-                
-                var editStaffName = UITextField()
-                var editWorkPlace = UITextField()
-                var editPosition = UITextField()
-                var editShiftStart = UITextField()
-                var editShiftEnd = UITextField()
-                var editDuty = UITextField()
-                
-                
-                let alert = UIAlertController(title: "Edit shift info.", message: "", preferredStyle: .alert)
-                alert.addTextField { (inputStaffName) in
-                    inputStaffName.text = shiftForEdit.staff
-                    editStaffName = inputStaffName
-                }
-                alert.addTextField { (inputWorkPlace) in
-                    inputWorkPlace.text = shiftForEdit.workPlace
-                    editWorkPlace = inputWorkPlace
-                }
-                alert.addTextField { (inputPosition) in
-                    inputPosition.text = shiftForEdit.position
-                    editPosition = inputPosition
-                }
-                alert.addTextField { (inputShiftStart) in
-                    inputShiftStart.text = shiftForEdit.shiftStart
-                    editShiftStart = inputShiftStart
-                }
-                alert.addTextField { (inputShiftEnd) in
-                    inputShiftEnd.text = shiftForEdit.shiftEnd
-                    editShiftEnd = inputShiftEnd
-                }
-                alert.addTextField { (inputDuty) in
-                    inputDuty.text = shiftForEdit.duty
-                    editDuty = inputDuty
-                }
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                let saveAction = UIAlertAction(title: "Save", style: .default) { (saveAction) in
-                    
-                    do{
-                        try self.realm.write {
-                            self.selectStaff?[indexPath.row].staff = editStaffName.text!
-                            self.selectStaff?[indexPath.row].workPlace = editWorkPlace.text!
-                            self.selectStaff?[indexPath.row].position = editPosition.text!
-                            self.selectStaff?[indexPath.row].shiftStart = editShiftStart.text!
-                            self.selectStaff?[indexPath.row].shiftEnd = editShiftEnd.text!
-                            self.selectStaff?[indexPath.row].duty = editDuty.text!
-                        }
-                    }catch{
-                        print("Error editing Category \(error)")
-                    }
-                    self.tableView.reloadData()
-                }
-                alert.addAction(saveAction)
-                self.present(alert,animated: true, completion: nil)
-            }
-        }
-        
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "delete")
-        deleteAction.transitionDelegate = ScaleTransition.default
-        deleteAction.backgroundColor = .clear
-        deleteAction.textColor = .gray
-        
-        
-        
-        editAction.image = UIImage(named: "edit")
-        editAction.transitionDelegate = ScaleTransition.default
-        editAction.backgroundColor = .clear
-        editAction.textColor = .gray
-        
-        return [deleteAction,editAction]
     }
     
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
-        var options = SwipeTableOptions()
-        
-        options.expansionStyle = .destructive
-        options.expansionDelegate = ScaleAndAlphaExpansion.default
-        
-        return options
-    }
     
 }
 extension CalendarVC{
