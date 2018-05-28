@@ -16,6 +16,8 @@ class TimeSheetResultViewController:UIViewController{
         performSegue(withIdentifier: "backTimeSheet", sender: self)
         
     }
+    
+    @IBOutlet weak var nameContraints: NSLayoutConstraint!
     @IBOutlet weak var backOutlet: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var resultTableView: UITableView!
@@ -44,6 +46,17 @@ class TimeSheetResultViewController:UIViewController{
         nameLabel.text = choosePerson
         nameLabel.layer.cornerRadius = 20
         nameLabel.clipsToBounds = true
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 1) {
+            self.nameContraints.constant = self.view.frame.width * 0.6
+            self.view.layoutIfNeeded()
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.nameContraints.constant = self.view.frame.width * 0.01
     }
 }
 

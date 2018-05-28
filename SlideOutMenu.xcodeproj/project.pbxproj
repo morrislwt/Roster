@@ -28,6 +28,12 @@
 		A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7532089BC6200AE5670 /* BackTableVC.swift */; };
 		A531B7562089D09A00AE5670 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7552089D09A00AE5670 /* Hello.swift */; };
 		A531B7582089E0FF00AE5670 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7572089E0FF00AE5670 /* DashboardViewController.swift */; };
+		A54E32BE20BB95EE00DC66CA /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32BD20BB95EE00DC66CA /* CVCalendar.framework */; };
+		A54E32C020BB95EE00DC66CA /* Pods_SlideOutMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32BF20BB95EE00DC66CA /* Pods_SlideOutMenu.framework */; };
+		A54E32C220BB95EE00DC66CA /* Popover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C120BB95EE00DC66CA /* Popover.framework */; };
+		A54E32C420BB95EE00DC66CA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C320BB95EE00DC66CA /* Realm.framework */; };
+		A54E32C620BB95EE00DC66CA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C520BB95EE00DC66CA /* RealmSwift.framework */; };
+		A54E32C820BB95EE00DC66CA /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C720BB95EE00DC66CA /* SwipeCellKit.framework */; };
 		A557B8E820B79CBE00D8D223 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B8E720B79CBE00D8D223 /* HomeTabBarController.swift */; };
 		A557B8EA20B7B26300D8D223 /* AlertController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B8E920B7B26300D8D223 /* AlertController + Extension.swift */; };
 		A557B9E220B7F21A00D8D223 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B99320B7F21A00D8D223 /* Array+Extensions.swift */; };
@@ -128,6 +134,12 @@
 		A531B7532089BC6200AE5670 /* BackTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
 		A531B7552089D09A00AE5670 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
 		A531B7572089E0FF00AE5670 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		A54E32BD20BB95EE00DC66CA /* CVCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CVCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54E32BF20BB95EE00DC66CA /* Pods_SlideOutMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_SlideOutMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54E32C120BB95EE00DC66CA /* Popover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Popover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54E32C320BB95EE00DC66CA /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54E32C520BB95EE00DC66CA /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54E32C720BB95EE00DC66CA /* SwipeCellKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwipeCellKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A557B8E720B79CBE00D8D223 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		A557B8E920B7B26300D8D223 /* AlertController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController + Extension.swift"; sourceTree = "<group>"; };
 		A557B99320B7F21A00D8D223 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -204,6 +216,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54E32BE20BB95EE00DC66CA /* CVCalendar.framework in Frameworks */,
+				A54E32C020BB95EE00DC66CA /* Pods_SlideOutMenu.framework in Frameworks */,
+				A54E32C220BB95EE00DC66CA /* Popover.framework in Frameworks */,
+				A54E32C420BB95EE00DC66CA /* Realm.framework in Frameworks */,
+				A54E32C620BB95EE00DC66CA /* RealmSwift.framework in Frameworks */,
+				A54E32C820BB95EE00DC66CA /* SwipeCellKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +662,12 @@
 		C5F2167A031017CA8EA4812B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A54E32BD20BB95EE00DC66CA /* CVCalendar.framework */,
+				A54E32BF20BB95EE00DC66CA /* Pods_SlideOutMenu.framework */,
+				A54E32C120BB95EE00DC66CA /* Popover.framework */,
+				A54E32C320BB95EE00DC66CA /* Realm.framework */,
+				A54E32C520BB95EE00DC66CA /* RealmSwift.framework */,
+				A54E32C720BB95EE00DC66CA /* SwipeCellKit.framework */,
 				67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */,
 			);
 			name = Frameworks;
