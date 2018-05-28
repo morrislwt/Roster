@@ -138,12 +138,16 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
+            guard staff?.count > 0 else {return 1}
             return staff?.count ?? 1
         case SelectedCollectionItem.place.rawValue:
+            guard workPlace?.count > 0 else {return 1}
             return workPlace?.count ?? 1
         case SelectedCollectionItem.position.rawValue:
+            guard position?.count > 0 else {return 1}
             return position?.count ?? 1
         case SelectedCollectionItem.shift.rawValue:
+            guard shiftTemplate?.count > 0 else {return 1}
             return shiftTemplate?.count ?? 1
         default:
             break
@@ -157,16 +161,22 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         cell.backgroundColor = .clear
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
-            cell.textLabel?.text = staff?[indexPath.row].employeeName
+            cell.textLabel?.text = staff?.count == 0 ? "add some staff" : staff?[indexPath.row].employeeName
         case SelectedCollectionItem.place.rawValue:
-            cell.textLabel?.text = workPlace?[indexPath.row].placename
+            cell.textLabel?.text = workPlace?.count == 0 ? "add some work place" : workPlace?[indexPath.row].placename
         case SelectedCollectionItem.position.rawValue:
-            cell.textLabel?.text = position?[indexPath.row].positionName
+            cell.textLabel?.text = position?.count == 0 ? "add some position" : position?[indexPath.row].positionName
         case SelectedCollectionItem.shift.rawValue:
-            guard let shift = shiftTemplate?[indexPath.row] else { return cell}
-            cell.textLabel?.text = shift.shiftTemplateName
-            cell.detailTextLabel?.text = "\(shift.shiftTimeStart) - \(shift.shiftTimeEnd)"
-            cell.detailTextLabel?.textColor = .lightText
+            if shiftTemplate?.count == 0 {
+                cell.textLabel?.text = "add some regular shift"
+            }
+            if shiftTemplate?.count > 0 {
+                guard let shift = shiftTemplate?[indexPath.row] else { return cell}
+                cell.textLabel?.text = shift.shiftTemplateName
+                cell.detailTextLabel?.text = "\(shift.shiftTimeStart) - \(shift.shiftTimeEnd)"
+                cell.detailTextLabel?.textColor = .lightText
+            }
+
         default:
             break
         }
@@ -179,8 +189,9 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+//            tableView.deleteRows(at: [indexPath], with: .right)
+            tableView.reloadRows(at: [indexPath], with: .middle)
             self.updateModel(at: indexPath, editPressed: false)
-            tableView.deleteRows(at: [indexPath], with: .right)
         }
         let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
             self.updateModel(at: indexPath, editPressed: true)
@@ -195,17 +206,19 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
     func updateModel(at indexPath:IndexPath, editPressed:Bool){
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
-            
             guard let staffForDelete = staff?[indexPath.row] else { return }
             editPressed == true ?
                 editModel(modelForEdit: staffForDelete, indexPath: indexPath) :
                 deleteModel(modelForDelete: staffForDelete)
         case SelectedCollectionItem.place.rawValue:
-            
-            guard let placeForDelete = workPlace?[indexPath.row] else { return }
-            editPressed == true ?
-                editModel(modelForEdit: placeForDelete, indexPath: indexPath) :
-                deleteModel(modelForDelete: placeForDelete)
+            if workPlace?.count > 0 {
+                guard let placeForDelete = workPlace?[indexPath.row] else { return }
+                editPressed == true ?
+                    editModel(modelForEdit: placeForDelete, indexPath: indexPath) :
+                    deleteModel(modelForDelete: placeForDelete)
+                
+            }
+
         case SelectedCollectionItem.position.rawValue:
             
             guard let positionForDelete = position?[indexPath.row] else { return }
@@ -230,6 +243,8 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         }catch{
             print("Error deleting model, \(error)")
         }
+        loadData()
+        dashboardTableView.reloadData()
     }
     func editModel(modelForEdit:EditProtocol,indexPath:IndexPath){
         switch dataIndex {

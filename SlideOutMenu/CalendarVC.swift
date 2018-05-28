@@ -427,8 +427,9 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource{
         
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            tableView.reloadRows(at: [indexPath], with: .middle)
             self.updateModel(at: indexPath)
-            tableView.deleteRows(at: [indexPath], with: .right)
+//            tableView.deleteRows(at: [indexPath], with: .right)
         }
         let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
             self.editModel(at: indexPath)
@@ -450,6 +451,9 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource{
         }catch{
             print("Error deleting item, \(error)")
         }
+        loadShift(selectDate: currentDate)
+        tableView.reloadData()
+        
     }
     func editModel(at indexPath: IndexPath){
         if let shiftForEdit = self.selectStaff?[indexPath.row]{
