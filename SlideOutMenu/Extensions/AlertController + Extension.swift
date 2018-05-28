@@ -9,13 +9,10 @@
 import UIKit
 import RealmSwift
 
-protocol AddRow {
-    func add(_ text: String)
-}
 
 extension UIAlertController {
     
-    static func showAlert(alertTitle:String,alertMessage:String,defaultActionTitle:String,cancelTitle:String,in viewController:UIViewController,textfieldPlaceHolder:String,object:AddRow){
+    static func showAlert(alertTitle:String,alertMessage:String,defaultActionTitle:String,cancelTitle:String,in viewController:UIViewController,textfieldPlaceHolder:String,object:AddDataToRealm){
         var textField = UITextField()
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: defaultActionTitle, style: .default) { (defaultAction) in

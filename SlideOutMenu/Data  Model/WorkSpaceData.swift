@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-class WorkSpaceData : Object, AddRow {
+class WorkSpaceData : Object, AddDataToRealm {
 
     @objc dynamic var placename: String = ""
     

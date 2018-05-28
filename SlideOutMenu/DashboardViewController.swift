@@ -15,6 +15,9 @@ enum SelectedCollectionItem:Int{
     case position
     case shift
 }
+protocol AddDataToRealm {
+    func add(_ text: String)
+}
 
 class DashboardViewController:UIViewController{
     
@@ -143,37 +146,22 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
             break
         }
         return 1
-//        switch dataIndex {
-//        case 0:
-//            return staff?.count ?? 1
-//        case 1:
-//            return workPlace?.count ?? 1
-//        case 2:
-//            return position?.count ?? 1
-//        case 3:
-//            return shiftTemplate?.count ?? 1
-//        default:
-//            break
-//        }
-//        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.textColor = .white
+        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        cell.backgroundColor = .clear
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
             cell.textLabel?.text = staff?[indexPath.row].employeeName
-            cell.backgroundColor = .clear
         case SelectedCollectionItem.place.rawValue:
             cell.textLabel?.text = workPlace?[indexPath.row].placename
-            cell.backgroundColor = .clear
         case SelectedCollectionItem.position.rawValue:
             cell.textLabel?.text = position?[indexPath.row].positionName
-            cell.backgroundColor = .clear
         case SelectedCollectionItem.shift.rawValue:
             guard let shift = shiftTemplate?[indexPath.row] else { return cell}
             cell.textLabel?.text = shift.shiftTemplateName
-            cell.backgroundColor = .clear
             cell.detailTextLabel?.text = "\(shift.shiftTimeStart) - \(shift.shiftTimeEnd)"
             cell.detailTextLabel?.textColor = .lightText
         default:
@@ -186,7 +174,6 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             self.updateModel(at: indexPath, editPressed: false)
@@ -198,7 +185,6 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
             NotificationCenter.default.post(name: .indexForEdit, object: self)
         }
         edit.backgroundColor = .lightGray
-        
         
         return [delete,edit]
     }

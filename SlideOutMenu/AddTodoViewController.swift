@@ -48,10 +48,9 @@ class AddTodoViewController:UIViewController,UITextFieldDelegate {
                 print("Error saving agenda \(error)")
             }
         }else{
-            let alert = UIAlertController(title: "Please add something in title", message: "", preferredStyle: .actionSheet)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(action)
-            present(alert,animated: true, completion: nil)
+            let alert = UIAlertController(style: .actionSheet, title:"Please add something in title")
+            alert.addAction(title: "OK")
+            present(alert,animated: true,completion: nil)
         }
         
     }

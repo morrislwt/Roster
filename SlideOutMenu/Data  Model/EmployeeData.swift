@@ -8,12 +8,12 @@
 
 import RealmSwift
 
-class EmployeeData : Object {
+class EmployeeData : Object, AddDataToRealm {
     
     @objc dynamic var employeeName: String = ""
     
-//    func add(_ text: String) {
-//        self.employeeName = text
-//    }
+    func add(_ text: String) {
+        self.employeeName = text
+    }
 }
 

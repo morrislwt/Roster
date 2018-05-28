@@ -8,10 +8,12 @@
 
 import RealmSwift
 
-class PositionData : Object{
-    
+class PositionData : Object, AddDataToRealm{
+   
     @objc dynamic var positionName: String = ""
     
-    
+    func add(_ text: String) {
+        self.positionName = text
+    }
 }
 
