@@ -15,6 +15,10 @@ class TimeSheetViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var dateStartOutlet: UIButton!
+    
+    @IBOutlet weak var dateEndOutlet: UIButton!
+    @IBOutlet weak var nameOutlet: UIButton!
     @IBOutlet weak var backgroundLeading: NSLayoutConstraint!
     @IBOutlet weak var backgroundOutlet: UIView!
     
@@ -74,11 +78,14 @@ class TimeSheetViewController: UIViewController {
         loadStaff()
         backgroundOutlet.layer.cornerRadius = 20
         backgroundOutlet.clipsToBounds = true
+        dateStartOutlet.layer.cornerRadius = 22
+        dateEndOutlet.layer.cornerRadius = 22
+        nameOutlet.layer.cornerRadius = 22
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 1) {
             self.backgroundLeading.constant = -20
             self.view.layoutIfNeeded()
         }

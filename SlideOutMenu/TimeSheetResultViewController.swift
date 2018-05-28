@@ -42,11 +42,13 @@ class TimeSheetResultViewController:UIViewController{
         resultTableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
         backOutlet.layer.cornerRadius = 22
         nameLabel.text = choosePerson
+        nameLabel.layer.cornerRadius = 20
+        nameLabel.clipsToBounds = true
     }
 }
 
 
-extension TimeSheetResultViewController:UITableViewDataSource,UITabBarDelegate{
+extension TimeSheetResultViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if filterPerson?.count == 0 {
             return 1
@@ -92,5 +94,8 @@ extension TimeSheetResultViewController:UITableViewDataSource,UITabBarDelegate{
                 sumOfHours += totalTime
         }
         return "Total Work : \((sumOfHours) / 60) Hours, \((sumOfHours % 60 )) Mins."
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
