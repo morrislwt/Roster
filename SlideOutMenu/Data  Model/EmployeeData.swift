@@ -17,7 +17,6 @@ class EmployeeData : Object, AddDataToRealm, EditProtocol {
         self.employeeName = text
     }
     func edit()->String {
-
         return employeeName
     }
     func result(_ text: String) {
