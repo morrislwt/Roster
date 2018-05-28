@@ -8,13 +8,20 @@
 
 import RealmSwift
 
-class WorkSpaceData : Object, AddDataToRealm {
+class WorkSpaceData : Object, AddDataToRealm, EditProtocol {
 
     @objc dynamic var placename: String = ""
     
     func add(_ text: String) {
         self.placename = text
     }
+    func edit()->String {
+        return placename
+    }
+    func result(_ text: String) {
+        self.placename = text
+    }
+    
 }
 
 // 1. 3 objects -> 1 ?? AddRow (protocol)

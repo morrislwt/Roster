@@ -8,11 +8,19 @@
 
 import RealmSwift
 
-class EmployeeData : Object, AddDataToRealm {
-    
+class EmployeeData : Object, AddDataToRealm, EditProtocol {
+
+
     @objc dynamic var employeeName: String = ""
     
     func add(_ text: String) {
+        self.employeeName = text
+    }
+    func edit()->String {
+
+        return employeeName
+    }
+    func result(_ text: String) {
         self.employeeName = text
     }
 }
