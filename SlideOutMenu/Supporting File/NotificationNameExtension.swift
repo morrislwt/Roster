@@ -12,4 +12,8 @@ extension Notification.Name {
     
     static let selectedIndex = Notification.Name(rawValue: "selectedIndex")
     static let indexForEdit = Notification.Name(rawValue: "indexForEdit")
+    static let dataIndex = Notification.Name(rawValue: "dataIndex")
+    static let dashboardSelectRow = Notification.Name(rawValue: "dashboardSelectRow")
+    
+    
 }

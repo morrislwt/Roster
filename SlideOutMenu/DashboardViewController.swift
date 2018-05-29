@@ -58,6 +58,7 @@ class DashboardViewController:UIViewController{
             oldIndex = oldValue
         }
     }
+    var dashboardSelectRow:String = ""
     var indexForEdit:Int = 0
     func loadData(){
         staff = realm.objects(EmployeeData.self)
@@ -87,7 +88,6 @@ extension DashboardViewController:UICollectionViewDataSource,UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DashboardCollectionViewCell
         cell.dashboardLabel.text = dashboardTitle[indexPath.item]
-
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
             cell.backgroundColor = indexPath.item == 0 ? .white : .clear
@@ -127,6 +127,7 @@ extension DashboardViewController:UICollectionViewDataSource,UICollectionViewDel
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         dataIndex = indexPath.item
+        NotificationCenter.default.post(name: .dataIndex, object: self)
         animateTable()
         dashboardCollectionView.reloadData()
         
@@ -193,6 +194,19 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch dataIndex {
+        case 0:
+            dashboardSelectRow = staff?[indexPath.row].employeeName ?? ""
+        case 1:
+            dashboardSelectRow = workPlace?[indexPath.row].placename ?? ""
+        case 2:
+            dashboardSelectRow = position?[indexPath.row].positionName ?? ""
+        case 3:
+            dashboardSelectRow = shiftTemplate?[indexPath.row].shiftTemplateName ?? ""
+        default:
+            break
+        }
+        NotificationCenter.default.post(name: .dashboardSelectRow, object: self)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

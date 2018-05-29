@@ -90,6 +90,8 @@
 		A557BA1520B7F21A00D8D223 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B9E020B7F21A00D8D223 /* TextField.swift */; };
 		A557BA1620B7F21A00D8D223 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B9E120B7F21A00D8D223 /* Button.swift */; };
 		A557BA1820B93BCB00D8D223 /* ShiftForEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557BA1720B93BCB00D8D223 /* ShiftForEdit.swift */; };
+		A56A2CDF20BD2BB30011FA2A /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56A2CDE20BD2BB30011FA2A /* UpcomingViewController.swift */; };
+		A56A2CE120BD31350011FA2A /* UpComingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56A2CE020BD31340011FA2A /* UpComingTableViewCell.swift */; };
 		A579D89620A541E500FB5027 /* ShiftVC_second.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579D89520A541E500FB5027 /* ShiftVC_second.swift */; };
 		A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */; };
 		A5C4806B20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4806A20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift */; };
@@ -196,6 +198,8 @@
 		A557B9E020B7F21A00D8D223 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		A557B9E120B7F21A00D8D223 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		A557BA1720B93BCB00D8D223 /* ShiftForEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftForEdit.swift; sourceTree = "<group>"; };
+		A56A2CDE20BD2BB30011FA2A /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
+		A56A2CE020BD31340011FA2A /* UpComingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingTableViewCell.swift; sourceTree = "<group>"; };
 		A579D89520A541E500FB5027 /* ShiftVC_second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC_second.swift; sourceTree = "<group>"; };
 		A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceData.swift; sourceTree = "<group>"; };
 		A5C4806A20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -622,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				A531B7572089E0FF00AE5670 /* DashboardViewController.swift */,
+				A56A2CDE20BD2BB30011FA2A /* UpcomingViewController.swift */,
 			);
 			name = DashboardVC;
 			sourceTree = "<group>";
@@ -655,6 +660,7 @@
 			children = (
 				A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */,
 				A5C4806A20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift */,
+				A56A2CE020BD31340011FA2A /* UpComingTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -829,6 +835,7 @@
 				A5CD610320B2C0A800112945 /* TodoListViewController.swift in Sources */,
 				A557BA1320B7F21A00D8D223 /* SegmentedControl.swift in Sources */,
 				A51862F3209C483300B8FF29 /* CalendarVC.swift in Sources */,
+				A56A2CE120BD31350011FA2A /* UpComingTableViewCell.swift in Sources */,
 				A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */,
 				A51862F7209ECD9500B8FF29 /* shiftTemplateData.swift in Sources */,
 				A5C4806B20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift in Sources */,
@@ -861,6 +868,7 @@
 				A557BA0320B7F21A00D8D223 /* Location.swift in Sources */,
 				A557BA0620B7F21A00D8D223 /* ContactsPickerViewController.swift in Sources */,
 				A557B9EB20B7F21A00D8D223 /* UIImage+Extensions.swift in Sources */,
+				A56A2CDF20BD2BB30011FA2A /* UpcomingViewController.swift in Sources */,
 				A51C2AEA20A3EE8A00F638D2 /* ShiftDataToCalender.swift in Sources */,
 				A557B9F720B7F21A00D8D223 /* LocaleInfo.swift in Sources */,
 				A557BA1620B7F21A00D8D223 /* Button.swift in Sources */,

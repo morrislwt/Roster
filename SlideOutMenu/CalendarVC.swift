@@ -11,12 +11,21 @@ import CVCalendar
 import RealmSwift
 
 class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
+    var weekBtnTap:Bool = true
     @IBOutlet weak var yellowOutlet: UIView!
     @IBOutlet weak var yellowLeading: NSLayoutConstraint!
     @IBOutlet weak var scheduleOutlet: UILabel!
     @IBOutlet weak var weekOutlet: UIButton!
     @IBOutlet weak var monthOutlet: UIButton!
     @IBAction func toWeek(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5) {
+            self.monthOutlet.backgroundColor = .clear
+            self.weekOutlet.backgroundColor = .gray
+            
+            self.weekOutlet.setTitleColor(.lightText, for: .normal)
+            self.monthOutlet.setTitleColor(.gray, for: .normal)
+        }
+        
         let width = view.frame.width
         let height = view.frame.height
         let weekTableViewFrame = CGRect(x: width/2 - width*0.9/2, y: 150, width: width * 0.9, height: height - 135)
@@ -29,6 +38,13 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         
     }
     @IBAction func toMonth(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5) {
+            self.monthOutlet.backgroundColor = .gray
+            self.weekOutlet.backgroundColor = .clear
+            self.monthOutlet.setTitleColor(.lightText, for: .normal)
+            self.weekOutlet.setTitleColor(.gray, for: .normal)
+        }
+        
         let width = view.frame.width
         let height = view.frame.height
         let monthTableViewFrame = CGRect(x: width/2 - width*0.9/2, y: 380, width: width * 0.9, height: height - 400)
@@ -127,6 +143,8 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         super.viewDidLoad()
         yellowOutlet.layer.cornerRadius = 20
         yellowOutlet.clipsToBounds = true
+        monthOutlet.cornerRadius = 10
+        weekOutlet.cornerRadius = 10
         let width = view.frame.width
         let height = view.frame.height
         currentCalendar = Calendar.init(identifier: .gregorian)
@@ -427,7 +445,6 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource{
         
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            
             tableView.reloadRows(at: [indexPath], with: .middle)
             self.updateModel(at: indexPath)
 //            tableView.deleteRows(at: [indexPath], with: .right)
