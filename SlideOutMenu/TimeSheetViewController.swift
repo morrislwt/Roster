@@ -166,13 +166,11 @@ extension TimeSheetViewController:UIPickerViewDelegate,UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 
-        guard staff?.count == 0 else { return }
-        print("count = 0")
         guard staff?.count > 0 else { return }
         if let person = staff?[row]{
             chooseStaff = person.employeeName
             personTextView.text = person.employeeName
         }
-        print("continue")
+        
     }
 }

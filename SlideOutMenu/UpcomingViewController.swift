@@ -47,6 +47,7 @@ class UpcomingViewController:UIViewController{
             default:
                 break
             }
+            
         }
     }
 
@@ -67,7 +68,7 @@ class UpcomingViewController:UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadData()
+//        loadData()
     }
 }
 
@@ -78,24 +79,55 @@ extension UpcomingViewController:UITableViewDataSource,UITableViewDelegate{
         return (shiftData?.count)!
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         let formatter = DateFormatter()
         formatter.dateFormat = "eee dd MMM YYYY"
-        guard shiftData?.count > 0 else {return cell}
+        let cell = UITableViewCell()
         switch loadIndex {
         case 0:
-            guard let date = shiftData?[indexPath.row].shiftDate  else { return cell}
-            cell.textLabel?.text = "\(formatter.string(from: date))"
-            guard let shift = shiftData?[indexPath.row] else {return cell}
-            cell.detailTextLabel?.text = "\(shift.shiftStart) - \(shift.shiftEnd) @ \((shiftData?[indexPath.row].workPlace)!)"
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            guard shiftData?.count > 0 else {return cell}
+            if let date = shiftData?[indexPath.row].shiftDate {
+                cell.textLabel?.text = "\(formatter.string(from: date))"
+            }
+            if let shift = shiftData?[indexPath.row]{
+                cell.detailTextLabel?.text = "\(shift.shiftStart) - \(shift.shiftEnd) @ \((shiftData?[indexPath.row].workPlace)!)"
+            }
+            return cell
         case 1:
-            guard let date = shiftData?[indexPath.row].shiftDate  else { return cell}
-            cell.textLabel?.numberOfLines = 2
-            cell.textLabel?.text = "\(formatter.string(from: date))\n\((shiftData?[indexPath.row].staff)!)"
-            guard let shift = shiftData?[indexPath.row] else {return cell}
-            cell.detailTextLabel?.text = "\(shift.shiftStart) - \(shift.shiftEnd)"
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            guard shiftData?.count > 0 else {return cell}
+            if let date = shiftData?[indexPath.row].shiftDate {
+                cell.textLabel?.numberOfLines = 2
+                cell.textLabel?.text = "\(formatter.string(from: date))\n\((shiftData?[indexPath.row].staff)!)"
+            }
+            if let shift = shiftData?[indexPath.row]{
+                cell.detailTextLabel?.text = "\(shift.shiftStart) - \(shift.shiftEnd)"
+            }
+            return cell
+        case 2:
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            guard shiftData?.count > 0 else {return cell}
+//            print(shiftData)
+            if let date = shiftData?[indexPath.row].shiftDate{
+                cell.textLabel?.text = "\(formatter.string(from: date))"
+                cell.detailTextLabel?.text = "\((shiftData?[indexPath.row].staff)!), \((shiftData?[indexPath.row].shiftStart)!) - \((shiftData?[indexPath.row].shiftEnd)!)"
+            }
+            return cell
+        case 3:
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            guard shiftData?.count > 0 else {return cell}
+            if let date = shiftData?[indexPath.row].shiftDate{
+                cell.textLabel?.numberOfLines = 2
+                cell.textLabel?.text = "\(formatter.string(from: date))\n\((shiftData?[indexPath.row].staff)!)"
+                cell.detailTextLabel?.text = "\((shiftData?[indexPath.row].workPlace)!)"
+            }
             
-            
+            return cell
+        
         default:
             break
         }
