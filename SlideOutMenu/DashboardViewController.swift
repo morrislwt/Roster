@@ -154,6 +154,10 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         }
         return 1
     }
+    func setIconImage(icon:String)->UIImage{
+        let image = UIImage(named: icon)
+        return image!
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.textColor = .white
@@ -162,11 +166,15 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
             cell.textLabel?.text = staff?.count == 0 ? "No staff data" : staff?[indexPath.row].employeeName
+            cell.imageView?.image = setIconImage(icon: "human")
         case SelectedCollectionItem.place.rawValue:
             cell.textLabel?.text = workPlace?.count == 0 ? "No place data" : workPlace?[indexPath.row].placename
+            cell.imageView?.image = setIconImage(icon: "location")
         case SelectedCollectionItem.position.rawValue:
             cell.textLabel?.text = position?.count == 0 ? "No position data" : position?[indexPath.row].positionName
+            cell.imageView?.image = setIconImage(icon: "case")
         case SelectedCollectionItem.shift.rawValue:
+            cell.imageView?.image = setIconImage(icon: "cal")
             if shiftTemplate?.count == 0 {
                 cell.textLabel?.text = "No regular shift data"
             }
@@ -216,9 +224,7 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
                 editPressed == true ?
                     editModel(modelForEdit: placeForDelete, indexPath: indexPath) :
                     deleteModel(modelForDelete: placeForDelete)
-                
             }
-
         case SelectedCollectionItem.position.rawValue:
             
             guard let positionForDelete = position?[indexPath.row] else { return }

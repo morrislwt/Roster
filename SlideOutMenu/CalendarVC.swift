@@ -427,6 +427,7 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource{
         
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
             tableView.reloadRows(at: [indexPath], with: .middle)
             self.updateModel(at: indexPath)
 //            tableView.deleteRows(at: [indexPath], with: .right)
@@ -438,6 +439,8 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource{
         return [delete,edit]
      
     }
+    
+    
     func updateModel(at indexPath: IndexPath){
         if let calendarData = self.selectStaff?[indexPath.row] {
             deleteModel(itemForDelete: calendarData)
