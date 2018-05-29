@@ -59,12 +59,17 @@ class TodoListViewController:UIViewController{
 
 extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard todoArray?.count > 0 else {return 1}
         return todoArray?.count ?? 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-        
-        if let item = todoArray?[indexPath.row]{
+        if todoArray?.count == 0 {
+            cell.textLabel?.text = "Add some things ✏️"
+            cell.backgroundColor = .clear
+        }
+        if todoArray?.count > 0 {
+            guard let item = todoArray?[indexPath.row] else { return cell }
             cell.textLabel?.text = item.title
             cell.detailTextLabel?.text = item.subtitle
             cell.detailTextLabel?.textColor = .darkGray
@@ -75,9 +80,17 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
 
         return cell
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if todoArray?.count == 0 {
+            return false
+        }else{
+            return true
+        }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let item = todoArray?[indexPath.row] {
+        guard todoArray?.count > 0 else { return }
+        guard let item = todoArray?[indexPath.row] else { return }
             do{
                 try realm.write {
                     item.isChecked = !item.isChecked
@@ -85,9 +98,7 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
             }catch{
                 print("Error saving checked status, \(error)")
             }
-        }
         tableView.reloadData()
-        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height = view.frame.height
@@ -97,14 +108,14 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             // delete item at indexPath
+//            tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
             self.updateModel(at: indexPath)
-            tableView.deleteRows(at: [indexPath], with: .right)
+//            tableView.deleteRows(at: [indexPath], with: .right)
         }
         
         let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
             self.editModel(at: indexPath)
         }
-        
         edit.backgroundColor = UIColor.lightGray
         
         return [delete, edit]
@@ -153,9 +164,29 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
         do{
             try realm.write {
                 realm.delete(itemForDelete)
+                
             }
         }catch{
             print("Error deleting item, \(error)")
+        }
+        loadAgenda()
+//        agendaTableView.reloadData()
+        animateTable()
+    }
+    func animateTable(){
+        agendaTableView.reloadData()
+        let cells = agendaTableView.visibleCells
+        
+        let tableViewHeight = agendaTableView.bounds.size.height
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: -tableViewHeight)
+        }
+        var delayCounter = 0
+        for cell in cells {
+            UIView.animate(withDuration: 1, delay: Double(delayCounter) * 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            delayCounter += 1
         }
     }
 }

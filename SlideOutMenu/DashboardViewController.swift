@@ -161,14 +161,14 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         cell.backgroundColor = .clear
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
-            cell.textLabel?.text = staff?.count == 0 ? "add some staff" : staff?[indexPath.row].employeeName
+            cell.textLabel?.text = staff?.count == 0 ? "No staff data" : staff?[indexPath.row].employeeName
         case SelectedCollectionItem.place.rawValue:
-            cell.textLabel?.text = workPlace?.count == 0 ? "add some work place" : workPlace?[indexPath.row].placename
+            cell.textLabel?.text = workPlace?.count == 0 ? "No place data" : workPlace?[indexPath.row].placename
         case SelectedCollectionItem.position.rawValue:
-            cell.textLabel?.text = position?.count == 0 ? "add some position" : position?[indexPath.row].positionName
+            cell.textLabel?.text = position?.count == 0 ? "No position data" : position?[indexPath.row].positionName
         case SelectedCollectionItem.shift.rawValue:
             if shiftTemplate?.count == 0 {
-                cell.textLabel?.text = "add some regular shift"
+                cell.textLabel?.text = "No regular shift data"
             }
             if shiftTemplate?.count > 0 {
                 guard let shift = shiftTemplate?[indexPath.row] else { return cell}
@@ -257,6 +257,25 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         default:
             break
         }
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        switch dataIndex {
+        case SelectedCollectionItem.staff.rawValue:
+            guard staff?.count > 0 else { return false}
+            return true
+        case SelectedCollectionItem.place.rawValue:
+            guard workPlace?.count > 0 else { return false}
+            return true
+        case SelectedCollectionItem.position.rawValue:
+            guard position?.count > 0 else { return false}
+            return true
+        case SelectedCollectionItem.shift.rawValue:
+            guard shiftTemplate?.count > 0 else { return false}
+            return true
+        default:
+            break
+        }
+        return true
     }
     func animateTable(){
         dashboardTableView.reloadData()
