@@ -10,6 +10,18 @@ import Foundation
 import RealmSwift
 
 class UpcomingViewController:UIViewController{
+    var aWeekInString: String {
+        get{
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "eee dd MMM YYYY 00:00:00 +0000"
+            formatter.dateStyle = .medium
+            let aWeek = Date(timeInterval: 7 * 86400, since: date)
+            return formatter.string(from: aWeek)
+        }
+        set{
+        }
+    }
     var loadIndex = 0{
         didSet{
         }
@@ -18,18 +30,22 @@ class UpcomingViewController:UIViewController{
         didSet{
             loadData()
             upcomingTableView.reloadData()
+            titleLabel.text = "\(selectRow)"
         }
     }
     let realm = try! Realm()
 
     @IBOutlet weak var upcomingTableView: UITableView!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var containerView: UIView!
     var shiftData:Results<ShiftDataToCalender>?
     
     func loadData(){
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd 00:00:00 +0000"
+        formatter.dateStyle = .medium
         let stringDate = formatter.string(from: date)
         let currentDate = formatter.date(from: stringDate)
         let aWeekLater = Date(timeInterval: 7 * 86400, since: currentDate!)
@@ -47,10 +63,8 @@ class UpcomingViewController:UIViewController{
             default:
                 break
             }
-            
         }
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,12 +77,22 @@ class UpcomingViewController:UIViewController{
             self.selectRow = vc.dashboardSelectRow
             print("Hey",self.selectRow)
         }
-        
+        upcomingTableView.backgroundColor = .clear
+        upcomingTableView.separatorColor = .none
+        upcomingTableView.tableFooterView = UIView()
+        containerView.layer.cornerRadius = 20
+        containerView.clipsToBounds = true
 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        loadData()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 1) {
+            self.containerView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -86,6 +110,10 @@ extension UpcomingViewController:UITableViewDataSource,UITableViewDelegate{
         case 0:
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            cell.backgroundColor = .clear
+            if shiftData?.count == 0 {
+                cell.textLabel?.text = "No Availabel Shift Coming. 😎"
+            }
             guard shiftData?.count > 0 else {return cell}
             if let date = shiftData?[indexPath.row].shiftDate {
                 cell.textLabel?.text = "\(formatter.string(from: date))"
@@ -95,8 +123,12 @@ extension UpcomingViewController:UITableViewDataSource,UITableViewDelegate{
             }
             return cell
         case 1:
-            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            cell.backgroundColor = .clear
+            if shiftData?.count == 0 {
+                cell.textLabel?.text = "No Availabel Shift Coming. 😎"
+            }
             guard shiftData?.count > 0 else {return cell}
             if let date = shiftData?[indexPath.row].shiftDate {
                 cell.textLabel?.numberOfLines = 2
@@ -109,8 +141,11 @@ extension UpcomingViewController:UITableViewDataSource,UITableViewDelegate{
         case 2:
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            cell.backgroundColor = .clear
+            if shiftData?.count == 0 {
+                cell.textLabel?.text = "No Availabel Shift Coming. 😎"
+            }
             guard shiftData?.count > 0 else {return cell}
-//            print(shiftData)
             if let date = shiftData?[indexPath.row].shiftDate{
                 cell.textLabel?.text = "\(formatter.string(from: date))"
                 cell.detailTextLabel?.text = "\((shiftData?[indexPath.row].staff)!), \((shiftData?[indexPath.row].shiftStart)!) - \((shiftData?[indexPath.row].shiftEnd)!)"
@@ -119,13 +154,16 @@ extension UpcomingViewController:UITableViewDataSource,UITableViewDelegate{
         case 3:
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            cell.backgroundColor = .clear
+            if shiftData?.count == 0 {
+                cell.textLabel?.text = "No Availabel Shift Coming. 😎"
+            }
             guard shiftData?.count > 0 else {return cell}
             if let date = shiftData?[indexPath.row].shiftDate{
                 cell.textLabel?.numberOfLines = 2
                 cell.textLabel?.text = "\(formatter.string(from: date))\n\((shiftData?[indexPath.row].staff)!)"
                 cell.detailTextLabel?.text = "\((shiftData?[indexPath.row].workPlace)!)"
             }
-            
             return cell
         
         default:
@@ -134,15 +172,17 @@ extension UpcomingViewController:UITableViewDataSource,UITableViewDelegate{
         
         return cell
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let title: UILabel = UILabel()
-        title.text = selectRow
-        title.backgroundColor = .clear
-        title.textAlignment = .center
-        title.textColor = UIColor(red: 0/255, green: 100/255, blue: 159/255, alpha: 1)
-        title.font = UIFont.boldSystemFont(ofSize: 18)
-        
-        return title
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let title: UILabel = UILabel()
+//        title.text = selectRow
+//        title.backgroundColor = .lightText
+//        title.textAlignment = .natural
+//        title.font = UIFont(name: "Avenir Next", size: 18)
+//
+//        return title
+//    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Today - \(aWeekInString)"
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

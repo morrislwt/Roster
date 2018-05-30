@@ -1894,21 +1894,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="372" height="309"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Shift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOE-Zk-Cmb">
-                                <rect key="frame" x="16" y="0.0" width="186.33333333333334" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Shift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOE-Zk-Cmb">
+                                <rect key="frame" x="0.0" y="0.0" width="372" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.3411764706" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CHV-Jr-yql"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
-                                <color key="textColor" red="0.86274509799999999" green="0.85882352939999995" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Unb-km-xha">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Unb-km-xha">
                                 <rect key="frame" x="0.0" y="30" width="372" height="279"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="jXy-sP-TIw">
-                                        <rect key="frame" x="0.0" y="28" width="372" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="372" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jXy-sP-TIw" id="OOK-yE-0HW">
                                             <rect key="frame" x="0.0" y="0.0" width="372" height="43.666666666666664"/>
@@ -1927,13 +1928,17 @@
                             <constraint firstAttribute="trailing" secondItem="Unb-km-xha" secondAttribute="trailing" id="2l0-fP-BPj"/>
                             <constraint firstAttribute="bottom" secondItem="Unb-km-xha" secondAttribute="bottom" id="5Qi-vb-tE3"/>
                             <constraint firstItem="xOE-Zk-Cmb" firstAttribute="top" secondItem="91c-eH-3qe" secondAttribute="topMargin" id="9mk-Gw-s6B"/>
-                            <constraint firstItem="xOE-Zk-Cmb" firstAttribute="leading" secondItem="91c-eH-3qe" secondAttribute="leadingMargin" id="EuP-yk-7GY"/>
-                            <constraint firstItem="xOE-Zk-Cmb" firstAttribute="width" secondItem="91c-eH-3qe" secondAttribute="width" multiplier="0.5" id="RaX-0F-443"/>
+                            <constraint firstItem="xOE-Zk-Cmb" firstAttribute="centerX" secondItem="91c-eH-3qe" secondAttribute="centerX" id="X0B-XR-wpc"/>
+                            <constraint firstItem="d23-b1-Y9B" firstAttribute="trailing" secondItem="xOE-Zk-Cmb" secondAttribute="trailing" id="cDv-9v-wlx"/>
                             <constraint firstItem="Unb-km-xha" firstAttribute="leading" secondItem="91c-eH-3qe" secondAttribute="leading" id="e7h-Rr-g1l"/>
+                            <constraint firstItem="xOE-Zk-Cmb" firstAttribute="leading" secondItem="d23-b1-Y9B" secondAttribute="leading" id="kzj-5W-DDs"/>
                             <constraint firstItem="Unb-km-xha" firstAttribute="top" secondItem="xOE-Zk-Cmb" secondAttribute="bottom" id="okh-vQ-QUX"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="d23-b1-Y9B"/>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="91c-eH-3qe" id="9lg-uE-YDz"/>
+                        <outlet property="titleLabel" destination="xOE-Zk-Cmb" id="Kqc-I1-cF2"/>
                         <outlet property="upcomingTableView" destination="Unb-km-xha" id="heS-qT-ajm"/>
                     </connections>
                 </viewController>
