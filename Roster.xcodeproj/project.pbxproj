@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0DB7CE07110F5A699BA8317 /* Pods_Roster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316D3ADB74439B5679E2B171 /* Pods_Roster.framework */; };
 		A50290F220A80D7500E95F63 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50290F120A80D7500E95F63 /* PopViewController.swift */; };
 		A50290F420A8642700E95F63 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50290F320A8642700E95F63 /* NotificationNameExtension.swift */; };
-		A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */; };
 		A509DC982095C27500AA3B4D /* PositionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC972095C27500AA3B4D /* PositionData.swift */; };
 		A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC992095D72200AA3B4D /* EmployeeData.swift */; };
 		A509DC9C2096C05500AA3B4D /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC9B2096C05500AA3B4D /* SettingVC.swift */; };
@@ -19,12 +19,12 @@
 		A51862F7209ECD9500B8FF29 /* shiftTemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */; };
 		A51862F9209F44F400B8FF29 /* addShiftDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */; };
 		A51C2AEA20A3EE8A00F638D2 /* ShiftDataToCalender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C2AE920A3EE8A00F638D2 /* ShiftDataToCalender.swift */; };
+		A520C6CA20BE765100694963 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A520C6C920BE765100694963 /* GoogleService-Info.plist */; };
 		A531B73D2089B72F00AE5670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73C2089B72F00AE5670 /* AppDelegate.swift */; };
 		A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73E2089B72F00AE5670 /* ViewController.swift */; };
 		A531B7422089B72F00AE5670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7402089B72F00AE5670 /* Main.storyboard */; };
 		A531B7442089B73000AE5670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A531B7432089B73000AE5670 /* Assets.xcassets */; };
 		A531B7472089B73000AE5670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7452089B73000AE5670 /* LaunchScreen.storyboard */; };
-		A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A531B7512089B8A500AE5670 /* SWRevealViewController.m */; };
 		A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7532089BC6200AE5670 /* BackTableVC.swift */; };
 		A531B7562089D09A00AE5670 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7552089D09A00AE5670 /* Hello.swift */; };
 		A531B7582089E0FF00AE5670 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7572089E0FF00AE5670 /* DashboardViewController.swift */; };
@@ -33,7 +33,6 @@
 		A54E32C220BB95EE00DC66CA /* Popover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C120BB95EE00DC66CA /* Popover.framework */; };
 		A54E32C420BB95EE00DC66CA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C320BB95EE00DC66CA /* Realm.framework */; };
 		A54E32C620BB95EE00DC66CA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C520BB95EE00DC66CA /* RealmSwift.framework */; };
-		A54E32C820BB95EE00DC66CA /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C720BB95EE00DC66CA /* SwipeCellKit.framework */; };
 		A557B8E820B79CBE00D8D223 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B8E720B79CBE00D8D223 /* HomeTabBarController.swift */; };
 		A557B8EA20B7B26300D8D223 /* AlertController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B8E920B7B26300D8D223 /* AlertController + Extension.swift */; };
 		A557B9E220B7F21A00D8D223 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B99320B7F21A00D8D223 /* Array+Extensions.swift */; };
@@ -108,12 +107,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		316D3ADB74439B5679E2B171 /* Pods_Roster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Roster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AC71E5A6A54CB2A85BCF75 /* Pods-SlideOutMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.release.xcconfig"; sourceTree = "<group>"; };
+		4D9573333CD7FEF7E326C05A /* Pods-Roster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Roster/Pods-Roster.debug.xcconfig"; sourceTree = "<group>"; };
 		67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideOutMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideOutMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		A50290F120A80D7500E95F63 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
 		A50290F320A8642700E95F63 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
-		A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		A509DC972095C27500AA3B4D /* PositionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionData.swift; sourceTree = "<group>"; };
 		A509DC992095D72200AA3B4D /* EmployeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeData.swift; sourceTree = "<group>"; };
 		A509DC9B2096C05500AA3B4D /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
@@ -123,6 +123,7 @@
 		A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shiftTemplateData.swift; sourceTree = "<group>"; };
 		A51862F8209F44F400B8FF29 /* addShiftDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addShiftDetailVC.swift; sourceTree = "<group>"; };
 		A51C2AE920A3EE8A00F638D2 /* ShiftDataToCalender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftDataToCalender.swift; sourceTree = "<group>"; };
+		A520C6C920BE765100694963 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A531B7392089B72F00AE5670 /* Roster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A531B73C2089B72F00AE5670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A531B73E2089B72F00AE5670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,9 +131,6 @@
 		A531B7432089B73000AE5670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A531B7462089B73000AE5670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A531B7482089B73000AE5670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A531B74F2089B8A400AE5670 /* SlideOutMenu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SlideOutMenu-Bridging-Header.h"; sourceTree = "<group>"; };
-		A531B7502089B8A500AE5670 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		A531B7512089B8A500AE5670 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		A531B7532089BC6200AE5670 /* BackTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
 		A531B7552089D09A00AE5670 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
 		A531B7572089E0FF00AE5670 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +211,7 @@
 		A5EC29102089ED3100506E74 /* EmployeesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesVC.swift; sourceTree = "<group>"; };
 		A5EC29122089F0CF00506E74 /* WorkSpaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceVC.swift; sourceTree = "<group>"; };
 		A5EC29142089F0DC00506E74 /* PositionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionsVC.swift; sourceTree = "<group>"; };
+		B6B008EA52E44920BCC530AA /* Pods-Roster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Roster/Pods-Roster.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +224,7 @@
 				A54E32C220BB95EE00DC66CA /* Popover.framework in Frameworks */,
 				A54E32C420BB95EE00DC66CA /* Realm.framework in Frameworks */,
 				A54E32C620BB95EE00DC66CA /* RealmSwift.framework in Frameworks */,
-				A54E32C820BB95EE00DC66CA /* SwipeCellKit.framework in Frameworks */,
+				A0DB7CE07110F5A699BA8317 /* Pods_Roster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +236,8 @@
 			children = (
 				76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */,
 				42AC71E5A6A54CB2A85BCF75 /* Pods-SlideOutMenu.release.xcconfig */,
+				4D9573333CD7FEF7E326C05A /* Pods-Roster.debug.xcconfig */,
+				B6B008EA52E44920BCC530AA /* Pods-Roster.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -258,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				A557B99120B7F21A00D8D223 /* Source */,
-				A531B73B2089B72F00AE5670 /* SlideOutMenu */,
+				A531B73B2089B72F00AE5670 /* Roster */,
 				A531B73A2089B72F00AE5670 /* Products */,
 				0B32A0294CEAD267A28E6A0C /* Pods */,
 				C5F2167A031017CA8EA4812B /* Frameworks */,
@@ -273,7 +274,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A531B73B2089B72F00AE5670 /* SlideOutMenu */ = {
+		A531B73B2089B72F00AE5670 /* Roster */ = {
 			isa = PBXGroup;
 			children = (
 				A5A562C82091B3D5009CA9D1 /* Data  Model */,
@@ -286,18 +287,16 @@
 				A5EC2916208B16EC00506E74 /* Controller */,
 				A531B7552089D09A00AE5670 /* Hello.swift */,
 				A531B7482089B73000AE5670 /* Info.plist */,
+				A520C6C920BE765100694963 /* GoogleService-Info.plist */,
 				A531B7432089B73000AE5670 /* Assets.xcassets */,
 				A531B7452089B73000AE5670 /* LaunchScreen.storyboard */,
 			);
-			path = SlideOutMenu;
+			path = Roster;
 			sourceTree = "<group>";
 		};
 		A531B74E2089B86500AE5670 /* Supporting File */ = {
 			isa = PBXGroup;
 			children = (
-				A531B7502089B8A500AE5670 /* SWRevealViewController.h */,
-				A531B7512089B8A500AE5670 /* SWRevealViewController.m */,
-				A531B74F2089B8A400AE5670 /* SlideOutMenu-Bridging-Header.h */,
 				A50290F320A8642700E95F63 /* NotificationNameExtension.swift */,
 			);
 			path = "Supporting File";
@@ -640,7 +639,6 @@
 				A5A08FCC20B41A34005CD9BB /* CalendarVC */,
 				A51C2AEB20A43C4D00F638D2 /* DefaultData */,
 				A509DC9B2096C05500AA3B4D /* SettingVC.swift */,
-				A509DC932095B85200AA3B4D /* SwipeTableViewController.swift */,
 				A531B7532089BC6200AE5670 /* BackTableVC.swift */,
 				A557B8E720B79CBE00D8D223 /* HomeTabBarController.swift */,
 			);
@@ -675,6 +673,7 @@
 				A54E32C520BB95EE00DC66CA /* RealmSwift.framework */,
 				A54E32C720BB95EE00DC66CA /* SwipeCellKit.framework */,
 				67EC4E11935085084D525882 /* Pods_SlideOutMenu.framework */,
+				316D3ADB74439B5679E2B171 /* Pods_Roster.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -743,6 +742,7 @@
 			files = (
 				A557B9F520B7F21A00D8D223 /* Countries.bundle in Resources */,
 				A531B7472089B73000AE5670 /* LaunchScreen.storyboard in Resources */,
+				A520C6CA20BE765100694963 /* GoogleService-Info.plist in Resources */,
 				A531B7442089B73000AE5670 /* Assets.xcassets in Resources */,
 				A531B7422089B72F00AE5670 /* Main.storyboard in Resources */,
 			);
@@ -763,7 +763,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Roster/Pods-Roster-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		26C61457330E21E6610EBDED /* [CP] Embed Pods Frameworks */ = {
@@ -772,26 +772,32 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Roster/Pods-Roster-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
-				"${BUILT_PRODUCTS_DIR}/TransitionableTab/TransitionableTab.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionableTab.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideOutMenu/Pods-SlideOutMenu-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Roster/Pods-Roster-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DDA257502CAFB157500040C7 /* [CP] Check Pods Manifest.lock */ = {
@@ -805,7 +811,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SlideOutMenu-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Roster-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -894,10 +900,8 @@
 				A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */,
 				A557BA0B20B7F21A00D8D223 /* DatePickerViewController.swift in Sources */,
 				A557B9EC20B7F21A00D8D223 /* UISearchBar+Extensions.swift in Sources */,
-				A531B7522089B8A500AE5670 /* SWRevealViewController.m in Sources */,
 				A5CD610920B3E0B300112945 /* TimeSheetViewController.swift in Sources */,
 				A557B9E420B7F21A00D8D223 /* UIImageView+Extensions.swift in Sources */,
-				A509DC942095B85200AA3B4D /* SwipeTableViewController.swift in Sources */,
 				A5EC29152089F0DC00506E74 /* PositionsVC.swift in Sources */,
 				A557BA0520B7F21A00D8D223 /* PickerViewViewController.swift in Sources */,
 				A557B8EA20B7B26300D8D223 /* AlertController + Extension.swift in Sources */,
@@ -1048,20 +1052,19 @@
 		};
 		A531B74C2089B73000AE5670 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76E28B455CFF5BC806F9446A /* Pods-SlideOutMenu.debug.xcconfig */;
+			baseConfigurationReference = 4D9573333CD7FEF7E326C05A /* Pods-Roster.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
-				INFOPLIST_FILE = SlideOutMenu/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Roster/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1070,20 +1073,19 @@
 		};
 		A531B74D2089B73000AE5670 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42AC71E5A6A54CB2A85BCF75 /* Pods-SlideOutMenu.release.xcconfig */;
+			baseConfigurationReference = B6B008EA52E44920BCC530AA /* Pods-Roster.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
-				INFOPLIST_FILE = SlideOutMenu/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Roster/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.morrislwt.SlideOutMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SlideOutMenu/Supporting File/SlideOutMenu-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -1,14 +1,18 @@
 platform :ios, '9.0'
 
-target 'SlideOutMenu' do
+target 'Roster' do
 
   use_frameworks!
 
   # Pods for SlideOutMenu
 pod 'RealmSwift'
-pod 'SwipeCellKit'
 pod 'CVCalendar'
 pod 'Popover'
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'Alamofire'
+
 
 
 end
