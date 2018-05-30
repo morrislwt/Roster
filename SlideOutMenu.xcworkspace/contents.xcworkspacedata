@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SlideOutMenu.xcodeproj">
+      location = "group:/Users/morris/Desktop/SlideOutMenu 2/Roster.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
