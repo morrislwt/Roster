@@ -9,10 +9,13 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>SlideOutMenu.xcscheme</key>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A531B7382089B72F00AE5670</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
