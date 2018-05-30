@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4If-ds-4YI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sbW-Xs-4U0">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,7 +15,7 @@
         <!--Agenda-->
         <scene sceneID="LKW-yg-ZeK">
             <objects>
-                <viewController id="FoT-sL-q1b" customClass="TodoListViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FoT-sL-q1b" customClass="TodoListViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cBS-pv-H2a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,7 +120,7 @@
         <!--Time Sheet-->
         <scene sceneID="4X8-Rg-sVD">
             <objects>
-                <viewController id="NIj-VL-BNE" customClass="TimeSheetViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NIj-VL-BNE" customClass="TimeSheetViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xaH-5q-iXH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -446,7 +446,7 @@
         <!--Shedule-->
         <scene sceneID="nlM-Mt-iTL">
             <objects>
-                <viewController id="nUg-PU-BRQ" customClass="CalendarVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nUg-PU-BRQ" customClass="CalendarVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FZ8-Cm-eXd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -596,7 +596,7 @@
         <!--Add-->
         <scene sceneID="fUI-tu-CLa">
             <objects>
-                <viewController id="xOM-Er-k2C" customClass="AddTodoViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xOM-Er-k2C" customClass="AddTodoViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ifH-Xb-KE5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -761,7 +761,7 @@
         <!--Time Sheet Result View Controller-->
         <scene sceneID="ZtM-DB-10O">
             <objects>
-                <viewController id="EfU-3r-TIk" customClass="TimeSheetResultViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EfU-3r-TIk" customClass="TimeSheetResultViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YSc-Wk-k47">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -854,7 +854,7 @@
         <!--Title-->
         <scene sceneID="1U4-Ot-161">
             <objects>
-                <viewController id="Hf1-Sw-8CJ" customClass="addShiftDetailVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Hf1-Sw-8CJ" customClass="addShiftDetailVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SAl-VP-8yP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -872,7 +872,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="UNq-Tb-lWK" customClass="AddShiftCollectionViewCell" customModule="SlideOutMenu" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="UNq-Tb-lWK" customClass="AddShiftCollectionViewCell" customModule="Roster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1088,7 +1088,7 @@
         <!--Dashboard-->
         <scene sceneID="I4s-Uk-wo3">
             <objects>
-                <viewController id="tdy-HB-8Qy" customClass="DashboardViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tdy-HB-8Qy" customClass="DashboardViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L0V-Hc-jfa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1109,7 +1109,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="pow-gw-S1m" customClass="DashboardCollectionViewCell" customModule="SlideOutMenu" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="pow-gw-S1m" customClass="DashboardCollectionViewCell" customModule="Roster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="-10.333333333333334" width="416" height="50.666666666666657"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1242,7 +1242,7 @@
         <!--Pop View Controller-->
         <scene sceneID="bn8-46-qmD">
             <objects>
-                <viewController id="sYC-qa-dKt" customClass="PopViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sYC-qa-dKt" customClass="PopViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mpx-sF-fyn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1293,7 +1293,7 @@
         <!--Show Shift DetailVC-->
         <scene sceneID="csZ-YM-wKG">
             <objects>
-                <viewController id="NFl-W3-Dd2" customClass="ShowShiftDetailVC" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NFl-W3-Dd2" customClass="ShowShiftDetailVC" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oxX-4X-FkO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1369,10 +1369,55 @@
             </objects>
             <point key="canvasLocation" x="-6138" y="1877"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="3Xn-H3-cy2">
+            <objects>
+                <viewController id="sbW-Xs-4U0" customClass="LoginViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8dO-if-ByI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginView" translatesAutoresizingMaskIntoConstraints="NO" id="p1f-Q2-iMA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKw-OP-Wsu">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQP-fI-jgh">
+                                <rect key="frame" x="188" y="353" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Press"/>
+                                <connections>
+                                    <action selector="startButton:" destination="sbW-Xs-4U0" eventType="touchUpInside" id="EkF-5s-s2j"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="p1f-Q2-iMA" secondAttribute="bottom" id="647-WP-Jpv"/>
+                            <constraint firstItem="p1f-Q2-iMA" firstAttribute="top" secondItem="8dO-if-ByI" secondAttribute="top" id="Khq-yc-Rqz"/>
+                            <constraint firstAttribute="bottom" secondItem="kKw-OP-Wsu" secondAttribute="bottom" id="Rel-5B-u2v"/>
+                            <constraint firstItem="kKw-OP-Wsu" firstAttribute="top" secondItem="8dO-if-ByI" secondAttribute="top" id="VLK-jk-iAf"/>
+                            <constraint firstItem="kKw-OP-Wsu" firstAttribute="leading" secondItem="xxH-pw-sMO" secondAttribute="leading" id="cH0-0U-kOG"/>
+                            <constraint firstItem="xxH-pw-sMO" firstAttribute="trailing" secondItem="kKw-OP-Wsu" secondAttribute="trailing" id="cQP-aE-kq4"/>
+                            <constraint firstItem="xxH-pw-sMO" firstAttribute="trailing" secondItem="p1f-Q2-iMA" secondAttribute="trailing" id="mbh-TB-JsS"/>
+                            <constraint firstItem="p1f-Q2-iMA" firstAttribute="leading" secondItem="xxH-pw-sMO" secondAttribute="leading" id="vI7-m7-66r"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xxH-pw-sMO"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorView" destination="kKw-OP-Wsu" id="pl7-E7-isO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jyS-2S-4Ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6896" y="-1039"/>
+        </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="oIn-nX-aib">
             <objects>
-                <tabBarController id="4If-ds-4YI" customClass="HomeTabBarController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="4If-ds-4YI" customClass="HomeTabBarController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" itemPositioning="fill" id="S9J-8d-s2G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1393,7 +1438,7 @@
         <!--Shift For Edit-->
         <scene sceneID="iUb-QS-1sa">
             <objects>
-                <viewController id="eal-MU-SjD" customClass="ShiftForEdit" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eal-MU-SjD" customClass="ShiftForEdit" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UEO-pw-aGl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1629,7 +1674,7 @@
         <!--Add shift-->
         <scene sceneID="4jb-Xe-gcJ">
             <objects>
-                <viewController id="6Nv-1H-F0H" customClass="ShiftVC_second" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6Nv-1H-F0H" customClass="ShiftVC_second" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q2I-Rt-0U8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1889,7 +1934,7 @@
         <!--Upcoming View Controller-->
         <scene sceneID="Dq1-Xl-wK6">
             <objects>
-                <viewController id="7Fn-sK-rTt" customClass="UpcomingViewController" customModule="SlideOutMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7Fn-sK-rTt" customClass="UpcomingViewController" customModule="Roster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="91c-eH-3qe">
                         <rect key="frame" x="0.0" y="0.0" width="372" height="309"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1955,6 +2000,7 @@
         <image name="desk" width="1904" height="3081"/>
         <image name="greenGradient" width="2048" height="2048"/>
         <image name="home_tabbar" width="25" height="25"/>
+        <image name="loginView" width="2242" height="3992"/>
         <image name="more" width="25" height="25"/>
         <image name="notebook" width="2196" height="3294"/>
         <image name="ocean" width="3648" height="5472"/>

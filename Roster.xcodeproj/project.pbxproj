@@ -12,8 +12,6 @@
 		A50290F420A8642700E95F63 /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50290F320A8642700E95F63 /* NotificationNameExtension.swift */; };
 		A509DC982095C27500AA3B4D /* PositionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC972095C27500AA3B4D /* PositionData.swift */; };
 		A509DC9A2095D72200AA3B4D /* EmployeeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC992095D72200AA3B4D /* EmployeeData.swift */; };
-		A509DC9C2096C05500AA3B4D /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DC9B2096C05500AA3B4D /* SettingVC.swift */; };
-		A51862EF209C466D00B8FF29 /* ShiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862EE209C466D00B8FF29 /* ShiftModel.swift */; };
 		A51862F3209C483300B8FF29 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F2209C483300B8FF29 /* CalendarVC.swift */; };
 		A51862F5209ECD7300B8FF29 /* ShiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F4209ECD7300B8FF29 /* ShiftVC.swift */; };
 		A51862F7209ECD9500B8FF29 /* shiftTemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */; };
@@ -25,7 +23,6 @@
 		A531B7422089B72F00AE5670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7402089B72F00AE5670 /* Main.storyboard */; };
 		A531B7442089B73000AE5670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A531B7432089B73000AE5670 /* Assets.xcassets */; };
 		A531B7472089B73000AE5670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7452089B73000AE5670 /* LaunchScreen.storyboard */; };
-		A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7532089BC6200AE5670 /* BackTableVC.swift */; };
 		A531B7562089D09A00AE5670 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7552089D09A00AE5670 /* Hello.swift */; };
 		A531B7582089E0FF00AE5670 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7572089E0FF00AE5670 /* DashboardViewController.swift */; };
 		A54E32BE20BB95EE00DC66CA /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32BD20BB95EE00DC66CA /* CVCalendar.framework */; };
@@ -93,6 +90,7 @@
 		A56A2CE120BD31350011FA2A /* UpComingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56A2CE020BD31340011FA2A /* UpComingTableViewCell.swift */; };
 		A579D89620A541E500FB5027 /* ShiftVC_second.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579D89520A541E500FB5027 /* ShiftVC_second.swift */; };
 		A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */; };
+		A5C059AF20BE8231004200C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C059AE20BE8231004200C3 /* LoginViewController.swift */; };
 		A5C4806B20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4806A20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift */; };
 		A5CD610120B28F8200112945 /* ShowShiftDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD610020B28F8200112945 /* ShowShiftDetailVC.swift */; };
 		A5CD610320B2C0A800112945 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD610220B2C0A800112945 /* TodoListViewController.swift */; };
@@ -116,8 +114,6 @@
 		A50290F320A8642700E95F63 /* NotificationNameExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		A509DC972095C27500AA3B4D /* PositionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionData.swift; sourceTree = "<group>"; };
 		A509DC992095D72200AA3B4D /* EmployeeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeData.swift; sourceTree = "<group>"; };
-		A509DC9B2096C05500AA3B4D /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
-		A51862EE209C466D00B8FF29 /* ShiftModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShiftModel.swift; sourceTree = "<group>"; };
 		A51862F2209C483300B8FF29 /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		A51862F4209ECD7300B8FF29 /* ShiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC.swift; sourceTree = "<group>"; };
 		A51862F6209ECD9500B8FF29 /* shiftTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shiftTemplateData.swift; sourceTree = "<group>"; };
@@ -131,7 +127,6 @@
 		A531B7432089B73000AE5670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A531B7462089B73000AE5670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A531B7482089B73000AE5670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A531B7532089BC6200AE5670 /* BackTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
 		A531B7552089D09A00AE5670 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
 		A531B7572089E0FF00AE5670 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		A54E32BD20BB95EE00DC66CA /* CVCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CVCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +195,7 @@
 		A56A2CE020BD31340011FA2A /* UpComingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingTableViewCell.swift; sourceTree = "<group>"; };
 		A579D89520A541E500FB5027 /* ShiftVC_second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC_second.swift; sourceTree = "<group>"; };
 		A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceData.swift; sourceTree = "<group>"; };
+		A5C059AE20BE8231004200C3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A5C4806A20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5CD610020B28F8200112945 /* ShowShiftDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowShiftDetailVC.swift; sourceTree = "<group>"; };
 		A5CD610220B2C0A800112945 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
@@ -610,7 +606,6 @@
 		A5A562C82091B3D5009CA9D1 /* Data  Model */ = {
 			isa = PBXGroup;
 			children = (
-				A51862EE209C466D00B8FF29 /* ShiftModel.swift */,
 				A5CD610420B2C13000112945 /* TodoData.swift */,
 				A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */,
 				A509DC972095C27500AA3B4D /* PositionData.swift */,
@@ -619,6 +614,14 @@
 				A51C2AE920A3EE8A00F638D2 /* ShiftDataToCalender.swift */,
 			);
 			path = "Data  Model";
+			sourceTree = "<group>";
+		};
+		A5C059AD20BE821F004200C3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A5C059AE20BE8231004200C3 /* LoginViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		A5C4806920B6A3E200B63C73 /* DashboardVC */ = {
@@ -633,13 +636,12 @@
 		A5EC2916208B16EC00506E74 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A5C059AD20BE821F004200C3 /* Login */,
 				A5C4806920B6A3E200B63C73 /* DashboardVC */,
 				A5A08FCE20B41A48005CD9BB /* AgendaVC */,
 				A5A08FCD20B41A3F005CD9BB /* TimeSheetVC */,
 				A5A08FCC20B41A34005CD9BB /* CalendarVC */,
 				A51C2AEB20A43C4D00F638D2 /* DefaultData */,
-				A509DC9B2096C05500AA3B4D /* SettingVC.swift */,
-				A531B7532089BC6200AE5670 /* BackTableVC.swift */,
 				A557B8E720B79CBE00D8D223 /* HomeTabBarController.swift */,
 			);
 			name = Controller;
@@ -825,11 +827,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C059AF20BE8231004200C3 /* LoginViewController.swift in Sources */,
 				A557BA1120B7F21A00D8D223 /* LikeButtonCell.swift in Sources */,
 				A557BA0920B7F21A00D8D223 /* ContactCell.swift in Sources */,
 				A5EC29112089ED3100506E74 /* EmployeesVC.swift in Sources */,
 				A557BA1520B7F21A00D8D223 /* TextField.swift in Sources */,
-				A509DC9C2096C05500AA3B4D /* SettingVC.swift in Sources */,
 				A557BA1420B7F21A00D8D223 /* GradientSlider.swift in Sources */,
 				A557B9E720B7F21A00D8D223 /* Date+Extension.swift in Sources */,
 				A557BA0D20B7F21A00D8D223 /* ItemWithImage.swift in Sources */,
@@ -855,7 +857,6 @@
 				A557BA0C20B7F21A00D8D223 /* ImagePickerViewController.swift in Sources */,
 				A5CD610B20B4069C00112945 /* TimeSheetResultViewController.swift in Sources */,
 				A557B9FE20B7F21A00D8D223 /* Assets.swift in Sources */,
-				A531B7542089BC6200AE5670 /* BackTableVC.swift in Sources */,
 				A509DC982095C27500AA3B4D /* PositionData.swift in Sources */,
 				A557BA0E20B7F21A00D8D223 /* PhotoLayout.swift in Sources */,
 				A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */,
@@ -880,7 +881,6 @@
 				A557BA1620B7F21A00D8D223 /* Button.swift in Sources */,
 				A557B9F320B7F21A00D8D223 /* AttributedTextBlock.swift in Sources */,
 				A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */,
-				A51862EF209C466D00B8FF29 /* ShiftModel.swift in Sources */,
 				A557B9EA20B7F21A00D8D223 /* UIColor+Extensions.swift in Sources */,
 				A557BA0020B7F21A00D8D223 /* LocationSearchResultsViewController.swift in Sources */,
 				A579D89620A541E500FB5027 /* ShiftVC_second.swift in Sources */,
