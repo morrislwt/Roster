@@ -6,4 +6,3 @@
 ![Demo image](3.jpg)
 ![Demo image](4.jpg)
 
-![drawing](0.jpg){ width=50% })
