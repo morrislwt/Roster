@@ -6,3 +6,4 @@
 ![Demo image](3.jpg)
 ![Demo image](4.jpg)
 
+![minipic](0.jpg)
