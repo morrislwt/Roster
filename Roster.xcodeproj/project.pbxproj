@@ -191,6 +191,7 @@
 		A557B9E020B7F21A00D8D223 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		A557B9E120B7F21A00D8D223 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		A557BA1720B93BCB00D8D223 /* ShiftForEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftForEdit.swift; sourceTree = "<group>"; };
+		A564765420C547DB00B00F24 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A56A2CDE20BD2BB30011FA2A /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		A56A2CE020BD31340011FA2A /* UpComingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingTableViewCell.swift; sourceTree = "<group>"; };
 		A579D89520A541E500FB5027 /* ShiftVC_second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC_second.swift; sourceTree = "<group>"; };
@@ -254,6 +255,7 @@
 		A531B7302089B72F00AE5670 = {
 			isa = PBXGroup;
 			children = (
+				A564765420C547DB00B00F24 /* README.md */,
 				A557B99120B7F21A00D8D223 /* Source */,
 				A531B73B2089B72F00AE5670 /* Roster */,
 				A531B73A2089B72F00AE5670 /* Products */,
