@@ -87,12 +87,11 @@
 		A557BA1620B7F21A00D8D223 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557B9E120B7F21A00D8D223 /* Button.swift */; };
 		A557BA1820B93BCB00D8D223 /* ShiftForEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A557BA1720B93BCB00D8D223 /* ShiftForEdit.swift */; };
 		A564765620C5834500B00F24 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A564765520C5834500B00F24 /* CreateViewController.swift */; };
-		A564765820C583B200B00F24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A564765720C583B200B00F24 /* LoginViewController.swift */; };
 		A56A2CDF20BD2BB30011FA2A /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56A2CDE20BD2BB30011FA2A /* UpcomingViewController.swift */; };
 		A56A2CE120BD31350011FA2A /* UpComingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56A2CE020BD31340011FA2A /* UpComingTableViewCell.swift */; };
 		A579D89620A541E500FB5027 /* ShiftVC_second.swift in Sources */ = {isa = PBXBuildFile; fileRef = A579D89520A541E500FB5027 /* ShiftVC_second.swift */; };
 		A5A562CA2091B41B009CA9D1 /* WorkSpaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */; };
-		A5C059AF20BE8231004200C3 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C059AE20BE8231004200C3 /* SetupViewController.swift */; };
+		A5C059AF20BE8231004200C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C059AE20BE8231004200C3 /* LoginViewController.swift */; };
 		A5C4806B20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C4806A20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift */; };
 		A5CD610120B28F8200112945 /* ShowShiftDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD610020B28F8200112945 /* ShowShiftDetailVC.swift */; };
 		A5CD610320B2C0A800112945 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CD610220B2C0A800112945 /* TodoListViewController.swift */; };
@@ -195,12 +194,11 @@
 		A557BA1720B93BCB00D8D223 /* ShiftForEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftForEdit.swift; sourceTree = "<group>"; };
 		A564765420C547DB00B00F24 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A564765520C5834500B00F24 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
-		A564765720C583B200B00F24 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A56A2CDE20BD2BB30011FA2A /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
 		A56A2CE020BD31340011FA2A /* UpComingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingTableViewCell.swift; sourceTree = "<group>"; };
 		A579D89520A541E500FB5027 /* ShiftVC_second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVC_second.swift; sourceTree = "<group>"; };
 		A5A562C92091B41B009CA9D1 /* WorkSpaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkSpaceData.swift; sourceTree = "<group>"; };
-		A5C059AE20BE8231004200C3 /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		A5C059AE20BE8231004200C3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A5C4806A20B6A8BD00B63C73 /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5CD610020B28F8200112945 /* ShowShiftDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowShiftDetailVC.swift; sourceTree = "<group>"; };
 		A5CD610220B2C0A800112945 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
@@ -625,9 +623,8 @@
 		A5C059AD20BE821F004200C3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				A5C059AE20BE8231004200C3 /* SetupViewController.swift */,
+				A5C059AE20BE8231004200C3 /* LoginViewController.swift */,
 				A564765520C5834500B00F24 /* CreateViewController.swift */,
-				A564765720C583B200B00F24 /* LoginViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -819,7 +816,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C059AF20BE8231004200C3 /* SetupViewController.swift in Sources */,
+				A5C059AF20BE8231004200C3 /* LoginViewController.swift in Sources */,
 				A557BA1120B7F21A00D8D223 /* LikeButtonCell.swift in Sources */,
 				A557BA0920B7F21A00D8D223 /* ContactCell.swift in Sources */,
 				A5EC29112089ED3100506E74 /* EmployeesVC.swift in Sources */,
@@ -853,7 +850,6 @@
 				A509DC982095C27500AA3B4D /* PositionData.swift in Sources */,
 				A557BA0E20B7F21A00D8D223 /* PhotoLayout.swift in Sources */,
 				A5EC29132089F0CF00506E74 /* WorkSpaceVC.swift in Sources */,
-				A564765820C583B200B00F24 /* LoginViewController.swift in Sources */,
 				A557B8E820B79CBE00D8D223 /* HomeTabBarController.swift in Sources */,
 				A531B7562089D09A00AE5670 /* Hello.swift in Sources */,
 				A557B9ED20B7F21A00D8D223 /* UIApplication+Extensions.swift in Sources */,

@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print(Realm.Configuration.defaultConfiguration.fileURL)
         FirebaseApp.configure()
+        
+        let myDatabase = Database.database().reference()
+        myDatabase.setValue("Hello from the other side!!!")
         return true
     }
 

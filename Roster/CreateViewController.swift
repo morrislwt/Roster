@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 class CreateViewController:UIViewController,UITextFieldDelegate{
     @IBAction func backButton(_ sender: UIButton) {
@@ -17,8 +19,21 @@ class CreateViewController:UIViewController,UITextFieldDelegate{
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var confirmPWTextfield: UITextField!
     @IBAction func createBtnPressed(_ sender: UIButton) {
+        guard   emailTextfield.text != "" &&
+            nameTextfield.text != "" &&
+            passwordTextfield.text != "" &&
+            confirmPWTextfield.text != "" &&
+            passwordTextfield.text == confirmPWTextfield.text else { return }
+        
+        Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
+            if error != nil{
+                print(error!)
+            }else{
+                print("Registration Successful!")
+                self.performSegue(withIdentifier: "createOK", sender: self)
+            }
+        }
     }
-    
     @IBOutlet weak var createBtnOutlet: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +47,9 @@ class CreateViewController:UIViewController,UITextFieldDelegate{
         confirmPWTextfield.resignFirstResponder()
         return true
     }
+}
+
+extension UIViewController{
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -41,5 +59,5 @@ class CreateViewController:UIViewController,UITextFieldDelegate{
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
+    
 }

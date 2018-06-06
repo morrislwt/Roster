@@ -63,15 +63,15 @@ class AddTodoViewController:UIViewController,UITextFieldDelegate {
         titleTextfield.delegate = self
         subtitleTextfield.delegate = self
     }
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+//    func hideKeyboardWhenTappedAround() {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//    
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         titleTextfield.resignFirstResponder()
         subtitleTextfield.resignFirstResponder()
