@@ -8,11 +8,15 @@
 
 import RealmSwift
 
+class TaskList: Object{
+    let items = List<TodoData>()
+}
+
 class TodoData : Object{
     
     @objc dynamic var title: String = ""
     @objc dynamic var subtitle: String = ""
     @objc dynamic var isChecked: Bool = false
     @objc dynamic var createDate:Date = Date()
-    
+    @objc dynamic var agendaKey:String = ""
 }
