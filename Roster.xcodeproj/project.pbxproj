@@ -26,7 +26,6 @@
 		A531B7562089D09A00AE5670 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7552089D09A00AE5670 /* Hello.swift */; };
 		A531B7582089E0FF00AE5670 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7572089E0FF00AE5670 /* DashboardViewController.swift */; };
 		A54E32BE20BB95EE00DC66CA /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32BD20BB95EE00DC66CA /* CVCalendar.framework */; };
-		A54E32C020BB95EE00DC66CA /* Pods_SlideOutMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32BF20BB95EE00DC66CA /* Pods_SlideOutMenu.framework */; };
 		A54E32C220BB95EE00DC66CA /* Popover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C120BB95EE00DC66CA /* Popover.framework */; };
 		A54E32C420BB95EE00DC66CA /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C320BB95EE00DC66CA /* Realm.framework */; };
 		A54E32C620BB95EE00DC66CA /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32C520BB95EE00DC66CA /* RealmSwift.framework */; };
@@ -219,7 +218,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A54E32BE20BB95EE00DC66CA /* CVCalendar.framework in Frameworks */,
-				A54E32C020BB95EE00DC66CA /* Pods_SlideOutMenu.framework in Frameworks */,
 				A54E32C220BB95EE00DC66CA /* Popover.framework in Frameworks */,
 				A54E32C420BB95EE00DC66CA /* Realm.framework in Frameworks */,
 				A54E32C620BB95EE00DC66CA /* RealmSwift.framework in Frameworks */,
