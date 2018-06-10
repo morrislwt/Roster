@@ -12,11 +12,11 @@ import RealmSwift
 
 
 class TodoListViewController:UIViewController{
-//    var ref : DatabaseReference!
-//    let uid = Auth.auth().currentUser?.uid
+    //    var ref : DatabaseReference!
+    //    let uid = Auth.auth().currentUser?.uid
     
     //Accept AgenDa key
-//    var agendaKey:DatabaseReference?
+    //    var agendaKey:DatabaseReference?
     
     @IBAction func editButton(_ sender: UIButton) {
         agendaTableView.isEditing = !agendaTableView.isEditing
@@ -36,7 +36,7 @@ class TodoListViewController:UIViewController{
     let realm = try! Realm()
     var todoArray:Results<TodoData>?
     
-
+    
     
     func loadAgenda(){
         todoArray = realm.objects(TodoData.self)
@@ -77,7 +77,7 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         if todoArray?.count == 0 {
-            cell.textLabel?.text = "Add some things ✏️"
+            cell.textLabel?.text = "Add things ✏️"
             cell.backgroundColor = .clear
         }
         if todoArray?.count > 0 {
@@ -106,7 +106,7 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         let stringDate = formatter.string(from: item.createDate)
-//        ref = Database.database().reference()
+        //        ref = Database.database().reference()
         do{
             try realm.write {
                 item.isChecked = !item.isChecked
@@ -126,7 +126,6 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
             // delete item at indexPath
             //            tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
             self.updateModel(at: indexPath)
-            //            tableView.deleteRows(at: [indexPath], with: .right)
         }
         
         let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
@@ -147,11 +146,11 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
         if let agendaForEdit = todoArray?[indexPath.row]{
             var editTitle = UITextField()
             var editSubtitle = UITextField()
-//            var ref =  Database.database().reference()
-//            let uid = Auth.auth().currentUser?.uid
-//            let key = ref.childByAutoId().key
-//            print(key)
-//            var FireDic = [String : AnyObject]()
+            //            var ref =  Database.database().reference()
+            //            let uid = Auth.auth().currentUser?.uid
+            //            let key = ref.childByAutoId().key
+            //            print(key)
+            //            var FireDic = [String : AnyObject]()
             let alert = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.text = agendaForEdit.title
@@ -168,12 +167,12 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
                     try self.realm.write {
                         self.todoArray?[indexPath.row].title = editTitle.text!
                         self.todoArray?[indexPath.row].subtitle = editSubtitle.text!
-//                        FireDic["title"] = editTitle.text! as AnyObject
-//                        FireDic["subtitle"] = editSubtitle.text! as AnyObject
-////                        ref.child("agenda").child(uid!).queryOrderedByKey()
-//                        ref.child("agenda").child(uid!).child((self.todoArray?[indexPath.row].agendaKey)!).updateChildValues(FireDic)
-//                        print(self.agendaKey!)
-//                        ref.child("agenda").child(uid!).child("-LEJPPYpph89r5mVZbS3").updateChildValues(FireDic)
+                        //                        FireDic["title"] = editTitle.text! as AnyObject
+                        //                        FireDic["subtitle"] = editSubtitle.text! as AnyObject
+                        ////                        ref.child("agenda").child(uid!).queryOrderedByKey()
+                        //                        ref.child("agenda").child(uid!).child((self.todoArray?[indexPath.row].agendaKey)!).updateChildValues(FireDic)
+                        //                        print(self.agendaKey!)
+                        //                        ref.child("agenda").child(uid!).child("-LEJPPYpph89r5mVZbS3").updateChildValues(FireDic)
                     }
                 }catch{
                     print("Error editing Category \(error)")
@@ -213,17 +212,17 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "addTodo"{
-//            guard let addVC = segue.destination as? AddTodoViewController else {return}
-//            addVC.delegate = self
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "addTodo"{
+    //            guard let addVC = segue.destination as? AddTodoViewController else {return}
+    //            addVC.delegate = self
+    //        }
+    //    }
 }
 //extension TodoListViewController: PassAgendaKeyProtocol{
 //    func passAgendaKey(key: DatabaseReference) {
 //        self.agendaKey = key
 //    }
-//    
-//    
+//
+//
 //}

@@ -454,7 +454,7 @@ extension CalendarVC:UITableViewDelegate,UITableViewDataSource{
             self.editModel(at: indexPath)
         }
         edit.backgroundColor = .lightGray
-        return [delete,edit]
+        return [delete]
      
     }
     

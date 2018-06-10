@@ -128,7 +128,7 @@ class TimeSheetViewController: UIViewController {
         setupConstraints(popUpView: showNameView,identifier: "name")
         
     }
-    func displayPickerView(_ show:Bool,identifier:String){
+    @objc func displayPickerView(_ show:Bool,identifier:String){
         
         for bottomContraints in view.constraints {
             if bottomContraints.identifier == identifier {
