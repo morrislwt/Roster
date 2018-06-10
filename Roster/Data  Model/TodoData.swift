@@ -8,10 +8,6 @@
 
 import RealmSwift
 
-class TaskList: Object{
-    let items = List<TodoData>()
-}
-
 class TodoData : Object{
     
     @objc dynamic var title: String = ""

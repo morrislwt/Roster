@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import Firebase
 
 enum SelectedCollectionItem:Int{
     case staff = 0
@@ -24,8 +25,15 @@ protocol EditProtocol {
     func result(_ text:String)
 }
 
+
 class DashboardViewController:UIViewController{
     
+    var setDashboardModel = [String:String]()
+    func addDataToFire(model:String,setValue:[String:String]){
+        let databaseRef = Database.database().reference()
+        let userUID = Auth.auth().currentUser?.uid
+        databaseRef.child(model).child(userUID!).childByAutoId().setValue(setValue)
+    }
     @IBAction func backDashboard(_ segue:UIStoryboardSegue){
         
     }
@@ -33,7 +41,6 @@ class DashboardViewController:UIViewController{
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
             addModelAlert(alertTitle: "Add New Staff", icon: "Employees", placeHolder: "Staff Name", model: EmployeeData())
-            
         case SelectedCollectionItem.place.rawValue:
             addModelAlert(alertTitle: "Add New Work Place", icon: "place", placeHolder: "Place Name", model: WorkSpaceData())
         case SelectedCollectionItem.position.rawValue:
@@ -135,7 +142,7 @@ extension DashboardViewController:UICollectionViewDataSource,UICollectionViewDel
     
 }
 
-extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
+extension DashboardViewController:UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch dataIndex {
         case SelectedCollectionItem.staff.rawValue:
@@ -320,16 +327,15 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
             delayCounter += 1
         }
     }
-    
     func editAlert(UIImageName:String,object:EditProtocol,indexPath:IndexPath){
         let editTitle = UITextField()
         let alert = UIAlertController(style: .alert, title:"Edit")
         let image = UIImage(named: UIImageName)
         let config: TextField.Config = { textField in
+            textField.clearButtonMode = .whileEditing
             textField.becomeFirstResponder()
             textField.textColor = .black
             textField.text = object.edit()
-//            textField.text = self.object[indexPath.row].placename
             textField.autocapitalizationType = .words
             textField.left(image: image,color: .gray)
             textField.leftViewPadding = 12
@@ -361,13 +367,13 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         alert.addAction(action)
         alert.show()
     }
-    
     func addModelAlert(alertTitle:String,icon:String,placeHolder:String,model:AddDataToRealm){
         let name = UITextField()
         let alert = UIAlertController(style: .alert, title: alertTitle)
         let image = UIImage(named: icon)
         let config: TextField.Config = { textField in
-            textField.becomeFirstResponder()
+            textField.clearButtonMode = UITextFieldViewMode.whileEditing
+            ///why textfield didn't become first responder
             textField.textColor = .black
             textField.placeholder = placeHolder
             textField.autocapitalizationType = .words
@@ -380,18 +386,24 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
             textField.returnKeyType = .done
             textField.action { textField in
                 name.text = textField.text
+                self.setDashboardModel["\(placeHolder)"] = name.text
             }
+            
         }
         let action = UIAlertAction(title: "Save", style: .default) { (action) in
             guard name.text != "" else { return }
             let newModel = model
             newModel.add(name.text!)
             self.saveObject(to: newModel as! Object)
+            self.addDataToFire(model: "\(placeHolder)", setValue: self.setDashboardModel)
+            self.setDashboardModel = [:]
+            
         }
         alert.addOneTextField(configuration: config)
         alert.addAction(title: "Cancel", style: .cancel)
         alert.addAction(action)
-        alert.show()
+//        alert.show()
+        present(alert,animated: true, completion: nil)
     }
 
     func saveObject(to dataModel: Object){
@@ -406,4 +418,3 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource{
         dashboardTableView.reloadData()
     }
 }
-
