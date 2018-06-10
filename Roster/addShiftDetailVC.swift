@@ -332,7 +332,6 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
 
         switch indexPath.item{
         case 1...4:
-            
             displayPickerView(true, identifier: "tableView",fromTop: false)
         case 0,5...6,9:
             displayPickerView(false, identifier: "tableView", fromTop: false)
@@ -346,9 +345,6 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
         }
         
         if indexPath.item == 9 {
-            
-            
-            
             let dutyTextfield = UITextField()
             let alert = UIAlertController(style: .alert, title:"Duty Message")
             let image = UIImage(named: "speaker")
@@ -386,12 +382,16 @@ extension addShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch selectedIndex {
         case 1:
+            guard staffArray?.count > 0 else { return 1}
             return staffArray?.count ?? 1
         case 2:
+            guard workPlaceArray?.count > 0 else { return 1}
             return workPlaceArray?.count ?? 1
         case 3:
+            guard positionArray?.count > 0 else { return 1}
             return positionArray?.count ?? 1
         case 4:
+            guard shiftTemplateArray?.count > 0 else { return 1}
             return shiftTemplateArray?.count ?? 1
         default:
             break
@@ -402,12 +402,32 @@ extension addShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         switch selectedIndex {
         case 1:
+            if staffArray?.count == 0 {
+                cell.textLabel?.text = "Please add some data from Dashboard."
+                cell.textLabel?.textColor = .gray
+            }
+            guard staffArray?.count > 0 else { return cell}
             cell.textLabel?.text = staffArray?[indexPath.row].employeeName ?? "No Data"
         case 2:
+            if workPlaceArray?.count == 0 {
+                cell.textLabel?.text = "Please add some data from Dashboard."
+                cell.textLabel?.textColor = .gray
+            }
+            guard workPlaceArray?.count > 0 else { return cell}
             cell.textLabel?.text = workPlaceArray?[indexPath.row].placename ?? "No Data"
         case 3:
+            if positionArray?.count == 0 {
+                cell.textLabel?.text = "Please add some data from Dashboard."
+                cell.textLabel?.textColor = .gray
+            }
+            guard positionArray?.count > 0 else { return cell}
             cell.textLabel?.text = positionArray?[indexPath.row].positionName ?? "No Data"
         case 4:
+            if shiftTemplateArray?.count == 0 {
+                cell.textLabel?.text = "Please add some data from Dashboard."
+                cell.textLabel?.textColor = .gray
+            }
+            guard shiftTemplateArray?.count > 0 else { return cell}
             cell.textLabel?.text = shiftTemplateArray?[indexPath.row].shiftTemplateName ?? "No Data"
             if let text = shiftTemplateArray?[indexPath.row]{
                 cell.detailTextLabel?.text = "\(text.shiftTimeStart) - \(text.shiftTimeEnd)"
@@ -422,12 +442,16 @@ extension addShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
         displayPickerView(false, identifier: "tableView",fromTop: false)
         switch selectedIndex {
         case 1:
+            guard staffArray?.count > 0 else { return }
             selectedStaff = staffArray?[indexPath.row].employeeName ?? "No Data"
         case 2:
+            guard workPlaceArray?.count > 0 else { return }
             selectedWorkPlace = workPlaceArray?[indexPath.row].placename ?? "No Data"
         case 3:
+            guard positionArray?.count > 0 else { return }
             selectedPosition = positionArray?[indexPath.row].positionName ?? "No Data"
         case 4:
+            guard shiftTemplateArray?.count > 0 else { return }
             selectedShiftName = shiftTemplateArray?[indexPath.row].shiftTemplateName ?? "No Data"
             selectedStartTime = shiftTemplateArray?[indexPath.row].shiftTimeStart ?? "No Data"
             selectedEndTime = shiftTemplateArray?[indexPath.row].shiftTimeEnd ?? "No Data"

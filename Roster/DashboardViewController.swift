@@ -27,12 +27,23 @@ protocol EditProtocol {
 
 
 class DashboardViewController:UIViewController{
-    
     var setDashboardModel = [String:String]()
     func addDataToFire(model:String,setValue:[String:String]){
         let databaseRef = Database.database().reference()
         let userUID = Auth.auth().currentUser?.uid
         databaseRef.child(model).child(userUID!).childByAutoId().setValue(setValue)
+    }
+    func getDataFromFire(queryBy name:String){
+        let userUID = Auth.auth().currentUser?.uid
+        let databaseRef = Database.database().reference().queryOrdered(byChild: userUID!)
+        databaseRef.observeSingleEvent(of: .value) { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot]{
+                for snap in snapshots{
+                    let tempData = snap.value as? Dictionary<String,String>
+                    let key = snap.key
+                }
+            }
+        }
     }
     @IBAction func backDashboard(_ segue:UIStoryboardSegue){
         
@@ -86,6 +97,7 @@ class DashboardViewController:UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animateTable()
+//        getDataFromFire(queryBy: "Staff Name")
     }
 }
 extension DashboardViewController:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
@@ -203,12 +215,16 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource,UITe
         tableView.deselectRow(at: indexPath, animated: true)
         switch dataIndex {
         case 0:
+            guard staff?.count > 0 else { return }
             dashboardSelectRow = staff?[indexPath.row].employeeName ?? ""
         case 1:
+            guard workPlace?.count > 0 else { return }
             dashboardSelectRow = workPlace?[indexPath.row].placename ?? ""
         case 2:
+            guard position?.count > 0 else { return }
             dashboardSelectRow = position?[indexPath.row].positionName ?? ""
         case 3:
+            guard shiftTemplate?.count > 0 else { return }
             dashboardSelectRow = shiftTemplate?[indexPath.row].shiftTemplateName ?? ""
         default:
             break
@@ -395,8 +411,8 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource,UITe
             let newModel = model
             newModel.add(name.text!)
             self.saveObject(to: newModel as! Object)
-            self.addDataToFire(model: "\(placeHolder)", setValue: self.setDashboardModel)
-            self.setDashboardModel = [:]
+//            self.addDataToFire(model: "\(placeHolder)", setValue: self.setDashboardModel)
+//            self.setDashboardModel = [:]
             
         }
         alert.addOneTextField(configuration: config)
