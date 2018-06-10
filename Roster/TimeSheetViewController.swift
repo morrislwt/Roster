@@ -11,6 +11,7 @@ import RealmSwift
 
 class TimeSheetViewController: UIViewController {
     
+    @IBOutlet weak var nameTableView: UITableView!
     @IBAction func backTimeSheet(_ segue:UIStoryboardSegue){
         
     }
@@ -34,12 +35,15 @@ class TimeSheetViewController: UIViewController {
     @IBAction func dateStartBtn(_ sender: UIButton) {
         buttonPressedIndex = sender.tag
         displayPickerView(true,identifier: "date")
+        displayPickerView(false,identifier: "name")
     }
     @IBAction func dateEndBtn(_ sender: UIButton) {
         buttonPressedIndex = sender.tag
         displayPickerView(true,identifier: "date")
+        displayPickerView(false,identifier: "name")
     }
     @IBAction func personBtn(_ sender: UIButton) {
+        displayPickerView(false,identifier: "date")
         displayPickerView(true, identifier: "name")
     }
     @IBOutlet weak var dateStartTextView: UITextView!
@@ -50,7 +54,6 @@ class TimeSheetViewController: UIViewController {
     @IBOutlet var showNameView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var namePicker: UIPickerView!
     @IBOutlet weak var goFilterOutlet: UIButton!
     @IBAction func goFilterButton(_ sender: UIButton) {
         if dateStartTextView.text == "" || dateEndTextView.text == "" || personTextView.text == "" {
@@ -70,17 +73,28 @@ class TimeSheetViewController: UIViewController {
     }
     func loadStaff(){
         staff = realm.objects(EmployeeData.self)
+        nameTableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         goFilterOutlet.layer.cornerRadius = 22
-        loadStaff()
         backgroundOutlet.layer.cornerRadius = 20
         backgroundOutlet.clipsToBounds = true
         dateStartOutlet.layer.cornerRadius = 22
         dateEndOutlet.layer.cornerRadius = 22
         nameOutlet.layer.cornerRadius = 22
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM YYYY"
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        let string = formatter.string(from: date)
+        let dateWithoutTime = formatter.date(from: string)
+        datePicker.date = dateWithoutTime!
+        showNameView.layer.cornerRadius = 20
+        showNameView.clipsToBounds = true
+        nameTableView.separatorStyle = .none
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -109,6 +123,7 @@ class TimeSheetViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadStaff()
         setupConstraints(popUpView: showPickerView,identifier: "date")
         setupConstraints(popUpView: showNameView,identifier: "name")
         
@@ -128,6 +143,7 @@ class TimeSheetViewController: UIViewController {
     func dateFormatter(date:Date)->String{
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         formatter.dateFormat = "dd MMM YYYY"
         let dateInString = formatter.string(from: date)
         return dateInString
@@ -145,32 +161,36 @@ class TimeSheetViewController: UIViewController {
             break
         }
     }
-    
-    @IBAction func saveNameBtn(_ sender: UIButton) {
-        displayPickerView(false, identifier: "name")
-    }
 }
 
-extension TimeSheetViewController:UIPickerViewDelegate,UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+extension TimeSheetViewController:UITableViewDelegate,UITableViewDataSource {
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard staff?.count > 0 else { return "No data"}
-        return staff?[row].employeeName
-    }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        guard staff?.count > 0 else {return 1}
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard staff?.count > 0 else { return 1}
         return staff?.count ?? 1
     }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        if staff?.count == 0 {
+            cell.textLabel?.text = "Oops! Please add some staff in Dashboard."
+            cell.textLabel?.textColor = .gray
+            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            
+        }
+        guard staff?.count > 0 else { return cell}
+        cell.textLabel?.text = staff?[indexPath.row].employeeName
+        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 20)
+        cell.textLabel?.textAlignment = .center
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        displayPickerView(false, identifier: "name")
         guard staff?.count > 0 else { return }
-        if let person = staff?[row]{
+        if let person = staff?[indexPath.row]{
             chooseStaff = person.employeeName
             personTextView.text = person.employeeName
         }
-        
     }
 }

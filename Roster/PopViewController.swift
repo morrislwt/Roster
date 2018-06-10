@@ -13,7 +13,7 @@ class PopViewController: UIViewController, UITableViewDataSource,UITableViewDele
     @IBOutlet weak var popOverTableView: UITableView!
     
     var selectedIndex = 2
-    let options = ["Quick Add","Add Full Shift"]
+    let options = ["Add Full Shift"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count

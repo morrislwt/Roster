@@ -23,8 +23,8 @@ class TimeSheetResultViewController:UIViewController{
     @IBOutlet weak var resultTableView: UITableView!
     let realm = try! Realm()
     
-    var dateFrom:Date = Date()
-    var dateTo:Date = Date()
+    var dateFrom:Date?
+    var dateTo:Date?
     var choosePerson:String = ""
     var filterPerson:Results<ShiftDataToCalender>?
     
@@ -93,8 +93,8 @@ extension TimeSheetResultViewController:UITableViewDataSource,UITableViewDelegat
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM YYYY"
-        let from = formatter.string(from: dateFrom)
-        let to = formatter.string(from: dateTo)
+        let from = formatter.string(from: dateFrom!)
+        let to = formatter.string(from: dateTo!)
         
         return "\(from) - \(to)"
     }

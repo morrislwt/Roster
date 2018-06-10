@@ -184,7 +184,7 @@
                                     <action selector="dateStartBtn:" destination="NIj-VL-BNE" eventType="touchUpInside" id="UeF-2E-JMM"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4v-4h-X1y">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4v-4h-X1y">
                                 <rect key="frame" x="20" y="216" width="374" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -201,7 +201,7 @@
                                     <constraint firstAttribute="height" constant="2" id="SCt-VF-Ck2"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwY-oM-kvW">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EwY-oM-kvW">
                                 <rect key="frame" x="20" y="326.33333333333331" width="374" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -371,7 +371,7 @@
                         <outlet property="dateStartTextView" destination="Q4v-4h-X1y" id="ilq-Zz-nGW"/>
                         <outlet property="goFilterOutlet" destination="1li-m7-MgW" id="wVq-R1-fdN"/>
                         <outlet property="nameOutlet" destination="dBW-3s-wUO" id="TAB-Ih-im7"/>
-                        <outlet property="namePicker" destination="lPP-pl-JVh" id="krR-mY-sFw"/>
+                        <outlet property="nameTableView" destination="e2a-c9-mMn" id="vPr-vf-IrS"/>
                         <outlet property="personTextView" destination="ScX-T2-KDj" id="NBz-xI-gaR"/>
                         <outlet property="showNameView" destination="ibp-d0-pHh" id="Jdr-Dh-YJ0"/>
                         <outlet property="showPickerView" destination="HH7-pO-Cz8" id="plJ-An-evQ"/>
@@ -383,35 +383,31 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPP-pl-JVh">
-                            <rect key="frame" x="0.0" y="30" width="240" height="88"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e2a-c9-mMn">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <prototypes>
+                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="pAw-kt-1df">
+                                    <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pAw-kt-1df" id="iaV-8t-npa">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="43.666666666666664"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </tableViewCellContentView>
+                                </tableViewCell>
+                            </prototypes>
                             <connections>
-                                <outlet property="dataSource" destination="NIj-VL-BNE" id="jyG-AM-1pI"/>
-                                <outlet property="delegate" destination="NIj-VL-BNE" id="ei7-Q8-85x"/>
+                                <outlet property="dataSource" destination="NIj-VL-BNE" id="NGB-RH-tfR"/>
+                                <outlet property="delegate" destination="NIj-VL-BNE" id="g2l-YK-Szs"/>
                             </connections>
-                        </pickerView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrP-0R-Mkc">
-                            <rect key="frame" x="186" y="10" width="44" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="44" id="Uzm-XO-4ki"/>
-                                <constraint firstAttribute="height" constant="30" id="aen-cc-GaK"/>
-                            </constraints>
-                            <state key="normal" title="Done">
-                                <color key="titleColor" red="0.0" green="0.3411764706" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </state>
-                            <connections>
-                                <action selector="saveNameBtn:" destination="NIj-VL-BNE" eventType="touchUpInside" id="XtX-a4-xfm"/>
-                            </connections>
-                        </button>
+                        </tableView>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="lPP-pl-JVh" secondAttribute="trailing" id="1On-NF-Vyy"/>
-                        <constraint firstItem="lPP-pl-JVh" firstAttribute="top" secondItem="12g-lt-1uR" secondAttribute="top" constant="30" id="4WE-Yv-Eoe"/>
-                        <constraint firstItem="mrP-0R-Mkc" firstAttribute="top" secondItem="12g-lt-1uR" secondAttribute="top" constant="10" id="Ja1-v6-Inb"/>
-                        <constraint firstItem="lPP-pl-JVh" firstAttribute="leading" secondItem="ibp-d0-pHh" secondAttribute="leading" id="PZu-Si-GWx"/>
-                        <constraint firstAttribute="bottom" secondItem="lPP-pl-JVh" secondAttribute="bottom" constant="10" id="Pl6-Nc-H4t"/>
-                        <constraint firstItem="mrP-0R-Mkc" firstAttribute="trailing" secondItem="12g-lt-1uR" secondAttribute="trailing" constant="-10" id="qrd-Fi-eMC"/>
+                        <constraint firstItem="e2a-c9-mMn" firstAttribute="top" secondItem="12g-lt-1uR" secondAttribute="top" id="iji-SN-KdB"/>
+                        <constraint firstAttribute="bottom" secondItem="e2a-c9-mMn" secondAttribute="bottom" id="jG4-6S-umL"/>
+                        <constraint firstItem="e2a-c9-mMn" firstAttribute="leading" secondItem="ibp-d0-pHh" secondAttribute="leading" id="nfD-h0-GtC"/>
+                        <constraint firstItem="12g-lt-1uR" firstAttribute="trailing" secondItem="e2a-c9-mMn" secondAttribute="trailing" id="pId-Eg-B8L"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="12g-lt-1uR"/>
                 </view>
