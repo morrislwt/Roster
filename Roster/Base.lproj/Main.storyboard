@@ -383,6 +383,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-vP-zG3">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        </imageView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e2a-c9-mMn">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -404,10 +407,14 @@
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="e2a-c9-mMn" firstAttribute="top" secondItem="12g-lt-1uR" secondAttribute="top" id="iji-SN-KdB"/>
-                        <constraint firstAttribute="bottom" secondItem="e2a-c9-mMn" secondAttribute="bottom" id="jG4-6S-umL"/>
-                        <constraint firstItem="e2a-c9-mMn" firstAttribute="leading" secondItem="ibp-d0-pHh" secondAttribute="leading" id="nfD-h0-GtC"/>
-                        <constraint firstItem="12g-lt-1uR" firstAttribute="trailing" secondItem="e2a-c9-mMn" secondAttribute="trailing" id="pId-Eg-B8L"/>
+                        <constraint firstItem="e2a-c9-mMn" firstAttribute="leading" secondItem="12g-lt-1uR" secondAttribute="leading" id="3xb-Pl-RsO"/>
+                        <constraint firstItem="12g-lt-1uR" firstAttribute="bottom" secondItem="yMh-vP-zG3" secondAttribute="bottom" id="7wr-5N-AGO"/>
+                        <constraint firstItem="e2a-c9-mMn" firstAttribute="trailing" secondItem="12g-lt-1uR" secondAttribute="trailing" id="KMF-uC-BG2"/>
+                        <constraint firstItem="e2a-c9-mMn" firstAttribute="top" secondItem="12g-lt-1uR" secondAttribute="top" id="Wey-Ra-tDd"/>
+                        <constraint firstItem="yMh-vP-zG3" firstAttribute="leading" secondItem="12g-lt-1uR" secondAttribute="leading" id="YTa-SH-hk9"/>
+                        <constraint firstItem="e2a-c9-mMn" firstAttribute="bottom" secondItem="12g-lt-1uR" secondAttribute="bottom" id="eDx-oP-gG8"/>
+                        <constraint firstItem="yMh-vP-zG3" firstAttribute="top" secondItem="12g-lt-1uR" secondAttribute="top" id="uy5-Qi-0nk"/>
+                        <constraint firstItem="yMh-vP-zG3" firstAttribute="trailing" secondItem="12g-lt-1uR" secondAttribute="trailing" id="vgM-5o-6ef"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="12g-lt-1uR"/>
                 </view>
@@ -2370,6 +2377,7 @@
         <image name="cal_tabbar" width="25" height="25"/>
         <image name="check" width="25" height="25"/>
         <image name="desk" width="1904" height="3081"/>
+        <image name="earth" width="3000" height="2000"/>
         <image name="edit" width="48" height="48"/>
         <image name="greenGradient" width="2048" height="2048"/>
         <image name="home_tabbar" width="25" height="25"/>

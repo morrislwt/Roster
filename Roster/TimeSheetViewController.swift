@@ -92,9 +92,9 @@ class TimeSheetViewController: UIViewController {
         let string = formatter.string(from: date)
         let dateWithoutTime = formatter.date(from: string)
         datePicker.date = dateWithoutTime!
-        showNameView.layer.cornerRadius = 20
         showNameView.clipsToBounds = true
         nameTableView.separatorStyle = .none
+        nameTableView.backgroundColor = .clear
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -111,7 +111,7 @@ class TimeSheetViewController: UIViewController {
     
     func setupConstraints(popUpView:UIView!,identifier:String){
         view.addSubview(popUpView)
-        let height = view.frame.height / 3
+        let height = view.frame.height / 4
         popUpView.translatesAutoresizingMaskIntoConstraints = false
         popUpView.heightAnchor.constraint(equalToConstant: height).isActive = true
         popUpView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
@@ -119,7 +119,7 @@ class TimeSheetViewController: UIViewController {
         let bottomContraints = popUpView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: height)
         bottomContraints.isActive = true
         bottomContraints.identifier = identifier
-        popUpView.layer.cornerRadius = 10
+        popUpView.layer.cornerRadius = 20
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -172,14 +172,16 @@ extension TimeSheetViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         if staff?.count == 0 {
+            cell.backgroundColor = .clear
             cell.textLabel?.text = "Oops! Please add some staff in Dashboard."
-            cell.textLabel?.textColor = .gray
+            cell.textLabel?.textColor = .white
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
-            
         }
         guard staff?.count > 0 else { return cell}
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = .white
         cell.textLabel?.text = staff?[indexPath.row].employeeName
-        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 20)
+        cell.textLabel?.font = UIFont(name: "Avenir Next", size: 25)
         cell.textLabel?.textAlignment = .center
         
         return cell
