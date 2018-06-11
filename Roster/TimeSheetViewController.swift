@@ -105,7 +105,7 @@ class TimeSheetViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 1) {
-            self.backgroundLeading.constant = -20
+            self.backgroundLeading.constant = -10
             self.view.layoutIfNeeded()
         }
     }
@@ -180,7 +180,7 @@ extension TimeSheetViewController:UITableViewDelegate,UITableViewDataSource {
             cell.backgroundColor = .clear
             cell.textLabel?.text = "Oops! Please add some staff in Dashboard."
             cell.textLabel?.textColor = .white
-            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 17)
+            cell.textLabel?.font = UIFont(name: "Avenir Next", size: 15)
         }
         guard staff?.count > 0 else { return cell}
         cell.backgroundColor = .clear

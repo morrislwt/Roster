@@ -170,7 +170,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapToDismiss))
 //        view.addGestureRecognizer(tapGesture)
         saveBtnOutlet.layer.cornerRadius = saveBtnOutlet.frame.width / 2
-        backBtnOutlet.layer.cornerRadius = backBtnOutlet.frame.width / 2
+        backBtnOutlet.layer.cornerRadius = 20
         addShiftCollectionView.backgroundColor = .clear
     }
     override func viewWillAppear(_ animated: Bool) {

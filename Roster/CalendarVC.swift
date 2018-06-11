@@ -28,10 +28,10 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         
         let width = view.frame.width
         let height = view.frame.height
-        let weekTableViewFrame = CGRect(x: width/2 - width*0.9/2, y: 150, width: width * 0.9, height: height - 135)
+        let weekTableViewFrame = CGRect(x: width/2 - width*0.9/2, y: 165, width: width * 0.9, height: height - 135)
         calendarView.changeMode(.weekView)
         UIView.animate(withDuration: 0.3) {
-            self.calendarView.frame = CGRect(x: 0, y: 85, width: width, height: 50)
+            self.calendarView.frame = CGRect(x: 0, y: 100, width: width, height: 50)
             self.tableView.frame = weekTableViewFrame
             self.tableView.layer.cornerRadius = 20
         }
@@ -47,10 +47,10 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         
         let width = view.frame.width
         let height = view.frame.height
-        let monthTableViewFrame = CGRect(x: width/2 - width*0.9/2, y: 380, width: width * 0.9, height: height - 400)
+        let monthTableViewFrame = CGRect(x: width/2 - width*0.9/2, y: 395, width: width * 0.9, height: height - 400)
         calendarView.changeMode(.monthView)
         UIView.animate(withDuration: 0.3){
-            self.calendarView.frame = CGRect(x: 0, y: 85, width: width, height: 350)
+            self.calendarView.frame = CGRect(x: 0, y: 100, width: width, height: 350)
             self.tableView.frame = monthTableViewFrame
             self.tableView.layer.cornerRadius = 50
             
@@ -152,10 +152,10 @@ class CalendarVC: UIViewController,UIPopoverPresentationControllerDelegate{
         
         self.title = CVDate(date: Date(),calendar: currentCalendar).globalDescription
         
-        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 65, width: width, height: 15))
-        self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 85, width: width, height: 50))
+        self.menuView = CVCalendarMenuView(frame: CGRect(x: 0, y: 80, width: width, height: 15))
+        self.calendarView = CVCalendarView(frame: CGRect(x: 0, y: 100, width: width, height: 50))
         
-        let frame = CGRect(x: width/2 - width*0.9/2, y: 150, width: width * 0.9, height: height - 135)
+        let frame = CGRect(x: width/2 - width*0.9/2, y: 165, width: width * 0.9, height: height - 135)
         tableView = UITableView.init(frame: frame, style: .grouped)
         tableView.layer.cornerRadius = 20
         tableView.backgroundColor = UIColor(red: 235/255, green: 235/255, blue: 241/255, alpha: 0.9)
