@@ -138,8 +138,6 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
         }
         saveBtnOutlet.layer.cornerRadius = saveBtnOutlet.frame.width / 2
         backOutlet.layer.cornerRadius = backOutlet.frame.width / 2
-        
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -158,21 +156,8 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
         self.shiftNameTextfield.delegate = self
         self.shiftStartTextfield.delegate = self
         self.shiftEndTextfield.delegate = self
-        
-        
-        
     }
     func loadData(){
     shiftModel = realm.objects(shiftTemplateData.self)
     }
-    
-//    func hideKeyboardWhenTappedAround() {
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
-//    }
-//    
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
 }

@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import Firebase
 
 enum SelectedCollectionItem:Int{
     case staff = 0
@@ -27,12 +26,15 @@ protocol EditProtocol {
 
 
 class DashboardViewController:UIViewController{
-    var setDashboardModel = [String:String]()
+//    var setDashboardModel = [String:String]()
+    /*
     func addDataToFire(model:String,setValue:[String:String]){
         let databaseRef = Database.database().reference()
         let userUID = Auth.auth().currentUser?.uid
         databaseRef.child(model).child(userUID!).childByAutoId().setValue(setValue)
     }
+ */
+    /*
     func getDataFromFire(queryBy name:String){
         let userUID = Auth.auth().currentUser?.uid
         let databaseRef = Database.database().reference().queryOrdered(byChild: userUID!)
@@ -45,6 +47,7 @@ class DashboardViewController:UIViewController{
             }
         }
     }
+ */
     @IBAction func backDashboard(_ segue:UIStoryboardSegue){
         
     }
@@ -415,7 +418,7 @@ extension DashboardViewController:UITableViewDelegate,UITableViewDataSource,UITe
             textField.returnKeyType = .done
             textField.action { textField in
                 name.text = textField.text
-                self.setDashboardModel["\(placeHolder)"] = name.text
+//                self.setDashboardModel["\(placeHolder)"] = name.text
             }
             
         }
