@@ -56,6 +56,11 @@ class TimeSheetViewController: UIViewController {
     
     @IBOutlet weak var goFilterOutlet: UIButton!
     @IBAction func goFilterButton(_ sender: UIButton) {
+        if dateFrom > dateTo {
+            let alert = UIAlertController(style: .alert, title: "Date range wrong.", message:"End date should greater than start date.")
+            alert.addAction(title: "OK")
+            present(alert,animated: true, completion: nil)
+        }
         if dateStartTextView.text == "" || dateEndTextView.text == "" || personTextView.text == "" {
             let alert = UIAlertController(title: "Please choose date range", message: "", preferredStyle: .actionSheet)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)

@@ -31,7 +31,6 @@ class TimeSheetResultViewController:UIViewController{
     func loadFilterStaff(name:String){
         
         filterPerson = realm.objects(ShiftDataToCalender.self).filter("staff = %@", name).filter("shiftDate >= %@ && shiftDate <= %@",dateFrom,dateTo).sorted(byKeyPath: "shiftDate", ascending: true)
-        print(dateFrom,dateTo)
     }
     
     override func viewDidLoad() {

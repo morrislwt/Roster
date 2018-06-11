@@ -64,7 +64,9 @@ class DashboardViewController:UIViewController{
     }
     @IBOutlet weak var dashboardTableView: UITableView!
     @IBOutlet weak var dashboardCollectionView: UICollectionView!
-    
+    @IBOutlet weak var dashboardLabel: UILabel!
+    @IBOutlet weak var dashboardLeading: NSLayoutConstraint!
+    @IBOutlet weak var dashboardCollectionLeading: NSLayoutConstraint!
     let realm = try! Realm()
     var staff:Results<EmployeeData>?
     var workPlace:Results<WorkSpaceData>?
@@ -88,7 +90,6 @@ class DashboardViewController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-//        dashboardTableView.layer.cornerRadius = 20
         dashboardTableView.backgroundColor = .clear
         dashboardCollectionView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         dashboardCollectionView.layer.cornerRadius = 10
@@ -98,6 +99,18 @@ class DashboardViewController:UIViewController{
         super.viewWillAppear(animated)
         animateTable()
 //        getDataFromFire(queryBy: "Staff Name")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 1) {
+            self.dashboardLeading.constant = 20
+            self.dashboardCollectionLeading.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        dashboardLeading.constant = -400
     }
 }
 extension DashboardViewController:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{

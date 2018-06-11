@@ -154,10 +154,12 @@ extension TodoListViewController:UITableViewDelegate,UITableViewDataSource{
             let alert = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.text = agendaForEdit.title
+                textField.placeholder = "Title"
                 editTitle = textField
             }
             alert.addTextField { (textField) in
                 textField.text = agendaForEdit.subtitle
+                textField.placeholder = "Additional infomation."
                 editSubtitle = textField
             }
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
