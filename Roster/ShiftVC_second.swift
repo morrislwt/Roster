@@ -56,6 +56,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
     @IBAction func continueBotton(_ sender: UIButton) {
         saveShiftDetail(false)
         let alert = UIAlertController(title: "✅", message: "Save Successful", preferredStyle: .actionSheet)
+        alert.setTitle(font:UIFont(name: "Avenir Next", size: 17)!, color: .darkGray)
         let action = UIAlertAction(title: "Got it", style: .default) { (action) in
             self.shiftNameTextfield.text = ""
             self.shiftStartTextfield.text = ""
@@ -103,6 +104,7 @@ class ShiftVC_second:UIViewController,UITextFieldDelegate{
                 goBack == true ? performSegue(withIdentifier: "goBack", sender: self) : nil
             }else{
                 let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
+                alert.setTitle(font:UIFont(name: "Avenir Next", size: 17)!, color: .darkGray)
                 let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
                 alert.addAction(gotItAction)
                 present(alert,animated: true, completion: nil)

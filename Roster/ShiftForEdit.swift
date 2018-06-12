@@ -97,6 +97,7 @@ class ShiftForEdit:UIViewController,UITextFieldDelegate{
             }
         }else{
             let alert = UIAlertController(title: "Please fill all detail😎", message: "", preferredStyle: .actionSheet)
+            alert.setTitle(font:UIFont(name: "Avenir Next", size: 17)!, color: .darkGray)
             let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
             alert.addAction(gotItAction)
             present(alert,animated: true, completion: nil)

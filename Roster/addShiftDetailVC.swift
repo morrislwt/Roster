@@ -131,6 +131,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
         goBack == true ? performSegue(withIdentifier: "backToCal", sender: self) : nil
         }else{
             let emptyAlert = UIAlertController(title: "Fill all the detail please", message: "👮🏻‍♂️", preferredStyle: .actionSheet)
+            emptyAlert.setTitle(font:UIFont(name: "Avenir Next", size: 17)!, color: .darkGray)
             let gotItAction = UIAlertAction(title: "Got it", style: .default, handler: nil)
             emptyAlert.addAction(gotItAction)
             present(emptyAlert,animated: true, completion: nil)
@@ -141,6 +142,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
         saveDataToCal(goBack: false)
         if  selectedStaff != "" && selectedWorkPlace != "" && selectedPosition != "" && selectedShiftName != "" && selectedStartTime != "" && selectedEndTime != "" {
             let alert = UIAlertController(style: .actionSheet, title: "Save Success")
+            alert.setTitle(font:UIFont(name: "Avenir Next", size: 17)!, color: .darkGray)
             let action = UIAlertAction(title: "OK", style: .default) { (action) in
                 self.selectedStaff = ""
                 self.selectedWorkPlace = ""
@@ -172,6 +174,7 @@ class addShiftDetailVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
         saveBtnOutlet.layer.cornerRadius = saveBtnOutlet.frame.width / 2
         backBtnOutlet.layer.cornerRadius = 20
         addShiftCollectionView.backgroundColor = .clear
+        popTableView.backgroundColor = .clear
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -405,38 +408,50 @@ extension addShiftDetailVC:UITableViewDelegate,UITableViewDataSource{
             if staffArray?.count == 0 {
                 cell.textLabel?.text = "Please add some data from Dashboard."
                 cell.textLabel?.textColor = .gray
+                cell.backgroundColor = .clear
             }
             guard staffArray?.count > 0 else { return cell}
             cell.textLabel?.text = staffArray?[indexPath.row].employeeName ?? "No Data"
+            cell.backgroundColor = .clear
         case 2:
             if workPlaceArray?.count == 0 {
                 cell.textLabel?.text = "Please add some data from Dashboard."
                 cell.textLabel?.textColor = .gray
+                cell.backgroundColor = .clear
             }
             guard workPlaceArray?.count > 0 else { return cell}
             cell.textLabel?.text = workPlaceArray?[indexPath.row].placename ?? "No Data"
+            cell.backgroundColor = .clear
         case 3:
             if positionArray?.count == 0 {
                 cell.textLabel?.text = "Please add some data from Dashboard."
                 cell.textLabel?.textColor = .gray
+                cell.backgroundColor = .clear
             }
             guard positionArray?.count > 0 else { return cell}
             cell.textLabel?.text = positionArray?[indexPath.row].positionName ?? "No Data"
+            cell.backgroundColor = .clear
         case 4:
             if shiftTemplateArray?.count == 0 {
                 cell.textLabel?.text = "Please add some data from Dashboard."
                 cell.textLabel?.textColor = .gray
+                cell.backgroundColor = .clear
             }
             guard shiftTemplateArray?.count > 0 else { return cell}
             cell.textLabel?.text = shiftTemplateArray?[indexPath.row].shiftTemplateName ?? "No Data"
+            cell.backgroundColor = .clear
             if let text = shiftTemplateArray?[indexPath.row]{
                 cell.detailTextLabel?.text = "\(text.shiftTimeStart) - \(text.shiftTimeEnd)"
+                cell.backgroundColor = .clear
             }
         default:
             break
         }
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return addShiftOptions[selectedIndex]
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         displayPickerView(false, identifier: "tableView",fromTop: false)

@@ -59,10 +59,12 @@ class TimeSheetViewController: UIViewController {
         if dateFrom > dateTo {
             let alert = UIAlertController(style: .alert, title: "Date range wrong.", message:"End date should greater than start date.")
             alert.addAction(title: "OK")
+            alert.setTitle(font:UIFont(name: "Avenir Next", size: 17)!, color: .darkGray)
             present(alert,animated: true, completion: nil)
         }
         if dateStartTextView.text == "" || dateEndTextView.text == "" || personTextView.text == "" {
             let alert = UIAlertController(title: "Please choose date range", message: "", preferredStyle: .actionSheet)
+            alert.setTitle(font:UIFont(name: "Avenir Next", size: 17)!, color: .darkGray)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
             present(alert,animated: true,completion: nil)

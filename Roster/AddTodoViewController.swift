@@ -8,11 +8,11 @@
 
 import Foundation
 import RealmSwift
-import Firebase
-
-protocol PassAgendaKeyProtocol {
-    func passAgendaKey(key:DatabaseReference)
-}
+//import Firebase
+//
+//protocol PassAgendaKeyProtocol {
+//    func passAgendaKey(key:DatabaseReference)
+//}
 
 class AddTodoViewController:UIViewController,UITextFieldDelegate {
     let realm = try! Realm()
@@ -76,7 +76,8 @@ class AddTodoViewController:UIViewController,UITextFieldDelegate {
                 print("Error saving agenda \(error)")
             }
         }else{
-            let alert = UIAlertController(style: .actionSheet, title:"Please add something in title")
+            let alert = UIAlertController(style: .actionSheet, title:"Please fill title box.")
+            alert.setTitle(font: UIFont(name: "Avenir Next", size: 17)!, color: .darkGray)
             alert.addAction(title: "OK")
             present(alert,animated: true,completion: nil)
         }
