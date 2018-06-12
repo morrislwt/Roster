@@ -914,7 +914,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIj-7d-6wv">
-                                                    <rect key="frame" x="5" y="5.0000000000000568" width="357" height="21"/>
+                                                    <rect key="frame" x="5" y="5" width="357" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="7Hc-Qo-8sM"/>
                                                     </constraints>
@@ -967,7 +967,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxK-b9-xKY">
-                                <rect key="frame" x="20" y="28" width="44" height="44"/>
+                                <rect key="frame" x="8" y="15" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.3411764706" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="aJC-Ms-2Jg"/>

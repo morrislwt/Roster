@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (4.7.2)
   - CVCalendar (1.6.1)
   - Firebase/Auth (5.2.0):
     - Firebase/CoreOnly
@@ -45,7 +44,6 @@ PODS:
     - Realm (= 3.7.1)
 
 DEPENDENCIES:
-  - Alamofire
   - CVCalendar
   - Firebase/Auth
   - Firebase/Core
@@ -55,7 +53,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - CVCalendar
     - Firebase
     - FirebaseAnalytics
@@ -72,7 +69,6 @@ SPEC REPOS:
     - RealmSwift
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   CVCalendar: 505c11b11a088b43f159806e791eba1c2540853b
   Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
@@ -88,6 +84,6 @@ SPEC CHECKSUMS:
   Realm: 906be37d52f17f25484ac01643a7f26a9d3bfbd5
   RealmSwift: 1c2b6bae3dc55bb87e080ffa96537d71442f6dce
 
-PODFILE CHECKSUM: c18ba2816c54aa59cc0404fe2aa9358277152098
+PODFILE CHECKSUM: e684cee956ef32051b4969056f1e4770e244add6
 
 COCOAPODS: 1.5.3
