@@ -21,7 +21,6 @@
 		A531B73F2089B72F00AE5670 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B73E2089B72F00AE5670 /* ViewController.swift */; };
 		A531B7422089B72F00AE5670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7402089B72F00AE5670 /* Main.storyboard */; };
 		A531B7442089B73000AE5670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A531B7432089B73000AE5670 /* Assets.xcassets */; };
-		A531B7472089B73000AE5670 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531B7452089B73000AE5670 /* LaunchScreen.storyboard */; };
 		A531B7562089D09A00AE5670 /* Hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7552089D09A00AE5670 /* Hello.swift */; };
 		A531B7582089E0FF00AE5670 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A531B7572089E0FF00AE5670 /* DashboardViewController.swift */; };
 		A54E32BE20BB95EE00DC66CA /* CVCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54E32BD20BB95EE00DC66CA /* CVCalendar.framework */; };
@@ -120,7 +119,6 @@
 		A531B73E2089B72F00AE5670 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A531B7412089B72F00AE5670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A531B7432089B73000AE5670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A531B7462089B73000AE5670 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A531B7482089B73000AE5670 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A531B7552089D09A00AE5670 /* Hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hello.swift; sourceTree = "<group>"; };
 		A531B7572089E0FF00AE5670 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +198,7 @@
 		A5CD610620B2CA8700112945 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		A5CD610820B3E0B300112945 /* TimeSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSheetViewController.swift; sourceTree = "<group>"; };
 		A5CD610A20B4069C00112945 /* TimeSheetResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSheetResultViewController.swift; sourceTree = "<group>"; };
+		A5DE18EA20D00F37000DFDD9 /* Roster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Roster.entitlements; sourceTree = "<group>"; };
 		A5E7FA3920A0484F00307B12 /* AddShiftCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShiftCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6B008EA52E44920BCC530AA /* Pods-Roster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Roster/Pods-Roster.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,6 +262,7 @@
 		A531B73B2089B72F00AE5670 /* Roster */ = {
 			isa = PBXGroup;
 			children = (
+				A5DE18EA20D00F37000DFDD9 /* Roster.entitlements */,
 				A5A562C82091B3D5009CA9D1 /* Data  Model */,
 				A5EC2960208C49BE00506E74 /* View */,
 				A5EC2917208B2A0000506E74 /* Extensions */,
@@ -275,7 +275,6 @@
 				A531B7482089B73000AE5670 /* Info.plist */,
 				A520C6C920BE765100694963 /* GoogleService-Info.plist */,
 				A531B7432089B73000AE5670 /* Assets.xcassets */,
-				A531B7452089B73000AE5670 /* LaunchScreen.storyboard */,
 			);
 			path = Roster;
 			sourceTree = "<group>";
@@ -706,6 +705,11 @@
 					A531B7382089B72F00AE5670 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 0930;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -733,7 +737,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A557B9F520B7F21A00D8D223 /* Countries.bundle in Resources */,
-				A531B7472089B73000AE5670 /* LaunchScreen.storyboard in Resources */,
 				A520C6CA20BE765100694963 /* GoogleService-Info.plist in Resources */,
 				A531B7442089B73000AE5670 /* Assets.xcassets in Resources */,
 				A531B7422089B72F00AE5670 /* Main.storyboard in Resources */,
@@ -895,14 +898,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		A531B7452089B73000AE5670 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A531B7462089B73000AE5670 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1026,6 +1021,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Roster/Roster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = "$(SRCROOT)/Roster/Info.plist";
@@ -1048,6 +1044,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Roster/Roster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7LY8NA626;
 				INFOPLIST_FILE = "$(SRCROOT)/Roster/Info.plist";
