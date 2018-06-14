@@ -137,12 +137,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paint" translatesAutoresizingMaskIntoConstraints="NO" id="411-Oz-i1b">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paint" translatesAutoresizingMaskIntoConstraints="NO" id="411-Oz-i1b">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="na9-vz-InK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qd-St-k5h">
@@ -324,13 +323,14 @@
                             <constraint firstItem="iUR-jH-CZE" firstAttribute="top" secondItem="AKe-x4-Ddy" secondAttribute="bottom" constant="40" id="HQ1-Ef-oIN"/>
                             <constraint firstItem="mAL-m0-3n4" firstAttribute="width" secondItem="KeW-sc-J39" secondAttribute="width" id="IhS-Qe-Ww1"/>
                             <constraint firstItem="EwY-oM-kvW" firstAttribute="width" secondItem="mAL-m0-3n4" secondAttribute="width" id="JuN-u9-Etz"/>
-                            <constraint firstItem="na9-vz-InK" firstAttribute="bottom" secondItem="xaH-5q-iXH" secondAttribute="bottom" constant="-49" id="O5H-n1-CnG"/>
+                            <constraint firstItem="na9-vz-InK" firstAttribute="bottom" secondItem="xaH-5q-iXH" secondAttribute="bottom" id="O5H-n1-CnG"/>
                             <constraint firstItem="oAb-R7-lzw" firstAttribute="top" secondItem="zi5-rJ-wZW" secondAttribute="bottom" constant="40" id="OPz-DC-wta"/>
                             <constraint firstItem="Fho-gx-NP3" firstAttribute="bottom" secondItem="1li-m7-MgW" secondAttribute="bottom" constant="20" id="Ogs-0O-Ddu"/>
                             <constraint firstItem="dBW-3s-wUO" firstAttribute="centerY" secondItem="ScX-T2-KDj" secondAttribute="centerY" id="S6a-80-IAK"/>
                             <constraint firstItem="mAL-m0-3n4" firstAttribute="leading" secondItem="KeW-sc-J39" secondAttribute="leading" id="Tbs-P2-gqA"/>
                             <constraint firstItem="KeW-sc-J39" firstAttribute="leading" secondItem="zi5-rJ-wZW" secondAttribute="leading" id="U0e-7c-agu"/>
                             <constraint firstItem="2qd-St-k5h" firstAttribute="centerY" secondItem="xaH-5q-iXH" secondAttribute="centerY" multiplier="0.3" id="V6n-7U-L2V"/>
+                            <constraint firstItem="411-Oz-i1b" firstAttribute="trailing" secondItem="Fho-gx-NP3" secondAttribute="trailing" id="VVA-e4-lKN"/>
                             <constraint firstItem="oAb-R7-lzw" firstAttribute="width" secondItem="zi5-rJ-wZW" secondAttribute="width" id="YOD-cb-a97"/>
                             <constraint firstItem="KeW-sc-J39" firstAttribute="centerY" secondItem="xaH-5q-iXH" secondAttribute="centerY" multiplier="0.9" id="ZiA-V7-yZ5"/>
                             <constraint firstItem="1li-m7-MgW" firstAttribute="centerX" secondItem="xaH-5q-iXH" secondAttribute="centerX" id="a5K-xL-xYO"/>
@@ -342,10 +342,13 @@
                             <constraint firstItem="zi5-rJ-wZW" firstAttribute="centerY" secondItem="xaH-5q-iXH" secondAttribute="centerY" multiplier="0.5" id="efA-fY-rrF"/>
                             <constraint firstItem="mAL-m0-3n4" firstAttribute="top" secondItem="EwY-oM-kvW" secondAttribute="bottom" id="g9Z-u9-Ept"/>
                             <constraint firstItem="Fho-gx-NP3" firstAttribute="trailing" secondItem="dBW-3s-wUO" secondAttribute="trailing" constant="40" id="gLg-2B-40j"/>
+                            <constraint firstItem="411-Oz-i1b" firstAttribute="bottom" secondItem="xaH-5q-iXH" secondAttribute="bottom" id="mFJ-aF-fKw"/>
                             <constraint firstItem="Fho-gx-NP3" firstAttribute="trailing" secondItem="FBn-uC-jVj" secondAttribute="trailing" constant="40" id="nS0-Gb-9Qm"/>
                             <constraint firstItem="jGn-xa-cJt" firstAttribute="centerY" secondItem="EwY-oM-kvW" secondAttribute="centerY" id="nme-ph-axd"/>
+                            <constraint firstItem="411-Oz-i1b" firstAttribute="top" secondItem="xaH-5q-iXH" secondAttribute="top" id="nuJ-cZ-MH5"/>
                             <constraint firstItem="Q4v-4h-X1y" firstAttribute="width" secondItem="oAb-R7-lzw" secondAttribute="width" id="thB-LU-Cha"/>
                             <constraint firstItem="ScX-T2-KDj" firstAttribute="width" secondItem="iUR-jH-CZE" secondAttribute="width" id="uN9-Ec-jKJ"/>
+                            <constraint firstItem="411-Oz-i1b" firstAttribute="leading" secondItem="Fho-gx-NP3" secondAttribute="leading" id="ugP-Ge-K6a"/>
                             <constraint firstItem="oAb-R7-lzw" firstAttribute="leading" secondItem="zi5-rJ-wZW" secondAttribute="leading" id="uum-Be-gpe"/>
                             <constraint firstItem="na9-vz-InK" firstAttribute="leading" secondItem="Fho-gx-NP3" secondAttribute="leading" id="z3f-kk-dw1"/>
                         </constraints>
@@ -838,7 +841,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="p7x-ZP-PEZ" firstAttribute="bottom" secondItem="S32-WV-OLQ" secondAttribute="bottom" id="0eA-ws-I2f"/>
+                            <constraint firstAttribute="bottom" secondItem="S32-WV-OLQ" secondAttribute="bottom" id="0eA-ws-I2f"/>
                             <constraint firstItem="Qax-Cq-zDc" firstAttribute="centerY" secondItem="YSc-Wk-k47" secondAttribute="centerY" multiplier="0.15" id="3Lr-zt-ruz"/>
                             <constraint firstItem="Qax-Cq-zDc" firstAttribute="width" secondItem="YSc-Wk-k47" secondAttribute="width" multiplier="0.01" id="9yj-Gc-KYV"/>
                             <constraint firstItem="ESU-Rp-ND0" firstAttribute="centerX" secondItem="p7x-ZP-PEZ" secondAttribute="centerX" id="FA5-ca-F9I"/>

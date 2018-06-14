@@ -80,9 +80,8 @@ class addShiftDetailVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSo
                 if fromTop == false{
                     bottomContraints.constant = (show) ? -100 : view.frame.height / 3
                 }else if fromTop == true {
-                    bottomContraints.constant = (show) ? -400 : view.frame.height / 3
+                    bottomContraints.constant = (show) ? -300 : view.frame.height / 3
                 }
-                
                 break
             }
         }
