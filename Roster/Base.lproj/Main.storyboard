@@ -900,16 +900,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0P-Ap-kzR">
-                                                    <rect key="frame" x="10" y="36" width="394" height="21"/>
+                                                    <rect key="frame" x="10" y="59" width="394" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9oD-9c-Kei"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIj-7d-6wv">
-                                                    <rect key="frame" x="5" y="5" width="357" height="21"/>
+                                                    <rect key="frame" x="4.9999999999999982" y="2" width="30.333333333333329" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="7Hc-Qo-8sM"/>
                                                     </constraints>
@@ -917,7 +917,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrQ-Wa-U1M">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrQ-Wa-U1M">
                                                     <rect key="frame" x="382" y="10" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="Kkj-uD-ga5"/>
@@ -928,13 +928,12 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="cIj-7d-6wv" firstAttribute="top" secondItem="UNq-Tb-lWK" secondAttribute="top" constant="5" id="8I3-gu-sKs"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="G0P-Ap-kzR" secondAttribute="bottom" constant="2" id="3nT-cb-fJZ"/>
+                                            <constraint firstItem="cIj-7d-6wv" firstAttribute="top" secondItem="UNq-Tb-lWK" secondAttribute="top" constant="2" id="8I3-gu-sKs"/>
                                             <constraint firstAttribute="trailing" secondItem="G0P-Ap-kzR" secondAttribute="trailing" constant="10" id="BS7-r8-626"/>
-                                            <constraint firstItem="ZrQ-Wa-U1M" firstAttribute="leading" secondItem="cIj-7d-6wv" secondAttribute="trailing" constant="20" id="ESX-gn-xY4"/>
                                             <constraint firstItem="G0P-Ap-kzR" firstAttribute="leading" secondItem="UNq-Tb-lWK" secondAttribute="leading" constant="10" id="Ipe-5R-ofK"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="ZrQ-Wa-U1M" secondAttribute="trailing" constant="2" id="K9Z-4c-idu"/>
                                             <constraint firstItem="ZrQ-Wa-U1M" firstAttribute="top" secondItem="UNq-Tb-lWK" secondAttribute="topMargin" constant="2" id="KVa-av-hQT"/>
-                                            <constraint firstItem="G0P-Ap-kzR" firstAttribute="top" secondItem="cIj-7d-6wv" secondAttribute="bottom" constant="10" id="ajP-fU-Xy1"/>
                                             <constraint firstItem="cIj-7d-6wv" firstAttribute="leading" secondItem="UNq-Tb-lWK" secondAttribute="leading" constant="5" id="qfp-jp-iEi"/>
                                         </constraints>
                                         <connections>
@@ -1110,7 +1109,7 @@
                     <viewLayoutGuide key="safeArea" id="rIh-CQ-Y5e"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-6895" y="1876"/>
+            <point key="canvasLocation" x="-6895.652173913044" y="1875.8152173913045"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="I4s-Uk-wo3">

@@ -311,18 +311,18 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.width
-        let height = (view.frame.height - 140) / 8
-        let smallWidth = view.frame.width / 3
-        let halfWidth = view.frame.width / 2
-        
+        let width = addShiftCollectionView.frame.width
+        let height = (addShiftCollectionView.frame.height) / 8
+        let smallWidth = (width-1) / 3
+        let halfWidth = width / 2
+
         switch indexPath.item {
         case 4...6:
             return CGSize(width: smallWidth, height: height)
         case 7,8:
             return CGSize(width: halfWidth, height: height)
-            
         default:
             return CGSize(width: width , height: height)
         }
@@ -336,6 +336,7 @@ extension addShiftDetailVC: UICollectionViewDelegate,UICollectionViewDataSource,
         switch indexPath.item{
         case 1...4:
             displayPickerView(true, identifier: "tableView",fromTop: false)
+            
         case 0,5...6,9:
             displayPickerView(false, identifier: "tableView", fromTop: false)
             displayPickerView(false, identifier: "pickerView", fromTop: true)
