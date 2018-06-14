@@ -88,9 +88,9 @@ class TimeSheetViewController: UIViewController {
         goFilterOutlet.layer.cornerRadius = 22
         backgroundOutlet.layer.cornerRadius = 20
         backgroundOutlet.clipsToBounds = true
-        dateStartOutlet.layer.cornerRadius = 22
-        dateEndOutlet.layer.cornerRadius = 22
-        nameOutlet.layer.cornerRadius = 22
+        dateStartOutlet.layer.cornerRadius = 15
+        dateEndOutlet.layer.cornerRadius = 15
+        nameOutlet.layer.cornerRadius = 15
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM YYYY"
@@ -135,7 +135,7 @@ class TimeSheetViewController: UIViewController {
         setupConstraints(popUpView: showNameView,identifier: "name")
         
     }
-    @objc func displayPickerView(_ show:Bool,identifier:String){
+    func displayPickerView(_ show:Bool,identifier:String){
         
         for bottomContraints in view.constraints {
             if bottomContraints.identifier == identifier {
@@ -180,7 +180,7 @@ extension TimeSheetViewController:UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         if staff?.count == 0 {
             cell.backgroundColor = .clear
-            cell.textLabel?.text = "Oops! Please add some staff in Dashboard."
+            cell.textLabel?.text = "Oops! Please add some staff."
             cell.textLabel?.textColor = .white
             cell.textLabel?.font = UIFont(name: "Avenir Next", size: 15)
         }

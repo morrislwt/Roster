@@ -58,7 +58,7 @@ class TodoListViewController:UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 1) {
-            self.leadingBackground.constant = -20
+            self.leadingBackground.constant = -10
             self.view.layoutIfNeeded()
         }
     }
